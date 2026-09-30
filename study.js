@@ -1,6 +1,28 @@
 /* أبو شريك: ربط البطاقات والاختبارات بمحتوى الكتاب */
 (function(){
-  const oldOpenBook=window.openBook;
+  Object.assign(bookFiles,{
+    'تاسع|اللغة العربية':'9-Arabic.pdf',
+    'تاسع|الرياضيات':'9-Algebra.pdf',
+    'تاسع|علم الأحياء والأرض':'9-Science.pdf',
+    'تاسع|الفيزياء والكيمياء':'9-Physics-Chemistry.pdf',
+    'تاسع|التاريخ':'9-History.pdf',
+    'تاسع|الجغرافيا':'9-Geography.pdf',
+    'تاسع|التربية الوطنية':'9-National.pdf',
+    'تاسع|التربية الإسلامية':'9-Islamic.pdf',
+    'تاسع|التربية المسيحية':'9-Christianity.pdf',
+    'تاسع|الفنون':'9-Art.pdf',
+    'بكالوريا علمي|اللغة العربية':'bac-sci-arabic.pdf',
+    'بكالوريا علمي|الرياضيات':'bac-sci-math-1.pdf',
+    'بكالوريا علمي|الفيزياء':'bac-sci-physics.pdf',
+    'بكالوريا علمي|الكيمياء':'bac-sci-chemistry.pdf',
+    'بكالوريا علمي|علم الأحياء':'bac-sci-biology.pdf',
+    'بكالوريا علمي|اللغة الإنكليزية':'bac-sci-english-sb.pdf',
+    'بكالوريا أدبي|اللغة العربية':'bac-lit-arabic.pdf',
+    'بكالوريا أدبي|الفلسفة':'bac-lit-philosophy-1.pdf',
+    'بكالوريا أدبي|التاريخ':'bac-lit-history.pdf',
+    'بكالوريا أدبي|الجغرافيا':'bac-lit-geography.pdf',
+    'بكالوريا أدبي|اللغة الإنكليزية':'bac-lit-english-sb.pdf'
+  });
   let generatedMCQ=[];
 
   async function ensureBookSource(){
