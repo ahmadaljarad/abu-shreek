@@ -9,41 +9,52 @@
   function pdfUrl(file){return '/api/book?file='+encodeURIComponent(file)}
   function pdfOptions(file){return {url:pdfUrl(file),withCredentials:false,disableRange:false,disableStream:false,disableAutoFetch:true,rangeChunkSize:262144}}
 
-  /* PDF.js يطلب فقط أجزاء الكتاب التي يحتاجها عبر بروكسي Render المتدفق، بدون CORS وبدون تحميل الملف كاملاً في الذاكرة. */
   window.openBook=async function(){
     show('book');chatlog.innerHTML='';
     const f=bookFiles[`${state.level}|${state.subject}`];
     if(!f){bookHint.textContent='كتاب هذه المادة لم يتم ربطه بعد.';return;}
     bookHint.textContent='جارٍ تحميل الكتاب...';
-    try{
-      state.pdf=await pdfjsLib.getDocument(pdfOptions(f)).promise;
-      state.page=1;
-      await renderPage();
-    }catch(e){
-      console.error('[PDF proxy]',e);
-      bookHint.textContent='تعذر تحميل الكتاب حالياً. حاول مرة أخرى بعد لحظات.';
-    }
+    try{state.pdf=await pdfjsLib.getDocument(pdfOptions(f)).promise;state.page=1;await renderPage();}
+    catch(e){console.error('[PDF proxy]',e);bookHint.textContent='تعذر تحميل الكتاب حالياً. حاول مرة أخرى بعد لحظات.';}
   };
 
+  function normalizeText(s){return String(s||'').replace(/\s+/g,' ').trim()}
+  function pageScore(text,n,total){
+    const t=normalizeText(text); if(t.length<120)return -100;
+    let score=Math.min(8,t.length/350);
+    const bad=['حقوق التأليف','حقوق الطبع','جميع الحقوق','وزارة التربية والتعليم','المؤسسة العامة للطباعة','دار النشر','رقم الإيداع','الطبعة','تأليف','المؤلفون','لجنة التأليف','الفهرس','المحتويات','الجمهورية العربية السورية'];
+    const good=['الدرس','الوحدة','نشاط','تعلم','أتعلم','أستنتج','استنتج','أجيب','أجب','تمرين','تدريب','مثال','تعريف','قانون','تجربة','أهداف','سؤال','علل','فسر','نتيجة','سبب'];
+    for(const x of bad)if(t.includes(x))score-=3;
+    for(const x of good)if(t.includes(x))score+=1.4;
+    if(n<=4)score-=2.5;
+    if(total>20&&n>total-2)score-=1;
+    const digits=(t.match(/[0-9٠-٩]/g)||[]).length;if(digits>2)score+=.7;
+    return score;
+  }
+  async function extractPage(pdf,n){
+    const page=await pdf.getPage(n);const tc=await page.getTextContent();
+    const text=normalizeText(tc.items.map(x=>x.str).join(' '));
+    if(page.cleanup)page.cleanup();return text;
+  }
   async function ensureBookSource(){
-    const cacheKey=key('bookSource-v6');
-    const cached=localStorage.getItem(cacheKey);
-    if(cached&&cached.length>200)return cached;
+    const cacheKey=key('bookSource-v7');
+    const cached=localStorage.getItem(cacheKey);if(cached&&cached.length>500)return cached;
     let pdf=state.pdf;
-    if(!pdf){
-      const file=bookFiles[`${state.level}|${state.subject}`];
-      if(!file)throw new Error('كتاب هذه المادة لم يتم ربطه بعد.');
-      pdf=await pdfjsLib.getDocument(pdfOptions(file)).promise;
+    if(!pdf){const file=bookFiles[`${state.level}|${state.subject}`];if(!file)throw new Error('كتاب هذه المادة لم يتم ربطه بعد.');pdf=await pdfjsLib.getDocument(pdfOptions(file)).promise;}
+    const total=pdf.numPages;
+    const candidates=[];
+    /* افحص الكتاب على دفعات موزعة، لا تتوقف عند صفحات الغلاف الأولى. */
+    const maxScan=Math.min(total,90);
+    for(let n=1;n<=maxScan;n++){
+      try{const text=await extractPage(pdf,n);const score=pageScore(text,n,total);if(score>0)candidates.push({n,text,score});}catch(e){console.warn('[page text]',n,e);}
+      if(candidates.length>=18&&n>=25)break;
     }
-    const parts=[];let chars=0;
-    for(let n=1;n<=pdf.numPages&&chars<17500;n++){
-      const page=await pdf.getPage(n);const tc=await page.getTextContent();
-      const text=tc.items.map(x=>x.str).join(' ').replace(/\s+/g,' ').trim();
-      if(text){parts.push(`صفحة ${n}: ${text}`);chars+=text.length;}
-      if(page.cleanup)page.cleanup();
-    }
-    const source=parts.join('\n').slice(0,17500);
-    if(source.length<80)throw new Error('لم أستطع استخراج نص كافٍ من الكتاب.');
+    candidates.sort((a,b)=>b.score-a.score||a.n-b.n);
+    /* نختار صفحات تعليمية جيدة، ثم نعيد ترتيبها حسب ترتيب الكتاب. */
+    const chosen=candidates.slice(0,14).sort((a,b)=>a.n-b.n);
+    let source=chosen.map(x=>`صفحة ${x.n}: ${x.text}`).join('\n');
+    if(source.length>17500)source=source.slice(0,17500);
+    if(source.length<300)throw new Error('لم أستطع العثور على نص دراسي كافٍ داخل الكتاب. جرّب كتاباً أو درساً آخر.');
     try{localStorage.setItem(cacheKey,source)}catch{}
     return source;
   }
@@ -51,13 +62,13 @@
     const sourceText=await ensureBookSource();let r;
     try{r=await fetch('/api/study',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode,level:state.level,book:state.subject,sourceText})});}
     catch{throw new Error('تعذر الاتصال بخادم أبو شريك. أعد المحاولة بعد لحظات.');}
-    let j={};try{j=await r.json()}catch{}
+    let j={};try{j=await r.json()}catch{throw new Error('وصل رد غير مكتمل من الذكاء الاصطناعي. اضغط أسئلة جديدة وحاول مرة أخرى.');}
     if(!r.ok)throw new Error(j.error||'تعذر إنشاء المحتوى.');
-    if(!Array.isArray(j.items)||!j.items.length)throw new Error('لم يتم إنشاء محتوى صالح.');
+    if(!Array.isArray(j.items)||!j.items.length)throw new Error('لم يتم إنشاء محتوى دراسي صالح. اضغط أسئلة جديدة للمحاولة من صفحات أخرى.');
     return j.items;
   }
-  window.openCards=async function(){show('cards');const flash=document.getElementById('flash');flash.textContent='جارٍ تحضير بطاقات '+state.subject+' من الكتاب...';try{let cards;const saved=localStorage.getItem(key('generatedCards'));if(saved)cards=JSON.parse(saved);if(!Array.isArray(cards)||!cards.length){const items=await generate('cards');cards=items.filter(x=>x&&x.front&&x.back).map(x=>[String(x.front),String(x.back)]);localStorage.setItem(key('generatedCards'),JSON.stringify(cards));}state.cardIndex=0;state.cardFlipped=false;renderCard();}catch(e){console.error(e);flash.textContent=e.message||'تعذر إنشاء البطاقات.';}};
-  window.openMCQ=async function(){show('mcq');document.getElementById('mcqQuestion').textContent='جارٍ تحضير أسئلة '+state.subject+' من الكتاب...';document.getElementById('mcqOptions').innerHTML='';try{let items;const saved=localStorage.getItem(key('generatedMCQ'));if(saved)items=JSON.parse(saved);if(!Array.isArray(items)||!items.length){items=await generate('mcq');localStorage.setItem(key('generatedMCQ'),JSON.stringify(items));}generatedMCQ=items.filter(x=>x&&x.question&&Array.isArray(x.options)&&x.options.length===4&&Number.isInteger(Number(x.answer))).map(x=>({q:String(x.question),o:x.options.map(String),a:Number(x.answer),e:String(x.explanation||'')}));state.mcqIndex=0;window.nextMCQ();}catch(e){console.error(e);document.getElementById('mcqQuestion').textContent=e.message||'تعذر إنشاء الأسئلة.';}};
+  window.openCards=async function(){show('cards');const flash=document.getElementById('flash');flash.textContent='جارٍ تحضير بطاقات '+state.subject+' من الدروس...';try{let cards;const saved=localStorage.getItem(key('generatedCards'));if(saved)cards=JSON.parse(saved);if(!Array.isArray(cards)||!cards.length){const items=await generate('cards');cards=items.filter(x=>x&&x.front&&x.back).map(x=>[String(x.front),String(x.back)]);localStorage.setItem(key('generatedCards'),JSON.stringify(cards));}state.cardIndex=0;state.cardFlipped=false;renderCard();}catch(e){console.error(e);flash.textContent=e.message||'تعذر إنشاء البطاقات.';}};
+  window.openMCQ=async function(){show('mcq');document.getElementById('mcqQuestion').textContent='جارٍ تحضير أسئلة '+state.subject+' من الدروس...';document.getElementById('mcqOptions').innerHTML='';try{let items;const saved=localStorage.getItem(key('generatedMCQ'));if(saved)items=JSON.parse(saved);if(!Array.isArray(items)||!items.length){items=await generate('mcq');localStorage.setItem(key('generatedMCQ'),JSON.stringify(items));}generatedMCQ=items.filter(x=>x&&x.question&&Array.isArray(x.options)&&x.options.length===4&&Number.isInteger(Number(x.answer))).map(x=>({q:String(x.question),o:x.options.map(String),a:Number(x.answer),e:String(x.explanation||'')}));state.mcqIndex=0;window.nextMCQ();}catch(e){console.error(e);document.getElementById('mcqQuestion').textContent=e.message||'تعذر إنشاء الأسئلة.';}};
   window.nextMCQ=function(){if(!generatedMCQ.length){document.getElementById('mcqQuestion').textContent='لا توجد أسئلة مولدة بعد.';return;}const base=generatedMCQ[state.mcqIndex++%generatedMCQ.length];const q=shuffledQuestion(base);state.currentMCQ=q;document.getElementById('mcqQuestion').textContent=q.q;document.getElementById('mcqExplain').textContent='';const box=document.getElementById('mcqOptions');box.innerHTML='';q.o.forEach((o,i)=>{const b=document.createElement('button');b.className='mcq-option';b.textContent=o;b.onclick=()=>answerMCQ(i,b);box.appendChild(b)});const p=progress('mcq'),n=pct(p);document.getElementById('mcqPct').textContent=n+'%';document.getElementById('mcqProgress').style.width=n+'%';};
-  window.regenerateStudy=async function(mode){localStorage.removeItem(key(mode==='cards'?'generatedCards':'generatedMCQ'));for(const v of ['bookSource-v3','bookSource-v4','bookSource-v5','bookSource-v6'])localStorage.removeItem(key(v));if(mode==='cards')return window.openCards();return window.openMCQ();};
+  window.regenerateStudy=async function(mode){localStorage.removeItem(key(mode==='cards'?'generatedCards':'generatedMCQ'));for(const v of ['bookSource-v3','bookSource-v4','bookSource-v5','bookSource-v6','bookSource-v7'])localStorage.removeItem(key(v));if(mode==='cards')return window.openCards();return window.openMCQ();};
 })();
