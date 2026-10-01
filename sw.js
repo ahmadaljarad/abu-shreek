@@ -1,5 +1,5 @@
-const CACHE='abu-shreek-v4';
-const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg','./study.js','./books.json'];
+const CACHE='abu-shreek-v5-icon';
+const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg?v=20261001','./study.js','./books.json'];
 const RELEASE_BASE='https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/';
 
 self.addEventListener('install',e=>e.waitUntil(
@@ -22,4 +22,19 @@ self.addEventListener('fetch',e=>{
     if(file && !file.includes('/') && file.toLowerCase().endsWith('.pdf')){
       e.respondWith((async()=>{
         try{
-          const r=await
+          const r=await fetch(RELEASE_BASE+encodeURIComponent(file));
+          if(r.ok) return r;
+        }catch{}
+        return fetch(e.request);
+      })());
+      return;
+    }
+  }
+
+  if(u.pathname.endsWith('/icon.svg')){
+    e.respondWith(fetch(e.request,{cache:'reload'}).catch(()=>caches.match('./icon.svg?v=20261001')));
+    return;
+  }
+
+  e.respondWith(fetch(e.request).catch(()=>caches.match(e.request)));
+});
