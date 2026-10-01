@@ -22,4 +22,10 @@ window.addEventListener('DOMContentLoaded', () => {
     u.dataset.abuUploadStudy = '1';
     document.body.appendChild(u);
   }
+  if (!document.querySelector('script[data-abu-grade9-card]')) {
+    const g = document.createElement('script');
+    g.src = './grade9-card.js?v=20261001-2';
+    g.dataset.abuGrade9Card = '1';
+    document.body.appendChild(g);
+  }
 });
