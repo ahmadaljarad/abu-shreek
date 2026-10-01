@@ -1,4 +1,4 @@
-/* Custom home-card icons: Grade 9 and MINT Abitur only. */
+/* Custom home-card icons: Grade 9, MINT Abitur and literary Abitur. */
 (function(){
   function setIcon(title,src,alt){
     const cards=[...document.querySelectorAll('#home .grid .card')];
@@ -11,6 +11,7 @@
   function applyHomeIcons(){
     setIcon('الصف التاسع','grade9.svg?v=20261001-2','أيقونة الصف التاسع');
     setIcon('بكالوريا علمي','mint-abitur.svg?v=20261001-1','أيقونة البكالوريا العلمي');
+    setIcon('بكالوريا أدبي','literary-abitur.svg?v=20261001-1','أيقونة البكالوريا الأدبي');
   }
   window.addEventListener('DOMContentLoaded',applyHomeIcons);
   if(document.readyState!=='loading') applyHomeIcons();
