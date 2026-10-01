@@ -1,4 +1,4 @@
-const CACHE='abu-shreek-v5-icon';
+const CACHE='abu-shreek-v6-auth';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon.svg?v=20261001','./study.js','./books.json'];
 const RELEASE_BASE='https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/';
 
@@ -29,6 +29,13 @@ self.addEventListener('fetch',e=>{
       })());
       return;
     }
+  }
+
+  // Authentication files and HTML must always come from the network first,
+  // so admin-role changes are not hidden behind an old PWA cache.
+  if(u.pathname.endsWith('/auth.js') || u.pathname.endsWith('/index.html') || u.pathname==='/' || u.pathname.endsWith('/')){
+    e.respondWith(fetch(e.request,{cache:'no-store'}).catch(()=>caches.match(e.request)));
+    return;
   }
 
   if(u.pathname.endsWith('/icon.svg')){
