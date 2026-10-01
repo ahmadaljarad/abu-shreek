@@ -1,13 +1,17 @@
-/* Replace only the Grade 9 home-card emoji with the custom icon. */
+/* Custom home-card icons: Grade 9 and MINT Abitur only. */
 (function(){
-  function applyGrade9Icon(){
+  function setIcon(title,src,alt){
     const cards=[...document.querySelectorAll('#home .grid .card')];
-    const card=cards.find(c=>c.querySelector('h2')?.textContent.trim()==='الصف التاسع');
+    const card=cards.find(c=>c.querySelector('h2')?.textContent.trim()===title);
     if(!card) return;
     const icon=card.querySelector('.icon');
-    if(!icon || icon.querySelector('img')) return;
-    icon.innerHTML='<img src="grade9.svg?v=20261001-2" alt="أيقونة الصف التاسع" style="width:48px;height:48px;display:block;object-fit:contain">';
+    if(!icon) return;
+    icon.innerHTML=`<img src="${src}" alt="${alt}" style="width:48px;height:48px;display:block;object-fit:contain">`;
   }
-  window.addEventListener('DOMContentLoaded',applyGrade9Icon);
-  if(document.readyState!=='loading') applyGrade9Icon();
+  function applyHomeIcons(){
+    setIcon('الصف التاسع','grade9.svg?v=20261001-2','أيقونة الصف التاسع');
+    setIcon('بكالوريا علمي','mint-abitur.svg?v=20261001-1','أيقونة البكالوريا العلمي');
+  }
+  window.addEventListener('DOMContentLoaded',applyHomeIcons);
+  if(document.readyState!=='loading') applyHomeIcons();
 })();
