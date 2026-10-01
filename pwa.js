@@ -16,4 +16,10 @@ window.addEventListener('DOMContentLoaded', () => {
     c.dataset.abuCalculator = '1';
     document.body.appendChild(c);
   }
+  if (!document.querySelector('script[data-abu-upload-study]')) {
+    const u = document.createElement('script');
+    u.src = './upload-study.js?v=1';
+    u.dataset.abuUploadStudy = '1';
+    document.body.appendChild(u);
+  }
 });
