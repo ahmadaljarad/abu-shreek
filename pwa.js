@@ -28,8 +28,21 @@ function loadScriptOnce(src, marker) {
   });
 }
 
+function loadStyleOnce(href, marker) {
+  if (document.querySelector(`link[${marker}]`)) return;
+  const l = document.createElement('link');
+  l.rel = 'stylesheet';
+  l.href = href;
+  l.setAttribute(marker, '1');
+  document.head.appendChild(l);
+}
+
 // Load extra modules without changing existing study features.
 window.addEventListener('DOMContentLoaded', async () => {
+  // New responsive landing page inspired by the approved mockups.
+  loadStyleOnce('./home-redesign.css?v=20261002-1', 'data-abu-home-style');
+  loadScriptOnce('./home-redesign.js?v=20261002-1', 'data-abu-home').catch(console.error);
+
   if (!document.querySelector('script[data-abu-future]')) {
     const s = document.createElement('script');
     s.src = './future.js?v=1';
@@ -58,7 +71,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Student accounts: Supabase client first, then Abu Shreek auth UI.
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    await loadScriptOnce('./auth.js?v=20261001-1', 'data-abu-auth');
+    await loadScriptOnce('./auth.js?v=20261002-2', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
