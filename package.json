@@ -1,0 +1,26 @@
+{
+  "name": "abu-shreek",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Abu Shreek educational platform - web, Android and iOS",
+  "scripts": {
+    "start": "node server.mjs",
+    "mobile:init": "npm run mobile:add:android && npm run mobile:add:ios",
+    "mobile:add:android": "npx cap add android",
+    "mobile:add:ios": "npx cap add ios",
+    "mobile:sync": "npx cap sync",
+    "mobile:android": "npx cap open android",
+    "mobile:ios": "npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/ios": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
