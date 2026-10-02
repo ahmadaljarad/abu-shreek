@@ -43,6 +43,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   loadStyleOnce('./home-redesign.css?v=20261002-7', 'data-abu-home-style');
   await loadScriptOnce('./home-redesign.js?v=20261002-7', 'data-abu-home').catch(console.error);
   await loadScriptOnce('./mascot-fix.js?v=20261002-1','data-abu-mascot-fix').catch(console.error);
+  await loadScriptOnce('./download-app.js?v=20261002-1','data-abu-download-app').catch(console.error);
 
   const modules = [
     ['./future.js?v=2','data-abu-future'],
