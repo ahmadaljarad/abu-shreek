@@ -52,6 +52,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   ];
   modules.forEach(([src, marker]) => loadScriptOnce(src, marker).catch(console.error));
   await loadScriptOnce('./navigation-fix.js?v=20261002-1','data-abu-navigation-fix').catch(console.error);
+  await loadScriptOnce('./arabic-study-fix.js?v=20261002-1','data-abu-arabic-study-fix').catch(console.error);
 
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
