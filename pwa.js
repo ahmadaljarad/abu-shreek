@@ -40,21 +40,22 @@ function loadStyleOnce(href, marker) {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-  loadStyleOnce('./home-redesign.css?v=20261002-6', 'data-abu-home-style');
-  await loadScriptOnce('./home-redesign.js?v=20261002-6', 'data-abu-home').catch(console.error);
+  loadStyleOnce('./home-redesign.css?v=20261002-7', 'data-abu-home-style');
+  await loadScriptOnce('./home-redesign.js?v=20261002-7', 'data-abu-home').catch(console.error);
+  await loadScriptOnce('./mascot-fix.js?v=20261002-1','data-abu-mascot-fix').catch(console.error);
 
   const modules = [
     ['./future.js?v=2','data-abu-future'],
     ['./calculator.js?v=2','data-abu-calculator'],
     ['./upload-study.js?v=4','data-abu-upload-study'],
-    ['./grade9-card.js?v=20261002-6','data-abu-grade9-card']
+    ['./grade9-card.js?v=20261002-7','data-abu-grade9-card']
   ];
   modules.forEach(([src, marker]) => loadScriptOnce(src, marker).catch(console.error));
   await loadScriptOnce('./navigation-fix.js?v=20261002-1','data-abu-navigation-fix').catch(console.error);
 
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    await loadScriptOnce('./auth.js?v=20261002-6', 'data-abu-auth');
+    await loadScriptOnce('./auth.js?v=20261002-7', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
