@@ -37,38 +37,23 @@ function loadStyleOnce(href, marker) {
   document.head.appendChild(l);
 }
 
-// Load extra modules without changing existing study features.
 window.addEventListener('DOMContentLoaded', async () => {
-  // New responsive landing page inspired by the approved mockups.
-  loadStyleOnce('./home-redesign.css?v=20261002-1', 'data-abu-home-style');
-  loadScriptOnce('./home-redesign.js?v=20261002-1', 'data-abu-home').catch(console.error);
+  loadStyleOnce('./home-redesign.css?v=20261002-2', 'data-abu-home-style');
+  loadScriptOnce('./home-redesign.js?v=20261002-2', 'data-abu-home').catch(console.error);
 
   if (!document.querySelector('script[data-abu-future]')) {
-    const s = document.createElement('script');
-    s.src = './future.js?v=1';
-    s.dataset.abuFuture = '1';
-    document.body.appendChild(s);
+    const s = document.createElement('script'); s.src = './future.js?v=1'; s.dataset.abuFuture = '1'; document.body.appendChild(s);
   }
   if (!document.querySelector('script[data-abu-calculator]')) {
-    const c = document.createElement('script');
-    c.src = './calculator.js?v=1';
-    c.dataset.abuCalculator = '1';
-    document.body.appendChild(c);
+    const c = document.createElement('script'); c.src = './calculator.js?v=1'; c.dataset.abuCalculator = '1'; document.body.appendChild(c);
   }
   if (!document.querySelector('script[data-abu-upload-study]')) {
-    const u = document.createElement('script');
-    u.src = './upload-study.js?v=1';
-    u.dataset.abuUploadStudy = '1';
-    document.body.appendChild(u);
+    const u = document.createElement('script'); u.src = './upload-study.js?v=1'; u.dataset.abuUploadStudy = '1'; document.body.appendChild(u);
   }
   if (!document.querySelector('script[data-abu-grade9-card]')) {
-    const g = document.createElement('script');
-    g.src = './grade9-card.js?v=20261001-2';
-    g.dataset.abuGrade9Card = '1';
-    document.body.appendChild(g);
+    const g = document.createElement('script'); g.src = './grade9-card.js?v=20261001-2'; g.dataset.abuGrade9Card = '1'; document.body.appendChild(g);
   }
 
-  // Student accounts: Supabase client first, then Abu Shreek auth UI.
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
     await loadScriptOnce('./auth.js?v=20261002-2', 'data-abu-auth');
