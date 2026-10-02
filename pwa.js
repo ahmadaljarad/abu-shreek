@@ -1,10 +1,12 @@
-// PWA bootstrap for Abu Shreek
+// Abu Shreek bootstrap.
+// Remove old service workers/caches: Safari was retaining stale application code.
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+  navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(reg => reg.unregister())).catch(()=>{});
+}
+if ('caches' in window) {
+  caches.keys().then(keys => Promise.all(keys.map(key => caches.delete(key)))).catch(()=>{});
 }
 
-// Supabase authentication configuration.
-// The publishable key is intentionally browser-safe. Never put a secret/service-role key here.
 window.ABU_AUTH_CONFIG = {
   url: 'https://yaykzzetgwwqhzaoikrz.supabase.co',
   anonKey: 'sb_publishable_g0dBkbaAksKoJRfarPyWIA_iHods3XE'
@@ -38,25 +40,20 @@ function loadStyleOnce(href, marker) {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-  loadStyleOnce('./home-redesign.css?v=20261002-2', 'data-abu-home-style');
-  loadScriptOnce('./home-redesign.js?v=20261002-2', 'data-abu-home').catch(console.error);
+  loadStyleOnce('./home-redesign.css?v=20261002-3', 'data-abu-home-style');
+  await loadScriptOnce('./home-redesign.js?v=20261002-3', 'data-abu-home').catch(console.error);
 
-  if (!document.querySelector('script[data-abu-future]')) {
-    const s = document.createElement('script'); s.src = './future.js?v=1'; s.dataset.abuFuture = '1'; document.body.appendChild(s);
-  }
-  if (!document.querySelector('script[data-abu-calculator]')) {
-    const c = document.createElement('script'); c.src = './calculator.js?v=1'; c.dataset.abuCalculator = '1'; document.body.appendChild(c);
-  }
-  if (!document.querySelector('script[data-abu-upload-study]')) {
-    const u = document.createElement('script'); u.src = './upload-study.js?v=1'; u.dataset.abuUploadStudy = '1'; document.body.appendChild(u);
-  }
-  if (!document.querySelector('script[data-abu-grade9-card]')) {
-    const g = document.createElement('script'); g.src = './grade9-card.js?v=20261001-2'; g.dataset.abuGrade9Card = '1'; document.body.appendChild(g);
-  }
+  const modules = [
+    ['./future.js?v=2','data-abu-future'],
+    ['./calculator.js?v=2','data-abu-calculator'],
+    ['./upload-study.js?v=2','data-abu-upload-study'],
+    ['./grade9-card.js?v=20261002-3','data-abu-grade9-card']
+  ];
+  modules.forEach(([src, marker]) => loadScriptOnce(src, marker).catch(console.error));
 
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    await loadScriptOnce('./auth.js?v=20261002-2', 'data-abu-auth');
+    await loadScriptOnce('./auth.js?v=20261002-3', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
