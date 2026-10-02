@@ -1,62 +1,152 @@
 (function(){
+'use strict';
+
 function build(){
   if(document.getElementById('abuNewNav')) return;
-  document.body.classList.add('abu-redesign-ready');
+
   const home=document.getElementById('home');
   if(!home) return;
+
+  document.body.classList.add('abu-redesign-ready');
   home.classList.add('abu-home-redesigned');
 
   const nav=document.createElement('nav');
   nav.id='abuNewNav';
   nav.className='abu-new-nav';
-  nav.innerHTML=`<img class="abu-logo-mini" src="logo-mini.svg" alt="أبو شريك"><button class="abu-nav-link" data-home>الرئيسية</button><button class="abu-nav-link" data-levels>اختر مرحلتك</button><button class="abu-nav-link" data-future>مستقبلك بعد البكالوريا</button><button class="abu-nav-link" data-about>من نحن</button><button class="abu-login-pill" id="abuTopAccount"><span>👤</span> تسجيل الدخول</button>`;
+  nav.innerHTML=`<img class="abu-logo-mini" src="logo-mini.svg" alt="أبو شريك">
+    <button type="button" class="abu-nav-link" data-home>الرئيسية</button>
+    <button type="button" class="abu-nav-link" data-levels>اختر مرحلتك</button>
+    <button type="button" class="abu-nav-link" data-future>مستقبلك بعد البكالوريا</button>
+    <button type="button" class="abu-nav-link" data-about>من نحن</button>
+    <button type="button" class="abu-login-pill" id="abuTopAccount"><span>👤</span> تسجيل الدخول</button>`;
   document.body.insertBefore(nav,document.body.firstChild);
 
   const landing=document.createElement('div');
   landing.id='abuLandingView';
-  landing.innerHTML=`<section class="abu-hero-new"><div class="abu-mascot-wrap"><img class="abu-mascot" src="logo-mini.svg" alt="أبو شريك"></div><div class="abu-hero-copy"><p class="abu-eyebrow">مرحباً بك في أبو شريك</p><h1>شريكك الدراسي إلى النجاح</h1><button class="abu-start" data-levels>ابدأ رحلتك الآن <span>←</span></button><p class="abu-hero-note">اختر مرحلتك الدراسية وابدأ الدراسة بطريقة تناسبك</p></div></section><section class="abu-feature-strip" id="abuAbout"><div class="abu-feature"><div style="font-size:34px">📚</div><b>منهجك في مكان واحد</b><span>موادك وكتبك وطرق الدراسة ضمن تجربة واحدة.</span></div><div class="abu-feature"><div style="font-size:34px">🧠</div><b>دراسة أذكى</b><span>بطاقات وأسئلة وشرح يساعدك على الفهم والمراجعة.</span></div><div class="abu-feature"><div style="font-size:34px">🎓</div><b>خطّط لمستقبلك</b><span>تعرّف على التخصصات والدراسة بعد البكالوريا.</span></div></section>`;
+  landing.innerHTML=`<section class="abu-hero-new">
+      <div class="abu-mascot-wrap"><img class="abu-mascot" src="logo-mini.svg" alt="أبو شريك"></div>
+      <div class="abu-hero-copy">
+        <p class="abu-eyebrow">مرحباً بك في أبو شريك</p>
+        <h1>شريكك الدراسي إلى النجاح</h1>
+        <button type="button" class="abu-start" data-start>ابدأ رحلتك الآن <span>←</span></button>
+        <p class="abu-hero-note">اختر مرحلتك الدراسية وابدأ الدراسة بطريقة تناسبك</p>
+      </div>
+    </section>
+    <section class="abu-feature-strip" id="abuAbout">
+      <div class="abu-feature"><div style="font-size:34px">📚</div><b>منهجك في مكان واحد</b><span>موادك وكتبك وطرق الدراسة ضمن تجربة واحدة.</span></div>
+      <div class="abu-feature"><div style="font-size:34px">🧠</div><b>دراسة أذكى</b><span>بطاقات وأسئلة وشرح يساعدك على الفهم والمراجعة.</span></div>
+      <div class="abu-feature"><div style="font-size:34px">🎓</div><b>خطّط لمستقبلك</b><span>تعرّف على التخصصات والدراسة بعد البكالوريا.</span></div>
+    </section>`;
 
   const chooser=document.createElement('div');
   chooser.id='abuLevelView';
   chooser.className='abu-view-hidden';
-  chooser.innerHTML=`<section class="abu-level-page"><button class="abu-back-home" type="button">→ العودة للرئيسية</button><h1 class="abu-level-title">اختر مرحلتك الدراسية</h1><p class="abu-level-subtitle">اختر المرحلة التي تدرس فيها لنأخذك مباشرة إلى موادك</p><div class="abu-level-grid"><article class="abu-level-card" data-open="تاسع"><img class="abu-level-icon" src="grade9.svg" alt=""><h2>الصف التاسع</h2><p>المنهاج والتدريبات</p><button class="abu-level-go" type="button">ابدأ الآن</button></article><article class="abu-level-card" data-open="بكالوريا علمي"><img class="abu-level-icon" src="mint-abitur.svg" alt=""><h2>البكالوريا العلمي</h2><p>المنهاج والتدريبات</p><button class="abu-level-go" type="button">ابدأ الآن</button></article><article class="abu-level-card" data-open="بكالوريا أدبي"><img class="abu-level-icon" src="literary-abitur.svg" alt=""><h2>البكالوريا الأدبي</h2><p>المنهاج والتدريبات</p><button class="abu-level-go" type="button">ابدأ الآن</button></article></div></section>`;
+  chooser.innerHTML=`<section class="abu-level-page">
+      <button class="abu-back-home" type="button">→ العودة للرئيسية</button>
+      <h1 class="abu-level-title">اختر مرحلتك الدراسية</h1>
+      <p class="abu-level-subtitle">اختر المرحلة التي تدرس فيها لنأخذك مباشرة إلى موادك</p>
+      <div class="abu-level-grid">
+        <article class="abu-level-card" data-open="تاسع"><img class="abu-level-icon" src="grade9.svg" alt=""><h2>الصف التاسع</h2><p>المنهاج والتدريبات</p><button class="abu-level-go" type="button">ابدأ الآن</button></article>
+        <article class="abu-level-card" data-open="بكالوريا علمي"><img class="abu-level-icon" src="mint-abitur.svg" alt=""><h2>البكالوريا العلمي</h2><p>المنهاج والتدريبات</p><button class="abu-level-go" type="button">ابدأ الآن</button></article>
+        <article class="abu-level-card" data-open="بكالوريا أدبي"><img class="abu-level-icon" src="literary-abitur.svg" alt=""><h2>البكالوريا الأدبي</h2><p>المنهاج والتدريبات</p><button class="abu-level-go" type="button">ابدأ الآن</button></article>
+      </div>
+    </section>`;
 
   home.insertBefore(chooser,home.firstChild);
   home.insertBefore(landing,home.firstChild);
 
-  function ensureHome(){ if(typeof show==='function') show('home'); }
+  function callGlobal(name,...args){
+    try{
+      const fn=window[name];
+      if(typeof fn==='function'){ fn(...args); return true; }
+    }catch(e){ console.error(name,e); }
+    return false;
+  }
+
+  function ensureHome(){
+    if(!callGlobal('show','home')){
+      document.querySelectorAll('main>section').forEach(x=>x.classList.add('hidden'));
+      home.classList.remove('hidden');
+    }
+  }
+
+  function setHash(hash){
+    try{ history.replaceState(null,'',location.pathname+location.search+hash); }
+    catch(e){ location.hash=hash; }
+  }
+
   function homeView(){
     ensureHome();
     landing.classList.remove('abu-view-hidden');
     chooser.classList.add('abu-view-hidden');
-    history.replaceState(null,'',location.pathname+location.search);
-    window.scrollTo(0,0);
+    setHash('');
+    window.scrollTo({top:0,left:0,behavior:'auto'});
   }
+
   function levels(){
     ensureHome();
     landing.classList.add('abu-view-hidden');
     chooser.classList.remove('abu-view-hidden');
-    history.replaceState(null,'','#levels');
-    window.scrollTo(0,0);
+    setHash('#levels');
+    window.scrollTo({top:0,left:0,behavior:'auto'});
   }
 
-  nav.querySelector('[data-home]').onclick=homeView;
-  nav.querySelector('[data-levels]').onclick=levels;
-  landing.querySelector('[data-levels]').onclick=levels;
-  chooser.querySelector('.abu-back-home').onclick=homeView;
-  nav.querySelector('[data-about]').onclick=()=>{homeView();setTimeout(()=>document.getElementById('abuAbout')?.scrollIntoView({behavior:'smooth'}),20)};
-  nav.querySelector('[data-future]').onclick=()=>{if(typeof window.openFuture==='function')window.openFuture();else document.querySelector('[data-future-card]')?.click()};
+  function openStage(level){
+    if(callGlobal('openLevel',level)) return;
+    console.error('openLevel is not available');
+  }
 
-  chooser.querySelectorAll('[data-open]').forEach(c=>c.onclick=()=>{if(typeof openLevel==='function')openLevel(c.dataset.open)});
+  nav.querySelector('[data-home]').addEventListener('click',homeView);
+  nav.querySelector('[data-levels]').addEventListener('click',levels);
+  landing.querySelector('[data-start]').addEventListener('click',levels);
+  chooser.querySelector('.abu-back-home').addEventListener('click',homeView);
+
+  nav.querySelector('[data-about]').addEventListener('click',()=>{
+    homeView();
+    setTimeout(()=>document.getElementById('abuAbout')?.scrollIntoView({behavior:'smooth'}),30);
+  });
+
+  nav.querySelector('[data-future]').addEventListener('click',()=>{
+    if(callGlobal('openFuture')) return;
+    const future=document.querySelector('[data-future-card]');
+    if(future) future.click();
+  });
+
+  chooser.querySelectorAll('.abu-level-card').forEach(card=>{
+    card.addEventListener('click',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      openStage(card.dataset.open);
+    });
+  });
 
   const account=document.getElementById('abuTopAccount');
-  account.onclick=()=>{const b=document.getElementById('abuProfileBtn');if(b)b.click();else document.getElementById('abuAuthOverlay')?.classList.remove('abu-auth-hidden')};
-  const sync=()=>{const b=document.getElementById('abuProfileBtn');if(b){account.innerHTML=b.textContent.includes('⚙️')?`⚙️ ${b.textContent.replace('⚙️','').trim()}`:`👤 ${b.textContent.replace('👤','').trim()}`}};
-  new MutationObserver(sync).observe(document.body,{childList:true,subtree:true,characterData:true});
-  sync();
+  account.addEventListener('click',()=>{
+    const b=document.getElementById('abuProfileBtn');
+    if(b){ b.click(); return; }
+    const overlay=document.getElementById('abuAuthOverlay');
+    if(overlay) overlay.classList.remove('abu-auth-hidden');
+  });
+
+  let syncQueued=false;
+  function syncAccount(){
+    syncQueued=false;
+    const b=document.getElementById('abuProfileBtn');
+    if(!b) return;
+    const text=(b.textContent||'').trim();
+    account.innerHTML=text.includes('⚙️')?`⚙️ ${text.replace('⚙️','').trim()}`:`👤 ${text.replace('👤','').trim()}`;
+  }
+  const observer=new MutationObserver(()=>{
+    if(syncQueued) return;
+    syncQueued=true;
+    requestAnimationFrame(syncAccount);
+  });
+  observer.observe(document.body,{childList:true,subtree:true,characterData:true});
+  syncAccount();
 
   if(location.hash==='#levels') levels(); else homeView();
 }
-window.addEventListener('DOMContentLoaded',build);
-if(document.readyState!=='loading') build();
+
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',build,{once:true});
+else build();
 })();
