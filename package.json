@@ -5,10 +5,11 @@
   "description": "Abu Shreek educational platform - web, Android and iOS",
   "scripts": {
     "start": "node server.mjs",
+    "mobile:prepare": "node scripts/prepare-mobile.mjs",
+    "mobile:add:android": "npm run mobile:prepare && npx cap add android",
+    "mobile:add:ios": "npm run mobile:prepare && npx cap add ios",
     "mobile:init": "npm run mobile:add:android && npm run mobile:add:ios",
-    "mobile:add:android": "npx cap add android",
-    "mobile:add:ios": "npx cap add ios",
-    "mobile:sync": "npx cap sync",
+    "mobile:sync": "npm run mobile:prepare && npx cap sync",
     "mobile:android": "npx cap open android",
     "mobile:ios": "npx cap open ios"
   },
