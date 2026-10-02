@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   const modules = [
     ['./future.js?v=2','data-abu-future'],
-    ['./calculator.js?v=2','data-abu-calculator'],
+    ['./calculator.js?v=20261002-7','data-abu-calculator'],
     ['./upload-study.js?v=4','data-abu-upload-study'],
     ['./grade9-card.js?v=20261002-7','data-abu-grade9-card']
   ];
