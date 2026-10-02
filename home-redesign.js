@@ -7,6 +7,13 @@ function build(){
   const home=document.getElementById('home');
   if(!home) return;
 
+  /* Safari does not always expose elements with IDs as global variables.
+     The original app uses those names directly, so expose them explicitly. */
+  ['levelTitle','subjects','moduleTitle','cardProgressMini','mcqProgressMini','flash','cardPct','cardProgress','mcqExplain','mcqPct','mcqProgress','bookHint','chatlog','question','pdfCanvas','pageLabel','mcqQuestion','mcqOptions','cardQuestion','cardAnswer'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) window[id]=el;
+  });
+
   document.body.classList.add('abu-redesign-ready');
   home.classList.add('abu-home-redesigned');
 
@@ -92,8 +99,38 @@ function build(){
   }
 
   function openStage(level){
-    if(callGlobal('openLevel',level)) return;
-    console.error('openLevel is not available');
+    /* First use the original application navigation. The explicit globals
+       above make it reliable in Safari as well as Chromium browsers. */
+    if(callGlobal('openLevel',level)){
+      landing.classList.add('abu-view-hidden');
+      chooser.classList.add('abu-view-hidden');
+      setHash('');
+      return;
+    }
+
+    /* Safe fallback: build the subject screen ourselves. */
+    const map={
+      'تاسع':['اللغة العربية','الرياضيات','علم الأحياء والأرض','الفيزياء والكيمياء','التاريخ','الجغرافيا','التربية الوطنية','التربية الإسلامية','التربية المسيحية','الفنون'],
+      'بكالوريا علمي':['اللغة العربية','الرياضيات','الفيزياء','الكيمياء','علم الأحياء','اللغة الإنكليزية','التربية الوطنية'],
+      'بكالوريا أدبي':['اللغة العربية','الفلسفة','التاريخ','الجغرافيا','اللغة الإنكليزية','التربية الوطنية']
+    };
+    const title=document.getElementById('levelTitle');
+    const box=document.getElementById('subjects');
+    if(!title||!box) return;
+    title.textContent=level;
+    box.innerHTML='';
+    (map[level]||[]).forEach(subject=>{
+      const d=document.createElement('div');
+      d.className='subject';
+      d.textContent=subject;
+      d.addEventListener('click',()=>callGlobal('openSubject',subject));
+      box.appendChild(d);
+    });
+    document.querySelectorAll('main>section').forEach(x=>x.classList.add('hidden'));
+    document.getElementById('level').classList.remove('hidden');
+    landing.classList.add('abu-view-hidden');
+    chooser.classList.add('abu-view-hidden');
+    setHash('');
   }
 
   nav.querySelector('[data-home]').addEventListener('click',homeView);
