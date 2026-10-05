@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "abu-shreek-api",
+  "main": "worker/worker.js",
+  "compatibility_date": "2026-10-05",
+  "vars": {
+    "GEMINI_MODEL": "gemini-3.5-flash-lite"
+  }
+}
