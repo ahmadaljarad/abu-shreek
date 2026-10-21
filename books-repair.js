@@ -78,6 +78,32 @@ async function load(f){
   state.pdf=await task.promise;await window.renderPage();
  }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('تعذّر عرض صفحات الكتاب باستخدام القارئ. نجرب عرض PDF داخل الصفحة مباشرة.');const frame=document.createElement('iframe');frame.title='قراءة الكتاب داخل أبو شريك';frame.src=proxy(f);frame.style.cssText='display:block;width:100%;height:75vh;min-height:550px;border:1px solid #dce8e5;border-radius:12px;background:white';const old=document.getElementById('abuPdfFallback');if(old)old.remove();frame.id='abuPdfFallback';document.getElementById('pdfCanvas')?.after(frame);const label=document.getElementById('pageLabel');if(label)label.textContent='قارئ الكتاب';}
 }
+let selecting=false;
+function enablePageSelection(){
+ const canvas=document.getElementById('pdfCanvas');if(!canvas)return;
+ selecting=true;
+ const parent=canvas.parentElement;parent.style.position='relative';
+ let overlay=document.getElementById('abuSelectionOverlay');
+ if(!overlay){overlay=document.createElement('canvas');overlay.id='abuSelectionOverlay';overlay.style.cssText='position:absolute;z-index:10;touch-action:none;cursor:crosshair';parent.appendChild(overlay)}
+ const rect=canvas.getBoundingClientRect(),pr=parent.getBoundingClientRect();
+ overlay.style.left=(rect.left-pr.left)+'px';overlay.style.top=(rect.top-pr.top)+'px';
+ overlay.style.width=rect.width+'px';overlay.style.height=rect.height+'px';
+ overlay.width=Math.round(rect.width*devicePixelRatio);overlay.height=Math.round(rect.height*devicePixelRatio);
+ const ctx=overlay.getContext('2d');let start=null;
+ function point(e){const b=overlay.getBoundingClientRect();return {x:(e.clientX-b.left)*overlay.width/b.width,y:(e.clientY-b.top)*overlay.height/b.height}}
+ overlay.onpointerdown=e=>{start=point(e);overlay.setPointerCapture(e.pointerId)};
+ overlay.onpointermove=e=>{if(!start)return;const p=point(e);ctx.clearRect(0,0,overlay.width,overlay.height);ctx.fillStyle='rgba(20,184,166,.2)';ctx.strokeStyle='#0f766e';ctx.lineWidth=3;ctx.fillRect(start.x,start.y,p.x-start.x,p.y-start.y);ctx.strokeRect(start.x,start.y,p.x-start.x,p.y-start.y)};
+ overlay.onpointerup=e=>{
+  if(!start)return;const p=point(e),x=Math.min(start.x,p.x),y=Math.min(start.y,p.y),w=Math.abs(p.x-start.x),h=Math.abs(p.y-start.y);start=null;
+  overlay.remove();selecting=false;
+  if(w<20||h<20)return;
+  const sx=canvas.width/overlay.width,sy=canvas.height/overlay.height;
+  const crop=document.createElement('canvas');crop.width=Math.round(w*sx);crop.height=Math.round(h*sy);
+  crop.getContext('2d').drawImage(canvas,x*sx,y*sy,w*sx,h*sy,0,0,crop.width,crop.height);
+  if(typeof window.ABU_ASK_SELECTED==='function')window.ABU_ASK_SELECTED(crop);
+ };
+ const msg=document.getElementById('bookHint');if(msg)msg.textContent='اسحب بإصبعك أو الماوس لتحديد النص المطلوب شرحه.';
+}
 function showStudyButtons(){
  const side=document.querySelector('#book .side');
  if(!side)return;
@@ -93,7 +119,8 @@ function showStudyButtons(){
    b.addEventListener('click',()=>{if(typeof window.scienceAction==='function')window.scienceAction(type);else alert('أعد تحميل الصفحة لتفعيل أدوات الدراسة.')});
    actions.appendChild(b);
   }
-  panel.appendChild(actions);
+  const select=document.createElement('button');select.type='button';select.textContent='🔍 حدّد جزءاً من الصفحة';select.style.cssText='margin-top:10px;padding:10px;border:1px solid #0f766e;border-radius:9px;background:#e7f5f2;color:#0f766e;cursor:pointer';select.onclick=enablePageSelection;panel.appendChild(actions);panel.appendChild(select);
+  const exam=document.createElement('button');exam.type='button';exam.textContent='📝 أسئلة امتحانية من الصفحة';exam.style.cssText=select.style.cssText;exam.style.marginRight='8px';exam.onclick=()=>window.ABU_EXAM_QUESTIONS?.();panel.appendChild(exam);
  }
  const input=side.querySelector('textarea');
  if(input){const wrap=input.closest('form')||input.parentElement;if(wrap&&wrap.parentElement)wrap.parentElement.appendChild(panel);else side.appendChild(panel)}
@@ -101,6 +128,7 @@ function showStudyButtons(){
 }
 const originalRender=window.renderPage;
 window.renderPage=async function(){
+ document.getElementById('abuSelectionOverlay')?.remove();selecting=false;
  if(!state.imageBook)return originalRender();
  const current=state.page, file=state.imageFile;
  const canvas=document.getElementById('pdfCanvas');
