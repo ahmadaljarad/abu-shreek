@@ -18,8 +18,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install tools
-        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils webp
-      - name: Convert seven books
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils mupdf-tools webp
+      - name: Convert seven books with MuPDF
         env:
           BATCH: ${{ inputs.batch || '1' }}
         run: |
@@ -37,10 +37,10 @@ jobs:
             echo "$pages" > "book-pages/$name/count.txt"
             for ((page=1;page<=pages;page++)); do
               printf -v number '%03d' "$page"
-              pdftoppm -f "$page" -l "$page" -singlefile -scale-to 1300 -jpeg /tmp/book.pdf /tmp/page
-              cwebp -quiet -q 75 /tmp/page.jpg -o "book-pages/$name/$number.webp"
+              mutool draw -q -F png -w 1000 -o /tmp/page.png /tmp/book.pdf "$page"
+              cwebp -quiet -q 80 /tmp/page.png -o "book-pages/$name/$number.webp"
             done
-            rm -f /tmp/book.pdf /tmp/page.jpg
+            rm -f /tmp/book.pdf /tmp/page.png
           done
       - name: Publish pages
         run: |
