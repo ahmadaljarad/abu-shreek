@@ -1,0 +1,30 @@
+name: Audit all textbook pages
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/audit-textbooks.yml
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all 42 books and every WebP page
+        id: check
+        continue-on-error: true
+        run: python3 scripts/audit-book-pages.py
+      - name: Show report in Actions summary
+        if: always()
+        run: cat textbook-audit.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Save downloadable report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: textbook-audit
+          path: textbook-audit.md
+      - name: Fail on incomplete books
+        if: steps.check.outcome == 'failure'
+        run: exit 1
