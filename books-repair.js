@@ -65,7 +65,7 @@ async function load(f){
     state.imageBook=true;state.imageFile=f;state.imagePages=count;
     canvas.style.display='block';
     document.querySelector('#book .viewer .actions').style.display='flex';
-    await window.renderPage();return;
+    await window.renderPage();if(typeof window.ABU_RENDER_COACH==='function')window.ABU_RENDER_COACH();return;
    }
   }
  }catch(error){console.info('Images not ready',error)}
