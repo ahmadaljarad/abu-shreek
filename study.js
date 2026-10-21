@@ -12,21 +12,38 @@ const file=()=>BOOKS[`${state.level}|${state.subject}`]||bookFiles[`${state.leve
 const url=f=>`/api/book?file=${encodeURIComponent(f)}`;
 let studyTopic='';
 const pageKey=t=>studyTopic?key(t+':topic:'+studyTopic):key(t+':page:'+state.page);
+const TOPIC_SUGGESTIONS={
+ 'علم الأحياء':['الجهاز العصبي','أنواع الخلايا العصبية','السيالة العصبية','المشابك العصبية','الجهاز الهرموني','التكاثر','الوراثة','المناعة'],
+ 'علم الأحياء والأرض':['الخلية','التغذية','التنفس','التكاثر','الوراثة','البيئة'],
+ 'الرياضيات':['المعادلات','المتراجحات','الدوال','النهايات','المشتقات','التكامل','الهندسة','الاحتمالات'],
+ 'الفيزياء':['الحركة','القوى','الطاقة','الكهرباء','المغناطيسية','الأمواج'],
+ 'الكيمياء':['بنية الذرة','الروابط الكيميائية','التفاعلات الكيميائية','الحموض والأسس','الكيمياء العضوية'],
+ 'الفيزياء والكيمياء':['الحركة والقوى','الطاقة','الكهرباء','بنية الذرة','التفاعلات الكيميائية'],
+ 'اللغة العربية':['النصوص الأدبية','القواعد النحوية','البلاغة','التعبير','الصرف'],
+ 'اللغة الإنكليزية':['القراءة والفهم','القواعد','المفردات','الكتابة'],
+ 'اللغة الفرنسية':['القراءة والفهم','القواعد','المفردات','التعبير الكتابي'],
+ 'التاريخ':['التاريخ الحديث','الأحداث السياسية','الشخصيات التاريخية'],
+ 'الجغرافيا':['الجغرافيا الطبيعية','السكان','المناخ','الموارد الطبيعية'],
+ 'الفلسفة':['المعرفة','المنطق','الأخلاق','الفلسفة السياسية']
+};
 function chooseStudyTopic(mode){
- const existing=document.getElementById('abuTopicDialog');if(existing)existing.remove();
+ document.getElementById('abuTopicDialog')?.remove();
  const overlay=document.createElement('div');overlay.id='abuTopicDialog';overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;direction:rtl';
- const box=document.createElement('div');box.style.cssText='background:white;border-radius:16px;padding:24px;width:min(480px,100%);box-shadow:0 15px 45px #0003;color:#123';
- const heading=document.createElement('h2');heading.textContent=mode==='cards'?'📚 بطاقات حسب الموضوع':'✅ اختبار حسب الموضوع';box.appendChild(heading);
- const desc=document.createElement('p');desc.textContent='اكتب اسم الدرس أو الموضوع الذي تريد دراسته في مادة '+state.subject+'. لا تحتاج إلى فتح الكتاب أو اختيار صفحة.';box.appendChild(desc);
- const input=document.createElement('input');input.placeholder='مثال: الجهاز العصبي، أنواع العصبونات';input.value=studyTopic;input.style.cssText='width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px;font-size:16px;box-sizing:border-box';box.appendChild(input);
- const note=document.createElement('p');note.style.cssText='font-size:13px;color:#64748b';note.textContent='تنبيه: المحتوى المولّد حسب اسم الموضوع يعتمد على معرفة الذكاء الاصطناعي، وليس نص الكتاب حرفياً. سنربط فهرس الدروس بصفحات الكتب في مرحلة لاحقة.';box.appendChild(note);
- const row=document.createElement('div');row.style.cssText='display:flex;gap:10px;justify-content:flex-start';
- const go=document.createElement('button');go.textContent='إنشاء '+(mode==='cards'?'البطاقات':'الأسئلة');go.style.cssText='background:#0f766e;color:white;border:0;border-radius:9px;padding:12px;cursor:pointer';
- const cancel=document.createElement('button');cancel.textContent='إلغاء';cancel.style.cssText='background:#eee;border:0;border-radius:9px;padding:12px;cursor:pointer';
- cancel.onclick=()=>overlay.remove();
- go.onclick=()=>{const t=input.value.trim();if(t.length<3){input.focus();return}studyTopic=t;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};
- input.onkeydown=e=>{if(e.key==='Enter')go.click()};
- row.append(go,cancel);box.appendChild(row);overlay.appendChild(box);document.body.appendChild(overlay);input.focus();
+ const box=document.createElement('div');box.style.cssText='background:white;border-radius:16px;padding:24px;width:min(540px,100%);max-height:85vh;overflow:auto;box-shadow:0 15px 45px #0003;color:#123';
+ const title=document.createElement('h2');title.textContent=mode==='cards'?'📚 اختر درس البطاقات التعليمية':'✅ اختر درس الاختيار من متعدد';box.appendChild(title);
+ const info=document.createElement('p');info.textContent='المادة: '+state.subject+' — اختر الموضوع مباشرة دون فتح الكتاب.';box.appendChild(info);
+ const topics=TOPIC_SUGGESTIONS[state.subject]||['مراجعة المفاهيم الأساسية','المصطلحات المهمة','أسئلة مراجعة شاملة'];
+ const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
+ for(const topic of topics){
+  const b=document.createElement('button');b.type='button';b.textContent=topic;b.style.cssText='padding:13px;text-align:right;background:#edf8f5;color:#0e6961;border:1px solid #c9e6df;border-radius:10px;font-size:15px;cursor:pointer';
+  b.onclick=()=>{studyTopic=topic;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};
+  list.appendChild(b);
+ }
+ box.appendChild(list);
+ const note=document.createElement('p');note.style.cssText='font-size:12px;color:#64748b;margin-top:15px';note.textContent='هذه قائمة مواضيع أولية للتجربة، وليست فهرس الكتاب الرسمي. الأسئلة تُولَّد بالذكاء الاصطناعي؛ سنطابق المواضيع مع دروس المنهاج لاحقاً.';box.appendChild(note);
+ const close=document.createElement('button');close.textContent='إغلاق';close.style.cssText='padding:9px 16px;border:0;border-radius:9px;cursor:pointer';close.onclick=()=>overlay.remove();box.appendChild(close);
+ overlay.onclick=e=>{if(e.target===overlay)overlay.remove()};
+ overlay.appendChild(box);document.body.appendChild(overlay);
 }
 
 async function loadPdf(){if(state.pdf)return state.pdf;const f=file();if(!f)throw new Error('NO_BOOK');state.pdf=await pdfjsLib.getDocument({url:url(f),disableAutoFetch:true,disableStream:false,rangeChunkSize:262144}).promise;return state.pdf}
