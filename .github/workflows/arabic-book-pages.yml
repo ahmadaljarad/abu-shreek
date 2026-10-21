@@ -1,0 +1,42 @@
+name: Prepare Arabic textbook pages
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/arabic-book-pages.yml'
+permissions:
+  contents: write
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF tools
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils webp
+      - name: Download textbook
+        run: |
+          curl -fL --retry 4 --retry-delay 5 'https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Arabic.pdf' -o /tmp/9-Arabic.pdf
+          pdfinfo /tmp/9-Arabic.pdf | grep Pages
+      - name: Render all pages as optimized WebP
+        run: |
+          mkdir -p book-pages/9-Arabic
+          pdfinfo /tmp/9-Arabic.pdf | awk '/^Pages:/ {print $2}' > book-pages/9-Arabic/count.txt
+          pdftoppm -f 1 -l 200 -r 110 -jpeg -jpegopt quality=83 /tmp/9-Arabic.pdf /tmp/arabic-page
+          for file in /tmp/arabic-page-*.jpg; do
+            num=${file##*-}
+            num=${num%.jpg}
+            number=$((10#$num))
+            printf -v page '%03d' "$number"
+            cwebp -quiet -q 80 "$file" -o "book-pages/9-Arabic/$page.webp"
+          done
+          ls book-pages/9-Arabic/*.webp | wc -l
+      - name: Publish images to website branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add book-pages/9-Arabic
+          if ! git diff --cached --quiet; then
+            git commit -m 'Publish Arabic textbook page images'
+            git push
+          fi
