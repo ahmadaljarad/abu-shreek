@@ -16,8 +16,36 @@ async function digitalText(n){const pdf=await loadPdf(),p=await pdf.getPage(n),t
 let ocrPromise=null,workerPromise=null;
 function loadOCR(){if(window.Tesseract)return Promise.resolve();if(ocrPromise)return ocrPromise;ocrPromise=new Promise((ok,bad)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=ok;s.onerror=()=>bad(new Error('OCR_LOAD'));document.head.appendChild(s)});return ocrPromise}
 async function worker(){await loadOCR();if(!workerPromise)workerPromise=Tesseract.createWorker('ara+eng');return workerPromise}
-async function imageText(n){const ck=key(`pageText-v3-${n}`),saved=localStorage.getItem(ck);if(saved&&saved.length>60)return saved;const pdf=await loadPdf(),p=await pdf.getPage(n),v=p.getViewport({scale:1.35}),c=document.createElement('canvas');c.width=Math.ceil(v.width);c.height=Math.ceil(v.height);await p.render({canvasContext:c.getContext('2d',{alpha:false}),viewport:v}).promise;const w=await worker(),r=await w.recognize(c),t=norm(r?.data?.text);if(t.length>40)try{localStorage.setItem(ck,t)}catch{}return t}
-async function currentText(){let t=norm(state.pageText);if(t.length>=80)return t;try{t=await digitalText(state.page||1)}catch{}if(t.length>=80)return t;return imageText(state.page||1)}
+async function imageText(n){
+ const f=state.imageFile||file();
+ const ck='abu:ocr-webp-v1:'+f+':'+n;
+ let saved='';try{saved=localStorage.getItem(ck)||''}catch{}
+ if(saved.length>60)return saved;
+ let canvas;
+ if(state.imageBook&&f){
+  const src='./book-pages/'+f.replace(/\.pdf$/i,'')+'/'+String(n).padStart(3,'0')+'.webp';
+  const image=new Image();
+  image.src=src;
+  await image.decode();
+  canvas=document.createElement('canvas');
+  canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
+  canvas.getContext('2d',{willReadFrequently:true}).drawImage(image,0,0);
+ }else{
+  const pdf=await loadPdf(),p=await pdf.getPage(n),v=p.getViewport({scale:1.35});
+  canvas=document.createElement('canvas');canvas.width=Math.ceil(v.width);canvas.height=Math.ceil(v.height);
+  await p.render({canvasContext:canvas.getContext('2d',{alpha:false}),viewport:v}).promise;
+ }
+ const w=await worker(),r=await w.recognize(canvas),t=norm(r?.data?.text);
+ if(t.length>40)try{localStorage.setItem(ck,t)}catch{}
+ return t;
+}
+async function currentText(){
+ if(state.imageBook)return imageText(state.page||1);
+ let t=norm(state.pageText);if(t.length>=80)return t;
+ try{t=await digitalText(state.page||1)}catch{}
+ if(t.length>=80)return t;
+ return imageText(state.page||1);
+}
 async function studySource(){let parts=[];const here=await currentText();if(here.length>=60)parts.push(`الصفحة الحالية ${state.page}: ${here}`);const pdf=await loadPdf();for(const n of [state.page+1,state.page-1]){if(n<1||n>pdf.numPages)continue;try{const t=await digitalText(n);if(t.length>=100)parts.push(`صفحة ${n}: ${t}`)}catch{}}return parts.join('\n').slice(0,7000)}
 
 function ensureVideos(){let b=document.getElementById('lessonVideos');if(b)return b;const side=document.querySelector('#book .side');if(!side)return null;b=document.createElement('div');b.id='lessonVideos';b.style.cssText='margin-top:18px;padding-top:14px;border-top:1px solid #dce8e5';side.appendChild(b);return b}
