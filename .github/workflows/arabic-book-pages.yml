@@ -1,42 +1,54 @@
-name: Prepare Arabic textbook pages
+name: Prepare textbook images
 on:
   workflow_dispatch:
+    inputs:
+      batch:
+        description: Batch 1 to 6
+        required: true
+        default: '1'
   push:
     paths:
-      - '.github/workflows/arabic-book-pages.yml'
+      - .github/workflows/arabic-book-pages.yml
 permissions:
   contents: write
 jobs:
   convert:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 55
     steps:
       - uses: actions/checkout@v4
-      - name: Install PDF tools
-        run: sudo apt-get update && sudo apt-get install -y poppler-utils webp
-      - name: Download textbook
+      - name: Install tools
+        run: sudo apt-get update -qq && sudo apt-get install -y poppler-utils webp
+      - name: Convert seven books
+        env:
+          BATCH: ${{ inputs.batch || '1' }}
         run: |
-          curl -fL --retry 4 --retry-delay 5 'https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Arabic.pdf' -o /tmp/9-Arabic.pdf
-          pdfinfo /tmp/9-Arabic.pdf | grep Pages
-      - name: Render all pages as optimized WebP
-        run: |
-          mkdir -p book-pages/9-Arabic
-          pdfinfo /tmp/9-Arabic.pdf | awk '/^Pages:/ {print $2}' > book-pages/9-Arabic/count.txt
-          pdftoppm -f 1 -l 200 -r 110 -jpeg -jpegopt quality=83 /tmp/9-Arabic.pdf /tmp/arabic-page
-          for file in /tmp/arabic-page-*.jpg; do
-            num=${file##*-}
-            num=${num%.jpg}
-            number=$((10#$num))
-            printf -v page '%03d' "$number"
-            cwebp -quiet -q 80 "$file" -o "book-pages/9-Arabic/$page.webp"
+          set -euo pipefail
+          books=('9-Algebra' '9-Geometry' '9-Arabic' '9-Art' '9-History' '9-Geography' '9-National' '9-Physics-Chemistry' '9-Islamic' '9-Christianity' '9-Science' '9-English-SB' '9-English-AB' '9-French-SB' '9-French-AB' '9-Russian' '9-Music' '9-Technology' 'bac-sci-arabic' 'bac-sci-math-1' 'bac-sci-math-2' 'bac-sci-physics' 'bac-sci-chemistry' 'bac-sci-biology' 'bac-sci-english-sb' 'bac-sci-english-ab' 'bac-sci-french' 'bac-sci-russian' 'bac-sci-islamic' 'bac-sci-christian' 'bac-lit-arabic' 'bac-lit-philosophy-1' 'bac-lit-philosophy-2' 'bac-lit-history' 'bac-lit-geography' 'bac-lit-english-sb' 'bac-lit-english-ab' 'bac-lit-french' 'bac-lit-french-annex' 'bac-lit-russian' 'bac-lit-islamic' 'bac-lit-christian')
+          start=$(( (BATCH - 1) * 7 ))
+          for ((i=start;i<start+7 && i<42;i++)); do
+            name="${books[$i]}"
+            mkdir -p "book-pages/$name"
+            if ! curl -fL --retry 2 --max-time 180 "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/$name.pdf" -o /tmp/book.pdf; then
+              echo "Skipped unavailable book $name"
+              continue
+            fi
+            pages=$(pdfinfo /tmp/book.pdf | awk '/^Pages:/ {print $2}')
+            echo "$pages" > "book-pages/$name/count.txt"
+            for ((page=1;page<=pages;page++)); do
+              printf -v number '%03d' "$page"
+              pdftoppm -f "$page" -l "$page" -singlefile -scale-to 1300 -jpeg /tmp/book.pdf /tmp/page
+              cwebp -quiet -q 75 /tmp/page.jpg -o "book-pages/$name/$number.webp"
+            done
+            rm -f /tmp/book.pdf /tmp/page.jpg
           done
-          ls book-pages/9-Arabic/*.webp | wc -l
-      - name: Publish images to website branch
+      - name: Publish pages
         run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add book-pages/9-Arabic
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add book-pages
           if ! git diff --cached --quiet; then
-            git commit -m 'Publish Arabic textbook page images'
+            git commit -m 'Publish textbook pages'
+            git pull --rebase
             git push
           fi
