@@ -55,7 +55,21 @@ async function load(f){
  document.getElementById('abuPdfFallback')?.remove();const o=options();o.querySelectorAll('button[data-book]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.book===f)));
  state.pdf=null;state.page=1;state.pageText='';const canvas=document.getElementById('pdfCanvas');if(canvas){canvas.width=0;canvas.height=0}
  const label=document.getElementById('pageLabel');if(label)label.textContent='صفحة 1';
- hint('جارٍ محاولة تحميل الكتاب. إذا لم يظهر، استخدم زر فتح الكتاب مباشرة.');
+ hint('جارٍ فتح الكتاب...');
+ const folder=f.replace(/\.pdf$/i,'');
+ try{
+  const response=await fetch('./book-pages/'+folder+'/count.txt',{cache:'no-store'});
+  if(response.ok){
+   const count=Number((await response.text()).trim());
+   if(Number.isInteger(count)&&count>0){
+    state.imageBook=true;state.imageFile=f;state.imagePages=count;
+    canvas.style.display='block';
+    document.querySelector('#book .viewer .actions').style.display='flex';
+    await window.renderPage();return;
+   }
+  }
+ }catch(error){console.info('Images not ready',error)}
+ state.imageBook=false;
  if(false){const frame=document.createElement('iframe');frame.id='abuPdfFallback';frame.title='قراءة الكتاب العربي داخل أبو شريك';frame.src=proxy(f);frame.style.cssText='display:block;width:100%;height:75vh;min-height:550px;border:1px solid #dce8e5;border-radius:12px;background:white';document.getElementById('pdfCanvas')?.after(frame);document.getElementById('pdfCanvas').style.display='none';document.querySelector('#book .viewer .actions').style.display='none';hint('الكتاب معروض باستخدام قارئ المتصفح للحفاظ على اتصال الأحرف العربية. يمكنك التنقل داخل الكتاب من شريط القارئ.');return}
  document.getElementById('pdfCanvas').style.display='block';document.querySelector('#book .viewer .actions').style.display='flex';
  if(!window.pdfjsLib){hint('تعذّر تشغيل عارض PDF. يمكنك فتح الكتاب مباشرة.');return}
@@ -64,6 +78,32 @@ async function load(f){
   state.pdf=await task.promise;await window.renderPage();
  }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('تعذّر عرض صفحات الكتاب باستخدام القارئ. نجرب عرض PDF داخل الصفحة مباشرة.');const frame=document.createElement('iframe');frame.title='قراءة الكتاب داخل أبو شريك';frame.src=proxy(f);frame.style.cssText='display:block;width:100%;height:75vh;min-height:550px;border:1px solid #dce8e5;border-radius:12px;background:white';const old=document.getElementById('abuPdfFallback');if(old)old.remove();frame.id='abuPdfFallback';document.getElementById('pdfCanvas')?.after(frame);const label=document.getElementById('pageLabel');if(label)label.textContent='قارئ الكتاب';}
 }
+const originalRender=window.renderPage;
+window.renderPage=async function(){
+ if(!state.imageBook)return originalRender();
+ const current=state.page, file=state.imageFile;
+ const canvas=document.getElementById('pdfCanvas');
+ const img=new Image();
+ document.getElementById('pageLabel').textContent='صفحة '+current+' من '+state.imagePages;
+ hint('جارٍ تحميل الصفحة...');
+ img.onload=function(){
+  if(state.page!==current||state.imageFile!==file)return;
+  canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+  canvas.getContext('2d').drawImage(img,0,0);
+  hint('الصفحة معروضة بصورة واضحة.');
+ };
+ img.onerror=function(){hint('تعذّر تحميل صورة الصفحة. يمكنك فتح ملف PDF الأصلي.')};
+ img.src='./book-pages/'+file.replace(/\.pdf$/i,'')+'/'+String(current).padStart(3,'0')+'.webp';
+};
+const previousPage=window.prevPage,followingPage=window.nextPage;
+window.prevPage=async function(){
+ if(state.imageBook){if(state.page>1){state.page--;await window.renderPage()}return}
+ return previousPage();
+};
+window.nextPage=async function(){
+ if(state.imageBook){if(state.page<state.imagePages){state.page++;await window.renderPage()}return}
+ return followingPage();
+};
 window.openBook=async function(){
  window.show('book');const log=document.getElementById('chatlog');if(log)log.innerHTML='';
  const files=list();const o=options();o.replaceChildren();
