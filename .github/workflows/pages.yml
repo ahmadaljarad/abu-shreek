@@ -34,6 +34,8 @@ jobs:
           else
             echo 'National textbook image is not yet in the published branch'
           fi
+      - name: Verify MuPDF preview is packaged
+        run: test -s www/book-render-tests/biology/mupdf-3.webp
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
