@@ -26,6 +26,14 @@ jobs:
           node-version: 22
       - name: Prepare static site
         run: node scripts/prepare-mobile.mjs
+      - name: Verify converted textbook images
+        run: |
+          if [ -f www/book-pages/9-National/001.webp ]; then
+            echo 'National textbook image included in site artifact'
+            ls -lh www/book-pages/9-National/001.webp
+          else
+            echo 'National textbook image is not yet in the published branch'
+          fi
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
