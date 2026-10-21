@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   await loadScriptOnce('./navigation-fix.js?v=20261002-1','data-abu-navigation-fix').catch(console.error);
   await loadScriptOnce('./arabic-study-fix.js?v=20261002-1','data-abu-arabic-study-fix').catch(console.error);
 
-  await loadScriptOnce('./books-repair.js?v=20261021-5', 'data-abu-books-repair').catch(console.error);
+  await loadScriptOnce('./books-repair.js?v=20261021-6', 'data-abu-books-repair').catch(console.error);
 
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
