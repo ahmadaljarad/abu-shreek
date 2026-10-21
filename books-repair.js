@@ -44,6 +44,7 @@ const catalogue={
 'التربية المسيحية':['bac-lit-christian.pdf']
 }};
 const url=f=>base+encodeURIComponent(f);
+const proxy=f=>'https://abu-shreek-api.ahmad-aljarad.workers.dev/api/book?file='+encodeURIComponent(f);
 const css=document.createElement('style');css.textContent='.abu-book-options{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0;padding:12px;border:1px solid #dce8e5;border-radius:12px;background:#f7fbfa}.abu-book-options a,.abu-book-options button{display:inline-block;background:#e7f5f2;color:#08766e;border:0;border-radius:9px;padding:9px 12px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}.abu-book-options button[aria-pressed=true]{background:#0f766e;color:white}.abu-book-status{margin:8px 0;color:#64748b}';document.head.appendChild(css);
 function options(){let el=document.getElementById('abuBookOptions');if(!el){el=document.createElement('div');el.id='abuBookOptions';el.className='abu-book-options';document.querySelector('#book .viewer .actions')?.after(el)}return el}
 function hint(s){const el=document.getElementById('bookHint');if(el)el.textContent=s}
@@ -56,9 +57,9 @@ async function load(f){
  hint('جارٍ محاولة تحميل الكتاب. إذا لم يظهر، استخدم زر فتح الكتاب مباشرة.');
  if(!window.pdfjsLib){hint('تعذّر تشغيل عارض PDF. يمكنك فتح الكتاب مباشرة.');return}
  try{
-  const task=window.pdfjsLib.getDocument({url:url(f),withCredentials:false,disableAutoFetch:true,disableStream:true});
+  const task=window.pdfjsLib.getDocument({url:proxy(f),withCredentials:false,disableAutoFetch:true,disableStream:true});
   state.pdf=await task.promise;await window.renderPage();
- }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('قد يمنع المتصفح عرض هذا الملف الكبير داخل الصفحة. اضغط «فتح الكتاب مباشرة» لقراءته من GitHub.')}
+ }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('تعذّر عرض الكتاب داخل الموقع. قد يحتاج خادم الكتب إلى تفعيل CORS أو دعم الملفات الكبيرة. يمكنك تنزيل الكتاب من الرابط الاحتياطي.')}
 }
 window.openBook=async function(){
  window.show('book');const log=document.getElementById('chatlog');if(log)log.innerHTML='';
