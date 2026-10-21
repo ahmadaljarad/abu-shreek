@@ -1,0 +1,80 @@
+/* Abu Shreek book catalogue and resilient reader — 2026-10-21 */
+(function(){
+'use strict';
+const base='https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/';
+const catalogue={
+'تاسع':{
+'الرياضيات':['9-Algebra.pdf','9-Geometry.pdf'],
+'اللغة العربية':['9-Arabic.pdf'],
+'الفنون':['9-Art.pdf'],
+'التاريخ':['9-History.pdf'],
+'الجغرافيا':['9-Geography.pdf'],
+'التربية الوطنية':['9-National.pdf'],
+'الفيزياء والكيمياء':['9-Physics-Chemistry.pdf'],
+'التربية الإسلامية':['9-Islamic.pdf'],
+'التربية المسيحية':['9-Christianity.pdf'],
+'علم الأحياء والأرض':['9-Science.pdf'],
+'اللغة الإنكليزية':['9-English-SB.pdf','9-English-AB.pdf'],
+'اللغة الفرنسية':['9-French-SB.pdf','9-French-AB.pdf'],
+'اللغة الروسية':['9-Russian.pdf'],
+'الموسيقا':['9-Music.pdf'],
+'التقانة':['9-Technology.pdf']
+},
+'بكالوريا علمي':{
+'اللغة العربية':['bac-sci-arabic.pdf'],
+'الرياضيات':['bac-sci-math-1.pdf','bac-sci-math-2.pdf'],
+'الفيزياء':['bac-sci-physics.pdf'],
+'الكيمياء':['bac-sci-chemistry.pdf'],
+'علم الأحياء':['bac-sci-biology.pdf'],
+'اللغة الإنكليزية':['bac-sci-english-sb.pdf','bac-sci-english-ab.pdf'],
+'اللغة الفرنسية':['bac-sci-french.pdf'],
+'اللغة الروسية':['bac-sci-russian.pdf'],
+'التربية الإسلامية':['bac-sci-islamic.pdf'],
+'التربية المسيحية':['bac-sci-christian.pdf']
+},
+'بكالوريا أدبي':{
+'اللغة العربية':['bac-lit-arabic.pdf'],
+'الفلسفة':['bac-lit-philosophy-1.pdf','bac-lit-philosophy-2.pdf'],
+'التاريخ':['bac-lit-history.pdf'],
+'الجغرافيا':['bac-lit-geography.pdf'],
+'اللغة الإنكليزية':['bac-lit-english-sb.pdf','bac-lit-english-ab.pdf'],
+'اللغة الفرنسية':['bac-lit-french.pdf','bac-lit-french-annex.pdf'],
+'اللغة الروسية':['bac-lit-russian.pdf'],
+'التربية الإسلامية':['bac-lit-islamic.pdf'],
+'التربية المسيحية':['bac-lit-christian.pdf']
+}};
+const url=f=>base+encodeURIComponent(f);
+const css=document.createElement('style');css.textContent='.abu-book-options{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:12px 0;padding:12px;border:1px solid #dce8e5;border-radius:12px;background:#f7fbfa}.abu-book-options a,.abu-book-options button{display:inline-block;background:#e7f5f2;color:#08766e;border:0;border-radius:9px;padding:9px 12px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}.abu-book-options button[aria-pressed=true]{background:#0f766e;color:white}.abu-book-status{margin:8px 0;color:#64748b}';document.head.appendChild(css);
+function options(){let el=document.getElementById('abuBookOptions');if(!el){el=document.createElement('div');el.id='abuBookOptions';el.className='abu-book-options';document.querySelector('#book .viewer .actions')?.after(el)}return el}
+function hint(s){const el=document.getElementById('bookHint');if(el)el.textContent=s}
+function list(){return catalogue[state.level]?.[state.subject]||[]}
+function openExternal(f){window.open(url(f),'_blank','noopener,noreferrer')}
+async function load(f){
+ const o=options();o.querySelectorAll('button[data-book]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.book===f)));
+ state.pdf=null;state.page=1;state.pageText='';const canvas=document.getElementById('pdfCanvas');if(canvas){canvas.width=0;canvas.height=0}
+ const label=document.getElementById('pageLabel');if(label)label.textContent='صفحة 1';
+ hint('جارٍ محاولة تحميل الكتاب. إذا لم يظهر، استخدم زر فتح الكتاب مباشرة.');
+ if(!window.pdfjsLib){hint('تعذّر تشغيل عارض PDF. يمكنك فتح الكتاب مباشرة.');return}
+ try{
+  const task=window.pdfjsLib.getDocument({url:url(f),withCredentials:false,disableAutoFetch:true,disableStream:true});
+  state.pdf=await task.promise;await window.renderPage();
+ }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('قد يمنع المتصفح عرض هذا الملف الكبير داخل الصفحة. اضغط «فتح الكتاب مباشرة» لقراءته من GitHub.')}
+}
+window.openBook=async function(){
+ window.show('book');const log=document.getElementById('chatlog');if(log)log.innerHTML='';
+ const files=list();const o=options();o.replaceChildren();
+ if(!files.length){hint('لا يوجد كتاب مربوط بهذه المادة حالياً.');return}
+ const label=document.createElement('strong');label.textContent=files.length>1?'اختر الكتاب:':'الكتاب:';o.appendChild(label);
+ files.forEach((f,i)=>{
+  const b=document.createElement('button');b.type='button';b.dataset.book=f;b.textContent=files.length>1?'الجزء '+(i+1):'عرض الكتاب';b.onclick=()=>load(f);o.appendChild(b);
+  const a=document.createElement('a');a.href=url(f);a.target='_blank';a.rel='noopener noreferrer';a.textContent='فتح '+(files.length>1?'الجزء '+(i+1):'الكتاب')+' مباشرة ↗';o.appendChild(a);
+ });
+ await load(files[0]);
+};
+const oldOpenLevel=window.openLevel;
+window.openLevel=function(level){
+ const subjects=subjectsByLevel[level];if(subjects){Object.keys(catalogue[level]||{}).forEach(s=>{if(!subjects.includes(s))subjects.push(s)})}
+ return oldOpenLevel.apply(this,arguments);
+};
+window.ABU_BOOK_CATALOGUE=catalogue;
+})();
