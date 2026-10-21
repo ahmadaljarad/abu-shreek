@@ -24,6 +24,6 @@ function addMsg(t,c){const d=document.createElement('div');d.className='msg '+c;
   pane.append(grid);const close=document.createElement('button');close.textContent='إغلاق';close.style.cssText='margin-top:15px;padding:10px;border-radius:9px';close.onclick=()=>bg.remove();pane.append(close);bg.append(pane);document.body.append(bg);
  }
  window.abuPickTopic=pick;
- document.addEventListener('click',function(e){const card=e.target.closest('.card.mode');if(!card)return;const click=card.getAttribute('onclick')||'';if(click.includes('openCards()')||click.includes('openMCQ()')){e.preventDefault();e.stopImmediatePropagation();pick(click.includes('openCards()')?'cards':'mcq')}},true);
+ window.addEventListener('click',function(e){const card=e.target.closest('.card.mode, #module .card');if(!card)return;const click=card.getAttribute('onclick')||'';const label=(card.textContent||'').trim();const cards=click.includes('openCards()')||label.includes('البطاقات التعليمية');const mcq=click.includes('openMCQ()')||label.includes('اختيار من متعدد');if(cards||mcq){e.preventDefault();e.stopImmediatePropagation();pick(cards?'cards':'mcq')}},true);
 })();
 </script></body></html>
