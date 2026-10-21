@@ -51,15 +51,15 @@ function hint(s){const el=document.getElementById('bookHint');if(el)el.textConte
 function list(){return catalogue[state.level]?.[state.subject]||[]}
 function openExternal(f){window.open(url(f),'_blank','noopener,noreferrer')}
 async function load(f){
- const o=options();o.querySelectorAll('button[data-book]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.book===f)));
+ document.getElementById('abuPdfFallback')?.remove();const o=options();o.querySelectorAll('button[data-book]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.book===f)));
  state.pdf=null;state.page=1;state.pageText='';const canvas=document.getElementById('pdfCanvas');if(canvas){canvas.width=0;canvas.height=0}
  const label=document.getElementById('pageLabel');if(label)label.textContent='صفحة 1';
  hint('جارٍ محاولة تحميل الكتاب. إذا لم يظهر، استخدم زر فتح الكتاب مباشرة.');
  if(!window.pdfjsLib){hint('تعذّر تشغيل عارض PDF. يمكنك فتح الكتاب مباشرة.');return}
  try{
-  const task=window.pdfjsLib.getDocument({url:proxy(f),withCredentials:false,disableAutoFetch:true,disableStream:true});
+  const task=window.pdfjsLib.getDocument({url:proxy(f),withCredentials:false,disableAutoFetch:false,disableStream:false,rangeChunkSize:262144});
   state.pdf=await task.promise;await window.renderPage();
- }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('تعذّر عرض الكتاب داخل الموقع. قد يحتاج خادم الكتب إلى تفعيل CORS أو دعم الملفات الكبيرة. يمكنك تنزيل الكتاب من الرابط الاحتياطي.')}
+ }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('تعذّر عرض صفحات الكتاب باستخدام القارئ. نجرب عرض PDF داخل الصفحة مباشرة.');const frame=document.createElement('iframe');frame.title='قراءة الكتاب داخل أبو شريك';frame.src=proxy(f);frame.style.cssText='display:block;width:100%;height:75vh;min-height:550px;border:1px solid #dce8e5;border-radius:12px;background:white';const old=document.getElementById('abuPdfFallback');if(old)old.remove();frame.id='abuPdfFallback';document.getElementById('pdfCanvas')?.after(frame);const label=document.getElementById('pageLabel');if(label)label.textContent='قارئ الكتاب';}
 }
 window.openBook=async function(){
  window.show('book');const log=document.getElementById('chatlog');if(log)log.innerHTML='';
