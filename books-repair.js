@@ -65,7 +65,7 @@ async function load(f){
     state.imageBook=true;state.imageFile=f;state.imagePages=count;
     canvas.style.display='block';
     document.querySelector('#book .viewer .actions').style.display='flex';
-    await window.renderPage();if(typeof window.ABU_RENDER_COACH==='function')window.ABU_RENDER_COACH();return;
+    await window.renderPage();showStudyButtons();return;
    }
   }
  }catch(error){console.info('Images not ready',error)}
@@ -77,6 +77,27 @@ async function load(f){
   const task=window.pdfjsLib.getDocument({url:proxy(f),withCredentials:false,disableAutoFetch:false,disableStream:false,rangeChunkSize:262144});
   state.pdf=await task.promise;await window.renderPage();
  }catch(e){console.warn('Abu book inline preview unavailable',f,e);hint('تعذّر عرض صفحات الكتاب باستخدام القارئ. نجرب عرض PDF داخل الصفحة مباشرة.');const frame=document.createElement('iframe');frame.title='قراءة الكتاب داخل أبو شريك';frame.src=proxy(f);frame.style.cssText='display:block;width:100%;height:75vh;min-height:550px;border:1px solid #dce8e5;border-radius:12px;background:white';const old=document.getElementById('abuPdfFallback');if(old)old.remove();frame.id='abuPdfFallback';document.getElementById('pdfCanvas')?.after(frame);const label=document.getElementById('pageLabel');if(label)label.textContent='قارئ الكتاب';}
+}
+function showStudyButtons(){
+ const side=document.querySelector('#book .side');
+ if(!side)return;
+ let panel=document.getElementById('abuPageStudyTools');
+ if(!panel){
+  panel=document.createElement('div');panel.id='abuPageStudyTools';
+  panel.style.cssText='margin:14px 0;padding:14px;background:#f0faf7;border:1px solid #cde6dd;border-radius:12px;direction:rtl';
+  const title=document.createElement('strong');title.textContent='🧠 أدوات دراسة الصفحة الحالية';panel.appendChild(title);
+  const actions=document.createElement('div');actions.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-top:12px';
+  for(const [label,type] of [['📖 اشرح الصفحة','explain'],['✏️ حل التمارين','solve'],['💡 تلميح','hint'],['🧩 خطوة بخطوة','steps'],['📝 تمرين مشابه','similar']]){
+   const b=document.createElement('button');b.type='button';b.textContent=label;
+   b.style.cssText='border:1px solid #b6d9d0;border-radius:9px;background:white;color:#0f766e;padding:9px;cursor:pointer;font-weight:700';
+   b.addEventListener('click',()=>{if(typeof window.scienceAction==='function')window.scienceAction(type);else alert('أعد تحميل الصفحة لتفعيل أدوات الدراسة.')});
+   actions.appendChild(b);
+  }
+  panel.appendChild(actions);
+ }
+ const input=side.querySelector('textarea');
+ if(input){const wrap=input.closest('form')||input.parentElement;if(wrap&&wrap.parentElement)wrap.parentElement.appendChild(panel);else side.appendChild(panel)}
+ else side.appendChild(panel);
 }
 const originalRender=window.renderPage;
 window.renderPage=async function(){
@@ -105,7 +126,7 @@ window.nextPage=async function(){
  return followingPage();
 };
 window.openBook=async function(){
- window.show('book');const log=document.getElementById('chatlog');if(log)log.innerHTML='';
+ window.show('book');showStudyButtons();const log=document.getElementById('chatlog');if(log)log.innerHTML='';
  const files=list();const o=options();o.replaceChildren();
  if(!files.length){hint('لا يوجد كتاب مربوط بهذه المادة حالياً.');return}
  const label=document.createElement('strong');label.textContent=files.length>1?'اختر الكتاب:':'الكتاب:';o.appendChild(label);
