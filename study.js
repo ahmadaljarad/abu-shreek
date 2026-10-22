@@ -155,7 +155,8 @@ async function generate(mode,force=false){
   const sourceKey=key('verified-source:v1:'+studyTopic);
   let saved=null;try{saved=JSON.parse(sessionStorage.getItem(sourceKey)||'null')}catch{}
   if(saved?.text?.length>80)return saved.text;
-  let range=manualRanges[f+'|'+studyTopic];
+  const verified=(window.ABU_VERIFIED_TOC?.[state.level+'|'+state.subject]||[]).find(x=>x.title===studyTopic&&x.verified===true);
+  let range=verified?{start:verified.start,end:verified.end,book:f,topic:studyTopic}:manualRanges[f+'|'+studyTopic];
   if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED','BOOK_IMAGES_UNAVAILABLE'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
   const pages=[];for(let n=range.start;n<=range.end;n++){const t=await locator.pageText(f,n);if(t.length>60)pages.push('صفحة '+n+' من الكتاب:\\n'+t)}
   if(!pages.length)throw Error('NO_TEXT');
