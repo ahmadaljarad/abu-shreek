@@ -44,7 +44,10 @@ function chooseStudyTopic(mode){
  const box=document.createElement('div');box.style.cssText='background:white;border-radius:16px;padding:24px;width:min(540px,100%);max-height:85vh;overflow:auto;box-shadow:0 15px 45px #0003;color:#123';
  const title=document.createElement('h2');title.textContent=mode==='cards'?'📚 اختر درس البطاقات التعليمية':'✅ اختر درس الاختيار من متعدد';box.appendChild(title);
  const info=document.createElement('p');info.textContent='المادة: '+state.subject+' — اختر الموضوع مباشرة دون فتح الكتاب.';box.appendChild(info);
- const topics=TOPIC_SUGGESTIONS[state.subject]||['مراجعة المفاهيم الأساسية','المصطلحات المهمة','أسئلة مراجعة شاملة'];
+ const catalog=window.ABU_VERIFIED_TOC||{};
+ const entries=Array.isArray(catalog[state.level+'|'+state.subject])?catalog[state.level+'|'+state.subject]:[];
+ const topics=entries.filter(x=>x&&x.verified===true&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start).map(x=>x.title);
+ if(!topics.length){const warning=document.createElement('p');warning.textContent='فهرس هذه المادة لم يُوثَّق بعد من الكتاب الأصلي. لن نعرض مواضيع مقترحة على أنها دروس من المنهاج. يمكنك فتح الكتاب حتى يكتمل التوثيق.';warning.style.cssText='line-height:1.9;color:#9a3412;background:#fff7ed;padding:14px;border-radius:10px';box.appendChild(warning)}
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const topic of topics){
   const b=document.createElement('button');b.type='button';b.textContent=topic;b.style.cssText='padding:13px;text-align:right;background:#edf8f5;color:#0e6961;border:1px solid #c9e6df;border-radius:10px;font-size:15px;cursor:pointer';
@@ -52,7 +55,7 @@ function chooseStudyTopic(mode){
   list.appendChild(b);
  }
  box.appendChild(list);
- const note=document.createElement('p');note.style.cssText='font-size:12px;color:#64748b;margin-top:15px';note.textContent='هذه قائمة مواضيع أولية للتجربة، وليست فهرس الكتاب الرسمي. الأسئلة تُولَّد بالذكاء الاصطناعي؛ سنطابق المواضيع مع دروس المنهاج لاحقاً.';box.appendChild(note);
+ const note=document.createElement('p');note.style.cssText='font-size:12px;color:#64748b;margin-top:15px';note.textContent='تظهر فقط الدروس التي جرى التحقق من عناوينها وصفحاتها مقابل الكتاب الأصلي.';box.appendChild(note);
  const close=document.createElement('button');close.textContent='إغلاق';close.style.cssText='padding:9px 16px;border:0;border-radius:9px;cursor:pointer';close.onclick=()=>overlay.remove();box.appendChild(close);
  overlay.onclick=e=>{if(e.target===overlay)overlay.remove()};
  overlay.appendChild(box);document.body.appendChild(overlay);
