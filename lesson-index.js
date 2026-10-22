@@ -30,8 +30,8 @@ async function findLesson(file,topic,progress){
  for(let p=2;p<=Math.min(total,18);p++){
   progress?.('جارٍ فحص فهرس الكتاب: '+p+'/18');
   const txt=await pageText(file,p);
-  for(const line of txt.split(/\\n/)){
-   const numbers=[...line.matchAll(/\\b(\\d{1,3})\\b/g)].map(m=>Number(m[1])).filter(n=>n>0&&n<=total);
+  for(const line of txt.split(/\n/)){
+   const numbers=[...line.matchAll(/\b(\d{1,3})\b/g)].map(m=>Number(m[1])).filter(n=>n>0&&n<=total);
    if(!numbers.length)continue;
    toc.push({title:normalize(line.replace(/[0-9٠-٩.ـ…]+/g,' ')),printed:numbers[numbers.length-1]});
   }
@@ -49,7 +49,7 @@ async function findLesson(file,topic,progress){
   const first=normalize(await pageText(file,start));
   if(!first.includes(target))continue;
   const next=normalize(await pageText(file,end+1));
-  const nextTitle=following.title.replace(/\\b(\\d{1,3})\\b/g,'').trim();
+  const nextTitle=following.title.replace(/\b(\d{1,3})\b/g,'').trim();
   const terms=nextTitle.split(' ').filter(x=>x.length>3);
   if(terms.length&&terms.some(x=>next.includes(x)))return {start,end,book:file,topic};
  }
