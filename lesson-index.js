@@ -2,12 +2,12 @@
 (function(){
 'use strict';
 const normalize=s=>String(s||'').normalize('NFKC').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/\s+/g,' ').trim();
-const fileName=()=>window.state?.imageFile||({'بكالوريا علمي|علم الأحياء':'bac-sci-biology.pdf'})[window.state?.level+'|'+window.state?.subject];
+const fileName=()=>{const s=window.state||{};const files=window.ABU_BOOK_CATALOGUE?.[s.level]?.[s.subject];return s.imageFile||(Array.isArray(files)?files[0]:null)||null;};
 const path=(file,n)=>'./book-pages/'+file.replace(/\.pdf$/i,'')+'/'+String(n).padStart(3,'0')+'.webp';
 let engine;
 async function reader(){
  if(!window.Tesseract){await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=resolve;s.onerror=reject;document.head.append(s)})}
- if(!engine)engine=window.Tesseract.createWorker('ara+eng');return engine;
+ if(!engine)engine=window.Tesseract.createWorker('ara+eng').catch(e=>{engine=null;throw e});return await engine;
 }
 async function pageText(file,n){
  const key='abu:lesson-ocr:v1:'+file+':'+n;
