@@ -11,6 +11,7 @@ const isProblemSubject=()=>['الرياضيات','الفيزياء','الكيم�
 const file=()=>BOOKS[`${state.level}|${state.subject}`]||bookFiles[`${state.level}|${state.subject}`]||'';
 const url=f=>`/api/book?file=${encodeURIComponent(f)}`;
 let studyTopic='';
+let studyBook='';
 const manualRanges={};
 async function requestLessonRange(book,topic,reason){
  const locator=window.ABU_LESSON_SOURCE;
@@ -51,12 +52,12 @@ function chooseStudyTopic(mode){
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const topic of topics){
   const b=document.createElement('button');b.type='button';b.textContent=topic;b.style.cssText='padding:13px;text-align:right;background:#edf8f5;color:#0e6961;border:1px solid #c9e6df;border-radius:10px;font-size:15px;cursor:pointer';
-  b.onclick=()=>{studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};
+  b.onclick=()=>{studyBook=(entries.find(x=>x.title===topic)?.book)||file();studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};
   list.appendChild(b);
  }
  box.appendChild(list);
  const manual=document.createElement('button');manual.type='button';manual.textContent='📖 اختر صفحات الدرس من الكتاب (جميع المواد)';manual.style.cssText='display:block;width:100%;margin-top:15px;padding:14px;background:#0e766e;color:white;border:0;border-radius:10px;cursor:pointer;font-size:15px';
- manual.onclick=async()=>{const f=file();if(!f){alert('لم يتم ربط ملف هذا الكتاب بعد.');return}try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+ manual.onclick=async()=>{const f=file();if(!f){alert('لم يتم ربط ملف هذا الكتاب بعد.');return}try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;studyBook=f;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
  box.appendChild(manual);
  const scan=document.createElement('button');scan.type='button';scan.textContent='🔎 اقرأ فهرس هذا الكتاب تلقائياً';scan.style.cssText='display:block;width:100%;margin-top:10px;padding:12px;background:#e7f5f2;color:#08645d;border:1px solid #b8ddd5;border-radius:10px;cursor:pointer;font-size:15px';
  scan.onclick=async()=>{
@@ -71,7 +72,7 @@ function chooseStudyTopic(mode){
    const heading=document.createElement('p');heading.textContent='عناوين مستخرجة آلياً من صور الفهرس، غير موثّقة بعد. اختر عنواناً لتحديد صفحاته والتحقق منها.';heading.style.cssText='color:#92400e;line-height:1.8';list.replaceChildren(heading);
    for(const entry of entries){
     const b=document.createElement('button');b.type='button';b.textContent=entry.title+' (صفحة مطبوعة '+entry.printed+')';b.style.cssText='padding:12px;text-align:right;background:#fff8e9;color:#704b11;border:1px solid #edd6a0;border-radius:9px;cursor:pointer';
-    b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:entry.title,start:range.start,end:range.end,book:f});studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+    b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;studyBook=f;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:entry.title,start:range.start,end:range.end,book:f});studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
     list.appendChild(b);
    }
    scan.textContent='تم استخراج '+entries.length+' عنواناً أولياً من الفهرس';
@@ -175,11 +176,11 @@ async function generate(mode,force=false){
  if(!force&&previous.length)return previous;
  const src=studyTopic?await (async()=>{
   const locator=window.ABU_LESSON_SOURCE;if(!locator)throw Error('LESSON_INDEX_UNAVAILABLE');
-  const f=file();if(!f)throw Error('BOOK_IMAGES_UNAVAILABLE');
-  const sourceKey=key('verified-source:v1:'+studyTopic);
+  const f=studyBook||file();if(!f)throw Error('BOOK_IMAGES_UNAVAILABLE');
+  const sourceKey=key('verified-source:v2:'+f+':'+studyTopic);
   let saved=null;try{saved=JSON.parse(sessionStorage.getItem(sourceKey)||'null')}catch{}
   if(saved?.text?.length>80)return saved.text;
-  const verified=(window.ABU_VERIFIED_TOC?.[state.level+'|'+state.subject]||[]).find(x=>x.title===studyTopic&&x.verified===true);
+  const verified=(window.ABU_VERIFIED_TOC?.[state.level+'|'+state.subject]||[]).find(x=>x.title===studyTopic&&x.verified===true&&(!x.book||x.book===f));
   let range=verified?{start:verified.start,end:verified.end,book:f,topic:studyTopic}:manualRanges[f+'|'+studyTopic];
   if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED','BOOK_IMAGES_UNAVAILABLE'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
   const pages=[];for(let n=range.start;n<=range.end;n++){const t=await locator.pageText(f,n);if(t.length>60)pages.push('صفحة '+n+' من الكتاب:\\n'+t)}
