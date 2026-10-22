@@ -29,28 +29,31 @@ async function findLesson(file,topic,progress){
  const toc=[];
  for(let p=2;p<=Math.min(total,18);p++){
   progress?.('جارٍ فحص فهرس الكتاب: '+p+'/18');
-  const txt=await pageText(file,p);const lines=txt.split(/\n/);
-  for(const line of lines){
-   const plain=normalize(line);
-   if(!plain.includes(target))continue;
-   const nums=[...line.matchAll(/\b(\d{1,3})\b/g)].map(m=>Number(m[1])).filter(n=>n>0&&n<=total);
-   for(const n of nums)toc.push({indexPage:p,printed:n});
+  const txt=await pageText(file,p);
+  for(const line of txt.split(/\\n/)){
+   const numbers=[...line.matchAll(/\\b(\\d{1,3})\\b/g)].map(m=>Number(m[1])).filter(n=>n>0&&n<=total);
+   if(!numbers.length)continue;
+   toc.push({title:normalize(line.replace(/[0-9٠-٩.ـ…]+/g,' ')),printed:numbers[numbers.length-1]});
   }
  }
- if(!toc.length)throw Error('LESSON_NOT_INDEXED');
- // Confirm the actual heading on a page before accepting any candidate.
- for(const entry of toc){
-  for(let offset=0;offset<=16;offset++){
-   const p=entry.printed+offset;if(p>total)break;
-   progress?.('جارٍ التحقق من بداية الدرس: الصفحة '+p);
-   const t=await pageText(file,p);
-   if(normalize(t).includes(target)){
-    // Only the verified beginning is known; do not guess the lesson end.
-    throw Error('LESSON_END_UNVERIFIED');
-   }
-  }
+ const matches=toc.filter(x=>x.title.includes(target));
+ if(!matches.length)throw Error('LESSON_NOT_INDEXED');
+ const startEntry=matches[0];
+ const following=toc.filter(x=>x.printed>startEntry.printed&&x.printed<=startEntry.printed+45).sort((a,b)=>a.printed-b.printed)[0];
+ if(!following)throw Error('LESSON_END_UNVERIFIED');
+ // Printed page and image index may differ; verify the heading on the actual page.
+ for(let offset=0;offset<=16;offset++){
+  const start=startEntry.printed+offset,end=following.printed+offset-1;
+  if(start<1||end>total||end<start||end-start>20)continue;
+  progress?.('جارٍ التحقق من الدرس في صفحة '+start);
+  const first=normalize(await pageText(file,start));
+  if(!first.includes(target))continue;
+  const next=normalize(await pageText(file,end+1));
+  const nextTitle=following.title.replace(/\\b(\\d{1,3})\\b/g,'').trim();
+  const terms=nextTitle.split(' ').filter(x=>x.length>3);
+  if(terms.length&&terms.some(x=>next.includes(x)))return {start,end,book:file,topic};
  }
- throw Error('LESSON_START_UNVERIFIED');
+ throw Error('LESSON_END_UNVERIFIED');
 }
 window.ABU_LESSON_SOURCE={findLesson,pageText,pageCount,fileName};
 })();
