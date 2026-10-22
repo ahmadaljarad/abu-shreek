@@ -58,6 +58,25 @@ function chooseStudyTopic(mode){
  const manual=document.createElement('button');manual.type='button';manual.textContent='📖 اختر صفحات الدرس من الكتاب (جميع المواد)';manual.style.cssText='display:block;width:100%;margin-top:15px;padding:14px;background:#0e766e;color:white;border:0;border-radius:10px;cursor:pointer;font-size:15px';
  manual.onclick=async()=>{const f=file();if(!f){alert('لم يتم ربط ملف هذا الكتاب بعد.');return}try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
  box.appendChild(manual);
+ const scan=document.createElement('button');scan.type='button';scan.textContent='🔎 اقرأ فهرس هذا الكتاب تلقائياً';scan.style.cssText='display:block;width:100%;margin-top:10px;padding:12px;background:#e7f5f2;color:#08645d;border:1px solid #b8ddd5;border-radius:10px;cursor:pointer;font-size:15px';
+ scan.onclick=async()=>{
+  const f=file(),locator=window.ABU_LESSON_SOURCE;
+  if(!f||!locator?.scanContents){alert('قارئ الفهرس غير متاح لهذا الكتاب.');return}
+  scan.disabled=true;scan.textContent='جارٍ فحص فهرس الكتاب... قد يستغرق عدة دقائق';
+  try{
+   const entries=await locator.scanContents(f,msg=>scan.textContent=msg);
+   if(!entries.length){scan.textContent='لم يتمكن القارئ من استخراج فهرس واضح. استخدم اختيار الصفحات.';return}
+   const heading=document.createElement('p');heading.textContent='عناوين مستخرجة آلياً من صور الفهرس، غير موثّقة بعد. اختر عنواناً لتحديد صفحاته والتحقق منها.';heading.style.cssText='color:#92400e;line-height:1.8';list.replaceChildren(heading);
+   for(const entry of entries){
+    const b=document.createElement('button');b.type='button';b.textContent=entry.title+' (صفحة مطبوعة '+entry.printed+')';b.style.cssText='padding:12px;text-align:right;background:#fff8e9;color:#704b11;border:1px solid #edd6a0;border-radius:9px;cursor:pointer';
+    b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+    list.appendChild(b);
+   }
+   scan.textContent='تم استخراج '+entries.length+' عنواناً أولياً من الفهرس';
+  }catch(e){scan.textContent='تعذرت قراءة الفهرس: '+nice(e)}
+  finally{scan.disabled=false}
+ };
+ box.appendChild(scan);
  const note=document.createElement('p');note.style.cssText='font-size:12px;color:#64748b;margin-top:15px';note.textContent='تظهر فقط الدروس التي جرى التحقق من عناوينها وصفحاتها مقابل الكتاب الأصلي.';box.appendChild(note);
  const close=document.createElement('button');close.textContent='إغلاق';close.style.cssText='padding:9px 16px;border:0;border-radius:9px;cursor:pointer';close.onclick=()=>overlay.remove();box.appendChild(close);
  overlay.onclick=e=>{if(e.target===overlay)overlay.remove()};
