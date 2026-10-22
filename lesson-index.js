@@ -55,5 +55,22 @@ async function findLesson(file,topic,progress){
  }
  throw Error('LESSON_END_UNVERIFIED');
 }
-window.ABU_LESSON_SOURCE={findLesson,pageText,pageCount,fileName};
+async function scanContents(file,progress){
+ const total=await pageCount(file),items=[],seen=new Set();
+ for(let p=2;p<=Math.min(total,16);p++){
+  progress?.('جارٍ قراءة فهرس الكتاب: صفحة '+p);
+  let raw='';try{raw=await pageText(file,p)}catch{continue}
+  for(const line of raw.split(/\n/)){
+   const trimmed=line.trim();
+   const match=trimmed.match(/(?:^|\s)([0-9]{1,3})\s*$/);
+   if(!match)continue;
+   const printed=Number(match[1]);
+   const title=trimmed.replace(/[0-9٠-٩]+\s*$/,'').replace(/[.ـ…·•\s]+/g,' ').trim();
+   if(title.length<5||title.length>100||printed<1||printed>total||seen.has(title))continue;
+   seen.add(title);items.push({title,printed,tocImagePage:p,verified:false});
+  }
+ }
+ return items.sort((a,b)=>a.printed-b.printed);
+}
+window.ABU_LESSON_SOURCE={findLesson,pageText,pageCount,fileName,scanContents};
 })();
