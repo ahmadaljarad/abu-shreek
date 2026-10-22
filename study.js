@@ -48,7 +48,7 @@ function chooseStudyTopic(mode){
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const topic of topics){
   const b=document.createElement('button');b.type='button';b.textContent=topic;b.style.cssText='padding:13px;text-align:right;background:#edf8f5;color:#0e6961;border:1px solid #c9e6df;border-radius:10px;font-size:15px;cursor:pointer';
-  b.onclick=()=>{studyTopic=topic;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};
+  b.onclick=()=>{studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};
   list.appendChild(b);
  }
  box.appendChild(list);
@@ -186,10 +186,10 @@ async function generate(mode,force=false){
  return collected;
 }
 function nice(e){const s=String(e?.message||e||'');if(s==='LESSON_RANGE_CANCELLED')return 'تم إلغاء اختيار الصفحات. لم تُنشأ بطاقات.';if(s==='LESSON_RANGE_INVALID')return 'نطاق الصفحات غير صحيح. أدخل مثلاً 25-32 (بحد أقصى 15 صفحة).';if(s==='LESSON_INDEX_UNAVAILABLE')return 'نظام فهرسة الدروس لم يحمّل بعد.';if(s==='BOOK_IMAGES_UNAVAILABLE')return 'صور صفحات الكتاب غير متاحة حالياً.';if(s==='LESSON_NOT_INDEXED')return 'لم أتمكن من تحديد هذا الدرس من فهرس الكتاب آلياً. لن أنشئ بطاقات من معلومات عامة.';if(s==='LESSON_END_UNVERIFIED')return 'وجدت بداية الدرس في الكتاب، لكن لم أتحقق بعد من صفحة نهايته. لن أختلق نطاق صفحات.';if(s==='LESSON_START_UNVERIFIED')return 'تعذّر التحقق من بداية الدرس في صفحات الكتاب.';if(s==='SCIENCE_MODE')return 'لهذه المادة استخدم أدوات الشرح والحل والتدريب الذكي.';if(s==='NO_TEXT')return 'لم أستطع قراءة مادة دراسية كافية من الصفحة الحالية.';if(s==='OCR_LOAD')return 'تعذر تشغيل قارئ الصفحة. تحقق من الاتصال وحاول مجدداً.';if(s==='EMPTY')return 'لم يُرجع الذكاء الاصطناعي بطاقات أو أسئلة صالحة. جرّب مرة أخرى، وإذا تكرر الخطأ سنحتاج فحص استجابة الخادم.';if(s==='BAD_JSON')return 'وصل رد غير صالح من الذكاء الاصطناعي. حاول مرة أخرى.';return s&&s.length<180?s:'تعذر إنشاء المحتوى حالياً. حاول مرة أخرى.'}
-window.abuStartTopicCards=function(topic){studyTopic=topic;return startTopicCards()};
-window.abuStartTopicMCQ=function(topic){studyTopic=topic;return startTopicMCQ()};
+window.abuStartTopicCards=function(topic){studyTopic=topic;window.ABU_STUDY_TOPIC=topic;return startTopicCards()};
+window.abuStartTopicMCQ=function(topic){studyTopic=topic;window.ABU_STUDY_TOPIC=topic;return startTopicMCQ()};
 window.openCards=function(){chooseStudyTopic('cards')};
-async function startTopicCards(){show('cards');state.cardIndex=0;state.cardFlipped=false;flash.textContent='جارٍ إنشاء بطاقات الموضوع المختار...';try{await generate('cards');renderCard()}catch(e){flash.textContent=nice(e);console.error('[cards]',e)}};
+async function startTopicCards(){show('cards');cardPct.textContent='0% إنجاز';cardProgress.style.width='0%';document.getElementById('cardCount').textContent='جارٍ تحميل بطاقات هذا الدرس...';state.cardIndex=0;state.cardFlipped=false;flash.textContent='جارٍ إنشاء بطاقات الموضوع المختار...';try{await generate('cards');renderCard()}catch(e){flash.textContent=nice(e);console.error('[cards]',e)}};
 window.openMCQ=function(){chooseStudyTopic('mcq')};
 async function startTopicMCQ(){show('mcq');state.mcqIndex=0;mcqQuestion.textContent='جارٍ إنشاء أسئلة الموضوع المختار...';mcqOptions.innerHTML='';mcqExplain.textContent='';try{generatedMCQ=await generate('mcq');nextMCQ()}catch(e){mcqQuestion.textContent=nice(e);console.error('[mcq]',e)}};
 window.nextMCQ=function(){if(!generatedMCQ.length){try{generatedMCQ=JSON.parse(localStorage.getItem(pageKey('generatedMCQ'))||'[]')}catch{generatedMCQ=[]}}if(!generatedMCQ.length){mcqQuestion.textContent='لا توجد أسئلة بعد.';return}const q=state.currentMCQ=shuffledQuestion(generatedMCQ[state.mcqIndex%generatedMCQ.length]);mcqQuestion.textContent=q.q;mcqOptions.innerHTML='';mcqExplain.textContent='';q.o.forEach((o,i)=>{const b=document.createElement('button');b.className='mcq-option';b.textContent=o;b.onclick=()=>answerMCQ(i,b);mcqOptions.appendChild(b)});state.mcqIndex++;const p=progress('mcq'),n=pct(p);mcqPct.textContent=n+'%';mcqProgress.style.width=n+'%'};
