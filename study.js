@@ -47,7 +47,7 @@ function chooseStudyTopic(mode){
  const catalog=window.ABU_VERIFIED_TOC||{};
  const entries=Array.isArray(catalog[state.level+'|'+state.subject])?catalog[state.level+'|'+state.subject]:[];
  const topics=entries.filter(x=>x&&x.verified===true&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start).map(x=>x.title);
- if(!topics.length){const warning=document.createElement('p');warning.textContent='فهرس هذه المادة لم يُوثَّق بعد من الكتاب الأصلي. لن نعرض مواضيع مقترحة على أنها دروس من المنهاج. يمكنك فتح الكتاب حتى يكتمل التوثيق.';warning.style.cssText='line-height:1.9;color:#9a3412;background:#fff7ed;padding:14px;border-radius:10px';box.appendChild(warning)}
+ if(!topics.length){const warning=document.createElement('p');warning.textContent='لم يتم توثيق فهرس هذه المادة من الكتاب الأصلي بعد. يمكنك تحديد صفحات الدرس بنفسك لإنشاء بطاقات أو أسئلة من صفحات الكتاب حصراً، دون اختراع عناوين دروس.';warning.style.cssText='line-height:1.9;color:#9a3412;background:#fff7ed;padding:14px;border-radius:10px';box.appendChild(warning)}
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const topic of topics){
   const b=document.createElement('button');b.type='button';b.textContent=topic;b.style.cssText='padding:13px;text-align:right;background:#edf8f5;color:#0e6961;border:1px solid #c9e6df;border-radius:10px;font-size:15px;cursor:pointer';
@@ -55,6 +55,9 @@ function chooseStudyTopic(mode){
   list.appendChild(b);
  }
  box.appendChild(list);
+ const manual=document.createElement('button');manual.type='button';manual.textContent='📖 اختر صفحات الدرس من الكتاب (جميع المواد)';manual.style.cssText='display:block;width:100%;margin-top:15px;padding:14px;background:#0e766e;color:white;border:0;border-radius:10px;cursor:pointer;font-size:15px';
+ manual.onclick=async()=>{const f=file();if(!f){alert('لم يتم ربط ملف هذا الكتاب بعد.');return}try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+ box.appendChild(manual);
  const note=document.createElement('p');note.style.cssText='font-size:12px;color:#64748b;margin-top:15px';note.textContent='تظهر فقط الدروس التي جرى التحقق من عناوينها وصفحاتها مقابل الكتاب الأصلي.';box.appendChild(note);
  const close=document.createElement('button');close.textContent='إغلاق';close.style.cssText='padding:9px 16px;border:0;border-radius:9px;cursor:pointer';close.onclick=()=>overlay.remove();box.appendChild(close);
  overlay.onclick=e=>{if(e.target===overlay)overlay.remove()};
