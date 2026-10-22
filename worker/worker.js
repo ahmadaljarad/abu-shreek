@@ -75,7 +75,7 @@ ${source(data)||'[لا يوجد نص مصدر متاح]'}
     let data;try{data=await request.json()}catch{return json(request,{error:'طلب غير صالح.'},400)}
     const text=source(data);if(text.length<80)return json(request,{error:'لا يوجد نص كافٍ من الكتاب لإنشاء محتوى موثوق.'},400);
     const mcq=data.mode==='mcq';
-    const rules=mcq?'أنشئ من 8 إلى 10 أسئلة اختيار من متعدد دقيقة وغير متكررة، من المصدر فقط. أعد JSON فقط: {"items":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}':'أنشئ من 8 إلى 10 بطاقات تعليمية دقيقة ومتنوعة وغير متكررة، من المصدر فقط. أعد JSON فقط: {"items":[{"front":"...","back":"..."}]}';
+    const rules=mcq?'أنشئ من 8 إلى 10 أسئلة اختيار من متعدد دقيقة وغير متكررة، من المصدر فقط. أعد JSON فقط: {"items":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}':'أنشئ من 8 إلى 10 بطاقات تعليمية دقيقة ومتنوعة وغير متكررة من المصدر فقط. اجعل السؤال واضحاً مستقلاً واذكر اسم المفهوم صراحة. لا تقل حسب النص أو الجدول المذكور. أضف page كرقم صحيح فقط إذا ظهر رقم الصفحة صراحة في المصدر، وإلا null. أعد JSON فقط: {"items":[{"front":"...","back":"...","page":null}]}';
     const prompt=policy(data.book)+'\n'+rules+'\nالمصدر الوحيد:\n'+text;
     try{const raw=await gemini(env,prompt,true);let parsed;try{parsed=JSON.parse(raw)}catch{return json(request,{error:'تعذر قراءة رد الذكاء الاصطناعي.'},502)};return json(request,{items:Array.isArray(parsed?.items)?parsed.items.slice(0,10):[]})}catch(e){return json(request,{error:friendly(e)},503)}
   }
