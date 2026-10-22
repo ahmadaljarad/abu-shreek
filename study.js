@@ -151,11 +151,11 @@ async function generate(mode,force=false){
  const target=mode==='cards'?(force?10:25):10;
  const collected=force?[...previous]:[];
  const seen=new Set(collected.map(x=>norm(mode==='cards'?x[0]:x.q).toLowerCase()));
- const generic=/ما هو الموضوع الأساسي|ماذا يدرس الطالب|ما هي المادة|ما هو الهدف من دراسة|ما هو موضوع مادة|ماذا تعرف عن مادة/i;
+ const generic=/ما هو الموضوع الأساسي|ماذا يدرس الطالب|ما هي المادة|ما هو الهدف من دراسة|ما هو موضوع مادة|ماذا تعرف عن مادة|الجدول المذكور|الشكل المذكور|حسب النص|في النص|في الفقرة|في الصورة|المذكور في النص|الموضوع المذكور|ما الذي يوضحه الجدول/i;
  for(let attempt=0;attempt<(mode==='cards'?(force?3:6):3)&&collected.length<(force?previous.length+target:target);attempt++){
   const remaining=(force?previous.length+target:target)-collected.length;
   const used=collected.map(x=>mode==='cards'?x[0]:x.q).slice(-35);
-  const instruction='أنشئ '+Math.min(10,remaining+3)+' '+(mode==='cards'?'بطاقات سؤال وجواب':'أسئلة اختيار من متعدد')+' جديدة متنوعة ومحددة من النص فقط عن '+(studyTopic||state.subject)+'. تجنب الأسئلة العامة والمكررة. أسئلة مستخدمة يجب عدم تكرارها: '+used.join(' | ')+'. أعد عناصر بصيغة JSON.';
+  const instruction='لكل بطاقة اذكر اسم المفهوم العلمي صراحةً في السؤال، ولا تستخدم عبارات مثل حسب النص أو الجدول المذكور. لا تخترع رقم صفحة؛ أعد page فقط إن كان ظاهراً في المصدر. أنشئ '+Math.min(10,remaining+3)+' '+(mode==='cards'?'بطاقات سؤال وجواب':'أسئلة اختيار من متعدد')+' جديدة متنوعة ومحددة من النص فقط عن '+(studyTopic||state.subject)+'. تجنب الأسئلة العامة والمكررة. أسئلة مستخدمة يجب عدم تكرارها: '+used.join(' | ')+'. أعد عناصر بصيغة JSON.';
   const r=await fetch('https://abu-shreek-api.ahmad-aljarad.workers.dev/api/study',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode,level:state.level,book:state.subject,page:studyTopic?0:state.page,topic:studyTopic||undefined,sourceText:src+'\\n\\n'+instruction})});
   let j={};try{j=await r.json()}catch{throw Error('BAD_JSON')}
   if(!r.ok){if(collected.length>previous.length)break;throw Error(j.error||'AI_ERROR')}
@@ -163,8 +163,8 @@ async function generate(mode,force=false){
   if(typeof raw==='string'){try{raw=JSON.parse(raw.replace(/^\`\`\`(?:json)?\\s*|\\s*\`\`\`$/g,''))}catch{raw=[]}}
   if(!Array.isArray(raw)&&raw&&typeof raw==='object')raw=raw.items??raw.cards??raw.questions??[];
   if(!Array.isArray(raw))raw=[];
-  const batch=mode==='cards'?raw.map(x=>Array.isArray(x)?x:[x.front??x.question??x.q??x.term??'',x.back??x.answer??x.a??x.definition??'']).filter(x=>x[0]&&x[1]):raw.map(x=>({q:x.q??x.question??'',o:x.o??x.options??x.choices??[],a:Number(x.answer??x.correctIndex??x.a??0),e:x.e??x.explanation??''})).filter(x=>x.q&&Array.isArray(x.o)&&x.o.length===4);
-  for(const item of batch){const question=norm(mode==='cards'?item[0]:item.q);const fingerprint=question.toLowerCase();if(!question||seen.has(fingerprint)||generic.test(question))continue;seen.add(fingerprint);collected.push(item)}
+  const batch=mode==='cards'?raw.map(x=>Array.isArray(x)?x:[x.front??x.question??x.q??x.term??'',x.back??x.answer??x.a??x.definition??'',x.page??x.sourcePage??null]).filter(x=>x[0]&&x[1]):raw.map(x=>({q:x.q??x.question??'',o:x.o??x.options??x.choices??[],a:Number(x.answer??x.correctIndex??x.a??0),e:x.e??x.explanation??''})).filter(x=>x.q&&Array.isArray(x.o)&&x.o.length===4);
+  for(const item of batch){const question=norm(mode==='cards'?item[0]:item.q);const fingerprint=question.toLowerCase();if(!question||question.length<17||seen.has(fingerprint)||generic.test(question))continue;seen.add(fingerprint);collected.push(item)}
   if(mode==='cards')flash.textContent='تم إنشاء '+(collected.length-previous.length)+' بطاقة جديدة...';
   if(mode==='cards'&&batch.length===0)console.warn('[study] Incompatible generation response',j);
  }
