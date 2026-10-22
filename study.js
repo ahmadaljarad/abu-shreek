@@ -60,7 +60,9 @@ function chooseStudyTopic(mode){
  box.appendChild(manual);
  const scan=document.createElement('button');scan.type='button';scan.textContent='🔎 اقرأ فهرس هذا الكتاب تلقائياً';scan.style.cssText='display:block;width:100%;margin-top:10px;padding:12px;background:#e7f5f2;color:#08645d;border:1px solid #b8ddd5;border-radius:10px;cursor:pointer;font-size:15px';
  scan.onclick=async()=>{
-  const f=file(),locator=window.ABU_LESSON_SOURCE;
+  const choices=window.ABU_BOOK_CATALOGUE?.[state.level]?.[state.subject]||[file()];
+  let f=choices[0],locator=window.ABU_LESSON_SOURCE;
+  if(choices.length>1){const answer=window.prompt('اختر رقم الكتاب لفحص فهرسه:\\n'+choices.map((x,i)=>(i+1)+' - '+x).join('\\n'),'1');if(answer===null){scan.disabled=false;return}const idx=Number(answer)-1;if(!Number.isInteger(idx)||idx<0||idx>=choices.length){alert('رقم الكتاب غير صحيح');return}f=choices[idx]}
   if(!f||!locator?.scanContents){alert('قارئ الفهرس غير متاح لهذا الكتاب.');return}
   scan.disabled=true;scan.textContent='جارٍ فحص فهرس الكتاب... قد يستغرق عدة دقائق';
   try{
