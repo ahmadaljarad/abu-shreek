@@ -176,7 +176,19 @@ async function generate(mode,force=false){
   const r=await fetch('https://abu-shreek-api.ahmad-aljarad.workers.dev/api/study',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode,level:state.level,book:state.subject,page:studyTopic?0:state.page,topic:studyTopic||undefined,sourceText:src+'\\n\\n'+instruction})});
   let j={};try{j=await r.json()}catch{throw Error('BAD_JSON')}
   if(!r.ok){if(collected.length>previous.length)break;throw Error(j.error||'AI_ERROR')}
-  let raw=j.items??j.cards??j.questions??j.flashcards??j.data?.items??j.data?.cards??j.data?.questions??j.result?.items??j.result?.cards??j.result?.questions??[];
+  if(j.error){console.warn('[study] API error',j.error);if(collected.length>previous.length)break;throw Error(String(j.error).slice(0,160))}
+  let raw=j.items??j.cards??j.questions??j.flashcards??j.data?.items??j.data?.cards??j.data?.questions??j.result?.items??j.result?.cards??j.result?.questions??j.answer??j.text??j.result??[];
+  if(typeof raw==='string'){
+   const cleaned=raw.replace(/^\s*```(?:json)?\s*/i,'').replace(/\s*```\s*$/,'').trim();
+   try{raw=JSON.parse(cleaned)}catch{
+    const begin=cleaned.indexOf('['),end=cleaned.lastIndexOf(']');
+    if(begin>=0&&end>begin)try{raw=JSON.parse(cleaned.slice(begin,end+1))}catch{raw=[]}
+    else raw=[];
+   }
+  }
+  if(raw&&typeof raw==='object'&&!Array.isArray(raw))raw=raw.items??raw.cards??raw.questions??raw.flashcards??raw.data??[];
+  if(!Array.isArray(raw))raw=[];
+  if(!raw.length)console.warn('[study] Empty/incompatible API response',JSON.stringify(j).slice(0,1200));
   if(typeof raw==='string'){try{raw=JSON.parse(raw.replace(/^\`\`\`(?:json)?\\s*|\\s*\`\`\`$/g,''))}catch{raw=[]}}
   if(!Array.isArray(raw)&&raw&&typeof raw==='object')raw=raw.items??raw.cards??raw.questions??[];
   if(!Array.isArray(raw))raw=[];
