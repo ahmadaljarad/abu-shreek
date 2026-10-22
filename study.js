@@ -14,13 +14,13 @@ let studyTopic='';
 const manualRanges={};
 async function requestLessonRange(book,topic,reason){
  const locator=window.ABU_LESSON_SOURCE;
- const count=await locator.pageCount(book);
+ let count=0;try{count=await locator.pageCount(book)}catch{}
  const answer=window.prompt('لم نتمكن من تحديد صفحات درس «'+topic+'» تلقائياً.\\nأدخل رقم أول وآخر صفحة من عارض الكتاب، مثال: 25-32\\nعدد صفحات الكتاب: '+count+'\\nلن نستخدم معلومات خارج الصفحات المحددة.','');
  if(answer===null)throw Error('LESSON_RANGE_CANCELLED');
- const match=String(answer).trim().match(/^(\\d+)\\s*[-–—,:،]\\s*(\\d+)$/);
+ const match=String(answer).trim().match(/^(\d+)\s*[-–—,:،]\s*(\d+)$/);
  if(!match)throw Error('LESSON_RANGE_INVALID');
  const start=Number(match[1]),end=Number(match[2]);
- if(start<1||end>count||end<start||end-start>14)throw Error('LESSON_RANGE_INVALID');
+ if(start<1||(count&&end>count)||end<start||end-start>14)throw Error('LESSON_RANGE_INVALID');
  return {start,end,book,topic,manual:true};
 }
 const pageKey=t=>studyTopic?key(t+':booksource:v2:'+studyTopic):key(t+':page:'+state.page);
@@ -153,7 +153,7 @@ async function generate(mode,force=false){
   let saved=null;try{saved=JSON.parse(sessionStorage.getItem(sourceKey)||'null')}catch{}
   if(saved?.text?.length>80)return saved.text;
   let range=manualRanges[f+'|'+studyTopic];
-  if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
+  if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED','BOOK_IMAGES_UNAVAILABLE'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
   const pages=[];for(let n=range.start;n<=range.end;n++){const t=await locator.pageText(f,n);if(t.length>60)pages.push('صفحة '+n+' من الكتاب:\\n'+t)}
   if(!pages.length)throw Error('NO_TEXT');
   const text='المصدر الحصري هو الصفحات التالية من الكتاب. الدرس: '+studyTopic+'. لا تستخدم معلومات من خارجها.\\n'+pages.join('\\n\\n');
