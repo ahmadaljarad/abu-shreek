@@ -11,7 +11,7 @@ const isProblemSubject=()=>['الرياضيات','الفيزياء','الكيم�
 const file=()=>BOOKS[`${state.level}|${state.subject}`]||bookFiles[`${state.level}|${state.subject}`]||'';
 const url=f=>`/api/book?file=${encodeURIComponent(f)}`;
 let studyTopic='';
-const pageKey=t=>studyTopic?key(t+':topic:'+studyTopic):key(t+':page:'+state.page);
+const pageKey=t=>studyTopic?key(t+':booksource:v2:'+studyTopic):key(t+':page:'+state.page);
 const TOPIC_SUGGESTIONS={
  'علم الأحياء':['الجهاز العصبي','أنواع الخلايا العصبية','السيالة العصبية','المشابك العصبية','الجهاز الهرموني','التكاثر','الوراثة','المناعة'],
  'علم الأحياء والأرض':['الخلية','التغذية','التنفس','التكاثر','الوراثة','البيئة'],
