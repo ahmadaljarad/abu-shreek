@@ -69,7 +69,7 @@ function chooseStudyTopic(mode){
    const heading=document.createElement('p');heading.textContent='عناوين مستخرجة آلياً من صور الفهرس، غير موثّقة بعد. اختر عنواناً لتحديد صفحاته والتحقق منها.';heading.style.cssText='color:#92400e;line-height:1.8';list.replaceChildren(heading);
    for(const entry of entries){
     const b=document.createElement('button');b.type='button';b.textContent=entry.title+' (صفحة مطبوعة '+entry.printed+')';b.style.cssText='padding:12px;text-align:right;background:#fff8e9;color:#704b11;border:1px solid #edd6a0;border-radius:9px;cursor:pointer';
-    b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+    b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:entry.title,start:range.start,end:range.end,book:f});studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
     list.appendChild(b);
    }
    scan.textContent='تم استخراج '+entries.length+' عنواناً أولياً من الفهرس';
