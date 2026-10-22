@@ -11,6 +11,18 @@ const isProblemSubject=()=>['الرياضيات','الفيزياء','الكيم�
 const file=()=>BOOKS[`${state.level}|${state.subject}`]||bookFiles[`${state.level}|${state.subject}`]||'';
 const url=f=>`/api/book?file=${encodeURIComponent(f)}`;
 let studyTopic='';
+const manualRanges={};
+async function requestLessonRange(book,topic,reason){
+ const locator=window.ABU_LESSON_SOURCE;
+ const count=await locator.pageCount(book);
+ const answer=window.prompt('لم نتمكن من تحديد صفحات درس «'+topic+'» تلقائياً.\\nأدخل رقم أول وآخر صفحة من عارض الكتاب، مثال: 25-32\\nعدد صفحات الكتاب: '+count+'\\nلن نستخدم معلومات خارج الصفحات المحددة.','');
+ if(answer===null)throw Error('LESSON_RANGE_CANCELLED');
+ const match=String(answer).trim().match(/^(\\d+)\\s*[-–—,:،]\\s*(\\d+)$/);
+ if(!match)throw Error('LESSON_RANGE_INVALID');
+ const start=Number(match[1]),end=Number(match[2]);
+ if(start<1||end>count||end<start||end-start>14)throw Error('LESSON_RANGE_INVALID');
+ return {start,end,book,topic,manual:true};
+}
 const pageKey=t=>studyTopic?key(t+':booksource:v2:'+studyTopic):key(t+':page:'+state.page);
 const TOPIC_SUGGESTIONS={
  'علم الأحياء':['الجهاز العصبي','أنواع الخلايا العصبية','السيالة العصبية','المشابك العصبية','الجهاز الهرموني','التكاثر','الوراثة','المناعة'],
@@ -140,7 +152,8 @@ async function generate(mode,force=false){
   const sourceKey=key('verified-source:v1:'+studyTopic);
   let saved=null;try{saved=JSON.parse(sessionStorage.getItem(sourceKey)||'null')}catch{}
   if(saved?.text?.length>80)return saved.text;
-  const range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s});
+  let range=manualRanges[f+'|'+studyTopic];
+  if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
   const pages=[];for(let n=range.start;n<=range.end;n++){const t=await locator.pageText(f,n);if(t.length>60)pages.push('صفحة '+n+' من الكتاب:\\n'+t)}
   if(!pages.length)throw Error('NO_TEXT');
   const text='المصدر الحصري هو الصفحات التالية من الكتاب. الدرس: '+studyTopic+'. لا تستخدم معلومات من خارجها.\\n'+pages.join('\\n\\n');
@@ -172,7 +185,7 @@ async function generate(mode,force=false){
  localStorage.setItem(sk,JSON.stringify(collected));
  return collected;
 }
-function nice(e){const s=String(e?.message||e||'');if(s==='LESSON_INDEX_UNAVAILABLE')return 'نظام فهرسة الدروس لم يحمّل بعد.';if(s==='BOOK_IMAGES_UNAVAILABLE')return 'صور صفحات الكتاب غير متاحة حالياً.';if(s==='LESSON_NOT_INDEXED')return 'لم أتمكن من تحديد هذا الدرس من فهرس الكتاب آلياً. لن أنشئ بطاقات من معلومات عامة.';if(s==='LESSON_END_UNVERIFIED')return 'وجدت بداية الدرس في الكتاب، لكن لم أتحقق بعد من صفحة نهايته. لن أختلق نطاق صفحات.';if(s==='LESSON_START_UNVERIFIED')return 'تعذّر التحقق من بداية الدرس في صفحات الكتاب.';if(s==='SCIENCE_MODE')return 'لهذه المادة استخدم أدوات الشرح والحل والتدريب الذكي.';if(s==='NO_TEXT')return 'لم أستطع قراءة مادة دراسية كافية من الصفحة الحالية.';if(s==='OCR_LOAD')return 'تعذر تشغيل قارئ الصفحة. تحقق من الاتصال وحاول مجدداً.';if(s==='EMPTY')return 'لم يُرجع الذكاء الاصطناعي بطاقات أو أسئلة صالحة. جرّب مرة أخرى، وإذا تكرر الخطأ سنحتاج فحص استجابة الخادم.';if(s==='BAD_JSON')return 'وصل رد غير صالح من الذكاء الاصطناعي. حاول مرة أخرى.';return s&&s.length<180?s:'تعذر إنشاء المحتوى حالياً. حاول مرة أخرى.'}
+function nice(e){const s=String(e?.message||e||'');if(s==='LESSON_RANGE_CANCELLED')return 'تم إلغاء اختيار الصفحات. لم تُنشأ بطاقات.';if(s==='LESSON_RANGE_INVALID')return 'نطاق الصفحات غير صحيح. أدخل مثلاً 25-32 (بحد أقصى 15 صفحة).';if(s==='LESSON_INDEX_UNAVAILABLE')return 'نظام فهرسة الدروس لم يحمّل بعد.';if(s==='BOOK_IMAGES_UNAVAILABLE')return 'صور صفحات الكتاب غير متاحة حالياً.';if(s==='LESSON_NOT_INDEXED')return 'لم أتمكن من تحديد هذا الدرس من فهرس الكتاب آلياً. لن أنشئ بطاقات من معلومات عامة.';if(s==='LESSON_END_UNVERIFIED')return 'وجدت بداية الدرس في الكتاب، لكن لم أتحقق بعد من صفحة نهايته. لن أختلق نطاق صفحات.';if(s==='LESSON_START_UNVERIFIED')return 'تعذّر التحقق من بداية الدرس في صفحات الكتاب.';if(s==='SCIENCE_MODE')return 'لهذه المادة استخدم أدوات الشرح والحل والتدريب الذكي.';if(s==='NO_TEXT')return 'لم أستطع قراءة مادة دراسية كافية من الصفحة الحالية.';if(s==='OCR_LOAD')return 'تعذر تشغيل قارئ الصفحة. تحقق من الاتصال وحاول مجدداً.';if(s==='EMPTY')return 'لم يُرجع الذكاء الاصطناعي بطاقات أو أسئلة صالحة. جرّب مرة أخرى، وإذا تكرر الخطأ سنحتاج فحص استجابة الخادم.';if(s==='BAD_JSON')return 'وصل رد غير صالح من الذكاء الاصطناعي. حاول مرة أخرى.';return s&&s.length<180?s:'تعذر إنشاء المحتوى حالياً. حاول مرة أخرى.'}
 window.abuStartTopicCards=function(topic){studyTopic=topic;return startTopicCards()};
 window.abuStartTopicMCQ=function(topic){studyTopic=topic;return startTopicMCQ()};
 window.openCards=function(){chooseStudyTopic('cards')};
