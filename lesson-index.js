@@ -32,8 +32,8 @@ async function pageText(file,n){
  return text;
 }
 async function pageCount(file){
- const r=await fetch('./book-pages/'+file.replace(/\.pdf$/i,'')+'/count.txt');
- if(r.ok){const n=Number((await r.text()).trim());if(Number.isInteger(n)&&n>0)return n}
+ try{const r=await fetch('./book-pages/'+file.replace(/\.pdf$/i,'')+'/count.txt');
+ if(r.ok){const n=Number((await r.text()).trim());if(Number.isInteger(n)&&n>0)return n}}catch{}
  const pdf=await openPdf(file);return pdf.numPages;
 }
 async function findLesson(file,topic,progress){
