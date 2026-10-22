@@ -9,19 +9,32 @@ async function reader(){
  if(!window.Tesseract){await new Promise((resolve,reject)=>{const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';s.onload=resolve;s.onerror=reject;document.head.append(s)})}
  if(!engine)engine=window.Tesseract.createWorker('ara+eng').catch(e=>{engine=null;throw e});return await engine;
 }
+const pdfCache=new Map();
+async function openPdf(file){
+ if(!window.pdfjsLib)throw Error('PDF_READER_UNAVAILABLE');
+ if(!pdfCache.has(file))pdfCache.set(file,window.pdfjsLib.getDocument({url:'https://abu-shreek-api.ahmad-aljarad.workers.dev/api/book?file='+encodeURIComponent(file),withCredentials:false}).promise.catch(e=>{pdfCache.delete(file);throw e}));
+ return pdfCache.get(file);
+}
 async function pageText(file,n){
  const key='abu:lesson-ocr:v1:'+file+':'+n;
  const cached=localStorage.getItem(key);if(cached&&cached.length>40)return cached;
- const img=new Image();img.src=path(file,n);await img.decode();
- const canvas=document.createElement('canvas');canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d').drawImage(img,0,0);
+ let canvas=document.createElement('canvas');
+ try{const img=new Image();img.src=path(file,n);await img.decode();canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext('2d').drawImage(img,0,0)}
+ catch{
+  const pdf=await openPdf(file),page=await pdf.getPage(n),viewport=page.getViewport({scale:1.6});
+  const extracted=await page.getTextContent();const embedded=(extracted.items||[]).map(x=>x.str||'').join(' ').trim();
+  if(embedded.length>80){try{localStorage.setItem(key,embedded)}catch{}return embedded}
+  canvas.width=Math.ceil(viewport.width);canvas.height=Math.ceil(viewport.height);
+  await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
+ }
  const worker=await reader();const result=await worker.recognize(canvas);const text=String(result?.data?.text||'').trim();
  if(text.length>40){try{localStorage.setItem(key,text)}catch{}}
  return text;
 }
 async function pageCount(file){
  const r=await fetch('./book-pages/'+file.replace(/\.pdf$/i,'')+'/count.txt');
- if(!r.ok)throw Error('BOOK_IMAGES_UNAVAILABLE');const n=Number((await r.text()).trim());
- if(!Number.isInteger(n)||n<1)throw Error('BOOK_IMAGES_UNAVAILABLE');return n;
+ if(r.ok){const n=Number((await r.text()).trim());if(Number.isInteger(n)&&n>0)return n}
+ const pdf=await openPdf(file);return pdf.numPages;
 }
 async function findLesson(file,topic,progress){
  const total=await pageCount(file);const target=normalize(topic);
@@ -62,10 +75,11 @@ async function scanContents(file,progress){
   let raw='';try{raw=await pageText(file,p)}catch{continue}
   for(const line of raw.split(/\n/)){
    const trimmed=line.trim();
-   const match=trimmed.match(/(?:^|\s)([0-9]{1,3})\s*$/);
+   const normalizedDigits=trimmed.replace(/[٠-٩]/g,x=>String(x.charCodeAt(0)-1632)).replace(/[۰-۹]/g,x=>String(x.charCodeAt(0)-1776));
+   const match=normalizedDigits.match(/(?:^|\s)([0-9]{1,3})\s*$/);
    if(!match)continue;
    const printed=Number(match[1]);
-   const title=trimmed.replace(/[0-9٠-٩]+\s*$/,'').replace(/[.ـ…·•\s]+/g,' ').trim();
+   const title=trimmed.replace(/[0-9٠-٩۰-۹]+\s*$/,'').replace(/[.ـ…·•\s]+/g,' ').trim();
    if(title.length<5||title.length>100||printed<1||printed>total||seen.has(title))continue;
    seen.add(title);items.push({title,printed,tocImagePage:p,verified:false});
   }
