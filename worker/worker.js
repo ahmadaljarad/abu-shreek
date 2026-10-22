@@ -11,7 +11,7 @@ function cors(request){
   };
 }
 function json(request,data,status=200){return new Response(JSON.stringify(data),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store',...cors(request)}})}
-function source(data){return String(data.sourceText||data.pageText||'').trim().slice(0,7000)}
+function source(data){return String(data.sourceText||data.pageText||'').trim().slice(0,24000)}
 async function gemini(env,prompt,jsonMode=false){
   if(!env.GEMINI_API_KEY) throw new Error('NO_KEY');
   const models=[env.GEMINI_MODEL||'gemini-3.5-flash-lite','gemini-3.8-flash'];
@@ -19,7 +19,7 @@ async function gemini(env,prompt,jsonMode=false){
   for(const model of [...new Set(models)]){
     try{
       const url='https://generativelanguage.googleapis.com/v1beta/models/'+encodeURIComponent(model)+':generateContent?key='+encodeURIComponent(env.GEMINI_API_KEY);
-      const body={contents:[{role:'user',parts:[{text:prompt}]}],generationConfig:{temperature:jsonMode?0.15:0.3,maxOutputTokens:jsonMode?1400:700,...(jsonMode?{responseMimeType:'application/json'}:{})}};
+      const body={contents:[{role:'user',parts:[{text:prompt}]}],generationConfig:{temperature:jsonMode?0.15:0.3,maxOutputTokens:jsonMode?5000:700,...(jsonMode?{responseMimeType:'application/json'}:{})}};
       const r=await fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
       const raw=await r.text(); let j={}; try{j=JSON.parse(raw)}catch{}
       if(!r.ok) throw Object.assign(new Error(j?.error?.message||raw||('Gemini HTTP '+r.status)),{status:r.status});
@@ -75,9 +75,9 @@ ${source(data)||'[لا يوجد نص مصدر متاح]'}
     let data;try{data=await request.json()}catch{return json(request,{error:'طلب غير صالح.'},400)}
     const text=source(data);if(text.length<80)return json(request,{error:'لا يوجد نص كافٍ من الكتاب لإنشاء محتوى موثوق.'},400);
     const mcq=data.mode==='mcq';
-    const rules=mcq?'أنشئ حتى 5 أسئلة اختيار من متعدد. أعد JSON فقط: {"items":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}':'أنشئ حتى 5 بطاقات تعليمية. أعد JSON فقط: {"items":[{"front":"...","back":"..."}]}';
+    const rules=mcq?'أنشئ من 8 إلى 10 أسئلة اختيار من متعدد دقيقة وغير متكررة، من المصدر فقط. أعد JSON فقط: {"items":[{"question":"...","options":["...","...","...","..."],"answer":0,"explanation":"..."}]}':'أنشئ من 8 إلى 10 بطاقات تعليمية دقيقة ومتنوعة وغير متكررة، من المصدر فقط. أعد JSON فقط: {"items":[{"front":"...","back":"..."}]}';
     const prompt=policy(data.book)+'\n'+rules+'\nالمصدر الوحيد:\n'+text;
-    try{const raw=await gemini(env,prompt,true);let parsed;try{parsed=JSON.parse(raw)}catch{return json(request,{error:'تعذر قراءة رد الذكاء الاصطناعي.'},502)};return json(request,{items:Array.isArray(parsed?.items)?parsed.items.slice(0,5):[]})}catch(e){return json(request,{error:friendly(e)},503)}
+    try{const raw=await gemini(env,prompt,true);let parsed;try{parsed=JSON.parse(raw)}catch{return json(request,{error:'تعذر قراءة رد الذكاء الاصطناعي.'},502)};return json(request,{items:Array.isArray(parsed?.items)?parsed.items.slice(0,10):[]})}catch(e){return json(request,{error:friendly(e)},503)}
   }
   return json(request,{ok:true,name:'Abu Shreek API'},200);
  }
