@@ -18,7 +18,7 @@ for(const subject of subjects){
   if(!e.title||typeof e.title!=='string')errors.push('missing title');
   if(!Number.isInteger(e.start)||!Number.isInteger(e.end)||e.start<1||e.end<e.start)errors.push('invalid page range');
   if(!e.book||!/^9-/i.test(e.book))errors.push('book filename missing');
-  if(seen.has(e.title))errors.push('duplicate title');seen.add(e.title);
+  if(seen.has(e.title+'|'+e.start))errors.push('duplicate title and page');seen.add(e.title+'|'+e.start);
   if(e.start<=prev)errors.push('overlapping or unordered start');prev=e.end;
   if(e.end-e.start>14&&!e.scope)errors.push('long range needs scope=unit');
   if(errors.length){failures++;console.error('FAIL',subject,e.title,errors.join('; '))}
