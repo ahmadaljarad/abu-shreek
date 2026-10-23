@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-french.pdf",
+  "catalogue_key": "بكالوريا علمي|اللغة الفرنسية",
+  "edition": "2025-2026",
+  "index_scope": "unit_starts_only",
+  "toc_pdf_page": 4,
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-french.pdf",
+    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-french.pdf.json"
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "title": "On fête ensemble …",
+      "printed_page": 5,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "title": "Chacun pour tous",
+      "printed_page": 23,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 3,
+      "title": "Le salon, un espace culturel",
+      "printed_page": 41,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 4,
+      "title": "La femme dans la littérature",
+      "printed_page": 59,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 5,
+      "title": "L’intelligence artificielle",
+      "printed_page": 77,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 6,
+      "title": "La conquête de l’espace",
+      "printed_page": 95,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    }
+  ],
+  "unresolved": [],
+  "verified_unit_count": 6,
+  "listed_unit_count": 6,
+  "lesson_ranges_verified": false,
+  "complete": false,
+  "notes": "Only unit titles and printed starting pages were verified against the book's original contents page. PDF page offsets, lesson subtopics and end pages have NOT been verified. Never use these as verified page ranges for quizzes."
+}
