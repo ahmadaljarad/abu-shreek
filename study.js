@@ -243,8 +243,46 @@ async function generate(mode,force=false){
 function nice(e){const s=String(e?.message||e||'');if(s==='LESSON_RANGE_CANCELLED')return 'تم إلغاء اختيار الصفحات. لم تُنشأ بطاقات.';if(s==='LESSON_RANGE_INVALID')return 'نطاق الصفحات غير صحيح. أدخل مثلاً 25-32 (بحد أقصى 15 صفحة).';if(s==='LESSON_INDEX_UNAVAILABLE')return 'نظام فهرسة الدروس لم يحمّل بعد.';if(s==='BOOK_IMAGES_UNAVAILABLE')return 'صور صفحات الكتاب غير متاحة حالياً.';if(s==='LESSON_NOT_INDEXED')return 'لم أتمكن من تحديد هذا الدرس من فهرس الكتاب آلياً. لن أنشئ بطاقات من معلومات عامة.';if(s==='LESSON_END_UNVERIFIED')return 'وجدت بداية الدرس في الكتاب، لكن لم أتحقق بعد من صفحة نهايته. لن أختلق نطاق صفحات.';if(s==='LESSON_START_UNVERIFIED')return 'تعذّر التحقق من بداية الدرس في صفحات الكتاب.';if(s==='SCIENCE_MODE')return 'لهذه المادة استخدم أدوات الشرح والحل والتدريب الذكي.';if(s==='NO_TEXT')return 'لم أستطع قراءة مادة دراسية كافية من الصفحة الحالية.';if(s==='OCR_LOAD')return 'تعذر تشغيل قارئ الصفحة. تحقق من الاتصال وحاول مجدداً.';if(s==='EMPTY')return 'لم يُرجع الذكاء الاصطناعي بطاقات أو أسئلة صالحة. جرّب مرة أخرى، وإذا تكرر الخطأ سنحتاج فحص استجابة الخادم.';if(s==='BAD_JSON')return 'وصل رد غير صالح من الذكاء الاصطناعي. حاول مرة أخرى.';return s&&s.length<180?s:'تعذر إنشاء المحتوى حالياً. حاول مرة أخرى.'}
 window.abuStartTopicCards=function(topic){studyTopic=topic;window.ABU_STUDY_TOPIC=topic;return startTopicCards()};
 window.abuStartTopicMCQ=function(topic){studyTopic=topic;window.ABU_STUDY_TOPIC=topic;return startTopicMCQ()};
+/* Review missed cards separately for each textbook part and lesson. */
+const originalMarkCard=window.markCard;
+let reviewingMissed=false;
+const missedKey=()=>pageKey('missedCardIndices');
+function missedIndices(){
+ try{return JSON.parse(localStorage.getItem(missedKey())||'[]').filter(n=>Number.isInteger(n)&&n>=0&&n<cardsForSubject().length)}catch{return[]}
+}
+function refreshMissedButton(){
+ let btn=document.getElementById('abuReviewMissed');
+ if(!btn){
+  const actions=document.querySelector('#cards .actions');
+  if(!actions)return;
+  btn=document.createElement('button');btn.id='abuReviewMissed';btn.type='button';btn.className='btn soft';actions.appendChild(btn);
+  btn.onclick=()=>{
+   const misses=missedIndices();
+   if(!misses.length)return;
+   reviewingMissed=true;state.cardIndex=misses[0];state.cardFlipped=false;renderCard();
+  };
+ }
+ const misses=missedIndices();
+ btn.textContent='راجع البطاقات الصعبة ('+misses.length+')';
+ btn.disabled=!misses.length;
+}
+window.markCard=function(ok){
+ const cards=cardsForSubject();
+ if(!cards.length)return;
+ const current=state.cardIndex%cards.length;
+ const misses=new Set(missedIndices());
+ if(ok)misses.delete(current);else misses.add(current);
+ try{localStorage.setItem(missedKey(),JSON.stringify([...misses].sort((a,b)=>a-b)))}catch{}
+ originalMarkCard(ok);
+ if(reviewingMissed){
+  const remaining=missedIndices();
+  if(remaining.length){state.cardIndex=remaining.find(n=>n>current)??remaining[0];state.cardFlipped=false;renderCard()}
+  else reviewingMissed=false;
+ }
+ refreshMissedButton();
+};
 window.openCards=function(){chooseStudyTopic('cards')};
-async function startTopicCards(){show('cards');cardPct.textContent='0% إنجاز';cardProgress.style.width='0%';document.getElementById('cardCount').textContent='جارٍ تحميل بطاقات هذا الدرس...';state.cardIndex=0;state.cardFlipped=false;flash.textContent='جارٍ إنشاء بطاقات الموضوع المختار...';try{await generate('cards');renderCard()}catch(e){flash.textContent=nice(e);console.error('[cards]',e)}};
+async function startTopicCards(){reviewingMissed=false;show('cards');refreshMissedButton();cardPct.textContent='0% إنجاز';cardProgress.style.width='0%';document.getElementById('cardCount').textContent='جارٍ تحميل بطاقات هذا الدرس...';state.cardIndex=0;state.cardFlipped=false;flash.textContent='جارٍ إنشاء بطاقات الموضوع المختار...';try{await generate('cards');renderCard();refreshMissedButton()}catch(e){flash.textContent=nice(e);console.error('[cards]',e)}};
 window.openMCQ=function(){chooseStudyTopic('mcq')};
 async function startTopicMCQ(){show('mcq');state.mcqIndex=0;mcqQuestion.textContent='جارٍ إنشاء أسئلة الموضوع المختار...';mcqOptions.innerHTML='';mcqExplain.textContent='';try{generatedMCQ=await generate('mcq');nextMCQ()}catch(e){mcqQuestion.textContent=nice(e);console.error('[mcq]',e)}};
 window.nextMCQ=function(){if(!generatedMCQ.length){try{generatedMCQ=JSON.parse(localStorage.getItem(pageKey('generatedMCQ'))||'[]')}catch{generatedMCQ=[]}}if(!generatedMCQ.length){mcqQuestion.textContent='لا توجد أسئلة بعد.';return}const q=state.currentMCQ=shuffledQuestion(generatedMCQ[state.mcqIndex%generatedMCQ.length]);mcqQuestion.textContent=q.q;mcqOptions.innerHTML='';mcqExplain.textContent='';q.o.forEach((o,i)=>{const b=document.createElement('button');b.className='mcq-option';b.textContent=o;b.onclick=()=>answerMCQ(i,b);mcqOptions.appendChild(b)});state.mcqIndex++;const p=progress('mcq'),n=pct(p);mcqPct.textContent=n+'%';mcqProgress.style.width=n+'%'};
