@@ -47,7 +47,7 @@ function chooseStudyTopic(mode){
  const info=document.createElement('p');info.textContent='المادة: '+state.subject+' — اختر الموضوع مباشرة دون فتح الكتاب.';box.appendChild(info);
  const catalog=window.ABU_VERIFIED_TOC||{};
  const entries=Array.isArray(catalog[state.level+'|'+state.subject])?catalog[state.level+'|'+state.subject]:[];
- const topics=entries.filter(x=>x&&x.verified===true&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start).map(x=>x.title);
+ const topics=entries.filter(x=>x&&x.verified===true&&x.scope!=='unit'&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.start>=1&&x.end>=x.start&&x.end-x.start<=14).map(x=>x.title);
  if(!topics.length){const warning=document.createElement('p');warning.textContent='لم يتم توثيق فهرس هذه المادة من الكتاب الأصلي بعد. يمكنك تحديد صفحات الدرس بنفسك لإنشاء بطاقات أو أسئلة من صفحات الكتاب حصراً، دون اختراع عناوين دروس.';warning.style.cssText='line-height:1.9;color:#9a3412;background:#fff7ed;padding:14px;border-radius:10px';box.appendChild(warning)}
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const topic of topics){
@@ -180,7 +180,7 @@ async function generate(mode,force=false){
   const sourceKey=key('verified-source:v2:'+f+':'+studyTopic);
   let saved=null;try{saved=JSON.parse(sessionStorage.getItem(sourceKey)||'null')}catch{}
   if(saved?.text?.length>80)return saved.text;
-  const verified=(window.ABU_VERIFIED_TOC?.[state.level+'|'+state.subject]||[]).find(x=>x.title===studyTopic&&x.verified===true&&(!x.book||x.book===f));
+  const verified=(window.ABU_VERIFIED_TOC?.[state.level+'|'+state.subject]||[]).find(x=>x.title===studyTopic&&x.verified===true&&x.scope!=='unit'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start&&x.end-x.start<=14&&(!x.book||x.book===f));
   let range=verified?{start:verified.start,end:verified.end,book:f,topic:studyTopic}:manualRanges[f+'|'+studyTopic];
   if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED','BOOK_IMAGES_UNAVAILABLE'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
   const pages=[];for(let n=range.start;n<=range.end;n++){const t=await locator.pageText(f,n);if(t.length>60)pages.push('صفحة '+n+' من الكتاب:\\n'+t)}
