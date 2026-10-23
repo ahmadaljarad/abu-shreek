@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'books-repair.js'
+      - 'data/bac-sci-release-assets.json'
       - 'verified-toc.js'
       - 'scripts/validate-baccalaureate.cjs'
       - '.github/workflows/validate-baccalaureate.yml'
