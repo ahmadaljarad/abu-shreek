@@ -2,5 +2,5 @@
 // Never put a service_role or secret key in frontend files.
 window.ABU_AUTH_CONFIG = {
   url: 'https://yaykzzetgwwqhzaoikrz.supabase.co',
-  anonKey: ''
+  anonKey: 'sb_publishable_g0dBkbaAksKoJRfarPyWIA_iHods3XE'
 };
