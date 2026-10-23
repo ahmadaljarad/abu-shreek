@@ -1,0 +1,54 @@
+{
+  "release": "books-v1",
+  "verified_at": "2026-10-23",
+  "assets": [
+    {
+      "name": "bac-sci-arabic.pdf",
+      "size": 3655342
+    },
+    {
+      "name": "bac-sci-biology.pdf",
+      "size": 28537844
+    },
+    {
+      "name": "bac-sci-chemistry.pdf",
+      "size": 39599744
+    },
+    {
+      "name": "bac-sci-christian.pdf",
+      "size": 5826198
+    },
+    {
+      "name": "bac-sci-english-ab.pdf",
+      "size": 28601220
+    },
+    {
+      "name": "bac-sci-english-sb.pdf",
+      "size": 16786550
+    },
+    {
+      "name": "bac-sci-french.pdf",
+      "size": 48399381
+    },
+    {
+      "name": "bac-sci-islamic.pdf",
+      "size": 54212056
+    },
+    {
+      "name": "bac-sci-math-1.pdf",
+      "size": 78793722
+    },
+    {
+      "name": "bac-sci-math-2.pdf",
+      "size": 22662321
+    },
+    {
+      "name": "bac-sci-physics.pdf",
+      "size": 68638209
+    },
+    {
+      "name": "bac-sci-russian.pdf",
+      "size": 22394089
+    }
+  ]
+}
