@@ -16,7 +16,7 @@ jobs:
       - name: Install PDF tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y poppler-utils
+          sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-ara tesseract-ocr-eng
           python -m pip install --user PyMuPDF
       - name: Extract actual textbook metadata and contents
         run: python3 scripts/extract-bac-sci.py
