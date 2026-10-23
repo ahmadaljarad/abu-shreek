@@ -4,6 +4,10 @@ on:
     paths:
       - 'books-repair.js'
       - 'data/bac-sci-release-assets.json'
+      - 'data/bac-sci-extracted/**'
+      - 'tests/bac-sci.test.cjs'
+      - 'study.js'
+      - 'lesson-index.js'
       - 'verified-toc.js'
       - 'scripts/validate-baccalaureate.cjs'
       - '.github/workflows/validate-baccalaureate.yml'
@@ -17,4 +21,6 @@ jobs:
         with:
           node-version: '22'
       - name: Check scientific and literary modules
-        run: node scripts/validate-baccalaureate.cjs
+        run: |
+          node scripts/validate-baccalaureate.cjs
+          node --test tests/bac-sci.test.cjs
