@@ -78,7 +78,10 @@ function chooseStudyTopic(mode){
   if(!f||!locator?.scanContents){alert('قارئ الفهرس غير متاح لهذا الكتاب.');return}
   scan.disabled=true;scan.textContent='جارٍ فحص فهرس الكتاب... قد يستغرق عدة دقائق';
   try{
-   const entries=await locator.scanContents(f,msg=>scan.textContent=msg);
+   const cacheKey='abu:toc-scan:v1:'+f;
+   let entries=null;
+   try{const cached=JSON.parse(localStorage.getItem(cacheKey)||'null');if(Array.isArray(cached)&&cached.length)entries=cached}catch{}
+   if(!entries){entries=await locator.scanContents(f,msg=>scan.textContent=msg);if(entries.length){try{localStorage.setItem(cacheKey,JSON.stringify(entries))}catch{}}}
    if(!entries.length){scan.textContent='لم يتمكن القارئ من استخراج فهرس واضح. استخدم اختيار الصفحات.';return}
    const heading=document.createElement('p');heading.textContent='عناوين مستخرجة آلياً من صور الفهرس، غير موثّقة بعد. اختر عنواناً لتحديد صفحاته والتحقق منها.';heading.style.cssText='color:#92400e;line-height:1.8';list.replaceChildren(heading);
    for(const entry of entries){
@@ -86,7 +89,7 @@ function chooseStudyTopic(mode){
     b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;studyBook=f;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:entry.title,start:range.start,end:range.end,book:f});studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
     list.appendChild(b);
    }
-   scan.textContent='تم استخراج '+entries.length+' عنواناً أولياً من الفهرس';
+   scan.textContent='تم العثور على '+entries.length+' عنواناً أولياً من الفهرس (محفوظة لهذا الجهاز).';
   }catch(e){scan.textContent='تعذرت قراءة الفهرس: '+nice(e)}
   finally{scan.disabled=false}
  };
