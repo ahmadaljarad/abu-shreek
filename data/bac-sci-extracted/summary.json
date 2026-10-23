@@ -8,13 +8,17 @@
   },
   {
     "file": "bac-sci-biology.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 287,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
   },
   {
     "file": "bac-sci-chemistry.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 184,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
   },
   {
     "file": "bac-sci-christian.pdf",
@@ -32,37 +36,51 @@
   },
   {
     "file": "bac-sci-english-sb.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 128,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
   },
   {
     "file": "bac-sci-french.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 120,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
   },
   {
     "file": "bac-sci-islamic.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 164,
+    "bookmarks": 0,
+    "opening_pages_with_text": 2
   },
   {
     "file": "bac-sci-math-1.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 232,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
   },
   {
     "file": "bac-sci-math-2.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 196,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
   },
   {
     "file": "bac-sci-physics.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 268,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
   },
   {
     "file": "bac-sci-russian.pdf",
-    "status": "error",
-    "error": "[Errno 2] No such file or directory: 'tesseract'"
+    "status": "extracted",
+    "pdf_pages": 128,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
   }
 ]
