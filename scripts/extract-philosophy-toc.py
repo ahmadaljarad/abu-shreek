@@ -11,7 +11,7 @@ for volume in (1,2):
     name=f'bac-lit-philosophy-{volume}'
     folder=ROOT/'book-pages'/name
     images=sorted(folder.glob('*.webp'))[:18]
-    pages=[]
+    pages=[]  # Preserve raw OCR for independent title and page verification.
     for img in images:
         result=subprocess.run(['tesseract',str(img),'stdout','-l','ara+eng','--psm','3'],
                               text=True,capture_output=True,check=False)
