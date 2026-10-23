@@ -58,6 +58,18 @@ function chooseStudyTopic(mode){
  const catalog=window.ABU_VERIFIED_TOC||{};
  const entries=Array.isArray(catalog[state.level+'|'+state.subject])?catalog[state.level+'|'+state.subject]:[];
  const topics=entries.filter(x=>x&&x.verified===true&&x.scope!=='unit'&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.start>=1&&x.end>=x.start&&x.end-x.start<=14);
+ // For the philosophy textbook, show the actual published card library as the lesson list.
+ if(state.level==='بكالوريا أدبي'&&state.subject==='الفلسفة'){
+  const cardList=document.createElement('div');cardList.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;max-height:55vh;overflow:auto';
+  const status=document.createElement('p');status.textContent='جارٍ تحميل دروس الفلسفة التي تحتوي بطاقات جاهزة...';box.appendChild(status);box.appendChild(cardList);
+  premadeCards().then(db=>{
+   const lessons=(db.lessons||[]).filter(x=>x.level===state.level&&x.subject===state.subject&&x.status==='verified'&&Array.isArray(x.cards)&&x.cards.length);
+   status.textContent='البطاقات الجاهزة: '+lessons.length+' درساً — '+lessons.reduce((n,x)=>n+x.cards.length,0)+' بطاقة. اختر درساً للبدء مباشرة.';
+   for(const lesson of lessons){const b=document.createElement('button');b.type='button';b.textContent=lesson.topic+' ('+lesson.cards.length+' بطاقة)';b.style.cssText='padding:13px;text-align:right;background:#edf8f5;border:1px solid #c9e6df;border-radius:10px;color:#0e6961;cursor:pointer';b.onclick=()=>{selectedVerifiedLesson=null;studyBook=lesson.book||file();studyTopic=lesson.topic;window.ABU_STUDY_TOPIC=studyTopic;overlay.remove();mode==='cards'?startTopicCards():startTopicMCQ()};cardList.appendChild(b)}
+  }).catch(()=>{status.textContent='تعذر تحميل مكتبة البطاقات. أعد تحميل الصفحة وحاول مجدداً.'});
+  const close=document.createElement('button');close.textContent='إغلاق';close.style.cssText='margin-top:15px;padding:10px 18px;border:0;border-radius:9px;cursor:pointer';close.onclick=()=>overlay.remove();box.appendChild(close);overlay.onclick=e=>{if(e.target===overlay)overlay.remove()};overlay.appendChild(box);document.body.appendChild(overlay);return;
+ }
+
  if(!topics.length){const warning=document.createElement('p');warning.textContent='لم يتم توثيق فهرس هذه المادة من الكتاب الأصلي بعد. يمكنك تحديد صفحات الدرس بنفسك لإنشاء بطاقات أو أسئلة من صفحات الكتاب حصراً، دون اختراع عناوين دروس.';warning.style.cssText='line-height:1.9;color:#9a3412;background:#fff7ed;padding:14px;border-radius:10px';box.appendChild(warning)}
  const selectedKey=state.level+'|'+state.subject;
  const savedConfirmed=(window.ABU_VERIFIED_TOC?.[selectedKey]||[]).filter(x=>x?.verified===true&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start&&x.end-x.start<=14);
@@ -231,7 +243,7 @@ async function autoFindTopicRange(f,topic,mode){
  if(!start)throw Error('لم أتمكن من العثور على عنوان الدرس داخل صفحات الكتاب تلقائياً.');
  return {start,end:end||Math.min(total,start+12),book:f,topic};
 }
-const PREMADE_CARDS_URL='./data/lesson-cards.json?v=1';
+const PREMADE_CARDS_URL='./data/lesson-cards.json?v=20261023-717';
 let premadeCardsPromise;
 async function premadeCards(){
  if(!premadeCardsPromise)premadeCardsPromise=fetch(PREMADE_CARDS_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('CARD_LIBRARY_UNAVAILABLE');return r.json()}).catch(e=>{premadeCardsPromise=null;throw e});
