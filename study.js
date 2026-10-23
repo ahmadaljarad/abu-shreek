@@ -64,7 +64,7 @@ function chooseStudyTopic(mode){
  if(savedConfirmed.length){const summary=document.createElement('p');summary.style.cssText='color:#0f766e;font-weight:700';summary.textContent='الدروس الموثقة المتاحة: '+savedConfirmed.length;box.appendChild(summary)}
  const drafts=(window.ABU_DRAFT_TOC?.[state.level+'|'+state.subject]||[]).filter(x=>x&&!entries.some(y=>y.title===x.title&&y.book===x.book));
  if(drafts.length){
-  const info=document.createElement('p');info.textContent='فهرس الكتاب: '+drafts.length+' عنواناً مستخرجاً من الكتاب الأصلي. يلزم تحديد صفحات الدرس قبل إنشاء البطاقات.';info.style.cssText='color:#92400e;line-height:1.8';box.appendChild(info);
+  const info=document.createElement('p');info.textContent='فهرس الكتاب: '+drafts.length+' درساً بحسب ترتيب فهرس الكتاب الأصلي. اختر الدرس مباشرة.';info.style.cssText='color:#92400e;line-height:1.8';box.appendChild(info);
   const draftList=document.createElement('div');draftList.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;max-height:55vh;overflow:auto';
   for(const d of drafts){
    const b=document.createElement('button');b.type='button';b.textContent=d.title+' — '+(d.book.includes('-1.')?'الجزء الأول':'الجزء الثاني');b.style.cssText='padding:13px;text-align:right;background:#edf8f5;border:1px solid #c9e6df;border-radius:10px;color:#0e6961;cursor:pointer';
