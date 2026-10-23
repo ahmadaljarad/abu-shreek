@@ -14,9 +14,15 @@ grant select on public.student_profiles to authenticated;
 create policy "Student can read own profile"
 on public.student_profiles for select to authenticated
 using (user_id = (select auth.uid()));
+create or replace function public.is_school_admin()
+returns boolean language sql stable security definer set search_path = '' as $
+  select exists(select 1 from public.student_profiles where user_id=auth.uid() and role='admin');
+$;
+revoke all on function public.is_school_admin() from public,anon;
+grant execute on function public.is_school_admin() to authenticated;
 create policy "Admin can read all profiles"
 on public.student_profiles for select to authenticated
-using (exists (select 1 from public.student_profiles p where p.user_id=(select auth.uid()) and p.role='admin'));
+using ((select public.is_school_admin()));
 -- No INSERT/UPDATE/DELETE policies for authenticated clients: school level and role are immutable to students.
 -- The trigger creates a profile using only the requested grade and verified Auth identity.
 create or replace function public.create_student_profile()
