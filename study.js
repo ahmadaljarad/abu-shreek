@@ -84,11 +84,22 @@ function chooseStudyTopic(mode){
    const cacheKey='abu:toc-scan:v1:'+f;
    let entries=null;
    try{const cached=JSON.parse(localStorage.getItem(cacheKey)||'null');if(Array.isArray(cached)&&cached.length)entries=cached}catch{}
+   if(!entries&&/^bac-lit-philosophy-[12]\\.pdf$/.test(f)){
+    try{
+     const draftUrl='./data/toc-candidates/'+f.replace(/\\.pdf$/,'')+'.json';
+     const response=await fetch(draftUrl);
+     if(response.ok){
+      const draft=await response.json();
+      const contents=draft.pages?.find(p=>p.image_page===2);
+      entries=(contents?.candidates||[]).filter(x=>/الدرس|الوحدة/.test(x.title_ocr||'')).map(x=>({title:x.title_ocr,printed:x.printed_page_ocr||'غير مؤكدة',verified:false}));
+     }
+    }catch{}
+   }
    if(!entries){entries=await locator.scanContents(f,msg=>scan.textContent=msg);if(entries.length){try{localStorage.setItem(cacheKey,JSON.stringify(entries))}catch{}}}
    if(!entries.length){scan.textContent='لم يتمكن القارئ من استخراج فهرس واضح. استخدم اختيار الصفحات.';return}
    const heading=document.createElement('p');heading.textContent='عناوين مستخرجة آلياً من صور الفهرس، غير موثّقة بعد. اختر عنواناً لتحديد صفحاته والتحقق منها.';heading.style.cssText='color:#92400e;line-height:1.8';list.replaceChildren(heading);
    for(const entry of entries){
-    const b=document.createElement('button');b.type='button';b.textContent=entry.title+' (صفحة مطبوعة '+entry.printed+')';b.style.cssText='padding:12px;text-align:right;background:#fff8e9;color:#704b11;border:1px solid #edd6a0;border-radius:9px;cursor:pointer';
+    const b=document.createElement('button');b.type='button';b.textContent=entry.title+' (الصفحة المطبوعة: '+entry.printed+')';b.style.cssText='padding:12px;text-align:right;background:#fff8e9;color:#704b11;border:1px solid #edd6a0;border-radius:9px;cursor:pointer';
     b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;studyBook=f;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:entry.title,start:range.start,end:range.end,book:f});studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
     list.appendChild(b);
    }
