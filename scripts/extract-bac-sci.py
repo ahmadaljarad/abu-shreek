@@ -6,6 +6,7 @@ No lesson names or page offsets are invented.
 import json
 import pathlib
 import subprocess
+import tempfile
 import urllib.request
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
@@ -33,6 +34,16 @@ for item in manifest['assets']:
         record={'file':name,'pdf_pages':count,'toc_candidates':[],
                 'opening_pages':[{'pdf_page':i+1,'text':t.strip()[:15000]} for i,t in enumerate(page_text)],
                 'extraction_note':'Raw PDF text only. Titles and offsets require human review.'}
+        # OCR the opening pages only when PDF text extraction is sparse or numeric-only.
+        # Preserve raw OCR as evidence, never automatically publish guessed lesson boundaries.
+        for p in record['opening_pages']:
+            useful=sum(ch.isalpha() for ch in p['text'])
+            if useful>=80: continue
+            with tempfile.TemporaryDirectory() as tmp:
+                image=pathlib.Path(tmp)/'page'
+                subprocess.run(['pdftoppm','-f',str(p['pdf_page']),'-l',str(p['pdf_page']),'-scale-to','1600','-png','-singlefile',str(target),str(image)],capture_output=True,check=True)
+                ocr=subprocess.run(['tesseract',str(image)+'.png','stdout','-l','ara+eng'],capture_output=True,text=True,check=True)
+                p['ocr_text']=ocr.stdout.strip()[:15000]
         # pdfinfo metadata and embedded bookmarks are useful independent signals.
         try:
             import fitz
