@@ -209,6 +209,28 @@ if(typeof window.askAI==='function'){const originalAsk=window.askAI;window.askAI
 
 /* التخزين أصبح خاصاً بالمادة + الصفحة لمنع ظهور أسئلة مادة أو صفحة أخرى. */
 window.cardsForSubject=function(){try{return JSON.parse(localStorage.getItem(pageKey('generatedCards'))||'[]')}catch{return[]}};
+async function autoFindTopicRange(f,topic,mode){
+ const locator=window.ABU_LESSON_SOURCE;
+ const total=await locator.pageCount(f);
+ const titles=(window.ABU_DRAFT_TOC?.[state.level+'|'+state.subject]||[]).filter(x=>!x.book||x.book===f).map(x=>x.title);
+ const normTitle=x=>String(x||'').normalize('NFKC').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/\s+/g,' ').trim();
+ const wanted=normTitle(topic),others=titles.map(normTitle).filter(x=>x!==wanted&&x.length>5);
+ let start=0,end=0;
+ for(let n=1;n<=total;n++){
+  const status='جارٍ البحث تلقائياً عن محتوى الدرس: '+n+' / '+total;
+  if(mode==='cards')flash.textContent=status;else mcqQuestion.textContent=status;
+  let txt='';try{txt=normTitle(await locator.pageText(f,n))}catch(e){continue}
+  const head=txt.slice(0,450);
+  if(!start){
+   if(head.includes(wanted))start=n;
+  }else if(n>start&&others.some(x=>head.includes(x))){
+   end=n-1;break;
+  }
+  if(start&&n-start>=12){end=n;break}
+ }
+ if(!start)throw Error('لم أتمكن من العثور على عنوان الدرس داخل صفحات الكتاب تلقائياً.');
+ return {start,end:end||Math.min(total,start+12),book:f,topic};
+}
 async function generate(mode,force=false){
  if(isProblemSubject()&&!studyTopic)throw new Error('SCIENCE_MODE');
  const sk=pageKey(mode==='cards'?'generatedCards':'generatedMCQ');
@@ -222,7 +244,7 @@ async function generate(mode,force=false){
   if(saved?.text?.length>80)return saved.text;
   const verified=(selectedVerifiedLesson&&selectedVerifiedLesson.title===studyTopic&&(!selectedVerifiedLesson.book||selectedVerifiedLesson.book===f)?selectedVerifiedLesson:null)||(window.ABU_VERIFIED_TOC?.[state.level+'|'+state.subject]||[]).find(x=>x.title===studyTopic&&x.verified===true&&x.scope!=='unit'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start&&x.end-x.start<=14&&(!x.book||x.book===f));
   let range=verified?{start:verified.start,end:verified.end,book:f,topic:studyTopic}:manualRanges[f+'|'+studyTopic];
-  if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED','BOOK_IMAGES_UNAVAILABLE'].includes(String(err.message)))range=await requestLessonRange(f,studyTopic,err);else throw err}manualRanges[f+'|'+studyTopic]=range}
+  if(!range){try{range=await locator.findLesson(f,studyTopic,s=>{if(mode==='cards')flash.textContent=s;else mcqQuestion.textContent=s})}catch(err){if(['LESSON_NOT_INDEXED','LESSON_END_UNVERIFIED','LESSON_START_UNVERIFIED'].includes(String(err.message)))range=await autoFindTopicRange(f,studyTopic,mode);else throw err}manualRanges[f+'|'+studyTopic]=range}
   const pages=[];for(let n=range.start;n<=range.end;n++){const t=await locator.pageText(f,n);if(t.length>60)pages.push('صفحة '+n+' من الكتاب:\\n'+t)}
   if(!pages.length)throw Error('NO_TEXT');
   const text='المصدر الحصري هو الصفحات التالية من الكتاب. الدرس: '+studyTopic+'. لا تستخدم معلومات من خارجها.\\n'+pages.join('\\n\\n');
