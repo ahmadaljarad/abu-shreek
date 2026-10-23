@@ -35,6 +35,8 @@ function chooseBookPart(){
  return choices[idx];
 }
 const pageKey=t=>studyTopic?key(t+':booksource:v3:'+(studyBook||file())+':'+studyTopic):key(t+':page:'+state.page);
+// Keep card rendering on the same per-lesson storage key used by the verified card loader.
+cardsForSubject=function(){try{return JSON.parse(localStorage.getItem(pageKey('generatedCards'))||'[]')}catch{return[]}};
 const TOPIC_SUGGESTIONS={
  'علم الأحياء':['الجهاز العصبي','أنواع الخلايا العصبية','السيالة العصبية','المشابك العصبية','الجهاز الهرموني','التكاثر','الوراثة','المناعة'],
  'علم الأحياء والأرض':['الخلية','التغذية','التنفس','التكاثر','الوراثة','البيئة'],
