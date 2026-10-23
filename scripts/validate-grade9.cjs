@@ -3,6 +3,10 @@
 const fs=require('node:fs'),vm=require('node:vm');
 const src=fs.readFileSync('verified-toc.js','utf8');
 const window={};vm.runInNewContext(src,{window,localStorage:{getItem:()=>null,setItem:()=>{}}},{timeout:5000});
+// Detect silent overwrites before evaluating the catalogue.
+const assignments=[...src.matchAll(/window\\.ABU_VERIFIED_TOC\\[['\"]([^'\"]+)['\"]\\]\\s*=/g)].map(m=>m[1]);
+const duplicates=assignments.filter((name,i)=>assignments.indexOf(name)!==i);
+if(duplicates.length){console.error('Duplicate catalogue assignments:',[...new Set(duplicates)].join(', '));process.exitCode=1}
 const subjects=['الرياضيات','اللغة العربية','الفنون','التاريخ','الجغرافيا','التربية الوطنية','الفيزياء والكيمياء','التربية الإسلامية','التربية المسيحية','علم الأحياء والأرض','اللغة الإنكليزية','اللغة الفرنسية','اللغة الروسية','الموسيقا','التقانة'];
 let failures=0,lessons=0,covered=0;
 for(const subject of subjects){
