@@ -62,6 +62,17 @@ function chooseStudyTopic(mode){
  const selectedKey=state.level+'|'+state.subject;
  const savedConfirmed=(window.ABU_VERIFIED_TOC?.[selectedKey]||[]).filter(x=>x?.verified===true&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start&&x.end-x.start<=14);
  if(savedConfirmed.length){const summary=document.createElement('p');summary.style.cssText='color:#0f766e;font-weight:700';summary.textContent='الدروس الموثقة المتاحة: '+savedConfirmed.length;box.appendChild(summary)}
+ const drafts=(window.ABU_DRAFT_TOC?.[state.level+'|'+state.subject]||[]).filter(x=>x&&!entries.some(y=>y.title===x.title&&y.book===x.book));
+ if(drafts.length){
+  const info=document.createElement('p');info.textContent='فهرس الكتاب: '+drafts.length+' عنواناً مستخرجاً من الكتاب الأصلي. يلزم تحديد صفحات الدرس قبل إنشاء البطاقات.';info.style.cssText='color:#92400e;line-height:1.8';box.appendChild(info);
+  const draftList=document.createElement('div');draftList.style.cssText='display:grid;gap:8px;max-height:260px;overflow:auto';
+  for(const d of drafts){
+   const b=document.createElement('button');b.type='button';b.textContent=d.title+' — '+(d.book.includes('-1.')?'الجزء الأول':'الجزء الثاني');b.style.cssText='padding:10px;text-align:right;background:#fff8e9;border:1px solid #ead9ad;border-radius:8px;color:#704b11;cursor:pointer';
+   b.onclick=async()=>{try{const range=await requestLessonRange(d.book,d.title);manualRanges[d.book+'|'+d.title]=range;studyBook=d.book;studyTopic=d.title;window.ABU_STUDY_TOPIC=d.title;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:d.title,start:range.start,end:range.end,book:d.book});overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+   draftList.appendChild(b);
+  }
+  box.appendChild(draftList);
+ }
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const lesson of topics){
   const topic=lesson.title;
