@@ -126,10 +126,29 @@ function showStudyButtons(){
  if(input){const wrap=input.closest('form')||input.parentElement;if(wrap&&wrap.parentElement)wrap.parentElement.appendChild(panel);else side.appendChild(panel)}
  else side.appendChild(panel);
 }
+function ensurePageJump(){
+ const actions=document.querySelector('#book .viewer .actions');
+ if(!actions||document.getElementById('abuPageJump'))return;
+ const wrap=document.createElement('label');
+ wrap.id='abuPageJump';
+ wrap.style.cssText='display:inline-flex;align-items:center;gap:7px;flex-wrap:wrap;margin:8px;font-weight:700;direction:rtl';
+ wrap.textContent='انتقل إلى صفحة';
+ const input=document.createElement('input');
+ input.type='number';input.min='1';input.inputMode='numeric';
+ input.setAttribute('aria-label','رقم الصفحة');
+ input.style.cssText='width:78px;padding:8px;border:1px solid #b6d9d0;border-radius:9px;font:inherit';
+ const button=document.createElement('button');
+ button.type='button';button.textContent='اذهب';
+ button.style.cssText='padding:8px 12px;border:0;border-radius:9px;background:#0f766e;color:white;font:inherit;cursor:pointer';
+ const go=()=>{const n=Number(input.value);if(!state.imageBook||!Number.isInteger(n)||n<1||n>state.imagePages){hint('أدخل رقم صفحة بين 1 و '+(state.imagePages||1));return}state.page=n;window.renderPage()};
+ button.onclick=go;input.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();go()}};
+ wrap.append(input,button);actions.appendChild(wrap);
+}
 const originalRender=window.renderPage;
 window.renderPage=async function(){
  document.getElementById('abuSelectionOverlay')?.remove();selecting=false;
  if(!state.imageBook)return originalRender();
+ ensurePageJump();const jump=document.querySelector('#abuPageJump input');if(jump){jump.max=String(state.imagePages);jump.value=String(state.page)}
  const current=state.page, file=state.imageFile;
  const canvas=document.getElementById('pdfCanvas');
  const img=new Image();
