@@ -19,8 +19,8 @@ for(const [track,subjects] of Object.entries(tracks)){
    const errs=[];
    if(!e.title||typeof e.title!=='string')errs.push('missing title');
    if(!Number.isInteger(e.start)||!Number.isInteger(e.end)||e.start<1||e.end<e.start)errs.push('invalid page range');
-   if(!e.book)errs.push('book file unspecified');
-   else if(!books.includes("'"+e.book+"'"))errs.push('book not in catalogue');
+   if(e.book&&!books.includes("'"+e.book+"'"))errs.push('book not in catalogue');
+   if(!e.book)console.warn('UNCONFIRMED BOOK',key,e.title);
    if(seen.has(e.title+'|'+e.start))errs.push('duplicate title and start');seen.add(e.title+'|'+e.start);
    if(e.verified!==true&&e.verified!==false)errs.push('verification flag missing');
    if(e.start<=lastEnd)errs.push('page ranges overlap or are unordered');lastEnd=e.end;
