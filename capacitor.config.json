@@ -3,6 +3,8 @@
   "appName": "أبو شريك",
   "webDir": "www",
   "server": {
+    "url": "https://ahmadaljarad.github.io/abu-shreek/",
+    "cleartext": false,
     "androidScheme": "https"
   }
 }
