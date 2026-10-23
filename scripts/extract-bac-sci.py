@@ -58,7 +58,8 @@ for item in manifest['assets']:
                         'bookmarks':len(record['toc_candidates']),
                         'opening_pages_with_text':sum(bool(p['text']) for p in record['opening_pages'])})
     except Exception as e:
-        results.append({'file':name,'status':'error','error':str(e)})
+        (out/(name+'.json')).unlink(missing_ok=True)
+        results.append({'file':name,'status':'error','error':str(e)} )
     finally:
         target.unlink(missing_ok=True)
 (out/'summary.json').write_text(json.dumps(results,ensure_ascii=False,indent=2)+'\n')
