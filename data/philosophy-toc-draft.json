@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "status": "titles_from_original_toc_ocr_need_visual_review",
+  "catalogue_key": "بكالوريا أدبي|الفلسفة",
+  "volumes": [
+    {
+      "book": "bac-lit-philosophy-1.pdf",
+      "toc_image_page": 2,
+      "entries": [
+        {
+          "title": "قوانين الفكر",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "مبحث المعرفة وتداخلاتها مع العلوم",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "خطوات المعرفة العلمية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (ضرورة الفلسفة)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "أخلاقية العنف",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "اللاعنف",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "التسامح",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "التواصل",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "المحبة",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (المحبة)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الإنسان والتكنولوجيا",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "أبعاد مشكلة الإنسان المعاصر",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "أخلاقيات العلم والتكنولوجيا",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (الإنسان والاستهلاك)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "المذهب العقلي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "المذهب التجريبي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "المذهب النقدي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "المذهب المادي الجدلي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (المثالية الهيغلية)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الفلسفة الوجودية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الفلسفة الحيوية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "فلسفة الظواهر",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (البراجماتية)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "التأويل في الفكر العربي المعاصر",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "النزعة الجمالية عند عبد الكريم اليافي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "النزعة الأخلاقية عند عادل العوا",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الوضعية المنطقية عند زكي نجيب محمود",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الشخصانية عند عبد العزيز الحبابي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (ضرورة النقد في الفكر العربي)",
+          "verified": false,
+          "page_range": null
+        }
+      ]
+    },
+    {
+      "book": "bac-lit-philosophy-2.pdf",
+      "toc_image_page": 2,
+      "entries": [
+        {
+          "title": "جبر المنطق",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "المغالطات المنطقية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (أسس التفكير المنطقي)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الانتباه",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الإدراك",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الذاكرة والنسيان",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الذكاء",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "نظريات الشخصية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (الشعور واللاشعور)",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "التفكير الإيجابي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "السعادة",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الرضا عن الحياة",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "القيمة الاجتماعية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الاندماج الاجتماعي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الضبط الاجتماعي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الظاهرة الاجتماعية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "منهج البحث في العلوم الاجتماعية",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الصداقة والشباب",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "العمل التطوعي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الإرشاد الاجتماعي",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "الإعلام والمجتمع",
+          "verified": false,
+          "page_range": null
+        },
+        {
+          "title": "تحليل نص (نحن والإعلام)",
+          "verified": false,
+          "page_range": null
+        }
+      ]
+    }
+  ],
+  "notice": "Titles normalized from OCR of original page 2; ambiguous OCR titles require visual verification. No invented page ranges."
+}
