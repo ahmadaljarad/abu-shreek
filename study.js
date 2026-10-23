@@ -246,7 +246,7 @@ async function autoFindTopicRange(f,topic,mode){
 const PREMADE_CARDS_URL='./data/lesson-cards.json?v=20261023-717';
 let premadeCardsPromise;
 async function premadeCards(){
- if(!premadeCardsPromise)premadeCardsPromise=fetch(PREMADE_CARDS_URL,{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('CARD_LIBRARY_UNAVAILABLE');return r.json()}).catch(e=>{premadeCardsPromise=null;throw e});
+ if(!premadeCardsPromise)premadeCardsPromise=Promise.all([fetch(PREMADE_CARDS_URL,{cache:'no-cache'}),fetch('./data/mauritania-cards.json?v=20261024',{cache:'no-cache'})]).then(async ([main,extra])=>{if(!main.ok)throw Error('CARD_LIBRARY_UNAVAILABLE');const db=await main.json();if(extra.ok){const more=await extra.json();db.lessons=[...(db.lessons||[]),...(more.lessons||[])];}return db;}).catch(e=>{premadeCardsPromise=null;throw e});
  return premadeCardsPromise;
 }
 async function loadPremadeTopicCards(){
