@@ -25,6 +25,15 @@ async function requestLessonRange(book,topic,reason){
  if(start<1||(count&&end>count)||end<start||end-start>14)throw Error('LESSON_RANGE_INVALID');
  return {start,end,book,topic,manual:true};
 }
+function chooseBookPart(){
+ const choices=window.ABU_BOOK_CATALOGUE?.[state.level]?.[state.subject]||[file()];
+ if(choices.length===1)return choices[0];
+ const answer=window.prompt('اختر الجزء الذي تريد إنشاء البطاقات منه:\\n'+choices.map((x,i)=>(i+1)+' - '+x.replace(/\\.pdf$/i,'')).join('\\n'),'1');
+ if(answer===null)return null;
+ const idx=Number(answer)-1;
+ if(!Number.isInteger(idx)||idx<0||idx>=choices.length)throw Error('رقم الجزء غير صحيح');
+ return choices[idx];
+}
 const pageKey=t=>studyTopic?key(t+':booksource:v2:'+studyTopic):key(t+':page:'+state.page);
 const TOPIC_SUGGESTIONS={
  'علم الأحياء':['الجهاز العصبي','أنواع الخلايا العصبية','السيالة العصبية','المشابك العصبية','الجهاز الهرموني','التكاثر','الوراثة','المناعة'],
@@ -59,7 +68,7 @@ function chooseStudyTopic(mode){
  }
  box.appendChild(list);
  const manual=document.createElement('button');manual.type='button';manual.textContent='📖 اختر صفحات الدرس من الكتاب (جميع المواد)';manual.style.cssText='display:block;width:100%;margin-top:15px;padding:14px;background:#0e766e;color:white;border:0;border-radius:10px;cursor:pointer;font-size:15px';
- manual.onclick=async()=>{const f=file();if(!f){alert('لم يتم ربط ملف هذا الكتاب بعد.');return}try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;selectedVerifiedLesson=null;studyBook=f;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+ manual.onclick=async()=>{let f;try{f=chooseBookPart()}catch(e){alert(e.message);return}if(!f)return;try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;selectedVerifiedLesson=null;studyBook=f;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
  box.appendChild(manual);
  const scan=document.createElement('button');scan.type='button';scan.textContent='🔎 اقرأ فهرس هذا الكتاب تلقائياً';scan.style.cssText='display:block;width:100%;margin-top:10px;padding:12px;background:#e7f5f2;color:#08645d;border:1px solid #b8ddd5;border-radius:10px;cursor:pointer;font-size:15px';
  scan.onclick=async()=>{
