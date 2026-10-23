@@ -3,6 +3,12 @@
 const fs=require('node:fs'),vm=require('node:vm');
 const books=fs.readFileSync('books-repair.js','utf8');
 const toc=fs.readFileSync('verified-toc.js','utf8');
+const manifest=JSON.parse(fs.readFileSync('data/bac-sci-release-assets.json','utf8'));
+const released=new Set(manifest.assets.filter(x=>x.size>0).map(x=>x.name));
+const required=['bac-sci-arabic.pdf','bac-sci-math-1.pdf','bac-sci-math-2.pdf','bac-sci-physics.pdf','bac-sci-chemistry.pdf','bac-sci-biology.pdf','bac-sci-english-sb.pdf','bac-sci-english-ab.pdf','bac-sci-french.pdf','bac-sci-russian.pdf','bac-sci-islamic.pdf','bac-sci-christian.pdf'];
+let missingAssets=required.filter(name=>!released.has(name));
+if(missingAssets.length){console.error('MISSING RELEASE ASSETS',missingAssets.join(', '));process.exitCode=1}
+else console.log('RELEASE ASSETS VERIFIED:',required.length,'PDF files in books-v1');
 const window={};
 vm.runInNewContext(toc,{window,localStorage:{getItem:()=>null,setItem:()=>{}}},{timeout:5000});
 const tracks={
@@ -32,4 +38,4 @@ for(const [track,subjects] of Object.entries(tracks)){
 }
 console.log('Scientific baccalaureate:',indexed+'/10 subjects have TOCs;',issues,'structural issues');
 console.log('WARNING: a listed book is not proof that the PDF is uploaded or readable.');
-if(issues)process.exitCode=1;
+if(issues||missingAssets.length)process.exitCode=1;
