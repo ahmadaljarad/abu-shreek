@@ -58,10 +58,10 @@ function chooseStudyTopic(mode){
  const catalog=window.ABU_VERIFIED_TOC||{};
  const entries=Array.isArray(catalog[state.level+'|'+state.subject])?catalog[state.level+'|'+state.subject]:[];
  const topics=entries.filter(x=>x&&x.verified===true&&x.scope!=='unit'&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.start>=1&&x.end>=x.start&&x.end-x.start<=14);
- // For the philosophy textbook, show the actual published card library as the lesson list.
- if(state.level==='بكالوريا أدبي'&&state.subject==='الفلسفة'){
+ // For literary baccalaureate philosophy and history, show the published verified card library as the lesson list.
+ if(state.level==='بكالوريا أدبي'&&['الفلسفة','التاريخ'].includes(state.subject)){
   const cardList=document.createElement('div');cardList.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;max-height:55vh;overflow:auto';
-  const status=document.createElement('p');status.textContent='جارٍ تحميل دروس الفلسفة التي تحتوي بطاقات جاهزة...';box.appendChild(status);box.appendChild(cardList);
+  const status=document.createElement('p');status.textContent='جارٍ تحميل الدروس التي تحتوي بطاقات جاهزة...';box.appendChild(status);box.appendChild(cardList);
   premadeCards().then(db=>{
    const lessons=(db.lessons||[]).filter(x=>x.level===state.level&&x.subject===state.subject&&x.status==='verified'&&Array.isArray(x.cards)&&x.cards.length);
    status.textContent='البطاقات الجاهزة: '+lessons.length+' درساً — '+lessons.reduce((n,x)=>n+x.cards.length,0)+' بطاقة. اختر درساً للبدء مباشرة.';
