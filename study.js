@@ -28,13 +28,13 @@ async function requestLessonRange(book,topic,reason){
 function chooseBookPart(){
  const choices=window.ABU_BOOK_CATALOGUE?.[state.level]?.[state.subject]||[file()];
  if(choices.length===1)return choices[0];
- const answer=window.prompt('اختر الجزء الذي تريد إنشاء البطاقات منه:\\n'+choices.map((x,i)=>(i+1)+' - '+x.replace(/\\.pdf$/i,'')).join('\\n'),'1');
+ const answer=window.prompt('اختر الجزء الذي تريد إنشاء البطاقات منه:\n'+choices.map((x,i)=>(i+1)+' - '+x.replace(/\.pdf$/i,'')).join('\n'),'1');
  if(answer===null)return null;
  const idx=Number(answer)-1;
  if(!Number.isInteger(idx)||idx<0||idx>=choices.length)throw Error('رقم الجزء غير صحيح');
  return choices[idx];
 }
-const pageKey=t=>studyTopic?key(t+':booksource:v2:'+studyTopic):key(t+':page:'+state.page);
+const pageKey=t=>studyTopic?key(t+':booksource:v3:'+(studyBook||file())+':'+studyTopic):key(t+':page:'+state.page);
 const TOPIC_SUGGESTIONS={
  'علم الأحياء':['الجهاز العصبي','أنواع الخلايا العصبية','السيالة العصبية','المشابك العصبية','الجهاز الهرموني','التكاثر','الوراثة','المناعة'],
  'علم الأحياء والأرض':['الخلية','التغذية','التنفس','التكاثر','الوراثة','البيئة'],
