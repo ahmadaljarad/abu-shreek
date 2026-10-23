@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-english-sb.pdf",
+  "catalogue_key": "بكالوريا علمي|اللغة الإنكليزية",
+  "edition": "2025-2026",
+  "index_scope": "unit_starts_only",
+  "toc_pdf_page": 3,
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-english-sb.pdf",
+    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-english-sb.pdf.json"
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "title": "Life Choices",
+      "printed_page": 8,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "title": "Success",
+      "printed_page": 17,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 3,
+      "title": "Medicine",
+      "printed_page": 26,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 4,
+      "title": "Engineering",
+      "printed_page": 37,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 5,
+      "title": "Civil Rights",
+      "printed_page": 52,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 6,
+      "title": "United Nations",
+      "printed_page": 59,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 7,
+      "title": "Microorganism",
+      "printed_page": 66,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 9,
+      "title": "Citizenship",
+      "printed_page": 88,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 10,
+      "title": "Culture Shock",
+      "printed_page": 97,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 11,
+      "title": "Artificial Intelligence",
+      "printed_page": 108,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 12,
+      "title": "Digital Literacy",
+      "printed_page": 116,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text"
+    }
+  ],
+  "unresolved": [
+    {
+      "unit_number": 8,
+      "title": "Facts about Human Body",
+      "toc_printed_page": 65,
+      "verified": false,
+      "reason": "The original table of contents prints page 65 for Unit 8, which precedes Unit 7 at page 66. Do not silently correct this inconsistency; inspect the original unit heading before indexing its page."
+    }
+  ],
+  "verified_unit_count": 11,
+  "listed_unit_count": 12,
+  "lesson_ranges_verified": false,
+  "complete": false,
+  "notes": "Only unit titles and printed starting pages were verified against the book's original contents page. PDF page offsets, lesson subtopics and end pages have NOT been verified. Never use these as verified page ranges for quizzes."
+}
