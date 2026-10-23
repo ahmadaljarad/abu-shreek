@@ -68,7 +68,7 @@ function chooseStudyTopic(mode){
   const draftList=document.createElement('div');draftList.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px;max-height:55vh;overflow:auto';
   for(const d of drafts){
    const b=document.createElement('button');b.type='button';b.textContent=d.title+' — '+(d.book.includes('-1.')?'الجزء الأول':'الجزء الثاني');b.style.cssText='padding:13px;text-align:right;background:#edf8f5;border:1px solid #c9e6df;border-radius:10px;color:#0e6961;cursor:pointer';
-   b.onclick=async()=>{try{let range;try{b.disabled=true;b.textContent='جارٍ تحديد صفحات الدرس...';range=await window.ABU_LESSON_SOURCE.findLesson(d.book,d.title)}catch{range=await requestLessonRange(d.book,d.title)}finally{b.disabled=false;b.textContent=d.title+' — '+(d.book.includes('-1.')?'الجزء الأول':'الجزء الثاني')}manualRanges[d.book+'|'+d.title]=range;studyBook=d.book;studyTopic=d.title;window.ABU_STUDY_TOPIC=d.title;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:d.title,start:range.start,end:range.end,book:d.book});overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+   b.onclick=()=>{selectedVerifiedLesson=null;studyBook=d.book;studyTopic=d.title;window.ABU_STUDY_TOPIC=d.title;overlay.remove();if(mode==='cards')startTopicCards();else startTopicMCQ();};
    draftList.appendChild(b);
   }
   box.appendChild(draftList);
