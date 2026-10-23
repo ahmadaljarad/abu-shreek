@@ -70,6 +70,43 @@ function chooseStudyTopic(mode){
   list.appendChild(b);
  }
  box.appendChild(list);
+ // Draft titles transcribed from the actual OCR of page 2 of both philosophy volumes.
+ // These are NOT verified lesson/page ranges and must not be promoted as such.
+ if(state.level==='بكالوريا أدبي'&&state.subject==='الفلسفة'){
+  const drafts=[
+   {book:'bac-lit-philosophy-1.pdf',label:'الجزء الأول',units:[
+    ['وحدة المعرفة','قوانين الفكر','مبحث المعرفة وتداخلاتها مع العلوم','خطوات المعرفة العلمية','تحليل نص (ضرورة الفلسفة)'],
+    ['الأخلاق','أخلاقية العنف','اللاعنف','التسامح','التواصل','المحبة','تحليل نص (المحبة)'],
+    ['الإنسان المعاصر','الإنسان والتكنولوجيا','أبعاد مشكلة الإنسان المعاصر','أخلاقيات العلم والتكنولوجيا','تحليل نص (الإنسان والاستهلاك)'],
+    ['المذاهب الفلسفية','المذهب العقلي','المذهب المادي الجدلي','تحليل نص (المثالية الهيغلية)'],
+    ['الفلسفة المعاصرة','الفلسفة الوجودية','الفلسفة الحيوية','فلسفة الظواهر','تحليل نص (البراجماتية)'],
+    ['الفكر العربي المعاصر','التأويل في الفكر العربي المعاصر','النزعة الجمالية عند عبد الكريم اليافي','النزعة الأخلاقية عند عادل العوا','الوضعية المنطقية عند زكي نجيب محمود','الشخصانية عند عبد العزيز الحبابي','تحليل نص (ضرورة النقد في الفكر العربي)']
+   ]},
+   {book:'bac-lit-philosophy-2.pdf',label:'الجزء الثاني',units:[
+    ['المنطق','جبر المنطق','المغالطات المنطقية','تحليل نص (أسس التفكير المنطقي)'],
+    ['العمليات المعرفية','الانتباه','الإدراك','الذاكرة والنسيان','الذكاء'],
+    ['الشخصية','نظريات الشخصية','تحليل نص (الشعور واللاشعور)'],
+    ['علم النفس الإيجابي','التفكير الإيجابي','السعادة','الرضا عن الحياة'],
+    ['علم الاجتماع','القيمة الاجتماعية','الاندماج الاجتماعي','الضبط الاجتماعي','الظاهرة الاجتماعية','منهج البحث في العلوم الاجتماعية'],
+    ['المجتمع المعاصر','الصداقة والشباب','العمل التطوعي','الإرشاد الاجتماعي','الإعلام والمجتمع','تحليل نص (نحن والإعلام)']
+   ]}
+  ];
+  const heading=document.createElement('h3');heading.textContent='📑 فهرس الفلسفة — عناوين أولية من الكتاب';heading.style.cssText='margin:18px 0 8px';box.appendChild(heading);
+  const note=document.createElement('p');note.textContent='العناوين التالية مستخرجة من فهرس الجزأين، وتحتاج مراجعة. لم تُتحقق أرقام صفحاتها بعد. عند اختيار درس افتح الكتاب وحدد نطاق صفحاته.';note.style.cssText='color:#92400e;line-height:1.8';box.appendChild(note);
+  for(const part of drafts){
+   const section=document.createElement('details');section.open=part.book.endsWith('-1.pdf');section.style.cssText='border:1px solid #dbe4ea;border-radius:10px;padding:10px;margin:10px 0';
+   const summary=document.createElement('summary');summary.textContent=part.label;summary.style.cssText='font-weight:700;cursor:pointer;padding:6px';section.appendChild(summary);
+   for(const unit of part.units){
+    const sub=document.createElement('p');sub.textContent=unit[0];sub.style.cssText='font-weight:700;margin:12px 0 5px;color:#334155';section.appendChild(sub);
+    for(const topic of unit.slice(1)){
+     const b=document.createElement('button');b.type='button';b.textContent=topic;b.style.cssText='display:block;width:100%;padding:9px;margin:4px 0;text-align:right;border:1px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#123;cursor:pointer';
+     b.onclick=async()=>{try{const range=await requestLessonRange(part.book,topic);manualRanges[part.book+'|'+topic]=range;studyBook=part.book;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
+     section.appendChild(b);
+    }
+   }
+   box.appendChild(section);
+  }
+ }
  const manual=document.createElement('button');manual.type='button';manual.textContent='📖 اختر صفحات الدرس من الكتاب (جميع المواد)';manual.style.cssText='display:block;width:100%;margin-top:15px;padding:14px;background:#0e766e;color:white;border:0;border-radius:10px;cursor:pointer;font-size:15px';
  manual.onclick=async()=>{let f;try{f=chooseBookPart()}catch(e){alert(e.message);return}if(!f)return;try{const range=await requestLessonRange(f,'صفحات مختارة');const topic='صفحات '+range.start+'–'+range.end;manualRanges[f+'|'+topic]=range;selectedVerifiedLesson=null;studyBook=f;studyTopic=topic;window.ABU_STUDY_TOPIC=topic;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
  box.appendChild(manual);
