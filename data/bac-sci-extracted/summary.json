@@ -1,0 +1,86 @@
+[
+  {
+    "file": "bac-sci-arabic.pdf",
+    "status": "extracted",
+    "pdf_pages": 110,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
+  },
+  {
+    "file": "bac-sci-biology.pdf",
+    "status": "extracted",
+    "pdf_pages": 287,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
+  },
+  {
+    "file": "bac-sci-chemistry.pdf",
+    "status": "extracted",
+    "pdf_pages": 184,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
+  },
+  {
+    "file": "bac-sci-christian.pdf",
+    "status": "extracted",
+    "pdf_pages": 135,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
+  },
+  {
+    "file": "bac-sci-english-ab.pdf",
+    "status": "extracted",
+    "pdf_pages": 112,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
+  },
+  {
+    "file": "bac-sci-english-sb.pdf",
+    "status": "extracted",
+    "pdf_pages": 128,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
+  },
+  {
+    "file": "bac-sci-french.pdf",
+    "status": "extracted",
+    "pdf_pages": 120,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
+  },
+  {
+    "file": "bac-sci-islamic.pdf",
+    "status": "extracted",
+    "pdf_pages": 164,
+    "bookmarks": 0,
+    "opening_pages_with_text": 2
+  },
+  {
+    "file": "bac-sci-math-1.pdf",
+    "status": "extracted",
+    "pdf_pages": 232,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
+  },
+  {
+    "file": "bac-sci-math-2.pdf",
+    "status": "extracted",
+    "pdf_pages": 196,
+    "bookmarks": 0,
+    "opening_pages_with_text": 15
+  },
+  {
+    "file": "bac-sci-physics.pdf",
+    "status": "extracted",
+    "pdf_pages": 268,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
+  },
+  {
+    "file": "bac-sci-russian.pdf",
+    "status": "extracted",
+    "pdf_pages": 128,
+    "bookmarks": 0,
+    "opening_pages_with_text": 14
+  }
+]

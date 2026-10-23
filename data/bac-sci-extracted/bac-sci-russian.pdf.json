@@ -1,0 +1,68 @@
+{
+  "file": "bac-sci-russian.pdf",
+  "pdf_pages": 128,
+  "toc_candidates": [],
+  "opening_pages": [
+    {
+      "pdf_page": 1,
+      "text": ""
+    },
+    {
+      "pdf_page": 2,
+      "text": "2"
+    },
+    {
+      "pdf_page": 3,
+      "text": "3"
+    },
+    {
+      "pdf_page": 4,
+      "text": "4"
+    },
+    {
+      "pdf_page": 5,
+      "text": "5"
+    },
+    {
+      "pdf_page": 6,
+      "text": "6"
+    },
+    {
+      "pdf_page": 7,
+      "text": "7"
+    },
+    {
+      "pdf_page": 8,
+      "text": "8"
+    },
+    {
+      "pdf_page": 9,
+      "text": "9"
+    },
+    {
+      "pdf_page": 10,
+      "text": "10"
+    },
+    {
+      "pdf_page": 11,
+      "text": "11"
+    },
+    {
+      "pdf_page": 12,
+      "text": "12"
+    },
+    {
+      "pdf_page": 13,
+      "text": "13"
+    },
+    {
+      "pdf_page": 14,
+      "text": "14"
+    },
+    {
+      "pdf_page": 15,
+      "text": "15"
+    }
+  ],
+  "extraction_note": "Raw PDF text only. Titles and offsets require human review."
+}
