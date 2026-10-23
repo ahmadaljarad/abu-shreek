@@ -18,13 +18,17 @@ for(const subject of subjects){
   if(!e.title||typeof e.title!=='string')errors.push('missing title');
   if(!Number.isInteger(e.start)||!Number.isInteger(e.end)||e.start<1||e.end<e.start)errors.push('invalid page range');
   if(!e.book||!/^9-/i.test(e.book))errors.push('book filename missing');
+  if(e.verified!==true&&e.verified!==false)errors.push('verification flag missing');
+  if(!e.source||typeof e.source!=='string')errors.push('source missing');
+  if(e.scope&&e.scope!=='unit')errors.push('unknown scope');
   if(seen.has(e.title+'|'+e.start))errors.push('duplicate title and page');seen.add(e.title+'|'+e.start);
-  if(e.start<=prev)errors.push('overlapping or unordered start');prev=e.end;
-  if(e.end-e.start>14&&!e.scope)errors.push('long range needs scope=unit');
+  if(Number.isInteger(e.start)&&e.start<=prev)errors.push('overlapping or unordered start');if(Number.isInteger(e.end))prev=e.end;
+  if(Number.isInteger(e.start)&&Number.isInteger(e.end)&&e.end-e.start>14&&!e.scope)errors.push('long range needs scope=unit');
   if(errors.length){failures++;console.error('FAIL',subject,e.title,errors.join('; '))}
   lessons++;
  }
  console.log('INDEXED',subject,entries.length,'entries');
 }
 console.log('Summary:',covered+'/'+subjects.length,'subjects;',lessons,'entries;',failures,'issues');
+console.log('Reminder: catalogue validation is not a browser test or a check against the original PDF.');
 if(failures)process.exitCode=1;
