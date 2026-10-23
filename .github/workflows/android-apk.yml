@@ -19,6 +19,19 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Generate launcher icon from SVG
+        run: |
+          python -m pip install --quiet cairosvg
+          python - <<'PY'
+          from pathlib import Path
+          import cairosvg
+          root=Path('android-app/app/src/main/res')
+          src='android-app/app-icon.svg'
+          for folder,size in [('mipmap-mdpi',48),('mipmap-hdpi',72),('mipmap-xhdpi',96),('mipmap-xxhdpi',144),('mipmap-xxxhdpi',192)]:
+              dest=root/folder/'ic_launcher.png'
+              dest.parent.mkdir(parents=True,exist_ok=True)
+              cairosvg.svg2png(url=src,write_to=str(dest),output_width=size,output_height=size)
+          PY
       - name: Build installable debug APK
         working-directory: android-app
         run: gradle --no-daemon assembleDebug
