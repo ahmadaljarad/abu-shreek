@@ -1,0 +1,19 @@
+name: Validate baccalaureate modules
+on:
+  push:
+    paths:
+      - 'books-repair.js'
+      - 'verified-toc.js'
+      - 'scripts/validate-baccalaureate.cjs'
+      - '.github/workflows/validate-baccalaureate.yml'
+  workflow_dispatch:
+jobs:
+  validate-baccalaureate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check scientific and literary modules
+        run: node scripts/validate-baccalaureate.cjs
