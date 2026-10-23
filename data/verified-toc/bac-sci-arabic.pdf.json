@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-arabic.pdf",
+  "catalogue_key": "بكالوريا علمي|اللغة العربية",
+  "edition": "2025-2026",
+  "index_scope": "contents_page_entries_only",
+  "toc_pdf_page": 2,
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-arabic.pdf",
+    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-arabic.pdf.json"
+  },
+  "entries": [
+    {
+      "title": "أدب القضايا الوطنية والقومية",
+      "printed_page": 3,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "عرس المجد",
+      "printed_page": 7,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الجرس",
+      "printed_page": 12,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الأدب المهجري",
+      "printed_page": 18,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "وطني",
+      "printed_page": 22,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "المهاجر",
+      "printed_page": 27,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الغاب",
+      "printed_page": 32,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "رسالة الشرق المتجدد",
+      "printed_page": 36,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "فن الرواية",
+      "printed_page": 38,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "المصابيح الزرق",
+      "printed_page": 45,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "دمشق يا بسمة الحزن",
+      "printed_page": 50,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "عوامل تجديد الرواية العربية",
+      "printed_page": 53,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الشعر الوجداني",
+      "printed_page": 57,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الوطن",
+      "printed_page": 60,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "لوعة الفراق",
+      "printed_page": 65,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "مهمة الشعر",
+      "printed_page": 74,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الأدب الاجتماعي",
+      "printed_page": 76,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "قوة العلم",
+      "printed_page": 80,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "مروءة وسخاء",
+      "printed_page": 84,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "رسالة حب",
+      "printed_page": 87,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "مشروعات مقترحة",
+      "printed_page": 89,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "نصوص إثرائية",
+      "printed_page": 90,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "قواعد اللغة",
+      "printed_page": 97,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    }
+  ],
+  "unresolved": [
+    {
+      "printed_page": 69,
+      "raw_extracted_title": "الأم ُري ال ِّد ُّ مشقي",
+      "reason": "Arabic extraction from the original TOC is visually ambiguous. Do not guess the exact lesson title until the page image is checked.",
+      "verified": false
+    }
+  ],
+  "verified_entry_count": 23,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "complete": false,
+  "notes": "Names and printed start pages transcribed from original 2025–2026 PDF contents page 2. Extracted Arabic text has visual order/diacritic defects; ambiguous page 69 was excluded. No end pages or PDF-to-printed page offset is asserted."
+}
