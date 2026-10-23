@@ -59,6 +59,9 @@ function chooseStudyTopic(mode){
  const entries=Array.isArray(catalog[state.level+'|'+state.subject])?catalog[state.level+'|'+state.subject]:[];
  const topics=entries.filter(x=>x&&x.verified===true&&x.scope!=='unit'&&typeof x.title==='string'&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.start>=1&&x.end>=x.start&&x.end-x.start<=14);
  if(!topics.length){const warning=document.createElement('p');warning.textContent='لم يتم توثيق فهرس هذه المادة من الكتاب الأصلي بعد. يمكنك تحديد صفحات الدرس بنفسك لإنشاء بطاقات أو أسئلة من صفحات الكتاب حصراً، دون اختراع عناوين دروس.';warning.style.cssText='line-height:1.9;color:#9a3412;background:#fff7ed;padding:14px;border-radius:10px';box.appendChild(warning)}
+ const selectedKey=state.level+'|'+state.subject;
+ const savedConfirmed=(window.ABU_VERIFIED_TOC?.[selectedKey]||[]).filter(x=>x?.verified===true&&Number.isInteger(x.start)&&Number.isInteger(x.end)&&x.end>=x.start&&x.end-x.start<=14);
+ if(savedConfirmed.length){const summary=document.createElement('p');summary.style.cssText='color:#0f766e;font-weight:700';summary.textContent='الدروس الموثقة المتاحة: '+savedConfirmed.length;box.appendChild(summary)}
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px';
  for(const lesson of topics){
   const topic=lesson.title;
@@ -89,7 +92,8 @@ function chooseStudyTopic(mode){
     b.onclick=async()=>{try{const range=await requestLessonRange(f,entry.title);manualRanges[f+'|'+entry.title]=range;studyBook=f;window.ABU_SAVE_CONFIRMED_LESSON?.(state.level,state.subject,{title:entry.title,start:range.start,end:range.end,book:f});studyTopic=entry.title;window.ABU_STUDY_TOPIC=entry.title;overlay.remove();if(mode==='cards')await startTopicCards();else await startTopicMCQ()}catch(e){if(e.message!=='LESSON_RANGE_CANCELLED')alert(nice(e))}};
     list.appendChild(b);
    }
-   scan.textContent='تم العثور على '+entries.length+' عنواناً أولياً من الفهرس (محفوظة لهذا الجهاز).';
+   scan.textContent='تم العثور على '+entries.length+' عنواناً أولياً. تأكد من الصفحات قبل حفظ كل درس.';
+   const help=document.createElement('p');help.style.cssText='color:#64748b;font-size:13px;line-height:1.7';help.textContent='الصفحة المطبوعة في الفهرس قد تختلف عن رقم صفحة العارض. افتح الكتاب وقارن العنوان ثم أدخل نطاق صفحات العارض الصحيح.';list.prepend(help);
   }catch(e){scan.textContent='تعذرت قراءة الفهرس: '+nice(e)}
   finally{scan.disabled=false}
  };
