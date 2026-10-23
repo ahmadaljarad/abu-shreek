@@ -92,7 +92,7 @@ function chooseStudyTopic(mode){
    ]}
   ];
   const heading=document.createElement('h3');heading.textContent='📑 فهرس الفلسفة — عناوين أولية من الكتاب';heading.style.cssText='margin:18px 0 8px';box.appendChild(heading);
-  const note=document.createElement('p');note.textContent='العناوين التالية مستخرجة من فهرس الجزأين، وتحتاج مراجعة. لم تُتحقق أرقام صفحاتها بعد. عند اختيار درس افتح الكتاب وحدد نطاق صفحاته.';note.style.cssText='color:#92400e;line-height:1.8';box.appendChild(note);
+  const note=document.createElement('p');note.textContent='فهرس عناوين الجزأين مأخوذ من الصفحة الثانية في كل كتاب. أرقام صفحات الدروس لم تُطابق بعد مع صور الكتاب، لذلك لا تُعرض أرقام غير موثوقة. عند اختيار درس حدّد نطاق صفحاته من الكتاب.';note.style.cssText='color:#92400e;line-height:1.8';box.appendChild(note);
   for(const part of drafts){
    const section=document.createElement('details');section.open=part.book.endsWith('-1.pdf');section.style.cssText='border:1px solid #dbe4ea;border-radius:10px;padding:10px;margin:10px 0';
    const summary=document.createElement('summary');summary.textContent=part.label;summary.style.cssText='font-weight:700;cursor:pointer;padding:6px';section.appendChild(summary);
