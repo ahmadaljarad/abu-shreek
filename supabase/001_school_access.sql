@@ -11,6 +11,7 @@ create table if not exists public.student_profiles (
 alter table public.student_profiles enable row level security;
 revoke all on public.student_profiles from anon;
 grant select on public.student_profiles to authenticated;
+drop policy if exists "Student can read own profile" on public.student_profiles;
 create policy "Student can read own profile"
 on public.student_profiles for select to authenticated
 using (user_id = (select auth.uid()));
@@ -20,6 +21,7 @@ returns boolean language sql stable security definer set search_path = '' as $
 $;
 revoke all on function public.is_school_admin() from public,anon;
 grant execute on function public.is_school_admin() to authenticated;
+drop policy if exists "Admin can read all profiles" on public.student_profiles;
 create policy "Admin can read all profiles"
 on public.student_profiles for select to authenticated
 using ((select public.is_school_admin()));
