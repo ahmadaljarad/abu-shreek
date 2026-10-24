@@ -27,7 +27,7 @@ jobs:
           head -18 /tmp/geography-info.txt
           total_pages=$(pdfinfo /tmp/geography.pdf | awk '/^Pages:/ {print $2}')
           if [ -z "$total_pages" ] || [ "$total_pages" -lt 218 ]; then echo "::error::Book PDF has fewer than 218 pages"; exit 1; fi
-          for page in 203 209 211 218; do
+          for page in $(seq 195 220); do
             pdftoppm -f "$page" -l "$page" -singlefile -scale-to 1500 -png /tmp/geography.pdf "assets/geography-maps/page-$page"
           done
           test -s assets/geography-maps/page-203.png
