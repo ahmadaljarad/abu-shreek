@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-christian.pdf",
+  "catalogue_key": "بكالوريا علمي|التربية المسيحية",
+  "edition": "2025-2026",
+  "index_scope": "contents_page_entries_only",
+  "toc_pdf_pages": [
+    4,
+    5
+  ],
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-christian.pdf",
+    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-christian.pdf.json"
+  },
+  "entries": [
+    {
+      "title": "فاعلية الكتاب المقدس في حياتنا",
+      "printed_page": 6,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الكمال الإلهي",
+      "printed_page": 11,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "حريتي في المسيح",
+      "printed_page": 17,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "نحو مجيء المخلص",
+      "printed_page": 23,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "أمثال الملكوت",
+      "printed_page": 30,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "مثل الغني والعازر",
+      "printed_page": 36,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "أجسادكم هياكل الروح القدس",
+      "printed_page": 43,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الحياة المسيحية حياة الشركة",
+      "printed_page": 49,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الآخر في الإيمان المسيحي",
+      "printed_page": 55,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "المسيحية والحضارة",
+      "printed_page": 61,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الإيمان بالأعمال",
+      "printed_page": 67,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "فاعلية الروح القدس",
+      "printed_page": 72,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "القداس الإلهي",
+      "printed_page": 78,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الفضائل الإلهية والإنسانية",
+      "printed_page": 83,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "على هذه الصخرة أبني كنيستي (بطرس الرسول)",
+      "printed_page": 88,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "التطويبات",
+      "printed_page": 94,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "قم واحمل سريرك وامش",
+      "printed_page": 101,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "التجلي الإلهي",
+      "printed_page": 107,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الحياة المسيحية حياة العفة",
+      "printed_page": 113,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "المؤمن والمسؤولية",
+      "printed_page": 119,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "أخلاقيات علم الحياة",
+      "printed_page": 124,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    },
+    {
+      "title": "الكنيسة والمواطنة",
+      "printed_page": 130,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "manually_transcribed_from_original_pdf_contents_page"
+    }
+  ],
+  "verified_entry_count": 22,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "complete": false,
+  "notes": "Original PDF TOC pages 4–5 provide the 22 titles and printed starting pages. Titles normalized for readability (diacritics omitted). No inferred end pages, no confirmed PDF/image page offsets; not yet safe for exact lesson-range quizzes."
+}
