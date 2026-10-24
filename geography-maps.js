@@ -7,6 +7,21 @@ const maps=[
 {title:"تدريب تحديد عناصر النقل على خريطة سورية",page:218,why:"تدريب تطبيقي من نهاية الدرس على وضع رموز ومواقع النقل في الخريطة.",source:"تدريب الكتاب ص 218.",tasks:[["حدّد ميناءً بحرياً سورياً.","اللاذقية أو طرطوس."],["حدّد مطاراً دولياً.","مطار دمشق الدولي."],["حدّد خطاً للسكك الحديدية.","الخط الواصل بين دمشق وحلب."],["حدّد خطاً لنقل النفط.","خط أنابيب يصل مناطق الإنتاج بمصافي النفط أو مرافئ التصدير."]]}
 ];
 let current=0,task=0,pdf=null,loaded=false,zoom=1;
+let outline=null;
+async function fallbackMap(){
+ const canvas=el("geoMapCanvas"),ctx=canvas.getContext("2d");canvas.width=850;canvas.height=670;
+ ctx.fillStyle="#eef7fa";ctx.fillRect(0,0,850,670);
+ try{if(!outline){const r=await fetch("./data/syria-outline.geojson");if(!r.ok)throw Error("outline");outline=(await r.json()).features[0].geometry.coordinates[0];}
+ const project=([lon,lat])=>[90+(lon-35.5)/7.0*670,50+(37.4-lat)/5.2*560];
+ ctx.beginPath();outline.forEach((p,i)=>{const [x,y]=project(p);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.closePath();ctx.fillStyle="#fff7df";ctx.fill();ctx.strokeStyle="#0f766e";ctx.lineWidth=3;ctx.stroke();
+ const cities=[["دمشق",36.291,33.513],["حلب",37.161,36.202],["حمص",36.716,34.731],["حماة",36.751,35.132],["اللاذقية",35.776,35.523],["طرطوس",35.886,34.895],["دير الزور",40.141,35.335],["تدمر",38.284,34.560]];
+ ctx.font="bold 17px Arial";ctx.textAlign="right";cities.forEach(([name,lon,lat])=>{const [x,y]=project([lon,lat]);ctx.fillStyle="#b45309";ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fill();ctx.fillStyle="#173d40";ctx.fillText(name,x-9,y-7)});
+ ctx.font="bold 22px Arial";ctx.textAlign="center";ctx.fillStyle="#0f766e";ctx.fillText("خريطة سورية التعليمية المبسطة",425,38);
+ ctx.font="17px Arial";ctx.fillStyle="#475569";ctx.fillText("بديل تقريبي — ليست صورة الكتاب الأصلي",425,648);
+ return true;
+ }catch(e){ctx.fillStyle="#334155";ctx.font="20px Arial";ctx.textAlign="center";ctx.fillText("تعذّر تحميل الخريطة المحلية أيضاً",425,335);return false;}
+}
+
 const el=id=>document.getElementById(id);
 async function draw(){
 const m=maps[current];el("geoMapTitle").textContent=m.title;el("geoMapWhy").textContent=m.why;el("geoMapSource").textContent=m.source;el("geoMapNumber").textContent=(current+1)+" / "+maps.length;el("geoMapAnswer").classList.add("hidden");task=0;renderTask();
@@ -17,7 +32,7 @@ try{
  const p=await pdf.getPage(m.page),v=p.getViewport({scale:1.45*zoom}),canvas=el("geoMapCanvas");
  canvas.width=v.width;canvas.height=v.height;await p.render({canvasContext:canvas.getContext("2d"),viewport:v}).promise;
  el("geoMapStatus").textContent="الصفحة "+m.page+" من الكتاب الأصلي. كبّر الصورة للتعرف على الرموز والمواقع.";
-}catch(e){el("geoMapStatus").innerHTML='تعذّر تحميل صورة الصفحة. <a target="_blank" rel="noopener" href="'+bookLink("bac-lit-geography.pdf")+'">افتح الكتاب الأصلي</a> وانتقل إلى الصفحة '+m.page;}
+}catch(e){console.warn("تعذر عرض صفحة الكتاب الأصلية",e);await fallbackMap();el("geoMapStatus").innerHTML='تعذّر تحميل صورة الصفحة الأصلية؛ تظهر خريطة تعليمية مبسطة بدلاً منها. <a target="_blank" rel="noopener" href="'+bookLink("bac-lit-geography.pdf")+'">افتح الكتاب الأصلي</a> وانتقل إلى الصفحة '+m.page;}
 }
 function renderTask(){const m=maps[current],q=m.tasks[task];el("geoMapTask").textContent="السؤال "+(task+1)+" من "+m.tasks.length+": "+q[0];el("geoMapAnswer").textContent=q[1];el("geoMapAnswer").classList.add("hidden");}
 window.openGeographyMaps=function(){if(state.subject!=="الجغرافيا"){alert("هذا القسم متاح حالياً لمادة الجغرافيا فقط.");return;}show("geoMaps");if(!loaded){loaded=true;draw();}};
