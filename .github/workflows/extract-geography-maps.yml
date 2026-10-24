@@ -58,6 +58,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p assets/geography-maps/overviews
+          total_pages=$(pdfinfo /tmp/geography.pdf | awk '/^Pages:/ {print $2}')
           for start in 1 41 81 121 161 221 261; do
             end=$((start+39))
             if [ "$end" -gt "$total_pages" ]; then end="$total_pages"; fi
