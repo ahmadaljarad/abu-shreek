@@ -36,7 +36,7 @@ async function draw(){
    if(attempt>=sources.length){img.style.display="none";el("geoMapStatus").textContent="تعذّر عرض صورة الصفحة الأصلية. تحقّق من الاتصال ثم أعد فتح القسم.";return;}
    const source=sources[attempt++];
    const test=new Image();
-   test.crossOrigin="anonymous";
+   
    test.onload=()=>{
      if(seq!==renderSeq)return;
      let displayUrl=source.url;
@@ -46,7 +46,7 @@ async function draw(){
          c.width=Math.round(test.naturalWidth*(r-l));c.height=Math.round(test.naturalHeight*(b-t));
          c.getContext("2d").drawImage(test,test.naturalWidth*l,test.naturalHeight*t,c.width,c.height,0,0,c.width,c.height);
          displayUrl=c.toDataURL("image/png");
-       }catch(err){tryOriginal();return;}
+       }catch(err){img.src=source.url;img.style.display="block";el("geoMapStatus").textContent="تم تحميل صفحة الكتاب الأصلية، ويجري تجهيز صورة الخريطة المقصوصة.";return;}
      }
      img.src=displayUrl;img.style.display="block";img.style.width=Math.round(100*zoom)+"%";
      el("geoMapStatus").textContent="الخريطة الأصلية من الصفحة "+m.page+" مع عنوانها ومفتاحها.";
