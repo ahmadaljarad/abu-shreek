@@ -11,13 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install PDF extraction tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          command -v pdfinfo
+          command -v pdftoppm
       - name: Download original geography textbook and export pages
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p assets/geography-maps
           curl -fL --retry 3 --retry-delay 2 'https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-geography.pdf' -o /tmp/geography.pdf
-          pdfinfo /tmp/geography.pdf | head -18
+          pdfinfo /tmp/geography.pdf > /tmp/geography-info.txt
+          head -18 /tmp/geography-info.txt
+          total_pages=$(pdfinfo /tmp/geography.pdf | awk '/^Pages:/ {print $2}')
+          if [ -z "$total_pages" ] || [ "$total_pages" -lt 218 ]; then echo "::error::Book PDF has fewer than 218 pages"; exit 1; fi
           for page in 203 209 211 218; do
             pdftoppm -f "$page" -l "$page" -singlefile -scale-to 1500 -png /tmp/geography.pdf "assets/geography-maps/page-$page"
           done
