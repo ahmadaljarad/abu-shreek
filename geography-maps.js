@@ -7,6 +7,7 @@ const maps=[
 ];
 let current=0,task=0,loaded=false,zoom=1;
 let renderSeq=0;
+const cropBounds={203:[0.102,0.238,0.897,0.790],209:[0.143,0.212,0.882,0.621],211:[0.099,0.084,0.568,0.432]};
 function originalPageUrl(page){return bookLink("bac-lit-geography.pdf")+"#page="+page;}
 function ensureOriginalLink(){let b=el("geoOriginalPageLink");if(!b){b=document.createElement("a");b.id="geoOriginalPageLink";b.className="btn soft";b.target="_blank";b.rel="noopener noreferrer";b.style.cssText="display:inline-block;margin:12px 0";b.textContent="📖 فتح صفحة الخريطة في الكتاب الأصلي";el("geoMapStatus").after(b);}b.href=originalPageUrl(maps[current].page);}
 
@@ -22,17 +23,34 @@ async function draw(){
  img.style.display="none";
  el("geoMapStatus").textContent="جارٍ تحميل صورة الصفحة الأصلية المحفوظة في الموقع...";
  const file="assets/geography-maps/map-"+m.page+".png";
+ const original="assets/geography-maps/page-"+m.page+".png";
  const sources=[
-   new URL("./"+file,document.baseURI).href,
-   "https://raw.githubusercontent.com/ahmadaljarad/abu-shreek/main/"+file
+   {url:new URL("./"+file,document.baseURI).href,crop:false},
+   {url:"https://raw.githubusercontent.com/ahmadaljarad/abu-shreek/main/"+file,crop:false},
+   {url:new URL("./"+original,document.baseURI).href,crop:true},
+   {url:"https://raw.githubusercontent.com/ahmadaljarad/abu-shreek/main/"+original,crop:true}
  ];
  let attempt=0;
  function tryOriginal(){
    if(seq!==renderSeq)return;
    if(attempt>=sources.length){img.style.display="none";el("geoMapStatus").textContent="تعذّر عرض صورة الصفحة الأصلية. تحقّق من الاتصال ثم أعد فتح القسم.";return;}
-   const src=sources[attempt++];
+   const source=sources[attempt++];
    const test=new Image();
-   test.onload=()=>{if(seq!==renderSeq)return;img.src=src;img.style.display="block";img.style.width=Math.round(100*zoom)+"%";el("geoMapStatus").textContent="الخريطة الأصلية مقصوصة من الصفحة "+m.page+" مع عنوانها ومفتاحها.";};
+   test.crossOrigin="anonymous";
+   test.onload=()=>{
+     if(seq!==renderSeq)return;
+     let displayUrl=source.url;
+     if(source.crop){
+       try{
+         const [l,t,r,b]=cropBounds[m.page],c=document.createElement("canvas");
+         c.width=Math.round(test.naturalWidth*(r-l));c.height=Math.round(test.naturalHeight*(b-t));
+         c.getContext("2d").drawImage(test,test.naturalWidth*l,test.naturalHeight*t,c.width,c.height,0,0,c.width,c.height);
+         displayUrl=c.toDataURL("image/png");
+       }catch(err){tryOriginal();return;}
+     }
+     img.src=displayUrl;img.style.display="block";img.style.width=Math.round(100*zoom)+"%";
+     el("geoMapStatus").textContent="الخريطة الأصلية من الصفحة "+m.page+" مع عنوانها ومفتاحها.";
+   };
    test.onerror=tryOriginal;
    test.src=src;
  }
@@ -46,7 +64,8 @@ window.geoMapPrint=function(){
  const m=maps[current],w=window.open("","_blank");
  if(!w){alert("يرجى السماح بالنوافذ المنبثقة للطباعة.");return;}
  const escapeHTML=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
- const imageUrl=new URL("./assets/geography-maps/map-"+m.page+".png",location.href).href;
+ const displayed=el("geoOriginalMapImage");
+ const imageUrl=displayed&&displayed.style.display!=="none"?displayed.src:new URL("./assets/geography-maps/map-"+m.page+".png",location.href).href;
  w.document.write('<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>تدريب الخرائط</title><style>body{font-family:Arial,sans-serif;padding:20px}h1{color:#0f766e}img{display:block;width:100%;max-height:65vh;object-fit:contain;margin:12px auto}li{margin:10px 0}@media print{body{padding:0}img{max-height:58vh}}</style></head><body><h1>'+escapeHTML(m.title)+'</h1><p>'+escapeHTML(m.source)+'</p><img id="printMap" src="'+imageUrl+'" alt="صفحة الكتاب الأصلية"><h2>أسئلة التدريب</h2><ol>'+m.tasks.map(t=>'<li>'+escapeHTML(t[0])+'</li>').join("")+'</ol></body></html>');
  w.document.close();
  const printImage=w.document.getElementById("printMap");
