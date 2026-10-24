@@ -34,7 +34,7 @@ jobs:
       - name: Crop only the original maps with titles and legends
         shell: bash
         run: |
-          python3 - <<'PY'
+          /usr/bin/python3 - <<'PY'
           from PIL import Image
           from pathlib import Path
           # Crop rectangles were inspected against the actual original textbook pages.
