@@ -14,7 +14,7 @@ jobs:
       - name: Install PDF extraction tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y poppler-utils
+          sudo apt-get install -y poppler-utils python3-pil
           command -v pdfinfo
           command -v pdftoppm
       - name: Download original geography textbook and export pages
@@ -34,7 +34,6 @@ jobs:
       - name: Crop only the original maps with titles and legends
         shell: bash
         run: |
-          python3 -m pip install --user --break-system-packages Pillow
           python3 - <<'PY'
           from PIL import Image
           from pathlib import Path
