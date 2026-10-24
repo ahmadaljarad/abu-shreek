@@ -16,10 +16,10 @@ async function draw(){
  const seq=++renderSeq,m=maps[current];
  el("geoMapTitle").textContent=m.title;el("geoMapWhy").textContent=m.why;el("geoMapSource").textContent=m.source;
  el("geoMapNumber").textContent=(current+1)+" / "+maps.length;
- el("geoMapAnswer").classList.add("hidden");task=0;renderTask();ensureOriginalLink();
+ el("geoMapAnswer").classList.add("hidden");task=0;renderTask();
  const canvas=el("geoMapCanvas");canvas.width=0;canvas.height=0;canvas.style.display="none";
  let img=el("geoOriginalMapImage");
- if(!img){img=document.createElement("img");img.id="geoOriginalMapImage";img.alt="صورة الصفحة الأصلية من كتاب الجغرافيا";img.style.cssText="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px";canvas.after(img);}
+ if(!img){img=document.createElement("img");img.id="geoOriginalMapImage";img.alt="صفحة "+m.page+" من كتاب الجغرافيا الأصلي";img.loading="eager";img.style.cssText="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px";canvas.after(img);}
  img.style.display="none";
  el("geoMapStatus").textContent="جارٍ تحميل صورة الصفحة الأصلية المحفوظة في الموقع...";
  const src="./assets/geography-maps/page-"+m.page+".png";
@@ -31,8 +31,19 @@ async function draw(){
 function renderTask(){const m=maps[current],q=m.tasks[task];el("geoMapTask").textContent="السؤال "+(task+1)+" من "+m.tasks.length+": "+q[0];el("geoMapAnswer").textContent=q[1];el("geoMapAnswer").classList.add("hidden");}
 window.openGeographyMaps=function(){if(state.subject!=="الجغرافيا"){alert("هذا القسم متاح حالياً لمادة الجغرافيا فقط.");return;}show("geoMaps");if(!loaded){loaded=true;draw();}};
 window.geoMapMove=function(n){current=(current+n+maps.length)%maps.length;zoom=1;draw();};
-window.geoMapZoom=function(n){zoom=Math.max(0.75,Math.min(2.5,zoom+n));draw();};
-window.geoMapPrint=function(){const m=maps[current];const w=window.open("","_blank");if(!w){alert("يرجى السماح بالنوافذ المنبثقة للطباعة.");return;}const escapeHTML=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));w.document.write('<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>تدريب الخرائط</title><style>body{font-family:Arial;padding:30px}li{margin:18px 0}h1{color:#0f766e}</style><h1>'+escapeHTML(m.title)+'</h1><p>'+escapeHTML(m.source)+'</p><p>ضع المواقع المطلوبة على خريطة صماء أو ارسم مخططاً مبسطاً، ثم راجع إجاباتك من التطبيق.</p><ol>'+m.tasks.map(t=>'<li>'+escapeHTML(t[0])+'</li>').join("")+'</ol></html>');w.document.close();w.print();};
+window.geoMapZoom=function(n){zoom=Math.max(0.75,Math.min(2.5,zoom+n));const img=el("geoOriginalMapImage");if(img&&img.style.display!=="none")img.style.width=Math.round(100*zoom)+"%";};
+window.geoMapPrint=function(){
+ const m=maps[current],w=window.open("","_blank");
+ if(!w){alert("يرجى السماح بالنوافذ المنبثقة للطباعة.");return;}
+ const escapeHTML=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+ const imageUrl=new URL("./assets/geography-maps/page-"+m.page+".png",location.href).href;
+ w.document.write('<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><title>تدريب الخرائط</title><style>body{font-family:Arial,sans-serif;padding:20px}h1{color:#0f766e}img{display:block;width:100%;max-height:65vh;object-fit:contain;margin:12px auto}li{margin:10px 0}@media print{body{padding:0}img{max-height:58vh}}</style></head><body><h1>'+escapeHTML(m.title)+'</h1><p>'+escapeHTML(m.source)+'</p><img id="printMap" src="'+imageUrl+'" alt="صفحة الكتاب الأصلية"><h2>أسئلة التدريب</h2><ol>'+m.tasks.map(t=>'<li>'+escapeHTML(t[0])+'</li>').join("")+'</ol></body></html>');
+ w.document.close();
+ const printImage=w.document.getElementById("printMap");
+ printImage.onload=()=>{w.focus();w.print();};
+ printImage.onerror=()=>{w.alert("تعذّر تحميل صورة الكتاب الأصلية للطباعة.");};
+ if(printImage.complete&&printImage.naturalWidth){w.focus();w.print();}
+};
 window.geoMapReveal=function(){el("geoMapAnswer").classList.remove("hidden");};
 window.geoMapNextTask=function(){task=(task+1)%maps[current].tasks.length;renderTask();};
 })();
