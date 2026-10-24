@@ -22,11 +22,22 @@ async function draw(){
  if(!img){img=document.createElement("img");img.id="geoOriginalMapImage";img.alt="صفحة "+m.page+" من كتاب الجغرافيا الأصلي";img.loading="eager";img.style.cssText="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px";canvas.after(img);}
  img.style.display="none";
  el("geoMapStatus").textContent="جارٍ تحميل صورة الصفحة الأصلية المحفوظة في الموقع...";
- const src="./assets/geography-maps/page-"+m.page+".png";
- const test=new Image();
- test.onload=()=>{if(seq!==renderSeq)return;img.src=src;img.style.display="block";img.style.width=Math.round(100*zoom)+"%";el("geoMapStatus").textContent="صورة أصلية محفوظة داخل الموقع — الصفحة "+m.page+". لا حاجة إلى تحميل ملف الكتاب.";};
- test.onerror=()=>{if(seq!==renderSeq)return;img.style.display="none";el("geoMapStatus").textContent="لم تُنشر صورة هذه الصفحة بعد. يجري تجهيز الصور الأصلية من الكتاب على GitHub؛ لن نعرض خرائط تقريبية.";};
- test.src=src;
+ const file="assets/geography-maps/page-"+m.page+".png";
+ const sources=[
+   new URL("./"+file,document.baseURI).href,
+   "https://raw.githubusercontent.com/ahmadaljarad/abu-shreek/main/"+file
+ ];
+ let attempt=0;
+ function tryOriginal(){
+   if(seq!==renderSeq)return;
+   if(attempt>=sources.length){img.style.display="none";el("geoMapStatus").textContent="تعذّر عرض صورة الصفحة الأصلية. تحقّق من الاتصال ثم أعد فتح القسم.";return;}
+   const src=sources[attempt++];
+   const test=new Image();
+   test.onload=()=>{if(seq!==renderSeq)return;img.src=src;img.style.display="block";img.style.width=Math.round(100*zoom)+"%";el("geoMapStatus").textContent="الصفحة "+m.page+" من الكتاب الأصلي — معروضة مباشرة كصورة، دون فتح PDF.";};
+   test.onerror=tryOriginal;
+   test.src=src;
+ }
+ tryOriginal();
 }
 function renderTask(){const m=maps[current],q=m.tasks[task];el("geoMapTask").textContent="السؤال "+(task+1)+" من "+m.tasks.length+": "+q[0];el("geoMapAnswer").textContent=q[1];el("geoMapAnswer").classList.add("hidden");}
 window.openGeographyMaps=function(){if(state.subject!=="الجغرافيا"){alert("هذا القسم متاح حالياً لمادة الجغرافيا فقط.");return;}show("geoMaps");if(!loaded){loaded=true;draw();}};
