@@ -9,7 +9,7 @@ const catalogue={
 'الفنون':['9-Art.pdf'],
 'التاريخ':['9-History.pdf'],
 'الجغرافيا':['9-Geography.pdf'],
-'التربية الوطنية':['9-National.pdf'],
+
 'الفيزياء والكيمياء':['9-Physics-Chemistry.pdf'],
 'التربية الإسلامية':['9-Islamic.pdf'],
 'التربية المسيحية':['9-Christianity.pdf'],
