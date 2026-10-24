@@ -54,12 +54,42 @@ jobs:
                   cropped.save(destination, optimize=True)
                   print(f"{destination}: {cropped.size}")
           PY
+      - name: Create compact overview of other textbook pages
+        shell: bash
+        run: |
+          mkdir -p assets/geography-maps/overviews
+          for start in 1 41 81 121 161 221 261; do
+            end=$((start+39))
+            if [ "$end" -gt "$total_pages" ]; then end="$total_pages"; fi
+            mkdir -p "/tmp/overview-$start"
+            for page in $(seq "$start" 2 "$end"); do
+              pdftoppm -f "$page" -l "$page" -singlefile -scale-to 420 -jpeg -jpegopt quality=55 /tmp/geography.pdf "/tmp/overview-$start/$page"
+            done
+            /usr/bin/python3 - "$start" <<'PY'
+          import sys
+          from PIL import Image, ImageDraw
+          from pathlib import Path
+          start=int(sys.argv[1])
+          folder=Path(f"/tmp/overview-{start}")
+          images=sorted(folder.glob("*.jpg"),key=lambda p:int(p.stem))
+          out=Image.new("RGB",(5*170,4*275),"white")
+          d=ImageDraw.Draw(out)
+          for i,p in enumerate(images[:20]):
+              with Image.open(p) as im:
+                  im.thumbnail((165,245))
+                  x=(i%5)*170+(170-im.width)//2
+                  y=(i//5)*275
+                  out.paste(im,(x,y))
+              d.text(((i%5)*170+4,y+248),f"PDF {p.stem}",fill="black")
+          out.save(f"assets/geography-maps/overviews/pages-{start}.jpg",quality=65)
+          PY
+          done
       - name: Commit original map pages into website
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/geography-maps/page-*.png assets/geography-maps/map-*.png
+          git add assets/geography-maps/page-*.png assets/geography-maps/map-*.png assets/geography-maps/overviews/*.jpg
           if ! git diff --cached --quiet; then
             git commit -m 'Add original geography textbook page images'
             # Rebase onto changes pushed by other workflows before publishing generated images.
