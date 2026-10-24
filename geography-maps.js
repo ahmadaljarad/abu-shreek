@@ -8,6 +8,10 @@ const maps=[
 ];
 let current=0,task=0,pdf=null,loaded=false,zoom=1;
 let outline=null;
+let renderSeq=0;
+function originalPageUrl(page){return bookLink("bac-lit-geography.pdf")+"#page="+page;}
+function ensureOriginalLink(){let b=el("geoOriginalPageLink");if(!b){b=document.createElement("a");b.id="geoOriginalPageLink";b.className="btn soft";b.target="_blank";b.rel="noopener noreferrer";b.style.cssText="display:inline-block;margin:12px 0";b.textContent="📖 فتح صفحة الخريطة في الكتاب الأصلي";el("geoMapStatus").after(b);}b.href=originalPageUrl(maps[current].page);}
+
 async function fallbackMap(){
  const canvas=el("geoMapCanvas"),ctx=canvas.getContext("2d");canvas.width=850;canvas.height=670;
  ctx.fillStyle="#eef7fa";ctx.fillRect(0,0,850,670);
@@ -24,15 +28,19 @@ async function fallbackMap(){
 
 const el=id=>document.getElementById(id);
 async function draw(){
-const m=maps[current];el("geoMapTitle").textContent=m.title;el("geoMapWhy").textContent=m.why;el("geoMapSource").textContent=m.source;el("geoMapNumber").textContent=(current+1)+" / "+maps.length;el("geoMapAnswer").classList.add("hidden");task=0;renderTask();
+const seq=++renderSeq;
+const m=maps[current];ensureOriginalLink();el("geoMapTitle").textContent=m.title;el("geoMapWhy").textContent=m.why;el("geoMapSource").textContent=m.source;el("geoMapNumber").textContent=(current+1)+" / "+maps.length;el("geoMapAnswer").classList.add("hidden");task=0;renderTask();
 el("geoMapStatus").textContent="جارٍ عرض الخريطة الأصلية من الكتاب...";
 try{
  if(!window.pdfjsLib)throw Error("PDF.js unavailable");
- if(!pdf){pdf=await pdfjsLib.getDocument({url:bookLink("bac-lit-geography.pdf"),withCredentials:false}).promise;}
+ if(!pdf){pdf=await pdfjsLib.getDocument({url:bookLink("bac-lit-geography.pdf"),withCredentials:false,disableAutoFetch:true,disableStream:true}).promise;}
+ if(seq!==renderSeq)return;
  const p=await pdf.getPage(m.page),v=p.getViewport({scale:1.45*zoom}),canvas=el("geoMapCanvas");
+ if(seq!==renderSeq)return;
  canvas.width=v.width;canvas.height=v.height;await p.render({canvasContext:canvas.getContext("2d"),viewport:v}).promise;
+ if(seq!==renderSeq)return;
  el("geoMapStatus").textContent="الصفحة "+m.page+" من الكتاب الأصلي. كبّر الصورة للتعرف على الرموز والمواقع.";
-}catch(e){console.warn("تعذر عرض صفحة الكتاب الأصلية",e);await fallbackMap();el("geoMapStatus").innerHTML='تعذّر تحميل صورة الصفحة الأصلية؛ تظهر خريطة تعليمية مبسطة بدلاً منها. <a target="_blank" rel="noopener" href="'+bookLink("bac-lit-geography.pdf")+'">افتح الكتاب الأصلي</a> وانتقل إلى الصفحة '+m.page;}
+}catch(e){if(seq!==renderSeq)return;console.warn("تعذر عرض صفحة الكتاب الأصلية",e);await fallbackMap();if(seq!==renderSeq)return;el("geoMapStatus").innerHTML='تعذّر تحميل صورة الصفحة الأصلية؛ تظهر خريطة تعليمية مبسطة بدلاً منها. <a target="_blank" rel="noopener" href="'+bookLink("bac-lit-geography.pdf")+'">افتح الكتاب الأصلي</a> وانتقل إلى الصفحة '+m.page;}
 }
 function renderTask(){const m=maps[current],q=m.tasks[task];el("geoMapTask").textContent="السؤال "+(task+1)+" من "+m.tasks.length+": "+q[0];el("geoMapAnswer").textContent=q[1];el("geoMapAnswer").classList.add("hidden");}
 window.openGeographyMaps=function(){if(state.subject!=="الجغرافيا"){alert("هذا القسم متاح حالياً لمادة الجغرافيا فقط.");return;}show("geoMaps");if(!loaded){loaded=true;draw();}};
