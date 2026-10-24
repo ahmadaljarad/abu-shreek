@@ -50,8 +50,7 @@ async function draw(){
          displayUrl=c.toDataURL("image/png");
        }catch(err){img.src=source.url;img.style.display="block";el("geoMapStatus").textContent="تم تحميل صفحة الكتاب الأصلية، ويجري تجهيز صورة الخريطة المقصوصة.";return;}
      }
-     img.src=displayUrl;img.style.display="block";img.style.width="100%";setupMapPractice();clearMapPractice();
-     el("geoMapStatus").textContent="الخريطة الأصلية من الصفحة "+m.page+" مع عنوانها ومفتاحها.";
+     img.onload=()=>{if(seq!==renderSeq)return;img.style.display="block";img.style.width="100%";setupMapPractice();clearMapPractice();el("geoMapStatus").textContent="الخريطة الأصلية من الصفحة "+m.page+" مع عنوانها ومفتاحها.";};img.onerror=()=>{img.onload=null;img.onerror=null;tryOriginal();};img.src=displayUrl;
    };
    test.onerror=tryOriginal;
    test.src=source.url;
@@ -93,7 +92,7 @@ function clearMapPractice(){
 function renderTask(){const m=maps[current],q=m.tasks[task];el("geoMapTask").textContent="السؤال "+(task+1)+" من "+m.tasks.length+": "+q[0];el("geoMapAnswer").textContent=q[1];el("geoMapAnswer").classList.add("hidden");}
 window.openGeographyMaps=function(){if(state.subject!=="الجغرافيا"){alert("هذا القسم متاح حالياً لمادة الجغرافيا فقط.");return;}show("geoMaps");if(!loaded){loaded=true;draw();}};
 window.geoMapMove=function(n){current=(current+n+maps.length)%maps.length;zoom=1;draw();};
-window.geoMapZoom=function(n){zoom=Math.max(0.75,Math.min(2.5,zoom+n));const wrap=el("geoMapInteractiveWrap");if(wrap)wrap.style.width=Math.round(100*zoom)+"%";};
+window.geoMapZoom=function(n){zoom=Math.max(0.75,Math.min(2.5,zoom+n));const wrap=el("geoMapInteractiveWrap");if(wrap){wrap.style.width=Math.round(100*zoom)+"%";wrap.style.maxWidth="none";}};
 window.geoMapPrint=function(){
  const m=maps[current],w=window.open("","_blank");
  if(!w){alert("يرجى السماح بالنوافذ المنبثقة للطباعة.");return;}
