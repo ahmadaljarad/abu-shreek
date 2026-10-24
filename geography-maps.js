@@ -52,7 +52,7 @@ async function draw(){
      el("geoMapStatus").textContent="الخريطة الأصلية من الصفحة "+m.page+" مع عنوانها ومفتاحها.";
    };
    test.onerror=tryOriginal;
-   test.src=src;
+   test.src=source.url;
  }
  tryOriginal();
 }
