@@ -62,5 +62,15 @@ jobs:
           git add assets/geography-maps/page-*.png assets/geography-maps/map-*.png
           if ! git diff --cached --quiet; then
             git commit -m 'Add original geography textbook page images'
-            git push
+            # Rebase onto changes pushed by other workflows before publishing generated images.
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git rebase origin/main
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep 3
+          done
+          echo '::error::Could not push extracted maps after retries'
+          exit 1
           fi
