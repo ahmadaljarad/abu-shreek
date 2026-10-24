@@ -6,6 +6,7 @@ const maps=[
 {title:"خريطة الخط الحديدي الحجازي",page:211,why:"توضح مسار الخط الحديدي الحجازي والمدن والمحطات المرتبطة به كما يظهر في الكتاب.",source:"الخريطة (6) للخط الحديدي الحجازي، ص 211 من الكتاب.",tasks:[["ما المدينة التي يبدأ منها الخط الحديدي الحجازي على الخريطة؟","دمشق."],["اذكر مدينة يمر بها الخط بعد دمشق باتجاه الجنوب.","درعا."],["ما الاتجاه العام للخط الحديدي الحجازي من دمشق؟","باتجاه الجنوب نحو الحجاز."],["اذكر محطة أو مدينة من محطات الخط الحديدي الحجازي الظاهرة على الخريطة.","معان أو المدينة المنورة."]]}
 ];
 let current=0,task=0,loaded=false,zoom=1;
+const practiceResults={};
 let renderSeq=0;
 const cropBounds={203:[0.102,0.238,0.897,0.790],209:[0.143,0.212,0.882,0.621],211:[0.099,0.084,0.568,0.432]};
 function originalPageUrl(page){return bookLink("bac-lit-geography.pdf")+"#page="+page;}
@@ -19,7 +20,7 @@ async function draw(){
  el("geoMapAnswer").classList.add("hidden");task=0;renderTask();clearMapPractice();
  const canvas=el("geoMapCanvas");canvas.width=0;canvas.height=0;canvas.style.display="none";
  let img=el("geoOriginalMapImage");
- if(!img){img=document.createElement("img");img.id="geoOriginalMapImage";img.alt="الخريطة الأصلية مع عنوانها ومفتاحها من صفحة "+m.page;img.loading="eager";img.style.cssText="display:block;max-width:100%;height:auto;margin:0 auto;border-radius:8px";canvas.after(img);}
+ if(!img){img=document.createElement("img");img.id="geoOriginalMapImage";img.alt="الخريطة الأصلية مع عنوانها ومفتاحها من صفحة "+m.page;img.loading="eager";img.style.cssText="display:block;width:100%;max-width:100%;height:auto;margin:0 auto;border-radius:8px";canvas.after(img);}
  img.style.display="none";
  el("geoMapStatus").textContent="جارٍ تحميل صورة الخريطة الأصلية المحفوظة في الموقع...";el("geoMapStatus").style.cursor="default";el("geoMapStatus").onclick=null;
  const file="assets/geography-maps/map-"+m.page+".png";
@@ -48,7 +49,7 @@ async function draw(){
          displayUrl=c.toDataURL("image/png");
        }catch(err){img.src=source.url;img.style.display="block";el("geoMapStatus").textContent="تم تحميل صفحة الكتاب الأصلية، ويجري تجهيز صورة الخريطة المقصوصة.";return;}
      }
-     img.src=displayUrl;img.style.display="block";img.style.width=Math.round(100*zoom)+"%";setupMapPractice();clearMapPractice();
+     img.src=displayUrl;img.style.display="block";img.style.width="100%";setupMapPractice();clearMapPractice();
      el("geoMapStatus").textContent="الخريطة الأصلية من الصفحة "+m.page+" مع عنوانها ومفتاحها.";
    };
    test.onerror=tryOriginal;
@@ -64,7 +65,7 @@ function setupMapPractice(){
    layer=document.createElement("div");layer.id="geoMapMarkerLayer";
    layer.style.cssText="position:absolute;inset:0;pointer-events:none;";
    const wrap=document.createElement("div");wrap.id="geoMapInteractiveWrap";
-   wrap.style.cssText="position:relative;display:table;max-width:100%;margin:0 auto;";
+   wrap.style.cssText="position:relative;display:table;max-width:none;margin:0 auto;";
    img.parentNode.insertBefore(wrap,img);wrap.appendChild(img);wrap.appendChild(layer);
  }
  const note=el("geoMapPracticeNote");
@@ -80,17 +81,18 @@ function setupMapPractice(){
    dot.style.cssText="position:absolute;width:20px;height:20px;border-radius:50%;background:#e11d48;border:3px solid white;box-shadow:0 0 0 2px #e11d48;transform:translate(-50%,-50%);";
    dot.style.left=x+"%";dot.style.top=y+"%";
    layer.appendChild(dot);
-   if(note)note.textContent="تم تحديد الموقع باللون الأحمر. يمكنك الضغط مرة ثانية لتغيير الإجابة، ثم إظهار الحل للمقارنة.";
+   if(note)note.textContent="تم تحديد الموقع باللون الأحمر. اضغط «إظهار الحل» ثم قيّم إجابتك بنفسك.";
  };
 }
 function clearMapPractice(){
  const layer=el("geoMapMarkerLayer");if(layer)layer.innerHTML="";
  const note=el("geoMapPracticeNote");if(note)note.textContent="اضغط على الخريطة لتضع علامة على إجابتك، ثم قارنها مع الحل.";
+ const controls=el("geoMapSelfAssessment");if(controls)controls.style.display="none";
 }
 function renderTask(){const m=maps[current],q=m.tasks[task];el("geoMapTask").textContent="السؤال "+(task+1)+" من "+m.tasks.length+": "+q[0];el("geoMapAnswer").textContent=q[1];el("geoMapAnswer").classList.add("hidden");}
 window.openGeographyMaps=function(){if(state.subject!=="الجغرافيا"){alert("هذا القسم متاح حالياً لمادة الجغرافيا فقط.");return;}show("geoMaps");if(!loaded){loaded=true;draw();}};
 window.geoMapMove=function(n){current=(current+n+maps.length)%maps.length;zoom=1;draw();};
-window.geoMapZoom=function(n){zoom=Math.max(0.75,Math.min(2.5,zoom+n));const img=el("geoOriginalMapImage");if(img&&img.style.display!=="none")img.style.width=Math.round(100*zoom)+"%";};
+window.geoMapZoom=function(n){zoom=Math.max(0.75,Math.min(2.5,zoom+n));const wrap=el("geoMapInteractiveWrap");if(wrap)wrap.style.width=Math.round(100*zoom)+"%";};
 window.geoMapPrint=function(){
  const m=maps[current],w=window.open("","_blank");
  if(!w){alert("يرجى السماح بالنوافذ المنبثقة للطباعة.");return;}
@@ -104,6 +106,8 @@ window.geoMapPrint=function(){
  printImage.onerror=()=>{w.alert("تعذّر تحميل صورة الكتاب الأصلية للطباعة.");};
  if(printImage.complete&&printImage.naturalWidth){w.focus();w.print();}
 };
-window.geoMapReveal=function(){el("geoMapAnswer").classList.remove("hidden");};
+window.geoMapReveal=function(){el("geoMapAnswer").classList.remove("hidden");const controls=el("geoMapSelfAssessment");if(controls)controls.style.display="flex";};
+window.geoMapRate=function(correct){const key=maps[current].page+":"+task;practiceResults[key]=correct;const values=Object.values(practiceResults);const correctCount=values.filter(Boolean).length;const label=el("geoMapPracticeScore");if(label)label.textContent="تقييمك الذاتي: "+correctCount+" إجابة صحيحة من "+values.length+" إجابة قيّمتها.";window.geoMapNextTask();};
+window.geoMapClearMarker=function(){clearMapPractice();};
 window.geoMapNextTask=function(){task=(task+1)%maps[current].tasks.length;renderTask();clearMapPractice();};
 })();
