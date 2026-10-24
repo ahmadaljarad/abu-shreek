@@ -31,12 +31,35 @@ jobs:
             pdftoppm -f "$page" -l "$page" -singlefile -scale-to 1500 -png /tmp/geography.pdf "assets/geography-maps/page-$page"
           done
           test -s assets/geography-maps/page-203.png
+      - name: Crop only the original maps with titles and legends
+        shell: bash
+        run: |
+          python3 -m pip install --user --break-system-packages Pillow
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          # Crop rectangles were inspected against the actual original textbook pages.
+          # Page 218 contains exercises but NO map, so it is not cropped as a map.
+          rectangles = {
+              203: (0.102, 0.238, 0.897, 0.790),
+              209: (0.143, 0.212, 0.882, 0.621),
+              211: (0.099, 0.084, 0.568, 0.432),
+          }
+          for page, (left, top, right, bottom) in rectangles.items():
+              source = Path(f"assets/geography-maps/page-{page}.png")
+              with Image.open(source) as im:
+                  w, h = im.size
+                  cropped = im.crop((round(w*left), round(h*top), round(w*right), round(h*bottom)))
+                  destination = Path(f"assets/geography-maps/map-{page}.png")
+                  cropped.save(destination, optimize=True)
+                  print(f"{destination}: {cropped.size}")
+          PY
       - name: Commit original map pages into website
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add assets/geography-maps/page-*.png
+          git add assets/geography-maps/page-*.png assets/geography-maps/map-*.png
           if ! git diff --cached --quiet; then
             git commit -m 'Add original geography textbook page images'
             git push
