@@ -1,0 +1,422 @@
+{
+  "schema_version": 1,
+  "audited_at": "2026-10-24",
+  "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
+  "total_catalogue_subjects": 33,
+  "total_catalogue_book_files": 41,
+  "books_with_partial_verified_json": 4,
+  "fully_verified_book_files": 0,
+  "warning": "This is a coverage audit of per-book JSON verification records only. Some additional provisional indexes exist in verified-toc.js; their completeness and source verification are not established here. No book is declared fully verified.",
+  "books": [
+    {
+      "catalogue_key": "تاسع|اللغة العربية",
+      "book": "9-Arabic.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Arabic.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|الرياضيات",
+      "book": "9-Algebra.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Algebra.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|الرياضيات",
+      "book": "9-Geometry.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Geometry.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|علم الأحياء والأرض",
+      "book": "9-Science.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Science.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|الفيزياء والكيمياء",
+      "book": "9-Physics-Chemistry.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Physics-Chemistry.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|التاريخ",
+      "book": "9-History.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-History.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|الجغرافيا",
+      "book": "9-Geography.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Geography.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|التربية الإسلامية",
+      "book": "9-Islamic.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Islamic.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|التربية المسيحية",
+      "book": "9-Christianity.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Christianity.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|الفنون",
+      "book": "9-Art.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Art.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|اللغة الإنكليزية",
+      "book": "9-English-SB.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-SB.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|اللغة الإنكليزية",
+      "book": "9-English-AB.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-AB.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|اللغة الفرنسية",
+      "book": "9-French-SB.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-French-SB.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|اللغة الفرنسية",
+      "book": "9-French-AB.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-French-AB.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|اللغة الروسية",
+      "book": "9-Russian.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Russian.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|التقانة",
+      "book": "9-Technology.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Technology.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "تاسع|الموسيقا",
+      "book": "9-Music.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Music.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|اللغة العربية",
+      "book": "bac-sci-arabic.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-arabic.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": "data/verified-toc/bac-sci-arabic.pdf.json",
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|الرياضيات",
+      "book": "bac-sci-math-1.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-math-1.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|الرياضيات",
+      "book": "bac-sci-math-2.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-math-2.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|الفيزياء",
+      "book": "bac-sci-physics.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-physics.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|الكيمياء",
+      "book": "bac-sci-chemistry.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-chemistry.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|علم الأحياء",
+      "book": "bac-sci-biology.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-biology.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|اللغة الإنكليزية",
+      "book": "bac-sci-english-sb.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-english-sb.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": "data/verified-toc/bac-sci-english-sb.pdf.json",
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|اللغة الإنكليزية",
+      "book": "bac-sci-english-ab.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-english-ab.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|اللغة الفرنسية",
+      "book": "bac-sci-french.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-french.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": "data/verified-toc/bac-sci-french.pdf.json",
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|اللغة الروسية",
+      "book": "bac-sci-russian.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-russian.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|التربية الإسلامية",
+      "book": "bac-sci-islamic.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-islamic.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا علمي|التربية المسيحية",
+      "book": "bac-sci-christian.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-christian.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": "data/verified-toc/bac-sci-christian.pdf.json",
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|اللغة العربية",
+      "book": "bac-lit-arabic.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-arabic.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|الفلسفة",
+      "book": "bac-lit-philosophy-1.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-philosophy-1.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": "data/toc-candidates/bac-lit-philosophy-1-clean.json",
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|الفلسفة",
+      "book": "bac-lit-philosophy-2.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-philosophy-2.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": "data/toc-candidates/bac-lit-philosophy-2-clean.json",
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|التاريخ",
+      "book": "bac-lit-history.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-history.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|الجغرافيا",
+      "book": "bac-lit-geography.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-geography.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|اللغة الإنكليزية",
+      "book": "bac-lit-english-sb.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-english-sb.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|اللغة الإنكليزية",
+      "book": "bac-lit-english-ab.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-english-ab.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|اللغة الفرنسية",
+      "book": "bac-lit-french.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-french.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|اللغة الفرنسية",
+      "book": "bac-lit-french-annex.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-french-annex.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|اللغة الروسية",
+      "book": "bac-lit-russian.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-russian.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|التربية الإسلامية",
+      "book": "bac-lit-islamic.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-islamic.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    },
+    {
+      "catalogue_key": "بكالوريا أدبي|التربية المسيحية",
+      "book": "bac-lit-christian.pdf",
+      "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-christian.pdf",
+      "original_book_page_images_present": true,
+      "verification_record": null,
+      "ocr_draft": null,
+      "fully_verified": false,
+      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+    }
+  ]
+}
