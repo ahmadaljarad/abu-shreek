@@ -55,7 +55,7 @@
       }
     },
     {
-      "title": "الجرس",
+      "title": "الجسر",
       "start": 13,
       "end": 18,
       "kind": "lesson",
@@ -70,7 +70,8 @@
       "evidence": {
         "toc_pdf_page": 2,
         "heading_pdf_page": 13,
-        "end_boundary": "next_contents_entry_starts_on_pdf_page_19"
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_19",
+        "visual_check": "Original TOC PDF page 2 and lesson heading PDF page 13 both read الجسر; initial PDF text extraction reordered letters."
       }
     },
     {
