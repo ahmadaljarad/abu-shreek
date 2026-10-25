@@ -11,7 +11,7 @@ pages=[]
 if not images.is_dir():
     raise SystemExit(f"Missing textbook image directory: {images}")
 for file in sorted(images.glob("*.webp"),key=lambda p:int(p.stem) if p.stem.isdigit() else 9999):
-    if not file.stem.isdigit() or int(file.stem)>50:continue
+    if not file.stem.isdigit() or int(file.stem)>100:continue
     result=subprocess.run(["tesseract",str(file),"stdout","-l","ara","--psm","3"],capture_output=True,text=True)
     pages.append({"image_page":int(file.stem),"image":str(file.relative_to(root)),"text":result.stdout.strip(),"ocr_ok":result.returncode==0})
     print(f"Page {file.stem}: {len(result.stdout)} chars",flush=True)
