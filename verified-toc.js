@@ -105,3 +105,16 @@ window.ABU_VERIFIED_TOC['تاسع|التاريخ']="12:العرب في العص�
  window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
  window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
 })();
+
+/* Scientific Arabic: 24 verified original TOC entries, release SHA-256 23127c... */
+(function(){
+ const k='بكالوريا علمي|اللغة العربية',book='bac-sci-arabic.pdf';
+ const raw="3:أدب القضايا الوطنية والقومية|7:عرس المجد|12:الجسر|18:الأدب المهجري|22:وطني|27:المهاجر|32:الغاب|36:رسالة الشرق المتجدد|38:فن الرواية|45:المصابيح الزرق|50:دمشق يا بسمة الحزن|53:عوامل تجديد الرواية العربية|57:الشعر الوجداني|60:الوطن|65:لوعة الفراق|69:الأمير الدمشقي|74:مهمة الشعر|76:الأدب الاجتماعي|80:قوة العلم|84:مروءة وسخاء|87:رسالة حب|89:مشروعات مقترحة|90:نصوص إثرائية|97:قواعد اللغة";
+ const data=raw.split('|').map((s,i,a)=>{
+  const n=s.indexOf(':'),start=Number(s.slice(0,n));
+  const next=a[i+1]?Number(a[i+1].split(':')[0]):111;
+  return {title:s.slice(n+1),start,end:next-1,book,verified:true,scope:i<21?'lesson':'section',source:'data/verified-toc/bac-sci-arabic.pdf.json — original TOC PDF p.2 and visually checked lesson headings'};
+ });
+ window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
+ window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
+})();
