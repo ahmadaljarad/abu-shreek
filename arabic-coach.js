@@ -2237,7 +2237,7 @@ function allGrammar(){return level()==="تاسع"?ninthBookExercises:grammarMode
 
 function questionLesson(q){
  if(!q.bookPage)return 'أسئلة الدورات';
- const match=(q.title||'').match(/—\\s*([^—]+?)\\s*—/);
+ const match=(q.title||'').match(/—\s*([^—]+?)\s*—/);
  return match?match[1].trim():'أسئلة من الكتاب';
 }
 function allowedGrammar(){
