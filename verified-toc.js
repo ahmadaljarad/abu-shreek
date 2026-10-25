@@ -66,3 +66,16 @@ window.ABU_VERIFIED_TOC['تاسع|التاريخ']="12:العرب في العص�
  const existing=window.ABU_VERIFIED_TOC[k]||[];
  window.ABU_VERIFIED_TOC[k]=[...existing.filter(x=>!grounded.some(g=>g.book===x.book&&g.title===x.title)),...grounded];
 })();
+
+/* Philosophy volume 1: all 29 lesson ranges verified against release PDF SHA-256 d5e86a... */
+(function(){
+ const k='بكالوريا أدبي|الفلسفة',book='bac-lit-philosophy-1.pdf';
+ const raw="4:قوانين الفكر|9:مبحث المعرفة وتداخلاتها مع العلوم الأخرى|13:خطوات المعرفة العلمية|19:تحليل نص (ضرورة الفلسفة)|23:لا أخلاقية العنف|28:اللاعنف|33:التسامح|38:التواصل|44:المحبة|51:تحليل نص (المحبة)|57:الإنسان والتكنولوجيا|62:أبعاد مشكلة الإنسان المعاصر|66:أخلاقيات العلم والتكنولوجيا|72:تحليل نص (الإنسان والاستهلاك)|76:المذهب العقلي|81:المذهب التجريبي|86:المذهب النقدي|91:المذهب المادي الجدلي|96:تحليل نص (المثالية الهيغلية)|99:الفلسفة الوجودية|104:الفلسفة الحيوية|109:فلسفة الظواهر|114:تحليل نص (البراجماتية)|117:التأويل في الفكر العربي المعاصر|121:النزعة الجمالية عند عبد الكريم اليافي|126:النزعة الأخلاقية عند عادل العوا|131:الوضعية المنطقية عند زكي نجيب محمود|136:الشخصانية عند عبد العزيز الحبابي|141:تحليل نص (ضرورة النقد في الفكر العربي)";
+ const data=raw.split('|').map((s,i,a)=>{
+  const n=s.indexOf(':'),start=Number(s.slice(0,n));
+  const next=a[i+1]?Number(a[i+1].split(':')[0]):142;
+  return {title:s.slice(n+1),start,end:next-1,book,verified:true,source:'data/verified-toc/bac-lit-philosophy-1.pdf.json — original PDF TOC p.2 + lesson headings; TOC misprints corrected'};
+ });
+ window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
+ window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
+})();
