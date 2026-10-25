@@ -1,0 +1,31 @@
+name: Extract ninth-grade Arabic textbook pages
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/extract-ninth-arabic.py'
+      - '.github/workflows/extract-ninth-arabic.yml'
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Arabic OCR and WebP support
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-ara libwebp7
+      - name: Extract text from actual ninth-grade textbook images
+        run: python3 scripts/extract-ninth-arabic.py
+      - name: Commit reference extraction
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@users.noreply.github.com
+          git add data/ninth-extracted/9-Arabic.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Extract ninth-grade Arabic textbook OCR references'
+            git pull --rebase
+            git push
+          fi
