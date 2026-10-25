@@ -5,8 +5,8 @@
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
   "books_with_partial_verified_json": 4,
-  "fully_verified_book_files": 1,
-  "warning": "Coverage audit of per-book verification records. Philosophy volume 1 has 29 verified lessons and original release SHA-256 matching; remaining books are not declared fully verified. Provisional JS indexes do not establish full coverage.",
+  "fully_verified_book_files": 2,
+  "warning": "Coverage audit of per-book verification records. Both philosophy volumes now have 59 verified lessons total, exact SHA-256 matching GitHub release PDFs, and verified PDF page ranges; other books remain incomplete. Provisional JS indexes are not proof of coverage.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -323,10 +323,10 @@
       "book": "bac-lit-philosophy-2.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-philosophy-2.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-lit-philosophy-2.pdf.json",
       "ocr_draft": "data/toc-candidates/bac-lit-philosophy-2-clean.json",
-      "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "fully_verified": true,
+      "remaining_work": "None for the 30 lessons listed in the original TOC; worksheets 154-156 are not separate lessons. TOC has no printed page numbers; actual PDF headings establish ranges. Last title discrepancy is documented."
     },
     {
       "catalogue_key": "بكالوريا أدبي|التاريخ",
