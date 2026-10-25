@@ -25,7 +25,7 @@ for item in manifest['assets']:
             raise ValueError('Downloaded file size differs from release manifest')
         info=subprocess.run(['pdfinfo',str(target)],capture_output=True,text=True,check=True).stdout
         count=int(next(x.split(':',1)[1].strip() for x in info.splitlines() if x.startswith('Pages:')))
-        pages=min(count,15)
+        pages=count if name=='bac-sci-arabic.pdf' else min(count,15)
         text=subprocess.run(['pdftotext','-f','1','-l',str(pages),'-layout',str(target),'-'],
                             capture_output=True,text=True,check=True).stdout
         # A page break in pdftotext corresponds to a PDF page boundary.
@@ -33,10 +33,10 @@ for item in manifest['assets']:
         if len(page_text)<pages: page_text+=['']*(pages-len(page_text))
         record={'file':name,'pdf_pages':count,'toc_candidates':[],
                 'opening_pages':[{'pdf_page':i+1,'text':t.strip()[:15000]} for i,t in enumerate(page_text)],
-                'extraction_note':'Raw PDF text only. Titles and offsets require human review.'}
-        # OCR the opening pages only when PDF text extraction is sparse or numeric-only.
+                'extraction_note':'Raw PDF text only. Arabic textbook is extracted in full; other textbooks retain the opening 15 pages. Titles and offsets require human review.'}
+        # OCR only the first 15 pages when embedded text is sparse; later pages retain raw PDF text.
         # Preserve raw OCR as evidence, never automatically publish guessed lesson boundaries.
-        for p in record['opening_pages']:
+        for p in record['opening_pages'][:15]:
             useful=sum(ch.isalpha() for ch in p['text'])
             if useful>=80: continue
             with tempfile.TemporaryDirectory() as tmp:
