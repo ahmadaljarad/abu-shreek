@@ -1,0 +1,504 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-philosophy-2.pdf",
+  "catalogue_key": "بكالوريا أدبي|الفلسفة",
+  "index_scope": "all_30_lessons_listed_in_original_toc",
+  "status": "fully_verified_lesson_index",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-philosophy-2.pdf",
+    "sha256": "713288ad37e8a9c6b484e2770795bc560732432ed525688270da9cd29e988fc8",
+    "source_match": "SHA-256 of original uploaded PDF equals GitHub release asset digest",
+    "toc_pdf_page": 2,
+    "pdf_pages": 156
+  },
+  "page_numbering": "The original TOC page 2 leaves the page-number column blank; every lesson start is verified from the actual heading on the PDF page. Ends are bounded by the next lesson heading; unit worksheets are excluded.",
+  "entries": [
+    {
+      "title": "الحدود المنطقية",
+      "start": 4,
+      "end": 8,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 4,
+        "end_boundary": "next_lesson_heading_on_pdf_page_9"
+      }
+    },
+    {
+      "title": "القضايا",
+      "start": 9,
+      "end": 12,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 9,
+        "end_boundary": "next_lesson_heading_on_pdf_page_13"
+      }
+    },
+    {
+      "title": "الاستغراق",
+      "start": 13,
+      "end": 16,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 13,
+        "end_boundary": "next_lesson_heading_on_pdf_page_17"
+      }
+    },
+    {
+      "title": "الاستدلال",
+      "start": 17,
+      "end": 21,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 17,
+        "end_boundary": "next_lesson_heading_on_pdf_page_22"
+      }
+    },
+    {
+      "title": "القياس",
+      "start": 22,
+      "end": 26,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 22,
+        "end_boundary": "next_lesson_heading_on_pdf_page_27"
+      }
+    },
+    {
+      "title": "جبر المنطق",
+      "start": 27,
+      "end": 32,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 27,
+        "end_boundary": "next_lesson_heading_on_pdf_page_33"
+      }
+    },
+    {
+      "title": "المغالطات المنطقية",
+      "start": 33,
+      "end": 39,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 33,
+        "end_boundary": "next_lesson_heading_on_pdf_page_40"
+      }
+    },
+    {
+      "title": "تحليل نص (أسس التفكير المنطقي)",
+      "start": 40,
+      "end": 45,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 40,
+        "end_boundary": "next_lesson_heading_on_pdf_page_46"
+      }
+    },
+    {
+      "title": "الانتباه",
+      "start": 46,
+      "end": 51,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 46,
+        "end_boundary": "next_lesson_heading_on_pdf_page_52"
+      }
+    },
+    {
+      "title": "الإدراك",
+      "start": 52,
+      "end": 57,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 52,
+        "end_boundary": "next_lesson_heading_on_pdf_page_58"
+      }
+    },
+    {
+      "title": "الذاكرة والنسيان",
+      "start": 58,
+      "end": 63,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 58,
+        "end_boundary": "next_lesson_heading_on_pdf_page_64"
+      }
+    },
+    {
+      "title": "الذكاء",
+      "start": 64,
+      "end": 68,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 64,
+        "end_boundary": "next_lesson_heading_on_pdf_page_69"
+      }
+    },
+    {
+      "title": "تحليل نص (الإبداع)",
+      "start": 69,
+      "end": 72,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 69,
+        "end_boundary": "next_lesson_heading_on_pdf_page_73"
+      }
+    },
+    {
+      "title": "مفهوم الذات",
+      "start": 73,
+      "end": 77,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 73,
+        "end_boundary": "next_lesson_heading_on_pdf_page_78"
+      }
+    },
+    {
+      "title": "نظريات الشخصية",
+      "start": 78,
+      "end": 82,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 78,
+        "end_boundary": "next_lesson_heading_on_pdf_page_83"
+      }
+    },
+    {
+      "title": "تحليل نص (الشعور واللاشعور)",
+      "start": 83,
+      "end": 86,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 83,
+        "end_boundary": "next_lesson_heading_on_pdf_page_87"
+      }
+    },
+    {
+      "title": "التفكير الإيجابي",
+      "start": 87,
+      "end": 93,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 87,
+        "end_boundary": "next_lesson_heading_on_pdf_page_94"
+      }
+    },
+    {
+      "title": "السعادة",
+      "start": 94,
+      "end": 99,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 94,
+        "end_boundary": "next_lesson_heading_on_pdf_page_100"
+      }
+    },
+    {
+      "title": "الرضا عن الحياة",
+      "start": 100,
+      "end": 104,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 100,
+        "end_boundary": "next_lesson_heading_on_pdf_page_105"
+      }
+    },
+    {
+      "title": "تحليل نص (الحياة الإيجابية)",
+      "start": 105,
+      "end": 108,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 105,
+        "end_boundary": "next_lesson_heading_on_pdf_page_109"
+      }
+    },
+    {
+      "title": "القيمة الاجتماعية",
+      "start": 109,
+      "end": 112,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 109,
+        "end_boundary": "next_lesson_heading_on_pdf_page_113"
+      }
+    },
+    {
+      "title": "الاندماج الاجتماعي",
+      "start": 113,
+      "end": 116,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 113,
+        "end_boundary": "next_lesson_heading_on_pdf_page_117"
+      }
+    },
+    {
+      "title": "الضبط الاجتماعي",
+      "start": 117,
+      "end": 121,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 117,
+        "end_boundary": "next_lesson_heading_on_pdf_page_122"
+      }
+    },
+    {
+      "title": "الظاهرة الاجتماعية",
+      "start": 122,
+      "end": 126,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 122,
+        "end_boundary": "next_lesson_heading_on_pdf_page_127"
+      }
+    },
+    {
+      "title": "تحليل نص (منهج البحث في العلوم الاجتماعية)",
+      "start": 127,
+      "end": 129,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 127,
+        "end_boundary": "next_lesson_heading_on_pdf_page_130"
+      }
+    },
+    {
+      "title": "الصداقة والشباب",
+      "start": 130,
+      "end": 134,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 130,
+        "end_boundary": "next_lesson_heading_on_pdf_page_135"
+      }
+    },
+    {
+      "title": "العمل التطوعي",
+      "start": 135,
+      "end": 140,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 135,
+        "end_boundary": "next_lesson_heading_on_pdf_page_141"
+      }
+    },
+    {
+      "title": "الإرشاد الاجتماعي",
+      "start": 141,
+      "end": 145,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 141,
+        "end_boundary": "next_lesson_heading_on_pdf_page_146"
+      }
+    },
+    {
+      "title": "الإعلام والمجتمع",
+      "start": 146,
+      "end": 152,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 146,
+        "end_boundary": "next_lesson_heading_on_pdf_page_153"
+      }
+    },
+    {
+      "title": "تحليل نص (نحن والإعلان)",
+      "start": 153,
+      "end": 153,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 153,
+        "end_boundary": "unit_worksheet_begins_on_pdf_page_154"
+      },
+      "toc_title": "تحليل نص (نحن والإعلام)",
+      "toc_discrepancy": "The original TOC names the final text نحن والإعلام, but the actual heading on PDF page 153 reads نحن والإعلان; the verified display title follows the lesson page."
+    }
+  ],
+  "verified_entry_count": 30,
+  "lesson_ranges_verified": true,
+  "pdf_page_mapping_verified": true,
+  "complete": true,
+  "notes": "Original TOC lists 30 lessons. Last lesson has a title discrepancy between TOC (نحن والإعلام) and actual page heading (نحن والإعلان); the heading is used. Worksheets on pages 154-156 are not separate lessons."
+}
