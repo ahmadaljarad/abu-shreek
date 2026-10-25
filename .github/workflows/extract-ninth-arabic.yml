@@ -19,6 +19,24 @@ jobs:
           sudo apt-get install -y tesseract-ocr tesseract-ocr-ara libwebp7
       - name: Extract text from actual ninth-grade textbook images
         run: python3 scripts/extract-ninth-arabic.py
+      - name: Validate extracted page range
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('data/ninth-extracted/9-Arabic.json')
+          pages = json.loads(p.read_text(encoding='utf-8'))['pages']
+          numbers = {x['image_page'] for x in pages}
+          missing = set(range(1, 101)) - numbers
+          print(f'Extracted {len(pages)} pages; missing: {sorted(missing)}')
+          if missing:
+              raise SystemExit('Expected 100 page records')
+          PY
+      - name: Upload OCR result as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ninth-arabic-pages-1-100
+          path: data/ninth-extracted/9-Arabic.json
       - name: Commit reference extraction
         run: |
           git config user.name github-actions
