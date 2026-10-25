@@ -42,24 +42,28 @@ function examType(q){const t=q.title+" "+q.word;if(/إعراب|المنادى|ا
 
 function normalizeArabic(t){return String(t||"").normalize("NFKC").replace(/[\u064B-\u065F\u0670\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/\s+/g," ").trim()}
 function partialReview(q,input){
- const a=normalizeArabic(input), expected=normalizeArabic(q.answer);
+ const a=normalizeArabic(input);
  if(!a)return {message:"اكتب إجابتك أولاً.",score:null};
- const isGrammar=/فاعل|مبتدا|مضاف اليه|منادي|فعل مضارع|فعل ماض|جمله/.test(expected);
- if(!isGrammar)return {message:"هذا السؤال يحتاج فهماً للصياغة أو التحويل، ولا يمكن إعطاء درجات آلية موثوقة له. قارن إجابتك بالحل المرجعي.",score:null};
- const parts=[];
- const roles=["فاعل","مبتدا","مضاف اليه","منادي","فعل مضارع","فعل ماض","جواب شرط","صفه"];
- const role=roles.find(x=>expected.includes(x));
- if(role)parts.push({name:"الوظيفة النحوية",ok:a.includes(role),hint:role});
- const states=["مرفوع","منصوب","مجرور","مجزوم","مبني"].filter(x=>expected.includes(x));
- if(states.length===1)parts.push({name:"الحالة الإعرابية أو البناء",ok:a.includes(states[0]),hint:states[0]});
- const signs=["الضمه","الفتحه","الكسـره","الكسرة","السكون"].filter(x=>expected.includes(x));
- if(signs.length===1)parts.push({name:"العلامة",ok:a.includes(signs[0]),hint:signs[0]});
- if(expected.includes("لا محل لها"))parts.push({name:"محل الجملة",ok:a.includes("لا محل لها")||a.includes("غير محل"),hint:"لا محل لها من الإعراب"});
- if(expected.includes("في محل نصب"))parts.push({name:"محل الجملة",ok:a.includes("في محل نصب"),hint:"في محل نصب"});
- if(parts.length<2)return {message:"لا تتوافر عناصر كافية لتقييم جزئي آلي موثوق. استخدم الحل المرجعي.",score:null};
- const hits=parts.filter(p=>p.ok).length;
- return {score:Math.round(hits/parts.length*100),message:"فحص إرشادي للعناصر (ليس علامة وزارية): "+hits+" من "+parts.length+"\n"+parts.map(p=>(p.ok?"✓ ":"○ ")+p.name+(p.ok?"":" — راجع: "+p.hint)).join("\n")+"\nقد تُقبل صيغ صحيحة لم يتعرّف عليها الفحص؛ راجع الحل المرجعي ولا تعتمد النتيجة كتصحيح نهائي."};
+ const key=normalizeArabic(q.word);
+ const isFirst=(q.source||"").includes("الأولى 2020");
+ const rubric=isFirst?({
+ "شوكه":[["الوظيفة: فاعل",5,["فاعل"]],["الحالة: مرفوع",2,["مرفوع"]],["العلامة: الضمة",2,["ضمه"]]],
+ "تبلغ":[["نوع الفعل: مضارع",5,["مضارع"]],["الحالة: مجزوم",2,["مجزوم"]],["العلامة: السكون",2,["سكون"]]],
+ "مداوله":[["الوظيفة: مبتدأ",5,["مبتدا"]],["الحالة: مرفوع",2,["مرفوع"]],["العلامة: الضمة",2,["ضمه"]]],
+ "الاوطان":[["الوظيفة: مضاف إليه",5,["مضاف اليه"]],["الحالة: مجرور",2,["مجرور"]],["العلامة: الكسرة",2,["كسره"]]]
+ })[key]:null;
+ const expected=normalizeArabic(q.answer);
+ const checks=rubric||(
+ /فاعل|مبتدا|مضاف اليه|منادي|فعل مضارع|فعل ماض|جمله/.test(expected)
+ ?[["الوظيفة النحوية",null,["فاعل","مبتدا","مضاف اليه","منادي","فعل مضارع","فعل ماض","جواب شرط","صفه"].filter(x=>expected.includes(x))],["الحالة أو المحل",null,["مرفوع","منصوب","مجرور","مجزوم","مبني","لا محل","في محل نصب"].filter(x=>expected.includes(x))],["العلامة",null,["ضمه","فتحه","كسره","سكون"].filter(x=>expected.includes(x))]].filter(x=>x[2].length)
+ :null);
+ if(!checks||checks.length<2)return {message:"لا يوجد سلم عناصر موثوق لهذا السؤال بعد. قارن إجابتك بالحل المرجعي؛ لا تُحتسب درجة آلية.",score:null};
+ const parts=checks.map(([name,weight,terms])=>({name,weight,ok:terms.some(t=>a.includes(t))}));
+ const total=parts.reduce((n,p)=>n+(p.weight||0),0),hits=parts.reduce((n,p)=>n+(p.ok?(p.weight||0):0),0);
+ const detail=parts.map(p=>(p.ok?"✓ ":"○ ")+p.name+(p.weight!==null?" ("+p.weight+" درجات)":"")).join("\n");
+ return {score:null,message:(total?"مطابقة نصية إرشادية لعناصر سلم الدورة: "+hits+" من "+total+" درجة محتملة.":"مراجعة أولية للعناصر دون درجات:")+"\n"+detail+"\nهذه ليست علامة مصحَّحة: قد تكون الإجابة صحيحة بصياغة أخرى، وقد تظهر كلمات صحيحة في سياق خاطئ. راجع الحل المرجعي أو اطلب مراجعة المعلم."};
 }
+
 const examSkills=[
 {title:"تحويل النعت الجملة إلى حال",level:"بكالوريا",sentence:"شاهدتُ طالباً يُقبلُ ← شاهدتُ الطالبَ يُقبلُ",word:"ما التغيير اللازم ليصبح «يُقبلُ» جملة حالية؟",answer:"نُعرّف صاحب الحال: «شاهدتُ الطالبَ يُقبلُ». جملة «يُقبلُ» الفعلية في محل نصب حال، بعد أن كانت في محل نصب نعت في «شاهدتُ طالباً يُقبلُ».",why:"في سلم الدورة الأولى 2020، ص 19 من PDF، ورد تحويل النعت الجملة إلى حال جملة، مع اشتراط تعريف «طالب». الصياغة هنا تعليمية مبنية على المثال المذكور في السلم.",source:"سلم الدورة الأولى 2020 — PDF ص 19"},
 {title:"الصرف — اسم المفعول",level:"بكالوريا",sentence:"استخرج الوزن أو الصيغة المطلوبة من الكلمة «محفوفة».",word:"ما نوع المشتق «محفوفة»؟",answer:"اسم مفعول من الفعل «حفَّ»، على وزن مفعولة (الأصل: محفوفة).",why:"سلم الدورة الأولى 2020، ص 19، يذكر «محفوفة: اسم مفعول»؛ التفصيل في الوزن توضيح تعليمي إضافي وليس نص السؤال الأصلي.",source:"سلم الدورة الأولى 2020 — PDF ص 19"},
