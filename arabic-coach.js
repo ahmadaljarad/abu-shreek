@@ -1150,13 +1150,93 @@ const bacBookReading=[
   "why": "تمرين مستند إلى كتاب اللغة العربية للبكالوريا العلمي، قصيدة «المواكب»، ص 35.",
   "source": "الكتاب المدرسي: البكالوريا العلمي، المواكب، ص 35",
   "bookPage": "book-pages/bac-sci-arabic/035.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "بم ارتبطت نشأة فن الرواية في الغرب؟ وما المهمة التي قام بها آنذاك؟",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "مرّت الرواية في الوطن العربي بمرحلتين مركزيتين. وضّح ذلك.",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "ما الأسباب التي جعلت مرحلة السبعينيات وما بعدها أخصب مراحل التجربة الروائية السورية؟",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "صمّم جدولاً تبيّن فيه مراحل النتاج الروائي السوري، مع ذكر أعلام كل مرحلة.",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "بم تفسّر أهمية تتبّع حركة النقد الروائي؟",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "وضّح الفرق بين المتن الحكائي والمبنى الحكائي.",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "عرّف زمن الخطاب، ثم وضّح علاقته بزمن المتن الحكائي.",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
+ },
+ {
+  "title": "كتاب البكالوريا العلمي — فن الرواية — الاستيعاب والفهم والتحليل (ص 44)",
+  "level": "بكالوريا",
+  "sentence": "اقرأ درس فن الرواية في الصفحات 38–43، ثم راجع تدريبات الصفحة 44.",
+  "word": "ما الوظائف التي تحققها اللغة في الرواية؟",
+  "answer": "إرشاد للحل (ليس إجابة نموذجية): استخرج الإجابة من فقرات درس فن الرواية، مع الاستشهاد بالمصطلحات والأمثلة الواردة في الكتاب.",
+  "why": "السؤال مستند إلى تدريبات فن الرواية، الصفحة 44، من كتاب اللغة العربية للبكالوريا العلمي.",
+  "source": "الكتاب المدرسي: البكالوريا العلمي، فن الرواية، ص 44",
+  "bookPage": "book-pages/bac-sci-arabic/044.webp"
  }
 ];
  // تُملأ فقط بأسئلة موثقة من صفحات الكتاب السوري للصف التاسع.
 function allGrammar(){return level()==="تاسع"?ninthBookExercises:grammarMode==="exam"?[...examLessons,...examSkills,...secondSession,...session2022,...session2022second,...examRhetoric,...examComprehension].filter(q=>(examSession==="all"||((q.source||"").includes("الدورة "+examSession)))&&(examCategory==="all"||examType(q)===examCategory)) :(level().includes("علمي")?[...bacBookReading]:[])}
 
-function allowedGrammar(){const all=allGrammar();const select=$('arabicLessonFilter');const filter=select?select.value:'all';return filter==='all'?all:all.filter(q=>filter==='أسئلة الدورات'?!q.title.includes('الجسر')&&!q.title.includes('عرس المجد')&&!q.title.includes('الأدب المهجري')&&!q.title.includes('— وطني —')&&!q.title.includes('أنا المهاجر')&&!q.title.includes('المواكب'):q.title.includes(filter))}
-function updateLessonFilter(){const select=$('arabicLessonFilter');if(!select)return;const all=allGrammar();const lessons=[...new Set(all.map(q=>q.title.includes('الجسر')?'الجسر':q.title.includes('عرس المجد')?'عرس المجد':q.title.includes('الأدب المهجري')?'الأدب المهجري':q.title.includes('— وطني —')?'وطني':q.title.includes('أنا المهاجر')?'أنا المهاجر':q.title.includes('المواكب')?'المواكب':'أسئلة الدورات'))];const previous=select.value;select.innerHTML='<option value="all">كل الدروس</option>'+lessons.map(v=>'<option value="'+escape(v)+'">'+escape(v)+'</option>').join('');select.value=lessons.includes(previous)?previous:'all';$('arabicLessonCount').textContent=all.length+' سؤالاً متاحاً';}
+function allowedGrammar(){const all=allGrammar();const select=$('arabicLessonFilter');const filter=select?select.value:'all';return filter==='all'?all:all.filter(q=>filter==='أسئلة الدورات'?!q.title.includes('الجسر')&&!q.title.includes('عرس المجد')&&!q.title.includes('الأدب المهجري')&&!q.title.includes('— وطني —')&&!q.title.includes('أنا المهاجر')&&!q.title.includes('المواكب')&&!q.title.includes('فن الرواية'):q.title.includes(filter))}
+function updateLessonFilter(){const select=$('arabicLessonFilter');if(!select)return;const all=allGrammar();const lessons=[...new Set(all.map(q=>q.title.includes('الجسر')?'الجسر':q.title.includes('عرس المجد')?'عرس المجد':q.title.includes('الأدب المهجري')?'الأدب المهجري':q.title.includes('— وطني —')?'وطني':q.title.includes('أنا المهاجر')?'أنا المهاجر':q.title.includes('المواكب')?'المواكب':q.title.includes('فن الرواية')?'فن الرواية':'أسئلة الدورات'))];const previous=select.value;select.innerHTML='<option value="all">كل الدروس</option>'+lessons.map(v=>'<option value="'+escape(v)+'">'+escape(v)+'</option>').join('');select.value=lessons.includes(previous)?previous:'all';$('arabicLessonCount').textContent=all.length+' سؤالاً متاحاً';}
 function examType(q){const t=q.title+" "+q.word;if(/إعراب|المنادى|المبتدأ|المضاف إليه|الفعل المجزوم|الفعل الماضي|فاعل|مفعول به|خبر كأن|ظرف المكان|بناء الماضي|صلة الموصول/.test(t))return "إعراب";if(/تحويل|توكيد/.test(t))return "تحويل";if(/تشبيه|صورة بيانية/.test(t))return "بلاغة";if(/أثر العلم|الدعوة إلى المدارس|الارتباط بالوطن|قيمة إنسانية/.test(t))return "فهم النص";return "صرف وإملاء"}
 
 function normalizeArabic(t){return String(t||"").normalize("NFKC").replace(/[\u064B-\u065F\u0670\u0640]/g,"").replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه").replace(/\s+/g," ").trim()}
