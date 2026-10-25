@@ -45,7 +45,7 @@ const bacBookReading=[
  {title:"كتاب البكالوريا العلمي — عرس المجد — مهارات القراءة (ص 8)",level:"بكالوريا",sentence:"اقرأ نص «عرس المجد» في الكتاب المدرسي، الصفحة 7، ثم أجب عن السؤال في الصفحة 8.",word:"هات مؤشّرين على انتصار الشعب السوري في نضاله.",answer:"سؤال كتابي مفتوح: حدّد مؤشّرين بالاستناد إلى أبيات النص الأصلي، مع ذكر الشاهد لكل منهما. لا نعرض جواباً مزعوماً من الكتاب.",why:"السؤال وارد ضمن مهارات القراءة الصامتة في الصفحة 8 من الكتاب المدرسي العلمي، طبعة 2025–2026.",source:"الكتاب المدرسي: البكالوريا العلمي، عرس المجد، ص 8"}
 ];
  // تُملأ فقط بأسئلة موثقة من صفحات الكتاب السوري للصف التاسع.
-function allowedGrammar(){return level()==="تاسع"?ninthBookExercises:grammarMode==="exam"?[...examLessons,...examSkills,...secondSession,...session2022,...session2022second,...examRhetoric,...examComprehension].filter(q=>(examSession==="all"||((q.source||"").includes("الدورة "+examSession)))&&(examCategory==="all"||examType(q)===examCategory)) :[...bacBookReading]}
+function allowedGrammar(){return level()==="تاسع"?ninthBookExercises:grammarMode==="exam"?[...examLessons,...examSkills,...secondSession,...session2022,...session2022second,...examRhetoric,...examComprehension].filter(q=>(examSession==="all"||((q.source||"").includes("الدورة "+examSession)))&&(examCategory==="all"||examType(q)===examCategory)) :(level().includes("علمي")?[...bacBookReading]:[])}
 
 function examType(q){const t=q.title+" "+q.word;if(/إعراب|المنادى|المبتدأ|المضاف إليه|الفعل المجزوم|الفعل الماضي|فاعل|مفعول به|خبر كأن|ظرف المكان|بناء الماضي|صلة الموصول/.test(t))return "إعراب";if(/تحويل|توكيد/.test(t))return "تحويل";if(/تشبيه|صورة بيانية/.test(t))return "بلاغة";if(/أثر العلم|الدعوة إلى المدارس|الارتباط بالوطن|قيمة إنسانية/.test(t))return "فهم النص";return "صرف وإملاء"}
 
