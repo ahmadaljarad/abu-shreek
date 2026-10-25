@@ -5,8 +5,8 @@
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
   "books_with_partial_verified_json": 4,
-  "fully_verified_book_files": 2,
-  "warning": "Coverage audit of per-book verification records. Both philosophy volumes now have 59 verified lessons total, exact SHA-256 matching GitHub release PDFs, and verified PDF page ranges; other books remain incomplete. Provisional JS indexes are not proof of coverage.",
+  "fully_verified_book_files": 3,
+  "warning": "Coverage audit: three books fully verified (two literary philosophy volumes and literary Arabic), 92 original contents entries in total. Remaining books are incomplete. Provisional JS indexes are not proof of complete source verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -303,10 +303,10 @@
       "book": "bac-lit-arabic.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-arabic.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-lit-arabic.pdf.json",
       "ocr_draft": null,
-      "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "fully_verified": true,
+      "remaining_work": "None: all 33 original TOC entries (30 lessons and 3 supplementary sections) checked against original PDF, page ranges verified, exact release SHA-256 matched."
     },
     {
       "catalogue_key": "بكالوريا أدبي|الفلسفة",
