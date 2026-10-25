@@ -2,233 +2,480 @@
   "schema_version": 1,
   "book": "bac-sci-arabic.pdf",
   "catalogue_key": "بكالوريا علمي|اللغة العربية",
-  "edition": "2025-2026",
-  "index_scope": "contents_page_entries_only",
-  "toc_pdf_page": 2,
+  "index_scope": "all_24_entries_from_original_contents_page_2",
+  "status": "fully_verified_contents_index",
   "source": {
     "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-arabic.pdf",
-    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-arabic.pdf.json"
+    "sha256": "23127c864576cf915c504a763760223c7083a4b99e21b43a7012162eecf15927",
+    "source_match": "SHA-256 of uploaded original PDF equals GitHub release asset digest",
+    "toc_pdf_page": 2,
+    "pdf_pages": 110
   },
+  "page_numbering": "Original printed TOC pages match PDF page indices. Each heading checked on original PDF, page range ends before next listed heading, final section ends on PDF page 110.",
   "entries": [
     {
       "title": "أدب القضايا الوطنية والقومية",
-      "printed_page": 3,
+      "start": 3,
+      "end": 6,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 3,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 3,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_7"
+      }
     },
     {
       "title": "عرس المجد",
-      "printed_page": 7,
+      "start": 7,
+      "end": 11,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 7,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 7,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_12"
+      }
     },
     {
-      "title": "الجرس",
-      "printed_page": 12,
+      "title": "الجسر",
+      "start": 12,
+      "end": 17,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 12,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 12,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_18"
+      },
+      "visual_check": "الجسر verified visually on TOC PDF page 2 and lesson page 12; extracted text had letter-order error"
     },
     {
       "title": "الأدب المهجري",
-      "printed_page": 18,
+      "start": 18,
+      "end": 21,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 18,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 18,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_22"
+      }
     },
     {
       "title": "وطني",
-      "printed_page": 22,
+      "start": 22,
+      "end": 26,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 22,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 22,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_27"
+      }
     },
     {
       "title": "المهاجر",
-      "printed_page": 27,
+      "start": 27,
+      "end": 31,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 27,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 27,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_32"
+      }
     },
     {
       "title": "الغاب",
-      "printed_page": 32,
+      "start": 32,
+      "end": 35,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 32,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 32,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_36"
+      }
     },
     {
       "title": "رسالة الشرق المتجدد",
-      "printed_page": 36,
+      "start": 36,
+      "end": 37,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 36,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 36,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_38"
+      }
     },
     {
       "title": "فن الرواية",
-      "printed_page": 38,
+      "start": 38,
+      "end": 44,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 38,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 38,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_45"
+      }
     },
     {
       "title": "المصابيح الزرق",
-      "printed_page": 45,
+      "start": 45,
+      "end": 49,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 45,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 45,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_50"
+      }
     },
     {
       "title": "دمشق يا بسمة الحزن",
-      "printed_page": 50,
+      "start": 50,
+      "end": 52,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 50,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 50,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_53"
+      }
     },
     {
       "title": "عوامل تجديد الرواية العربية",
-      "printed_page": 53,
+      "start": 53,
+      "end": 56,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 53,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 53,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_57"
+      }
     },
     {
       "title": "الشعر الوجداني",
-      "printed_page": 57,
+      "start": 57,
+      "end": 59,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 57,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 57,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_60"
+      }
     },
     {
       "title": "الوطن",
-      "printed_page": 60,
+      "start": 60,
+      "end": 64,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 60,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 60,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_65"
+      }
     },
     {
       "title": "لوعة الفراق",
-      "printed_page": 65,
+      "start": 65,
+      "end": 68,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 65,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 65,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_69"
+      }
+    },
+    {
+      "title": "الأمير الدمشقي",
+      "start": 69,
+      "end": 73,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 69,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 69,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_74"
+      }
     },
     {
       "title": "مهمة الشعر",
-      "printed_page": 74,
+      "start": 74,
+      "end": 75,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 74,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 74,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_76"
+      }
     },
     {
       "title": "الأدب الاجتماعي",
-      "printed_page": 76,
+      "start": 76,
+      "end": 79,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 76,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 76,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_80"
+      }
     },
     {
       "title": "قوة العلم",
-      "printed_page": 80,
+      "start": 80,
+      "end": 83,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 80,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 80,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_84"
+      }
     },
     {
       "title": "مروءة وسخاء",
-      "printed_page": 84,
+      "start": 84,
+      "end": 86,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 84,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 84,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_87"
+      }
     },
     {
       "title": "رسالة حب",
-      "printed_page": 87,
+      "start": 87,
+      "end": 88,
+      "kind": "lesson",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 87,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 87,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_89"
+      }
     },
     {
       "title": "مشروعات مقترحة",
-      "printed_page": 89,
+      "start": 89,
+      "end": 89,
+      "kind": "section",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 89,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 89,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_90"
+      }
     },
     {
       "title": "نصوص إثرائية",
-      "printed_page": 90,
+      "start": 90,
+      "end": 96,
+      "kind": "section",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 90,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 90,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_97"
+      }
     },
     {
       "title": "قواعد اللغة",
-      "printed_page": 97,
+      "start": 97,
+      "end": 110,
+      "kind": "section",
+      "verified": true,
       "verified_fields": [
         "title",
-        "printed_page"
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "toc_printed_page": 97,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 97,
+        "end_boundary": "original_PDF_ends_on_page_110"
+      }
     }
   ],
-  "unresolved": [
-    {
-      "printed_page": 69,
-      "raw_extracted_title": "الأم ُري ال ِّد ُّ مشقي",
-      "reason": "Arabic extraction from the original TOC is visually ambiguous. Do not guess the exact lesson title until the page image is checked.",
-      "verified": false
-    }
-  ],
-  "verified_entry_count": 23,
-  "lesson_ranges_verified": false,
-  "pdf_page_mapping_verified": false,
-  "complete": false,
-  "notes": "Names and printed start pages transcribed from original 2025–2026 PDF contents page 2. Extracted Arabic text has visual order/diacritic defects; ambiguous page 69 was excluded. No end pages or PDF-to-printed page offset is asserted."
+  "verified_entry_count": 24,
+  "lesson_count": 21,
+  "other_section_count": 3,
+  "lesson_ranges_verified": true,
+  "pdf_page_mapping_verified": true,
+  "complete": true,
+  "notes": "Replaces an earlier partial draft with incorrect OCR text الجرس and an unresolved page-69 title. Both are now visually verified as الجسر and الأمير الدمشقي."
 }
