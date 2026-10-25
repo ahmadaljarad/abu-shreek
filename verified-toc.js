@@ -92,3 +92,16 @@ window.ABU_VERIFIED_TOC['تاسع|التاريخ']="12:العرب في العص�
  window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
  window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
 })();
+
+/* Literary Arabic: complete original TOC (33 entries) matched to SHA-256 309c3a... release PDF. */
+(function(){
+ const k='بكالوريا أدبي|اللغة العربية',book='bac-lit-arabic.pdf';
+ const raw="4:أدب القضايا الوطنية والقومية|8:عرس المجد|13:الجرس|19:المنهج الاجتماعي في النقد الأدبي|24:أحزان البنفسج|28:المنهج النفسي في النقد الأدبي|33:وجدتها|37:شعوري|41:التفكير النقدي|43:الأدب المهجري|47:وطني|52:المهاجر|57:الغاب|62:البناء|66:رسالة الشرق المتجدد|68:فن الرواية|75:المصابيح الزرق|80:دمشق يا بسمة الحزن|83:عوامل تجديد الرواية العربية|87:الشعر الوجداني|90:الوطن|95:لوعة الفراق|99:الأمير الدمشقي|104:رقيقة الخلق|108:مهمة الشعر|110:الأدب الاجتماعي|114:نبض الطفولة وجمالها|118:قوة العلم|122:مروءة وسخاء|125:رسالة حب|127:مشروعات مقترحة|128:نصوص إثرائية|134:قواعد اللغة";
+ const data=raw.split('|').map((s,i,a)=>{
+  const n=s.indexOf(':'),start=Number(s.slice(0,n));
+  const next=a[i+1]?Number(a[i+1].split(':')[0]):149;
+  return {title:s.slice(n+1),start,end:next-1,book,verified:true,scope:i<30?'lesson':'section',source:'data/verified-toc/bac-lit-arabic.pdf.json — original TOC PDF pp. 2-3 and checked headings'};
+ });
+ window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
+ window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
+})();
