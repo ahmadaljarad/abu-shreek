@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-philosophy-1.pdf",
+  "catalogue_key": "بكالوريا أدبي|الفلسفة",
+  "index_scope": "all_29_lessons_listed_in_original_toc",
+  "status": "fully_verified_lesson_index",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-philosophy-1.pdf",
+    "sha256": "d5e86aeebda5a0d4ebc449c1220d531b13c35b04e1ce5123bc259f141c2f2a24",
+    "source_match": "SHA-256 of original uploaded PDF equals GitHub release asset digest",
+    "toc_pdf_page": 2,
+    "pdf_pages": 144
+  },
+  "page_numbering": "PDF page numbers are the indices of the release PDF and matching book-pages images; page starts checked against original PDF page headings. The original printed TOC has some incorrect start pages.",
+  "entries": [
+    {
+      "title": "قوانين الفكر",
+      "toc_printed_page": 4,
+      "start": 4,
+      "end": 8,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 4,
+        "end_boundary": "next_lesson_heading_on_pdf_page_9"
+      }
+    },
+    {
+      "title": "مبحث المعرفة وتداخلاتها مع العلوم الأخرى",
+      "toc_printed_page": 9,
+      "start": 9,
+      "end": 12,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 9,
+        "end_boundary": "next_lesson_heading_on_pdf_page_13"
+      }
+    },
+    {
+      "title": "خطوات المعرفة العلمية",
+      "toc_printed_page": 10,
+      "start": 13,
+      "end": 18,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 13,
+        "end_boundary": "next_lesson_heading_on_pdf_page_19"
+      },
+      "toc_discrepancy": "Original TOC prints 10 but actual heading starts on PDF page 13"
+    },
+    {
+      "title": "تحليل نص (ضرورة الفلسفة)",
+      "toc_printed_page": 19,
+      "start": 19,
+      "end": 22,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 19,
+        "end_boundary": "next_lesson_heading_on_pdf_page_23"
+      }
+    },
+    {
+      "title": "لا أخلاقية العنف",
+      "toc_printed_page": 23,
+      "start": 23,
+      "end": 27,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 23,
+        "end_boundary": "next_lesson_heading_on_pdf_page_28"
+      }
+    },
+    {
+      "title": "اللاعنف",
+      "toc_printed_page": 28,
+      "start": 28,
+      "end": 32,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 28,
+        "end_boundary": "next_lesson_heading_on_pdf_page_33"
+      }
+    },
+    {
+      "title": "التسامح",
+      "toc_printed_page": 33,
+      "start": 33,
+      "end": 37,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 33,
+        "end_boundary": "next_lesson_heading_on_pdf_page_38"
+      }
+    },
+    {
+      "title": "التواصل",
+      "toc_printed_page": 38,
+      "start": 38,
+      "end": 43,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 38,
+        "end_boundary": "next_lesson_heading_on_pdf_page_44"
+      }
+    },
+    {
+      "title": "المحبة",
+      "toc_printed_page": 44,
+      "start": 44,
+      "end": 50,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 44,
+        "end_boundary": "next_lesson_heading_on_pdf_page_51"
+      }
+    },
+    {
+      "title": "تحليل نص (المحبة)",
+      "toc_printed_page": 51,
+      "start": 51,
+      "end": 56,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 51,
+        "end_boundary": "next_lesson_heading_on_pdf_page_57"
+      }
+    },
+    {
+      "title": "الإنسان والتكنولوجيا",
+      "toc_printed_page": 57,
+      "start": 57,
+      "end": 61,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 57,
+        "end_boundary": "next_lesson_heading_on_pdf_page_62"
+      }
+    },
+    {
+      "title": "أبعاد مشكلة الإنسان المعاصر",
+      "toc_printed_page": 62,
+      "start": 62,
+      "end": 65,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 62,
+        "end_boundary": "next_lesson_heading_on_pdf_page_66"
+      }
+    },
+    {
+      "title": "أخلاقيات العلم والتكنولوجيا",
+      "toc_printed_page": 66,
+      "start": 66,
+      "end": 71,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 66,
+        "end_boundary": "next_lesson_heading_on_pdf_page_72"
+      }
+    },
+    {
+      "title": "تحليل نص (الإنسان والاستهلاك)",
+      "toc_printed_page": 72,
+      "start": 72,
+      "end": 75,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 72,
+        "end_boundary": "next_lesson_heading_on_pdf_page_76"
+      }
+    },
+    {
+      "title": "المذهب العقلي",
+      "toc_printed_page": 76,
+      "start": 76,
+      "end": 80,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 76,
+        "end_boundary": "next_lesson_heading_on_pdf_page_81"
+      }
+    },
+    {
+      "title": "المذهب التجريبي",
+      "toc_printed_page": 81,
+      "start": 81,
+      "end": 85,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 81,
+        "end_boundary": "next_lesson_heading_on_pdf_page_86"
+      }
+    },
+    {
+      "title": "المذهب النقدي",
+      "toc_printed_page": 86,
+      "start": 86,
+      "end": 90,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 86,
+        "end_boundary": "next_lesson_heading_on_pdf_page_91"
+      }
+    },
+    {
+      "title": "المذهب المادي الجدلي",
+      "toc_printed_page": 91,
+      "start": 91,
+      "end": 95,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 91,
+        "end_boundary": "next_lesson_heading_on_pdf_page_96"
+      }
+    },
+    {
+      "title": "تحليل نص (المثالية الهيغلية)",
+      "toc_printed_page": 96,
+      "start": 96,
+      "end": 98,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 96,
+        "end_boundary": "next_lesson_heading_on_pdf_page_99"
+      }
+    },
+    {
+      "title": "الفلسفة الوجودية",
+      "toc_printed_page": 99,
+      "start": 99,
+      "end": 103,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 99,
+        "end_boundary": "next_lesson_heading_on_pdf_page_104"
+      }
+    },
+    {
+      "title": "الفلسفة الحيوية",
+      "toc_printed_page": 104,
+      "start": 104,
+      "end": 108,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 104,
+        "end_boundary": "next_lesson_heading_on_pdf_page_109"
+      }
+    },
+    {
+      "title": "فلسفة الظواهر",
+      "toc_printed_page": 109,
+      "start": 109,
+      "end": 113,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 109,
+        "end_boundary": "next_lesson_heading_on_pdf_page_114"
+      }
+    },
+    {
+      "title": "تحليل نص (البراجماتية)",
+      "toc_printed_page": 114,
+      "start": 114,
+      "end": 116,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 114,
+        "end_boundary": "next_lesson_heading_on_pdf_page_117"
+      }
+    },
+    {
+      "title": "التأويل في الفكر العربي المعاصر",
+      "toc_printed_page": 117,
+      "start": 117,
+      "end": 120,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 117,
+        "end_boundary": "next_lesson_heading_on_pdf_page_121"
+      }
+    },
+    {
+      "title": "النزعة الجمالية عند عبد الكريم اليافي",
+      "toc_printed_page": 121,
+      "start": 121,
+      "end": 125,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 121,
+        "end_boundary": "next_lesson_heading_on_pdf_page_126"
+      }
+    },
+    {
+      "title": "النزعة الأخلاقية عند عادل العوا",
+      "toc_printed_page": 124,
+      "start": 126,
+      "end": 130,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 126,
+        "end_boundary": "next_lesson_heading_on_pdf_page_131"
+      },
+      "toc_discrepancy": "Original TOC prints 124 but actual heading starts on PDF page 126"
+    },
+    {
+      "title": "الوضعية المنطقية عند زكي نجيب محمود",
+      "toc_printed_page": 126,
+      "start": 131,
+      "end": 135,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 131,
+        "end_boundary": "next_lesson_heading_on_pdf_page_136"
+      },
+      "toc_discrepancy": "Original TOC prints 126 but actual heading starts on PDF page 131"
+    },
+    {
+      "title": "الشخصانية عند عبد العزيز الحبابي",
+      "toc_printed_page": 131,
+      "start": 136,
+      "end": 140,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 136,
+        "end_boundary": "next_lesson_heading_on_pdf_page_141"
+      },
+      "toc_discrepancy": "Original TOC prints 131 but actual heading starts on PDF page 136"
+    },
+    {
+      "title": "تحليل نص (ضرورة النقد في الفكر العربي)",
+      "toc_printed_page": 136,
+      "start": 141,
+      "end": 141,
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 141,
+        "end_boundary": "unit_worksheet_begins_on_pdf_page_142"
+      },
+      "toc_discrepancy": "Original TOC prints 136 but actual heading starts on PDF page 141"
+    }
+  ],
+  "verified_entry_count": 29,
+  "lesson_ranges_verified": true,
+  "pdf_page_mapping_verified": true,
+  "complete": true,
+  "notes": "The original table of contents lists 29 lessons. Five printed TOC page numbers disagree with actual lesson headings and are corrected in start/end; worksheets on PDF pages 142-144 are outside the listed lessons. Some lesson heading wording differs slightly from the original TOC; original TOC titles are preserved."
+}
