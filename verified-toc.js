@@ -79,3 +79,16 @@ window.ABU_VERIFIED_TOC['تاسع|التاريخ']="12:العرب في العص�
  window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
  window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
 })();
+
+/* Philosophy volume 2: all 30 lesson ranges verified against release PDF SHA-256 713288ad... */
+(function(){
+ const k='بكالوريا أدبي|الفلسفة',book='bac-lit-philosophy-2.pdf';
+ const raw="4:الحدود المنطقية|9:القضايا|13:الاستغراق|17:الاستدلال|22:القياس|27:جبر المنطق|33:المغالطات المنطقية|40:تحليل نص (أسس التفكير المنطقي)|46:الانتباه|52:الإدراك|58:الذاكرة والنسيان|64:الذكاء|69:تحليل نص (الإبداع)|73:مفهوم الذات|78:نظريات الشخصية|83:تحليل نص (الشعور واللاشعور)|87:التفكير الإيجابي|94:السعادة|100:الرضا عن الحياة|105:تحليل نص (الحياة الإيجابية)|109:القيمة الاجتماعية|113:الاندماج الاجتماعي|117:الضبط الاجتماعي|122:الظاهرة الاجتماعية|127:تحليل نص (منهج البحث في العلوم الاجتماعية)|130:الصداقة والشباب|135:العمل التطوعي|141:الإرشاد الاجتماعي|146:الإعلام والمجتمع|153:تحليل نص (نحن والإعلان)";
+ const data=raw.split('|').map((s,i,a)=>{
+  const n=s.indexOf(':'),start=Number(s.slice(0,n));
+  const next=a[i+1]?Number(a[i+1].split(':')[0]):154;
+  return {title:s.slice(n+1),start,end:next-1,book,verified:true,source:'data/verified-toc/bac-lit-philosophy-2.pdf.json — original PDF TOC p.2 + verified lesson headings; last title follows lesson heading'};
+ });
+ window.ABU_VERIFIED_TOC=window.ABU_VERIFIED_TOC||{};
+ window.ABU_VERIFIED_TOC[k]=[...(window.ABU_VERIFIED_TOC[k]||[]).filter(x=>x.book!==book),...data];
+})();
