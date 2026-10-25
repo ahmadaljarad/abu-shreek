@@ -4,9 +4,9 @@
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 4,
-  "fully_verified_book_files": 3,
-  "warning": "Coverage audit: three books fully verified (two literary philosophy volumes and literary Arabic), 92 original contents entries in total. Remaining books are incomplete. Provisional JS indexes are not proof of complete source verification.",
+  "books_with_partial_verified_json": 3,
+  "fully_verified_book_files": 4,
+  "warning": "Coverage audit: 4 books fully verified (literary philosophy volumes 1 and 2, literary Arabic, scientific Arabic); 116 contents entries. Remaining 37 catalogue books are incomplete; provisional JS indexes are not proof of full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -185,8 +185,8 @@
       "original_book_page_images_present": true,
       "verification_record": "data/verified-toc/bac-sci-arabic.pdf.json",
       "ocr_draft": null,
-      "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "fully_verified": true,
+      "remaining_work": "None: all 24 TOC entries (21 lessons and 3 sections) checked against original PDF; exact release SHA-256 matched; OCR errors corrected visually."
     },
     {
       "catalogue_key": "بكالوريا علمي|الرياضيات",
