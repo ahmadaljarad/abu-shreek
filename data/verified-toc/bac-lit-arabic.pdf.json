@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-arabic.pdf",
+  "catalogue_key": "بكالوريا أدبي|اللغة العربية",
+  "index_scope": "all_33_entries_from_original_contents_pages_2_3",
+  "status": "fully_verified_contents_index",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-arabic.pdf",
+    "sha256": "309c3a4092cebff988696c9d9f593cbaa1cf81fddeda682ac65692759cabec2f",
+    "source_match": "SHA-256 of uploaded original PDF equals GitHub release asset digest",
+    "toc_pdf_pages": [
+      2,
+      3
+    ],
+    "pdf_pages": 148
+  },
+  "page_numbering": "The original TOC printed page numbers match the release PDF page indices. Every listed start heading checked in the original PDF; end boundaries are derived from next listed heading, last ends at PDF page 148.",
+  "entries": [
+    {
+      "title": "أدب القضايا الوطنية والقومية",
+      "start": 4,
+      "end": 7,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 4,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 4,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_8"
+      }
+    },
+    {
+      "title": "عرس المجد",
+      "start": 8,
+      "end": 12,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 8,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 8,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_13"
+      }
+    },
+    {
+      "title": "الجرس",
+      "start": 13,
+      "end": 18,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 13,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 13,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_19"
+      }
+    },
+    {
+      "title": "المنهج الاجتماعي في النقد الأدبي",
+      "start": 19,
+      "end": 23,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 19,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 19,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_24"
+      }
+    },
+    {
+      "title": "أحزان البنفسج",
+      "start": 24,
+      "end": 27,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 24,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 24,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_28"
+      }
+    },
+    {
+      "title": "المنهج النفسي في النقد الأدبي",
+      "start": 28,
+      "end": 32,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 28,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 28,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_33"
+      }
+    },
+    {
+      "title": "وجدتها",
+      "start": 33,
+      "end": 36,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 33,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 33,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_37"
+      }
+    },
+    {
+      "title": "شعوري",
+      "start": 37,
+      "end": 40,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 37,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 37,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_41"
+      }
+    },
+    {
+      "title": "التفكير النقدي",
+      "start": 41,
+      "end": 42,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 41,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 41,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_43"
+      }
+    },
+    {
+      "title": "الأدب المهجري",
+      "start": 43,
+      "end": 46,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 43,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 43,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_47"
+      }
+    },
+    {
+      "title": "وطني",
+      "start": 47,
+      "end": 51,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 47,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 47,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_52"
+      }
+    },
+    {
+      "title": "المهاجر",
+      "start": 52,
+      "end": 56,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 52,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 52,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_57"
+      }
+    },
+    {
+      "title": "الغاب",
+      "start": 57,
+      "end": 61,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 57,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 57,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_62"
+      }
+    },
+    {
+      "title": "البناء",
+      "start": 62,
+      "end": 65,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 62,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 62,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_66"
+      }
+    },
+    {
+      "title": "رسالة الشرق المتجدد",
+      "start": 66,
+      "end": 67,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 66,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 66,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_68"
+      }
+    },
+    {
+      "title": "فن الرواية",
+      "start": 68,
+      "end": 74,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 68,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 68,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_75"
+      }
+    },
+    {
+      "title": "المصابيح الزرق",
+      "start": 75,
+      "end": 79,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 75,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 75,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_80"
+      }
+    },
+    {
+      "title": "دمشق يا بسمة الحزن",
+      "start": 80,
+      "end": 82,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 80,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 80,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_83"
+      }
+    },
+    {
+      "title": "عوامل تجديد الرواية العربية",
+      "start": 83,
+      "end": 86,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 83,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 83,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_87"
+      }
+    },
+    {
+      "title": "الشعر الوجداني",
+      "start": 87,
+      "end": 89,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 87,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 87,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_90"
+      }
+    },
+    {
+      "title": "الوطن",
+      "start": 90,
+      "end": 94,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 90,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 90,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_95"
+      }
+    },
+    {
+      "title": "لوعة الفراق",
+      "start": 95,
+      "end": 98,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 95,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 95,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_99"
+      }
+    },
+    {
+      "title": "الأمير الدمشقي",
+      "start": 99,
+      "end": 103,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 99,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 99,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_104"
+      }
+    },
+    {
+      "title": "رقيقة الخلق",
+      "start": 104,
+      "end": 107,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 104,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 104,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_108"
+      }
+    },
+    {
+      "title": "مهمة الشعر",
+      "start": 108,
+      "end": 109,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 108,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 108,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_110"
+      }
+    },
+    {
+      "title": "الأدب الاجتماعي",
+      "start": 110,
+      "end": 113,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 110,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 110,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_114"
+      }
+    },
+    {
+      "title": "نبض الطفولة وجمالها",
+      "start": 114,
+      "end": 117,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 114,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 114,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_118"
+      }
+    },
+    {
+      "title": "قوة العلم",
+      "start": 118,
+      "end": 121,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 118,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 118,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_122"
+      }
+    },
+    {
+      "title": "مروءة وسخاء",
+      "start": 122,
+      "end": 124,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 122,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 122,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_125"
+      }
+    },
+    {
+      "title": "رسالة حب",
+      "start": 125,
+      "end": 126,
+      "kind": "lesson",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 125,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 125,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_127"
+      }
+    },
+    {
+      "title": "مشروعات مقترحة",
+      "start": 127,
+      "end": 127,
+      "kind": "section",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 127,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 127,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_128"
+      }
+    },
+    {
+      "title": "نصوص إثرائية",
+      "start": 128,
+      "end": 133,
+      "kind": "section",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 128,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 128,
+        "end_boundary": "next_contents_entry_starts_on_pdf_page_134"
+      }
+    },
+    {
+      "title": "قواعد اللغة",
+      "start": 134,
+      "end": 148,
+      "kind": "section",
+      "verified": true,
+      "verified_fields": [
+        "title",
+        "toc_printed_page",
+        "pdf_page_start",
+        "pdf_page_end"
+      ],
+      "toc_printed_page": 134,
+      "evidence": {
+        "toc_pdf_page": 3,
+        "heading_pdf_page": 134,
+        "end_boundary": "original_PDF_ends_on_page_148"
+      }
+    }
+  ],
+  "verified_entry_count": 33,
+  "lesson_count": 30,
+  "other_section_count": 3,
+  "lesson_ranges_verified": true,
+  "pdf_page_mapping_verified": true,
+  "complete": true
+}
