@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-english-ab.pdf",
+  "catalogue_key": "بكالوريا علمي|اللغة الإنكليزية",
+  "edition": "2025-2026",
+  "index_scope": "unit_headings_progress_tests_appendices_grammar_bank",
+  "status": "SOURCE_TEXT_CHECKED_VISUAL_REVIEW_PENDING",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-english-ab.pdf",
+    "extracted_original_pdf_text": "data/bac-sci-extracted/bac-sci-english-ab.pdf.json",
+    "pdf_pages": 112,
+    "book_pages_image_count": 112
+  },
+  "page_numbering": "One-based PDF page numbers matching 001.webp through 112.webp; headings checked against extracted original PDF page text.",
+  "entries": [
+    {
+      "kind": "unit",
+      "number": 1,
+      "title": "Life Choices",
+      "start": 2,
+      "end": 8,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 2,
+        "next_heading_pdf_page": 9,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 2,
+      "title": "Success",
+      "start": 9,
+      "end": 15,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 9,
+        "next_heading_pdf_page": 16,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 3,
+      "title": "Medicine",
+      "start": 16,
+      "end": 25,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 16,
+        "next_heading_pdf_page": 26,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 4,
+      "title": "Engineering",
+      "start": 26,
+      "end": 32,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 26,
+        "next_heading_pdf_page": 33,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "progress_test",
+      "number": 1,
+      "title": "Progress Test 1",
+      "start": 33,
+      "end": 35,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 33,
+        "next_heading_pdf_page": 36,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 5,
+      "title": "Civil Rights",
+      "start": 36,
+      "end": 43,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 36,
+        "next_heading_pdf_page": 44,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 6,
+      "title": "United Nations",
+      "start": 44,
+      "end": 51,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 44,
+        "next_heading_pdf_page": 52,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 7,
+      "title": "Microorganisms",
+      "start": 52,
+      "end": 58,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 52,
+        "next_heading_pdf_page": 59,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 8,
+      "title": "Facts about Human Body",
+      "start": 59,
+      "end": 64,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 59,
+        "next_heading_pdf_page": 65,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "progress_test",
+      "number": 2,
+      "title": "Progress Test 2",
+      "start": 65,
+      "end": 67,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 65,
+        "next_heading_pdf_page": 68,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 9,
+      "title": "Citizenship",
+      "start": 68,
+      "end": 73,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 68,
+        "next_heading_pdf_page": 74,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 10,
+      "title": "Culture Shock",
+      "start": 74,
+      "end": 81,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 74,
+        "next_heading_pdf_page": 82,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 11,
+      "title": "Artificial Intelligence",
+      "start": 82,
+      "end": 89,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 82,
+        "next_heading_pdf_page": 90,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "unit",
+      "number": 12,
+      "title": "Digital Literacy",
+      "start": 90,
+      "end": 97,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 90,
+        "next_heading_pdf_page": 98,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "progress_test",
+      "number": 3,
+      "title": "Progress Test 3",
+      "start": 98,
+      "end": 99,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 98,
+        "next_heading_pdf_page": 100,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "appendix",
+      "number": 1,
+      "title": "Appendix I",
+      "start": 100,
+      "end": 100,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 100,
+        "next_heading_pdf_page": 101,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "appendix",
+      "number": 2,
+      "title": "Appendix II",
+      "start": 101,
+      "end": 101,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 101,
+        "next_heading_pdf_page": 102,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "appendix",
+      "number": 3,
+      "title": "Appendix III",
+      "start": 102,
+      "end": 103,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 102,
+        "next_heading_pdf_page": 104,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "appendix",
+      "number": 4,
+      "title": "Appendix IV",
+      "start": 104,
+      "end": 104,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 104,
+        "next_heading_pdf_page": 105,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    },
+    {
+      "kind": "grammar_bank",
+      "title": "Grammar Bank",
+      "start": 105,
+      "end": 112,
+      "verification": {
+        "method": "original_release_pdf_extracted_page_text",
+        "heading_pdf_page": 105,
+        "next_heading_pdf_page": null,
+        "source_text_checked": true,
+        "visual_page_review": false
+      }
+    }
+  ],
+  "entry_count": 20,
+  "source_text_verified": true,
+  "visually_verified": false,
+  "complete": false,
+  "remaining_work": "Compare extracted heading titles and page boundaries visually with the original PDF images; inspect any nested lesson headings that require separate entries; verify exact original PDF release digest before marking complete."
+}
