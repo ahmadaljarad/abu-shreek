@@ -41,11 +41,11 @@ function guardNavigation(){
 async function refresh(){
  if(recovering){newPasswordView();return}
  const {data:{user},error}=await client.auth.getUser();
- if(error||!user){current=null;profile=null;gate.style.display='flex';formView(false);return}
+ if(error||!user){current=null;profile=null;window.ABU_MENTOR?.detach();gate.style.display='flex';formView(false);return}
  current=user;
  const {data,error:pe}=await client.from('student_profiles').select('user_id,display_name,school_level,role').eq('user_id',user.id).single();
  if(pe||!data){profile=null;gate.style.display='flex';status('حسابك موجود، لكن ملف الطالب غير جاهز. يجب تشغيل إعداد قاعدة البيانات في Supabase أولاً.');document.getElementById('abuAuthContent').replaceChildren();const logout=document.createElement('button');logout.textContent='تسجيل الخروج';logout.onclick=()=>client.auth.signOut().then(refresh);document.getElementById('abuAuthContent').append(logout);return}
- profile=data;gate.style.display='none';guardNavigation();onlyLevel(profile.school_level);
+ profile=data;gate.style.display='none';guardNavigation();onlyLevel(profile.school_level);window.ABU_MENTOR?.attach(user,profile);
  let menu=document.getElementById('abuAccount');if(!menu){menu=document.createElement('button');menu.id='abuAccount';menu.className='btn primary';menu.style.cssText='position:fixed;bottom:16px;left:16px;z-index:9000';document.body.append(menu)}
  menu.textContent=profile.role==='admin'?'⚙️ المدير':'👤 '+(profile.display_name||profile.school_level);
  menu.onclick=()=>profile.role==='admin'?adminPanel():accountPanel();
