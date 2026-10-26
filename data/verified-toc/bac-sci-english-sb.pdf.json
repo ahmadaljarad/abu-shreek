@@ -19,7 +19,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 8,
+      "pdf_unit_end_before_next_heading": 16,
+      "pdf_heading_title": "Life Choices",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 8,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -30,7 +38,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 17,
+      "pdf_unit_end_before_next_heading": 25,
+      "pdf_heading_title": "Success",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 17,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -41,7 +57,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 26,
+      "pdf_unit_end_before_next_heading": 36,
+      "pdf_heading_title": "Medicine",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 26,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -52,7 +76,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 37,
+      "pdf_unit_end_before_next_heading": 51,
+      "pdf_heading_title": "Engineering",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 37,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -63,7 +95,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 52,
+      "pdf_unit_end_before_next_heading": 58,
+      "pdf_heading_title": "Civil Rights",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 52,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -74,7 +114,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 59,
+      "pdf_unit_end_before_next_heading": 65,
+      "pdf_heading_title": "United Nations",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 59,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -85,7 +133,34 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 66,
+      "pdf_unit_end_before_next_heading": 73,
+      "pdf_heading_title": "Microorganisms",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 66,
+        "visual_review_pending": true
+      }
+    },
+    {
+      "kind": "unit",
+      "unit_number": 8,
+      "title": "Facts about Human Body",
+      "printed_page": 65,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 74,
+      "pdf_unit_end_before_next_heading": 87,
+      "pdf_heading_title": "Facts about Human Body",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 74,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -96,7 +171,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 88,
+      "pdf_unit_end_before_next_heading": 96,
+      "pdf_heading_title": "Citizenship",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 88,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -107,7 +190,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 97,
+      "pdf_unit_end_before_next_heading": 107,
+      "pdf_heading_title": "Culture Shock",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 97,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -118,7 +209,15 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 108,
+      "pdf_unit_end_before_next_heading": 115,
+      "pdf_heading_title": "Artificial Intelligence",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 108,
+        "visual_review_pending": true
+      }
     },
     {
       "kind": "unit",
@@ -129,21 +228,30 @@
         "title",
         "printed_page"
       ],
-      "verification": "original_pdf_toc_text"
+      "verification": "original_pdf_toc_text",
+      "pdf_heading_page": 116,
+      "pdf_unit_end_before_next_heading": 128,
+      "pdf_heading_title": "Digital Literacy",
+      "pdf_heading_evidence": {
+        "method": "extracted_original_release_pdf_page_text",
+        "page": 116,
+        "visual_review_pending": true
+      }
     }
   ],
-  "unresolved": [
-    {
-      "unit_number": 8,
-      "title": "Facts about Human Body",
-      "toc_printed_page": 65,
-      "verified": false,
-      "reason": "The original table of contents prints page 65 for Unit 8, which precedes Unit 7 at page 66. Do not silently correct this inconsistency; inspect the original unit heading before indexing its page."
-    }
-  ],
-  "verified_unit_count": 11,
+  "unresolved": [],
+  "verified_unit_count": 12,
   "listed_unit_count": 12,
   "lesson_ranges_verified": false,
   "complete": false,
-  "notes": "Only unit titles and printed starting pages were verified against the book's original contents page. PDF page offsets, lesson subtopics and end pages have NOT been verified. Never use these as verified page ranges for quizzes."
+  "notes": "All 12 unit titles and printed TOC numbers checked against the original PDF text. The printed contents incorrectly assigns Unit 8 page 65; its actual heading is on PDF page 74 (page 65 contains no heading). PDF heading starts and next-heading boundaries for all units are checked against original PDF extracted text, but visual review and finer lesson boundaries are still pending. Do not mark this book fully verified.",
+  "unit_heading_pages_source_text_checked": true,
+  "page_numbering_discrepancies": [
+    {
+      "unit_number": 8,
+      "printed_toc_page": 65,
+      "actual_pdf_heading_page": 74,
+      "evidence": "PDF extracted text on page 74 starts 'Unit 8 Facts about Human Body'; page 65 has only footer '65'."
+    }
+  ]
 }
