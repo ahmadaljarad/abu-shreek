@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-10-25",
+  "audited_at": "2026-10-26",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
@@ -254,9 +254,9 @@
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-english-ab.pdf",
       "original_book_page_images_present": true,
       "verification_record": null,
-      "ocr_draft": null,
+      "ocr_draft": "data/toc-candidates/bac-sci-english-ab-source-text.json",
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "20 section headings and 1-based page ranges checked against extracted original PDF text (12 units, 3 progress tests, 4 appendices, grammar bank); visual original-PDF confirmation and finer lesson review still required."
     },
     {
       "catalogue_key": "بكالوريا علمي|اللغة الفرنسية",
@@ -418,5 +418,6 @@
       "fully_verified": false,
       "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
     }
-  ]
+  ],
+  "books_with_partial_source_text_index": 1
 }
