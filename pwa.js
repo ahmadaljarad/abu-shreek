@@ -41,7 +41,7 @@ function loadStyleOnce(href, marker) {
 
 window.addEventListener('DOMContentLoaded', async () => {
   loadStyleOnce('./home-redesign.css?v=20261002-7', 'data-abu-home-style');
-  await loadScriptOnce('./abu-chat.js?v=20261026-chat-context-20','data-abu-chat').catch(console.error);
+  await loadScriptOnce('./abu-chat.js?v=20261026-window-fix-22','data-abu-chat').catch(console.error);
   await loadScriptOnce('./home-redesign.js?v=20261026-chat-icon-fix-21', 'data-abu-home').catch(console.error);
   await loadScriptOnce('./mascot-fix.js?v=20261002-1','data-abu-mascot-fix').catch(console.error);
   await loadScriptOnce('./download-app.js?v=20261023-release-3','data-abu-download-app').catch(console.error);
