@@ -1,9 +1,20 @@
 (function(){
 'use strict';
+function addMentorLauncher(){
+ if(document.getElementById('abuMentorButton'))return;
+ const btn=document.createElement('button');
+ btn.id='abuMentorButton';btn.type='button';btn.title='أبو شريك — المرشد الدراسي';
+ btn.setAttribute('aria-label','افتح المرشد الدراسي');
+ btn.style.cssText='position:fixed;left:20px;bottom:76px;z-index:1000001;width:70px;height:70px;border-radius:50%;background:#fff;border:3px solid #236f70;padding:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px #0004;cursor:pointer';
+ const img=document.createElement('img');img.src='logo-mini.svg';img.alt='أبو شريك';img.style.cssText='width:100%;height:100%;object-fit:contain';btn.append(img);
+ btn.onclick=()=>{if(window.ABU_MENTOR?.open)window.ABU_MENTOR.open();else alert('المرشد الدراسي غير جاهز بعد. حدّث الصفحة وحاول مجدداً.')};
+ document.body.append(btn);
+}
 function build(){
  if(document.getElementById('abuNewNav'))return;
  const home=document.getElementById('home');if(!home)return;
  ['levelTitle','subjects','moduleTitle','cardProgressMini','mcqProgressMini','flash','cardPct','cardProgress','mcqExplain','mcqPct','mcqProgress','bookHint','chatlog','question','pdfCanvas','pageLabel','mcqQuestion','mcqOptions','cardQuestion','cardAnswer'].forEach(id=>{const el=document.getElementById(id);if(el)window[id]=el});
+ addMentorLauncher();
  document.body.classList.add('abu-redesign-ready');home.classList.add('abu-home-redesigned');
  const extra=document.createElement('style');extra.textContent=`.abu-fit-box label{display:block;font-weight:800;margin:18px 0 7px}.abu-fit-box select{width:100%;padding:13px;border:1px solid #dce8e5;border-radius:12px;background:#fff;font:inherit}.abu-fit-section{padding:16px 0;border-bottom:1px solid #e6efed}.abu-fit-section:last-child{border-bottom:0}.abu-fit-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.abu-fit-checks label{margin:0;font-weight:600;border:1px solid #dce8e5;border-radius:12px;padding:10px;background:#fff;cursor:pointer}.abu-fit-checks input{width:auto;margin-left:7px}.abu-fit-result-card{border:1px solid #bfe2dc;border-radius:16px;padding:15px;margin:10px 0;background:#f5fbfa}.abu-fit-result-card h3{margin:0 0 6px}.abu-fit-meter{height:8px;border-radius:99px;background:#e2e8f0;overflow:hidden}.abu-fit-meter i{display:block;height:100%;background:#14b8a6}.abu-inst-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.abu-inst-tools input,.abu-inst-tools select{width:100%;padding:12px;border:1px solid #dce8e5;border-radius:12px;font:inherit;background:#fff}.abu-inst-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.abu-inst-card{background:#fff;border:1px solid #dce8e5;border-radius:18px;padding:17px}.abu-inst-card h3{margin:0 0 8px;color:#0f766e}.abu-inst-meta{font-size:13px;color:#64748b;margin:4px 0}.abu-inst-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.abu-inst-tag{background:#e7f5f2;color:#0f766e;border-radius:99px;padding:5px 9px;font-size:12px}.abu-source-note{margin-top:18px;padding:14px;border-radius:14px;background:#fff8e7;color:#6b4f00;font-size:13px;line-height:1.7}@media(max-width:760px){.abu-fit-checks,.abu-inst-grid,.abu-inst-tools{grid-template-columns:1fr}}`;
  document.head.appendChild(extra);
