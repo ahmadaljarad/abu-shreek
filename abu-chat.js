@@ -2,7 +2,9 @@
 let panel=null;
 const conversation=[];
 let selectedSubject='';
+function close(){if(panel){panel.remove();panel=null}}
 function open(){
+ document.getElementById('abuMentorModal')?.remove();
  if(panel){panel.remove();panel=null;return}
  panel=document.createElement('section');panel.id='abuChatPanel';panel.dir='rtl';
  panel.style.cssText='position:fixed;z-index:1000003;left:clamp(12px,3vw,32px);bottom:100px;width:min(390px,calc(100vw - 24px));height:min(540px,calc(100dvh - 125px));background:white;color:#18302e;border:1px solid #b9dad5;border-radius:20px;box-shadow:0 14px 40px #0004;display:flex;flex-direction:column;overflow:hidden;font:15px/1.7 Arial,sans-serif';
@@ -28,5 +30,5 @@ function open(){
  form.onsubmit=async e=>{e.preventDefault();const q=input.value.trim();if(!q)return;input.value='';add(q,true);const previous=conversation.slice(-6).map(turn=>(turn.role==='user'?'الطالب: ':'أبو شريك: ')+turn.text.slice(0,450)).join('\n');conversation.push({role:'user',text:q});const waiting=add('عم فكّر بسؤالك...',false);send.disabled=true;try{const response=await fetch('https://abu-shreek-api.ahmad-aljarad.workers.dev/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:(previous?'سياق المحادثة السابقة:\n'+previous+'\n\n':'')+(selectedSubject?'المادة: '+selectedSubject+'\n':'')+'سؤال الطالب الحالي: '+q,level:window.ABU_MENTOR_CURRENT_USER?.level||'',book:selectedSubject,pageText:''})});if(!response.ok)throw Error('HTTP '+response.status);const result=await response.json();waiting.textContent=result.answer||result.error||'ما وصلت إجابة. حاول مرة ثانية.';if(result.answer){conversation.push({role:'assistant',text:result.answer});if(conversation.length>20)conversation.splice(0,conversation.length-20)}}catch(err){waiting.textContent='تعذر الاتصال بخدمة أبو شريك حالياً. جرّب لاحقاً.'}finally{send.disabled=false;input.focus()}};
  panel.append(head,controls,log,form);document.body.append(panel);input.focus();
 }
-window.ABU_CHAT={open};
+window.ABU_CHAT={open,close};
 })();
