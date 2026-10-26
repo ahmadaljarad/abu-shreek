@@ -2,7 +2,8 @@
 'use strict';
 function addMentorLauncher(){
  let btn=document.getElementById('abuMentorButton');
- if(!btn){btn=document.createElement('button');btn.id='abuMentorButton';btn.type='button';btn.title='أبو شريك — اسحبني أو اضغط لفتح المرشد';btn.setAttribute('aria-label','افتح المرشد الدراسي أو اسحب الأيقونة');const img=document.createElement('img');img.src='logo-mini.svg';img.alt='أبو شريك';img.style.cssText='width:100%;height:100%;object-fit:contain;pointer-events:none';btn.append(img);document.body.append(btn)}
+ if(btn){const replacement=document.createElement('button');btn.replaceWith(replacement);btn=replacement;}else{btn=document.createElement('button');}
+ {btnbtn.id='abuMentorButton';btn.type='button';btn.title='أبو شريك — اسحبني أو اضغط للمحادثة';btn.setAttribute('aria-label','افتح محادثة أبو شريك أو اسحب الأيقونة');const img=document.createElement('img');img.src='logo-mini.svg';img.alt='أبو شريك';img.style.cssText='width:100%;height:100%;object-fit:contain;pointer-events:none';btn.append(img);document.body.append(btn)}
  btn.style.cssText='position:fixed!important;left:20px!important;top:auto;bottom:76px;z-index:1000001!important;width:70px;height:70px;border-radius:50%;background:#fff;border:3px solid #236f70;padding:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px #0004;cursor:grab;touch-action:none;user-select:none';
  let saved=null;try{saved=JSON.parse(localStorage.getItem('abu-mentor-icon-position')||'null')}catch(e){}
  if(saved&&Number.isFinite(saved.x)&&Number.isFinite(saved.y)){btn.style.setProperty('left',Math.max(0,Math.min(innerWidth-70,saved.x))+'px','important');btn.style.top=Math.max(0,Math.min(innerHeight-70,saved.y))+'px';btn.style.bottom='auto'}
