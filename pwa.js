@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    await loadScriptOnce('./auth.js?v=20261026-mentor-session-15', 'data-abu-auth');
+    await loadScriptOnce('./auth.js?v=20261026-mentor-auth-16', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
