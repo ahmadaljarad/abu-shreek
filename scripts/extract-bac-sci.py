@@ -56,7 +56,9 @@ for item in manifest['assets']:
         (out/(name+'.json')).write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
         results.append({'file':name,'status':'extracted','pdf_pages':count,
                         'bookmarks':len(record['toc_candidates']),
-                        'opening_pages_with_text':sum(bool(p['text']) for p in record['opening_pages'])})
+                        'opening_pages_with_text':sum(bool(p['text']) for p in record['opening_pages']),
+                        'extracted_pages':len(record['opening_pages']),
+                        'full_text_extracted':len(record['opening_pages'])==count})
     except Exception as e:
         (out/(name+'.json')).unlink(missing_ok=True)
         results.append({'file':name,'status':'error','error':str(e)} )
