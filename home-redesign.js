@@ -1,14 +1,17 @@
 (function(){
 'use strict';
 function addMentorLauncher(){
- if(document.getElementById('abuMentorButton'))return;
- const btn=document.createElement('button');
- btn.id='abuMentorButton';btn.type='button';btn.title='أبو شريك — المرشد الدراسي';
- btn.setAttribute('aria-label','افتح المرشد الدراسي');
- btn.style.cssText='position:fixed;left:20px;bottom:76px;z-index:1000001;width:70px;height:70px;border-radius:50%;background:#fff;border:3px solid #236f70;padding:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px #0004;cursor:pointer';
- const img=document.createElement('img');img.src='logo-mini.svg';img.alt='أبو شريك';img.style.cssText='width:100%;height:100%;object-fit:contain';btn.append(img);
- btn.onclick=()=>{if(window.ABU_MENTOR?.open)window.ABU_MENTOR.open();else alert('المرشد الدراسي غير جاهز بعد. حدّث الصفحة وحاول مجدداً.')};
- document.body.append(btn);
+ let btn=document.getElementById('abuMentorButton');
+ if(!btn){btn=document.createElement('button');btn.id='abuMentorButton';btn.type='button';btn.title='أبو شريك — اسحبني أو اضغط لفتح المرشد';btn.setAttribute('aria-label','افتح المرشد الدراسي أو اسحب الأيقونة');const img=document.createElement('img');img.src='logo-mini.svg';img.alt='أبو شريك';img.style.cssText='width:100%;height:100%;object-fit:contain;pointer-events:none';btn.append(img);document.body.append(btn)}
+ btn.style.cssText='position:fixed!important;left:20px!important;top:auto;bottom:76px;z-index:1000001!important;width:70px;height:70px;border-radius:50%;background:#fff;border:3px solid #236f70;padding:6px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px #0004;cursor:grab;touch-action:none;user-select:none';
+ let saved=null;try{saved=JSON.parse(localStorage.getItem('abu-mentor-icon-position')||'null')}catch(e){}
+ if(saved&&Number.isFinite(saved.x)&&Number.isFinite(saved.y)){btn.style.setProperty('left',Math.max(0,Math.min(innerWidth-70,saved.x))+'px','important');btn.style.top=Math.max(0,Math.min(innerHeight-70,saved.y))+'px';btn.style.bottom='auto'}
+ let origin=null,moved=false;
+ btn.addEventListener('pointerdown',e=>{if(e.button!==0)return;origin={x:e.clientX,y:e.clientY,left:btn.getBoundingClientRect().left,top:btn.getBoundingClientRect().top};moved=false;btn.setPointerCapture(e.pointerId);btn.style.cursor='grabbing'});
+ btn.addEventListener('pointermove',e=>{if(!origin)return;const dx=e.clientX-origin.x,dy=e.clientY-origin.y;if(Math.abs(dx)+Math.abs(dy)>7)moved=true;if(!moved)return;btn.style.setProperty('left',Math.max(0,Math.min(innerWidth-btn.offsetWidth,origin.left+dx))+'px','important');btn.style.top=Math.max(0,Math.min(innerHeight-btn.offsetHeight,origin.top+dy))+'px';btn.style.bottom='auto'});
+ btn.addEventListener('pointerup',()=>{if(!origin)return;origin=null;btn.style.cursor='grab';if(moved){try{localStorage.setItem('abu-mentor-icon-position',JSON.stringify({x:btn.getBoundingClientRect().left,y:btn.getBoundingClientRect().top}))}catch(e){}}});
+ btn.addEventListener('pointercancel',()=>{origin=null;btn.style.cursor='grab'});
+ btn.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopImmediatePropagation();moved=false;return}if(window.ABU_MENTOR?.open)window.ABU_MENTOR.open();else alert('المرشد الدراسي غير جاهز بعد. حدّث الصفحة وحاول مجدداً.')});
 }
 function build(){
  if(document.getElementById('abuNewNav'))return;
