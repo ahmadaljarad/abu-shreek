@@ -3,14 +3,15 @@
   "book": "9-English-AB.pdf",
   "catalogue_key": "تاسع|اللغة الإنكليزية",
   "index_scope": "original_pdf_contents_titles_and_printed_start_pages_only",
-  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "status": "PARTIAL_VERIFIED_CONTENTS_AND_13_RANGES",
   "source": {
     "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-AB.pdf",
     "sha256": "d663d604479b29c34ea633db5bb7058df40f8c5140c5ee69bab2f0a85fd88023",
     "release_digest_matched": true,
     "toc_pdf_page": 2,
     "evidence_file": "data/toc-source-evidence/9-English-AB.pdf.json",
-    "pdf_pages": 64
+    "pdf_pages": 64,
+    "full_page_check": "data/toc-candidates/9-English-AB-full-check.json"
   },
   "entries": [
     {
@@ -21,10 +22,15 @@
       "verified_fields": [
         "title",
         "printed_page",
-        "pdf_heading_page_text"
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
       "verification": "original_release_pdf_extracted_contents_text",
-      "pdf_heading_page_text_checked": 3
+      "pdf_heading_page_text_checked": 3,
+      "start": 3,
+      "end": 6,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -34,10 +40,15 @@
       "verified_fields": [
         "title",
         "printed_page",
-        "pdf_heading_page_text"
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
       "verification": "original_release_pdf_extracted_contents_text",
-      "pdf_heading_page_text_checked": 7
+      "pdf_heading_page_text_checked": 7,
+      "start": 7,
+      "end": 10,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -47,10 +58,15 @@
       "verified_fields": [
         "title",
         "printed_page",
-        "pdf_heading_page_text"
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
       "verification": "original_release_pdf_extracted_contents_text",
-      "pdf_heading_page_text_checked": 11
+      "pdf_heading_page_text_checked": 11,
+      "start": 11,
+      "end": 13,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -59,9 +75,16 @@
       "printed_page": 14,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 14,
+      "end": 18,
+      "pdf_heading_page_text_checked": 14,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -70,9 +93,16 @@
       "printed_page": 19,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 19,
+      "end": 22,
+      "pdf_heading_page_text_checked": 19,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -81,9 +111,16 @@
       "printed_page": 23,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 23,
+      "end": 26,
+      "pdf_heading_page_text_checked": 23,
+      "range_verified": true
     },
     {
       "kind": "progress_test",
@@ -91,9 +128,16 @@
       "printed_page": 27,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 27,
+      "end": 31,
+      "pdf_heading_page_text_checked": 27,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -102,9 +146,16 @@
       "printed_page": 32,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 32,
+      "end": 36,
+      "pdf_heading_page_text_checked": 32,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -113,9 +164,16 @@
       "printed_page": 37,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 37,
+      "end": 41,
+      "pdf_heading_page_text_checked": 37,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -124,9 +182,16 @@
       "printed_page": 42,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 42,
+      "end": 46,
+      "pdf_heading_page_text_checked": 42,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -135,9 +200,16 @@
       "printed_page": 47,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 47,
+      "end": 50,
+      "pdf_heading_page_text_checked": 47,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -146,9 +218,16 @@
       "printed_page": 51,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 51,
+      "end": 55,
+      "pdf_heading_page_text_checked": 51,
+      "range_verified": true
     },
     {
       "kind": "unit",
@@ -157,9 +236,16 @@
       "printed_page": 56,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start",
+        "pdf_page_end"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 56,
+      "end": 60,
+      "pdf_heading_page_text_checked": 56,
+      "range_verified": true
     },
     {
       "kind": "progress_test",
@@ -167,9 +253,15 @@
       "printed_page": 61,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text",
+        "pdf_page_start"
       ],
-      "verification": "original_release_pdf_extracted_contents_text"
+      "verification": "original_release_pdf_extracted_contents_text",
+      "start": 61,
+      "end": null,
+      "pdf_heading_page_text_checked": 61,
+      "range_verified": false
     }
   ],
   "verified_entry_count": 14,
@@ -178,5 +270,10 @@
   "pdf_page_mapping_verified": false,
   "visual_review_complete": false,
   "complete": false,
-  "remaining_work": "Verify each unit heading in the original PDF/page image and determine actual start/end PDF image pages; review printed TOC vs headings for discrepancies. No inferred ranges are published."
+  "remaining_work": "All 14 TOC headings match original PDF pages; all 64 WebP page images match original PDF raster by dHash <=16. First 13 TOC entry ranges end at the next verified heading; final Progress Test 2 end and tape-script appendix boundary still require verification. Human visual review is pending.",
+  "heading_page_text_checked_count": 14,
+  "lesson_ranges_verified_count": 13,
+  "image_pages_similarity_checked_count": 64,
+  "image_page_similarity_max_dhash_distance": 9,
+  "pdf_page_mapping_checked_by_image_similarity": true
 }
