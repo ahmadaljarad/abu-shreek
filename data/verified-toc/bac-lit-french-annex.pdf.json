@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-french-annex.pdf",
+  "catalogue_key": "بكالوريا أدبي|اللغة الفرنسية",
+  "index_scope": "three_chapter_titles_and_printed_start_pages",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-french-annex.pdf",
+    "sha256": "e79161d2f2e020bdd0511c1e9b9e0ce4578449653bfa9dfe4afeab90edb4cd66",
+    "release_digest_matched": true,
+    "toc_pdf_pages": [
+      4,
+      5
+    ],
+    "evidence_file": "data/toc-source-evidence/bac-lit-french-annex.pdf",
+    "pdf_pages": 40
+  },
+  "entries": [
+    {
+      "kind": "chapter",
+      "chapter_number": 1,
+      "title": "La Comédie",
+      "printed_page": 6,
+      "verified_fields": [
+        "title",
+        "printed_page",
+        "pdf_heading_page_text"
+      ],
+      "pdf_heading_page_text_checked": 6,
+      "verification": "original_release_pdf_extracted_contents_pages_4_5"
+    },
+    {
+      "kind": "chapter",
+      "chapter_number": 2,
+      "title": "La Tragédie",
+      "printed_page": 16,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_pages_4_5"
+    },
+    {
+      "kind": "chapter",
+      "chapter_number": 3,
+      "title": "Dramaturges Syriens",
+      "printed_page": 28,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_pages_4_5"
+    }
+  ],
+  "verified_entry_count": 3,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "remaining_work": "Confirm chapter 2 and 3 headings and full chapter page boundaries against original PDF and page images; subtopics are not indexed."
+}
