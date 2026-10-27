@@ -62,9 +62,10 @@ def main():
         if all_ok:
             entries=[]
             for i,e in enumerate(TOC['entries']):
-                end=TOC['entries'][i+1]['printed_page']-1 if i+1<len(TOC['entries']) else count
+                next_exists=i+1<len(TOC['entries'])
+                end=TOC['entries'][i+1]['printed_page']-1 if next_exists else None
                 entries.append({'kind':e['kind'],'title':e['title'],'start':e['printed_page'],'end':end,
-                                'heading_pdf_page_text_checked':True,'range_derived_from_next_verified_heading':True})
+                                'heading_pdf_page_text_checked':True,'range_derived_from_next_verified_heading':next_exists})
             report['range_candidates']=entries
         target=OUT/'9-English-AB-full-check.json'
         target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
