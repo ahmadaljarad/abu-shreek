@@ -1,0 +1,47 @@
+name: Collect original textbook TOC evidence
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '19 3 * * *'
+  push:
+    paths:
+      - 'scripts/collect-toc-source-evidence.py'
+      - '.github/workflows/collect-toc-source-evidence.yml'
+permissions:
+  contents: write
+concurrency:
+  group: collect-original-textbook-evidence
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PDF text and multilingual OCR tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-ara tesseract-ocr-eng tesseract-ocr-fra tesseract-ocr-rus
+      - name: Extract source evidence for four unfinished books
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TOC_EVIDENCE_BATCH_SIZE: '4'
+        run: python3 scripts/collect-toc-source-evidence.py
+      - name: Commit source evidence (not verified lesson indexes)
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/toc-source-evidence/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Save original PDF evidence for pending textbook indexes'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Upload source evidence report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: original-textbook-toc-source-evidence
+          path: data/toc-source-evidence/summary.json
+          retention-days: 30
