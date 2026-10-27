@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "book": "9-English-AB.pdf",
+  "status": "CHECKED_CANDIDATE_NOT_YET_CERTIFIED",
+  "original_pdf_sha256": "d663d604479b29c34ea633db5bb7058df40f8c5140c5ee69bab2f0a85fd88023",
+  "pdf_pages": 64,
+  "webp_pages": 64,
+  "heading_checks_passed": 12,
+  "heading_checks_total": 14,
+  "headings": [
+    {
+      "title": "Work Together to Make it Better",
+      "expected_pdf_page": 3,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 1                       Work Together\n  Unit\n\n   1                          to Make it Better\n                                                                    Make a Difference\n     Speaking\n\n With a partner, discuss the following questions.\n 1. Have you got an email account?\n 2. If yes, what do you use it for?\n 3. If no, think of occasions in which people may use their emails.\n\n       Reading\n\n Read the following text, then do the tasks below.\n\n                        From Microsoft t"
+    },
+    {
+      "title": "Creativity & Initiatives",
+      "expected_pdf_page": 7,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 1                             Creativity\n  Unit\n\n   2                                & Initiatives\n\n\n\n\n     Speaking\n\nIn your opinion, what could \"wall of kindness\" mean?\nThe two sentences written under (wall of kindness) are\nin Swedish. Discuss with your group what they could be.\n\n       Reading\n\n Read the following text and do the tasks below.\n\n                                   Pay It Forward\nOn March 27, 2013, John Sweeney, a plumber from Ireland, started a Facebook page\ncalled Suspen"
+    },
+    {
+      "title": "A More Comfortable Life",
+      "expected_pdf_page": 11,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 2                           A More\n  Unit\n    3\n                                Comfortable Life\n     Speaking                                                           The Future World\n\nDiscuss with your partner the following questions.\n1. Would you like to live in space? Why?\n2. What are the benefits of living in space?\n3.What are the challenges of living in space?\n4.Will tourists go on space holidays?\n\n\n        Reading\n\nRead the following text about living in space, and then do the tas"
+    },
+    {
+      "title": "Transport and Tourism",
+      "expected_pdf_page": 14,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 2                              Transport\n     Unit\n      4\n                                     and Tourism\n\n       Speaking\n\n Look at the pictures and discuss with your partner the following fields in your future\n city.\n 1. traffic\n 2. buildings\n 3. facilities (parks, mosques, churches)\n\n\n\n\n          Reading\n\n Read the following text about ecological cities, and then do the tasks below.\n\n                                   Ecological Cities\n When we think about the future, we tend to assu"
+    },
+    {
+      "title": "Make Up Your Mind",
+      "expected_pdf_page": 19,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 3                       Make up your Mind\n  Unit\n    5                                                               Decision Making\n\n     Speaking\n\n\nWhat do you think the photo above refers to?\nSpeak about one wrong decision that you made?\nHow did you feel?\n\n        Reading\n\n Read the text and do the tasks below.\n\n                                   Late to Go Back\nSam walked into a cake shop, after he'd finished his work, to buy his daughter a birthday\ncake. It was about four o'clock and"
+    },
+    {
+      "title": "Exciting Challenge",
+      "expected_pdf_page": 23,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 3                               Exciting\n  Unit\n    6\n                                      Challenge\n     Speaking\n\nWork in pairs. Ask your partner these questions.\n1. Have you ever made a decision and regretted it?\n2. Do you involve someone in your decision?\n3. How do you know if your decision is good or bad?\n\n        Reading\n\n Read the text and do the tasks below.\n\n                   All are Involved Without Exception\nDo you think that all individuals can make decisions?\nHere are some "
+    },
+    {
+      "title": "Progress test 1",
+      "expected_pdf_page": 27,
+      "heading_text_match": false,
+      "page_header_excerpt": "                   Progress Test (I)\n     Speaking\n\nLook at the pictures, choose a partner and discuss:\n1. What are the people in each photo doing?\n2. What equipment (tools) do you need to help you practice\n   each sport?\n3. Talk about other strange sports you know.\n\n      Reading\n\nRead the following text, then do the tasks below.\n\n\n                                        Trekking\nToday is the second day of my trek around Mount Annapurna. I am exhausted and my legs\nare shaking; I just hope I am "
+    },
+    {
+      "title": "Critical Moments",
+      "expected_pdf_page": 32,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 4\n     Unit                         Critical Moments\n       7                                                                     On the Edge\n        Speaking\n\n Do you think that you are a lucky person? Why?\n\n           Reading\n\n Read the text and do the tasks below.\n                                           Back to Life\n Frane Selak was born in Croatia in 1929. He led a relatively unremarkable life as a music\n teacher. Selak's near-death experiences began in January 1962 when he was tra"
+    },
+    {
+      "title": "At Risk",
+      "expected_pdf_page": 37,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 4\n                                            At Risk\n  Unit\n    8\n\n     Speaking\n\nChoose one of the topics below and tell your partner about it.\n\n                                                                                Something\n   An adventure              A place you'd          Something bad\n                                                                             terrible you had\n you enjoyed doing         like to go to this       you are afraid of\n                          "
+    },
+    {
+      "title": "Stay Positive",
+      "expected_pdf_page": 42,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 5\n     Unit                             Stay Positive\n      9                                                                 Values & Time\n\n       Speaking\n\n In groups, discuss what you would do in the following\n situations and why.\n •   You broke a valuable vase and your mother asked\n     about the doer.\n •   You bought groceries and other things costing 1750\n     Syrian Pounds. You gave the cashier 2000 Syrian\n     Pounds, but he gave you change for 5000.\n •   You found a wallet in the"
+    },
+    {
+      "title": "Time waits for no one",
+      "expected_pdf_page": 47,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 5                          Time Waits for\n  Unit\n   10\n                                     No One\n     Speaking\n\nLook at the picture, and with a partner\ndiscuss the following questions.\n1. Where is the man?\n2. What is he doing?\n3. How can you describe him?\n      Reading\n\n Read the following text, then do the tasks below.\n                  Hurry up Before the Gates are Shut!\nOnce, a king and a lazy man named Hani were very good\nfriends. One morning, the king said, \"Why don't you work\nto e"
+    },
+    {
+      "title": "Ready to Contact?",
+      "expected_pdf_page": 51,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 6                                  Ready to\n  Unit\n   11\n                                          Contact?\n                                                                        Keep in Touch\n     Speaking\n\nDiscuss the following questions with your partner.\n1. What are the most important ways of communication\n   nowadays?\n2. Do you think people will be able to contact the outer\n   space in the future? How would they do that?\n      Reading\n\n Read the following text and do the tasks below"
+    },
+    {
+      "title": "Silent, yet Talking!",
+      "expected_pdf_page": 56,
+      "heading_text_match": true,
+      "page_header_excerpt": "Module 6                                Silent, yet\n     Unit\n     12\n                                         Talking!\n       Speaking\n\n\n\n\n Look at the pictures and do the task below.\n Work with a partner to answer the following questions.\n 1. Have you ever seen animals at a circus/live or on TV?\n 2. What kind of animals did you see?\n 3. What were those animals able to do?\n 4. Can all animals of their kinds do the same skills?\n 5. Explain, from your own point of view, why animals at circus act "
+    },
+    {
+      "title": "Progress Test 2",
+      "expected_pdf_page": 61,
+      "heading_text_match": false,
+      "page_header_excerpt": "                  Progress Test (II)\n     Speaking\n\nWith your partner, discuss and answer the\nfollowing questions.\n1. Have you got a friend from another country?\n2. What information do you know about him/her?\n3. How do you usually communicate?\n\n      Reading\n\nRead the following text and do the tasks below.\n\n                                Overseas Pen Friends\nMost people are curious about different countries and their cultures. So, some tend to make\nfriends from all around the world.\nMaking frie"
+    }
+  ],
+  "webp_page_dhash_distance": [
+    4,
+    3,
+    1,
+    1,
+    0,
+    4,
+    0,
+    3,
+    4,
+    3,
+    2,
+    0,
+    4,
+    0,
+    0,
+    0,
+    0,
+    7,
+    1,
+    1,
+    3,
+    3,
+    1,
+    1,
+    2,
+    6,
+    2,
+    0,
+    3,
+    0,
+    2,
+    2,
+    4,
+    2,
+    0,
+    8,
+    1,
+    1,
+    1,
+    2,
+    4,
+    4,
+    3,
+    0,
+    0,
+    5,
+    3,
+    0,
+    0,
+    9,
+    3,
+    6,
+    1,
+    1,
+    1,
+    1,
+    1,
+    0,
+    0,
+    8,
+    1,
+    1,
+    0,
+    2
+  ],
+  "webp_pages_with_distance_le_16": 64,
+  "image_page_match_threshold": 16,
+  "all_headings_checked": false,
+  "all_image_pages_within_threshold": true,
+  "note": "dHash compares original PDF raster to GitHub WebP pages. Similarity is supporting evidence, not proof of exact pixel identity; human review required before full certification."
+}
