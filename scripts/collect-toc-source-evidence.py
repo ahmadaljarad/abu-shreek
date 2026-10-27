@@ -39,6 +39,22 @@ def collect(name,asset):
                 else:p['ocr_error']=o.stderr[-300:]
                 Path(str(prefix)+'.png').unlink(missing_ok=True)
             pages.append(p)
+        # Some original textbooks place their contents at the back, not the front.
+        tail_start=max(n+1,total-5)
+        if tail_start<=total:
+            tail_raw=command('pdftotext','-f',str(tail_start),'-l',str(total),'-layout',str(pdf),'-')
+            tail_parts=tail_raw.split('\f')[:total-tail_start+1]
+            tail_parts+=['']*(total-tail_start+1-len(tail_parts))
+            for i,t in enumerate(tail_parts,tail_start):
+                p={'pdf_page':i,'pdf_text':t.strip()[:6500]}
+                if sum(c.isalpha() for c in t)<80:
+                    prefix=Path(tmp)/'tail'
+                    subprocess.run(['pdftoppm','-f',str(i),'-l',str(i),'-scale-to','1600','-png','-singlefile',str(pdf),str(prefix)],check=True,capture_output=True)
+                    o=subprocess.run(['tesseract',str(prefix)+'.png','stdout','-l','ara+eng+fra+rus','--psm','3'],capture_output=True,text=True)
+                    if o.returncode==0:p['ocr_text_unverified']=o.stdout.strip()[:6500]
+                    else:p['ocr_error']=o.stderr[-300:]
+                    Path(str(prefix)+'.png').unlink(missing_ok=True)
+                pages.append(p)
         possible=[p['pdf_page'] for p in pages if re.search('الفهرس|المحتويات|contents|sommaire|содержание',p['pdf_text']+'\n'+p.get('ocr_text_unverified',''),re.I)]
         return {'schema_version':1,'book':name,'status':'SOURCE_EVIDENCE_UNVERIFIED','fully_verified':False,
                 'original_pdf':BASE+name,'original_pdf_sha256':digest,'release_asset_size':asset['size'],
