@@ -58,7 +58,7 @@ def collect(name,asset):
         possible=[p['pdf_page'] for p in pages if re.search('الفهرس|المحتويات|contents|sommaire|содержание',p['pdf_text']+'\n'+p.get('ocr_text_unverified',''),re.I)]
         return {'schema_version':1,'book':name,'status':'SOURCE_EVIDENCE_UNVERIFIED','fully_verified':False,
                 'original_pdf':BASE+name,'original_pdf_sha256':digest,'release_asset_size':asset['size'],
-                'pdf_pages':total,'sampled_pdf_pages':n,'possible_contents_pages_unverified':possible,
+                'pdf_pages':total,'sampled_pdf_pages':len(pages),'possible_contents_pages_unverified':possible,
                 'page_image_mapping_verified':False,'lesson_titles_verified':False,'lesson_page_ranges_verified':False,
                 'note':'Raw original release PDF text/OCR only. Every title and page boundary needs independent verification before a verified lesson index is published.',
                 'pages':pages}
