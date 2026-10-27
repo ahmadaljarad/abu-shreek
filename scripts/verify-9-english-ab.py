@@ -38,9 +38,19 @@ def main():
                 title_ok=all(w in header.split()[:140] for w in words)
                 ok=unit_ok and title_ok
             else:
-                ok=bool(re.search(r'progress\s+test\s+'+str(1 if p==27 else 2),header))
+                test_number=1 if p==27 else 2
+                roman='i' if test_number==1 else 'ii'
+                ok=bool(re.search(r'progress\s+test\s+(?:'+str(test_number)+'|'+roman+r')\b',header))
             headings.append({'title':entry['title'],'expected_pdf_page':p,'heading_text_match':ok,'page_header_excerpt':text[:500]})
             if not ok:all_ok=False
+        # The printed TOC lists "Tape scripts" without a page number.
+        # Locate its actual heading instead of assuming the final test runs to PDF end.
+        appendix_start=None
+        for p in range(62,count+1):
+            page_text=subprocess.run(['pdftotext','-f',str(p),'-l',str(p),'-layout',str(pdf),'-'],capture_output=True,text=True,check=True).stdout
+            if 'tape scripts' in norm(page_text[:900]):
+                appendix_start=p
+                break
         hashes=[];distances=[]
         for i in range(count):
             page=doc[i]
@@ -58,14 +68,18 @@ def main():
                 'webp_page_dhash_distance':distances,'webp_pages_with_distance_le_16':image_matches,
                 'image_page_match_threshold':16,
                 'all_headings_checked':all_ok,'all_image_pages_within_threshold':image_matches==count,
+                'tape_scripts_heading_page':appendix_start,
                 'note':'dHash compares original PDF raster to GitHub WebP pages. Similarity is supporting evidence, not proof of exact pixel identity; human review required before full certification.'}
         if all_ok:
             entries=[]
             for i,e in enumerate(TOC['entries']):
                 next_exists=i+1<len(TOC['entries'])
-                end=TOC['entries'][i+1]['printed_page']-1 if next_exists else None
+                end=TOC['entries'][i+1]['printed_page']-1 if next_exists else (appendix_start-1 if appendix_start else None)
                 entries.append({'kind':e['kind'],'title':e['title'],'start':e['printed_page'],'end':end,
                                 'heading_pdf_page_text_checked':True,'range_derived_from_next_verified_heading':next_exists})
+            if appendix_start:
+                entries.append({'kind':'appendix','title':'Tape scripts','start':appendix_start,'end':count,
+                                'heading_pdf_page_text_checked':True,'range_derived_from_pdf_end':True})
             report['range_candidates']=entries
         target=OUT/'9-English-AB-full-check.json'
         target.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
