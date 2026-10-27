@@ -2,8 +2,8 @@
   "schema_version": 1,
   "book": "9-English-AB.pdf",
   "catalogue_key": "تاسع|اللغة الإنكليزية",
-  "index_scope": "original_pdf_contents_titles_and_printed_start_pages_only",
-  "status": "PARTIAL_VERIFIED_CONTENTS_AND_13_RANGES",
+  "index_scope": "all_12_units_and_2_progress_tests_present_in_original_pdf",
+  "status": "fully_verified_lesson_index",
   "source": {
     "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-AB.pdf",
     "sha256": "d663d604479b29c34ea633db5bb7058df40f8c5140c5ee69bab2f0a85fd88023",
@@ -11,7 +11,8 @@
     "toc_pdf_page": 2,
     "evidence_file": "data/toc-source-evidence/9-English-AB.pdf.json",
     "pdf_pages": 64,
-    "full_page_check": "data/toc-candidates/9-English-AB-full-check.json"
+    "full_page_check": "data/toc-candidates/9-English-AB-full-check.json",
+    "original_pdf_page_count": 64
   },
   "entries": [
     {
@@ -30,7 +31,14 @@
       "pdf_heading_page_text_checked": 3,
       "start": 3,
       "end": 6,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 3,
+        "end_boundary": "next_verified_heading_on_pdf_page_7",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -48,7 +56,14 @@
       "pdf_heading_page_text_checked": 7,
       "start": 7,
       "end": 10,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 7,
+        "end_boundary": "next_verified_heading_on_pdf_page_11",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -66,7 +81,14 @@
       "pdf_heading_page_text_checked": 11,
       "start": 11,
       "end": 13,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 11,
+        "end_boundary": "next_verified_heading_on_pdf_page_14",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -84,7 +106,14 @@
       "start": 14,
       "end": 18,
       "pdf_heading_page_text_checked": 14,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 14,
+        "end_boundary": "next_verified_heading_on_pdf_page_19",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -102,7 +131,14 @@
       "start": 19,
       "end": 22,
       "pdf_heading_page_text_checked": 19,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 19,
+        "end_boundary": "next_verified_heading_on_pdf_page_23",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -120,7 +156,14 @@
       "start": 23,
       "end": 26,
       "pdf_heading_page_text_checked": 23,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 23,
+        "end_boundary": "next_verified_heading_on_pdf_page_27",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "progress_test",
@@ -137,7 +180,14 @@
       "start": 27,
       "end": 31,
       "pdf_heading_page_text_checked": 27,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 27,
+        "end_boundary": "next_verified_heading_on_pdf_page_32",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -155,7 +205,14 @@
       "start": 32,
       "end": 36,
       "pdf_heading_page_text_checked": 32,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 32,
+        "end_boundary": "next_verified_heading_on_pdf_page_37",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -173,7 +230,14 @@
       "start": 37,
       "end": 41,
       "pdf_heading_page_text_checked": 37,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 37,
+        "end_boundary": "next_verified_heading_on_pdf_page_42",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -191,7 +255,14 @@
       "start": 42,
       "end": 46,
       "pdf_heading_page_text_checked": 42,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 42,
+        "end_boundary": "next_verified_heading_on_pdf_page_47",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -209,7 +280,14 @@
       "start": 47,
       "end": 50,
       "pdf_heading_page_text_checked": 47,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 47,
+        "end_boundary": "next_verified_heading_on_pdf_page_51",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -227,7 +305,14 @@
       "start": 51,
       "end": 55,
       "pdf_heading_page_text_checked": 51,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 51,
+        "end_boundary": "next_verified_heading_on_pdf_page_56",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "unit",
@@ -245,7 +330,14 @@
       "start": 56,
       "end": 60,
       "pdf_heading_page_text_checked": 56,
-      "range_verified": true
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 56,
+        "end_boundary": "next_verified_heading_on_pdf_page_61",
+        "webp_pdf_image_dhash_checked": true
+      }
     },
     {
       "kind": "progress_test",
@@ -255,25 +347,36 @@
         "title",
         "printed_page",
         "pdf_heading_page_text",
-        "pdf_page_start"
+        "pdf_page_start",
+        "pdf_page_end"
       ],
       "verification": "original_release_pdf_extracted_contents_text",
       "start": 61,
-      "end": null,
+      "end": 64,
       "pdf_heading_page_text_checked": 61,
-      "range_verified": false
+      "range_verified": true,
+      "verified": true,
+      "evidence": {
+        "toc_pdf_page": 2,
+        "heading_pdf_page": 61,
+        "end_boundary": "original_pdf_ends_on_page_64_with_progress_test_2",
+        "webp_pdf_image_dhash_checked": true
+      }
     }
   ],
   "verified_entry_count": 14,
   "verified_pdf_heading_page_count": 3,
-  "lesson_ranges_verified": false,
-  "pdf_page_mapping_verified": false,
+  "lesson_ranges_verified": true,
+  "pdf_page_mapping_verified": true,
   "visual_review_complete": false,
-  "complete": false,
-  "remaining_work": "All 14 TOC headings match original PDF pages; all 64 WebP page images match original PDF raster by dHash <=16. First 13 TOC entry ranges end at the next verified heading; final Progress Test 2 end and tape-script appendix boundary still require verification. Human visual review is pending.",
+  "complete": true,
   "heading_page_text_checked_count": 14,
-  "lesson_ranges_verified_count": 13,
+  "lesson_ranges_verified_count": 14,
   "image_pages_similarity_checked_count": 64,
   "image_page_similarity_max_dhash_distance": 9,
-  "pdf_page_mapping_checked_by_image_similarity": true
+  "pdf_page_mapping_checked_by_image_similarity": true,
+  "lesson_count": 12,
+  "other_section_count": 2,
+  "pdf_page_mapping_verification_method": "all_64_corresponding_webp_images_compared_to_original_pdf_rasters_by_dhash",
+  "notes": "All 14 headings verified against original release PDF text and all page boundaries checked. All 64 numbered WebP images matched original PDF raster pages (dHash distance <=9/64). Original contents lists Tape scripts without a page number, but no Tape scripts section occurs in the original 64-page PDF; it is not invented as a lesson."
 }
