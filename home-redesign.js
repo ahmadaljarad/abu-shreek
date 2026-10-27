@@ -110,5 +110,6 @@ function build(){
  let syncQueued=false;function syncAccount(){syncQueued=false;const b=document.getElementById('abuProfileBtn');if(!b)return;const text=(b.textContent||'').trim();account.innerHTML=text.includes('⚙️')?`⚙️ ${text.replace('⚙️','').trim()}`:`👤 ${text.replace('👤','').trim()}`;b.style.display='none'}const observer=new MutationObserver(()=>{if(syncQueued)return;syncQueued=true;requestAnimationFrame(syncAccount)});observer.observe(document.body,{childList:true,subtree:true,characterData:true});syncAccount();
  if(location.hash==='#levels')levels();else if(location.hash==='#future')futureView();else if(location.hash==='#future-fit')fitView();else if(location.hash==='#institutes')institutesView();else if(location.hash==='#about')aboutView();else homeView();
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build,{once:true});else build();
+function safeBuild(){try{build()}catch(err){console.error('Abu Shreek homepage initialization failed:',err);window.ABU_HOME_ERROR=String(err?.message||err);const notice=document.createElement('div');notice.dir='rtl';notice.style.cssText='position:fixed;top:12px;left:12px;z-index:2147483647;background:#fff7ed;border:1px solid #fb923c;padding:12px;border-radius:12px;max-width:360px;font:14px Arial';notice.textContent='تعذر تحميل الواجهة الجديدة: '+window.ABU_HOME_ERROR;document.body.appendChild(notice)}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',safeBuild,{once:true});else safeBuild();
 })();
