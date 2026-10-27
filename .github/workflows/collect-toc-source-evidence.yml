@@ -19,6 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           sparse-checkout: |
             books.json
             data/toc-verification-progress.json
