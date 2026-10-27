@@ -7,7 +7,10 @@
   "toc_pdf_page": 3,
   "source": {
     "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-english-sb.pdf",
-    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-english-sb.pdf.json"
+    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-english-sb.pdf.json",
+    "original_pdf_sha256": "626eb9f130d25d54c5fd6d1e35d783055619e15b5e16ac0cb13b54d62fb34981",
+    "original_release_digest_matched": true,
+    "source_evidence_file": "data/toc-source-evidence/bac-sci-english-sb.pdf.json"
   },
   "entries": [
     {
@@ -17,14 +20,15 @@
       "printed_page": 8,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
       "verification": "original_pdf_toc_text",
       "pdf_heading_page": 8,
       "pdf_unit_end_before_next_heading": 16,
       "pdf_heading_title": "Life Choices",
       "pdf_heading_evidence": {
-        "method": "extracted_original_release_pdf_page_text",
+        "method": "original_release_pdf_text_cross_checked_against_original_TOC",
         "page": 8,
         "visual_review_pending": true
       }
