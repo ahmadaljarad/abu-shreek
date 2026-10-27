@@ -4,9 +4,9 @@
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 6,
+  "books_with_partial_verified_json": 7,
   "fully_verified_book_files": 4,
-  "warning": "Coverage audit: 4 of 41 catalogue PDFs fully verified; 6 additional PDFs have partial verified TOC records. Remaining 37 incomplete; OCR/source evidence alone is not full verification.",
+  "warning": "Coverage audit: 4 of 41 PDFs fully verified; 7 additional PDFs have partial verified TOC records. 37 remain incomplete.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -383,10 +383,10 @@
       "book": "bac-lit-french-annex.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-french-annex.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-lit-french-annex.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "All three chapter titles and printed start pages confirmed from original PDF contents pages 4–5; still verify complete chapter headings, actual image ranges and subtopics."
     },
     {
       "catalogue_key": "بكالوريا أدبي|اللغة الروسية",
