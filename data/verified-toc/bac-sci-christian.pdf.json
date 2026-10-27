@@ -10,7 +10,11 @@
   ],
   "source": {
     "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-christian.pdf",
-    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-christian.pdf.json"
+    "extracted_original_toc": "data/bac-sci-extracted/bac-sci-christian.pdf.json",
+    "original_pdf_sha256": "d02d5a73decbe93d69315180951a4f6974594f3128cad3bf7ef8185f3688e2e4",
+    "original_release_digest_matched": true,
+    "source_evidence_file": "data/toc-source-evidence/bac-sci-christian.pdf.json",
+    "byte_identical_counterpart": "bac-lit-christian.pdf"
   },
   "entries": [
     {
@@ -18,18 +22,22 @@
       "printed_page": 6,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "verification": "manually_transcribed_from_original_pdf_contents_page",
+      "pdf_heading_page_text_checked": 6
     },
     {
       "title": "الكمال الإلهي",
       "printed_page": 11,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
-      "verification": "manually_transcribed_from_original_pdf_contents_page"
+      "verification": "manually_transcribed_from_original_pdf_contents_page",
+      "pdf_heading_page_text_checked": 11
     },
     {
       "title": "حريتي في المسيح",
@@ -216,5 +224,6 @@
   "lesson_ranges_verified": false,
   "pdf_page_mapping_verified": false,
   "complete": false,
-  "notes": "Original PDF TOC pages 4–5 provide the 22 titles and printed starting pages. Titles normalized for readability (diacritics omitted). No inferred end pages, no confirmed PDF/image page offsets; not yet safe for exact lesson-range quizzes."
+  "notes": "Original PDF TOC pages 4–5 provide the 22 titles and printed starting pages. Titles normalized for readability (diacritics omitted). No inferred end pages, no confirmed PDF/image page offsets; not yet safe for exact lesson-range quizzes.",
+  "verified_pdf_heading_page_count": 2
 }
