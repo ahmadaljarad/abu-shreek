@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-10-26",
+  "audited_at": "2026-10-27",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 3,
+  "books_with_partial_verified_json": 5,
   "fully_verified_book_files": 4,
-  "warning": "Coverage audit: 4 books fully verified (literary philosophy volumes 1 and 2, literary Arabic, scientific Arabic); 116 contents entries. Remaining 37 catalogue books are incomplete; provisional JS indexes are not proof of full verification.",
+  "warning": "Coverage audit: 4 of 41 catalogue PDFs fully verified; 5 more have partial verified TOC records. 37 remain incomplete. Original-PDF source evidence is not full lesson/page-range verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -123,10 +123,10 @@
       "book": "9-English-AB.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-AB.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/9-English-AB.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "Original PDF contents titles and printed start pages checked; some opening headings confirmed in PDF text. Still requires independent visual review of every lesson heading, actual PDF/image start/end pages, and discrepancies."
     },
     {
       "catalogue_key": "تاسع|اللغة الفرنسية",
@@ -353,10 +353,10 @@
       "book": "bac-lit-english-sb.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-english-sb.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-lit-english-sb.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "Original PDF contents titles and printed start pages checked; some opening headings confirmed in PDF text. Still requires independent visual review of every lesson heading, actual PDF/image start/end pages, and discrepancies."
     },
     {
       "catalogue_key": "بكالوريا أدبي|اللغة الإنكليزية",
