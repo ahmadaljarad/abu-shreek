@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-english-sb.pdf",
+  "catalogue_key": "بكالوريا أدبي|اللغة الإنكليزية",
+  "index_scope": "original_pdf_contents_titles_and_printed_start_pages_only",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-english-sb.pdf",
+    "sha256": "70679cf557bd123ead6839a72b4d3850893837d121cbba19ac9e0a8dc2557d71",
+    "release_digest_matched": true,
+    "toc_pdf_page": 5,
+    "evidence_file": "data/toc-source-evidence/bac-lit-english-sb.pdf.json",
+    "pdf_pages": 128
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "title": "Life Choices",
+      "printed_page": 10,
+      "verified_fields": [
+        "title",
+        "printed_page",
+        "pdf_heading_page_text"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text",
+      "pdf_heading_page_text_checked": 10
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "title": "Success",
+      "printed_page": 19,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 3,
+      "title": "Poetry",
+      "printed_page": 28,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 4,
+      "title": "Drama",
+      "printed_page": 36,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 5,
+      "title": "Civil Rights",
+      "printed_page": 52,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 6,
+      "title": "United Nations",
+      "printed_page": 59,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 7,
+      "title": "Prose",
+      "printed_page": 66,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 8,
+      "title": "Essays",
+      "printed_page": 74,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 9,
+      "title": "Citizenship",
+      "printed_page": 88,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 10,
+      "title": "Culture Shock",
+      "printed_page": 97,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 11,
+      "title": "Epics",
+      "printed_page": 108,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 12,
+      "title": "Masterpieces",
+      "printed_page": 116,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    }
+  ],
+  "verified_entry_count": 12,
+  "verified_pdf_heading_page_count": 1,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "remaining_work": "Verify each unit heading in the original PDF/page image and determine actual start/end PDF image pages; review printed TOC vs headings for discrepancies. No inferred ranges are published."
+}
