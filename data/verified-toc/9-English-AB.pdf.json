@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "book": "9-English-AB.pdf",
+  "catalogue_key": "تاسع|اللغة الإنكليزية",
+  "index_scope": "original_pdf_contents_titles_and_printed_start_pages_only",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-AB.pdf",
+    "sha256": "d663d604479b29c34ea633db5bb7058df40f8c5140c5ee69bab2f0a85fd88023",
+    "release_digest_matched": true,
+    "toc_pdf_page": 2,
+    "evidence_file": "data/toc-source-evidence/9-English-AB.pdf.json",
+    "pdf_pages": 64
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "title": "Work Together to Make it Better",
+      "printed_page": 3,
+      "verified_fields": [
+        "title",
+        "printed_page",
+        "pdf_heading_page_text"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text",
+      "pdf_heading_page_text_checked": 3
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "title": "Creativity & Initiatives",
+      "printed_page": 7,
+      "verified_fields": [
+        "title",
+        "printed_page",
+        "pdf_heading_page_text"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text",
+      "pdf_heading_page_text_checked": 7
+    },
+    {
+      "kind": "unit",
+      "unit_number": 3,
+      "title": "A More Comfortable Life",
+      "printed_page": 11,
+      "verified_fields": [
+        "title",
+        "printed_page",
+        "pdf_heading_page_text"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text",
+      "pdf_heading_page_text_checked": 11
+    },
+    {
+      "kind": "unit",
+      "unit_number": 4,
+      "title": "Transport and Tourism",
+      "printed_page": 14,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 5,
+      "title": "Make Up Your Mind",
+      "printed_page": 19,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 6,
+      "title": "Exciting Challenge",
+      "printed_page": 23,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "progress_test",
+      "title": "Progress test 1",
+      "printed_page": 27,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 7,
+      "title": "Critical Moments",
+      "printed_page": 32,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 8,
+      "title": "At Risk",
+      "printed_page": 37,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 9,
+      "title": "Stay Positive",
+      "printed_page": 42,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 10,
+      "title": "Time waits for no one",
+      "printed_page": 47,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 11,
+      "title": "Ready to Contact?",
+      "printed_page": 51,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 12,
+      "title": "Silent, yet Talking!",
+      "printed_page": 56,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    },
+    {
+      "kind": "progress_test",
+      "title": "Progress Test 2",
+      "printed_page": 61,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "original_release_pdf_extracted_contents_text"
+    }
+  ],
+  "verified_entry_count": 14,
+  "verified_pdf_heading_page_count": 3,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "remaining_work": "Verify each unit heading in the original PDF/page image and determine actual start/end PDF image pages; review printed TOC vs headings for discrepancies. No inferred ranges are published."
+}
