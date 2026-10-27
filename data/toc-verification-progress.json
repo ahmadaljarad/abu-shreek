@@ -4,9 +4,9 @@
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 5,
+  "books_with_partial_verified_json": 6,
   "fully_verified_book_files": 4,
-  "warning": "Coverage audit: 4 of 41 catalogue PDFs fully verified; 5 more have partial verified TOC records. 37 remain incomplete. Original-PDF source evidence is not full lesson/page-range verification.",
+  "warning": "Coverage audit: 4 of 41 catalogue PDFs fully verified; 6 additional PDFs have partial verified TOC records. Remaining 37 incomplete; OCR/source evidence alone is not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -413,10 +413,10 @@
       "book": "bac-lit-christian.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-christian.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-lit-christian.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "All 22 original TOC titles and printed pages cross-checked; still verify lesson headings, PDF/image page mapping and actual end pages against original PDF."
     }
   ],
   "books_with_partial_source_text_index": 1
