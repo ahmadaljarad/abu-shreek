@@ -19,10 +19,14 @@ jobs:
             book-pages/9-English-AB
             data/verified-toc/9-English-AB.pdf.json
             data/toc-source-evidence/9-English-AB.pdf.json
+            data/toc-candidates
             scripts/verify-9-english-ab.py
           sparse-checkout-cone-mode: false
       - name: Install original PDF and image comparison tools
-        run: python -m pip install --quiet PyMuPDF Pillow
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y poppler-utils
+          python -m pip install --quiet PyMuPDF Pillow
       - name: Check every lesson heading and page-image correspondence
         run: python scripts/verify-9-english-ab.py
       - name: Save evidence report only
