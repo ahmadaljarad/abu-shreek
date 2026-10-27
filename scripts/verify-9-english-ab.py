@@ -50,7 +50,7 @@ def main():
         for p in range(61,count+1):
             page_text=subprocess.run(['pdftotext','-f',str(p),'-l',str(p),'-layout',str(pdf),'-'],capture_output=True,text=True,check=True).stdout
             tail_excerpts.append({'pdf_page':p,'text':page_text[:1800]})
-            if re.search(r'\btape\s*scripts?\b|\baudio\s+scripts?\b',norm(page_text[:1200])):
+            if appendix_start is None and re.search(r'\btape\s*scripts?\b|\baudio\s+scripts?\b',norm(page_text[:1200])):
                 appendix_start=p
         hashes=[];distances=[]
         for i in range(count):
