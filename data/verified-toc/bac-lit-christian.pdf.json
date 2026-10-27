@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-christian.pdf",
+  "catalogue_key": "بكالوريا أدبي|التربية المسيحية",
+  "index_scope": "all_22_titles_and_printed_pages_in_original_contents_only",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-christian.pdf",
+    "sha256": "d02d5a73decbe93d69315180951a4f6974594f3128cad3bf7ef8185f3688e2e4",
+    "release_digest_matched": true,
+    "toc_pdf_pages": [
+      4,
+      5
+    ],
+    "evidence_file": "data/toc-source-evidence/bac-lit-christian.pdf.json",
+    "cross_check": "data/verified-toc/bac-sci-christian.pdf.json",
+    "pdf_pages": 135
+  },
+  "entries": [
+    {
+      "title": "فاعلية الكتاب المقدس في حياتنا",
+      "printed_page": 6,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الكمال الإلهي",
+      "printed_page": 11,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "حريتي في المسيح",
+      "printed_page": 17,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "نحو مجيء المخلص",
+      "printed_page": 23,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "أمثال الملكوت",
+      "printed_page": 30,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "مثل الغني والعازر",
+      "printed_page": 36,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "أجسادكم هياكل الروح القدس",
+      "printed_page": 43,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الحياة المسيحية حياة الشركة",
+      "printed_page": 49,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الآخر في الإيمان المسيحي",
+      "printed_page": 55,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "المسيحية والحضارة",
+      "printed_page": 61,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الإيمان بالأعمال",
+      "printed_page": 67,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "فاعلية الروح القدس",
+      "printed_page": 72,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "القداس الإلهي",
+      "printed_page": 78,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الفضائل الإلهية والإنسانية",
+      "printed_page": 83,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "على هذه الصخرة أبني كنيستي (بطرس الرسول)",
+      "printed_page": 88,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "التطويبات",
+      "printed_page": 94,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "قم واحمل سريرك وامش",
+      "printed_page": 101,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "التجلي الإلهي",
+      "printed_page": 107,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الحياة المسيحية حياة العفة",
+      "printed_page": 113,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "المؤمن والمسؤولية",
+      "printed_page": 119,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "أخلاقيات علم الحياة",
+      "printed_page": 124,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    },
+    {
+      "title": "الكنيسة والمواطنة",
+      "printed_page": 130,
+      "verified_fields": [
+        "title",
+        "printed_page"
+      ],
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+    }
+  ],
+  "verified_entry_count": 22,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "remaining_work": "Independently check each lesson heading and page boundaries in original literary PDF/page images; verify any differences from scientific edition. Printed contents page numbers alone do not establish PDF image ranges."
+}
