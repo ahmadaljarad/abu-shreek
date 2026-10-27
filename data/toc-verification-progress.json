@@ -4,9 +4,9 @@
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 7,
+  "books_with_partial_verified_json": 8,
   "fully_verified_book_files": 4,
-  "warning": "Coverage audit: 4 of 41 PDFs fully verified; 7 additional PDFs have partial verified TOC records. 37 remain incomplete.",
+  "warning": "Coverage audit: 4 of 41 PDFs fully verified; 8 additional PDFs have partial verified TOC records. 37 remain incomplete.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -363,10 +363,10 @@
       "book": "bac-lit-english-ab.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-english-ab.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-lit-english-ab.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "First two original PDF unit headings confirmed on PDF pages 2 and 10; verify all remaining headings, start/end pages and page-image mapping."
     },
     {
       "catalogue_key": "بكالوريا أدبي|اللغة الفرنسية",
