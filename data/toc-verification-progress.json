@@ -4,9 +4,9 @@
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 8,
+  "books_with_partial_verified_json": 9,
   "fully_verified_book_files": 4,
-  "warning": "Coverage audit: 4 of 41 PDFs fully verified; 8 additional PDFs have partial verified TOC records. 37 remain incomplete.",
+  "warning": "Coverage audit: 4 of 41 PDFs fully verified; 9 additional PDFs have partial verified TOC records. 37 remain incomplete.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -93,10 +93,10 @@
       "book": "9-Christianity.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Christianity.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/9-Christianity.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "All 22 lesson titles and printed TOC pages transcribed from original PDF pages 4–5; verify all actual lesson starts/ends and page images."
     },
     {
       "catalogue_key": "تاسع|الفنون",
