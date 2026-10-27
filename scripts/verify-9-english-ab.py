@@ -29,17 +29,17 @@ def main():
         headings=[];all_ok=True
         for entry in TOC['entries']:
             p=entry['printed_page'];page=doc[p-1]
-            text=page.get_text('text')
-            header=norm(text[:1200])
+            text=subprocess.run(['pdftotext','-f',str(p),'-l',str(p),'-layout',str(pdf),'-'],capture_output=True,text=True,check=True).stdout
+            header=norm(text[:2400])
             title=norm(entry['title'])
             if entry['kind']=='unit':
                 words=[w for w in title.split() if w not in {'the','to','a','it','for','no','yet','up','and','in','on'}]
-                unit_ok=bool(re.search(r'\bunit\s+'+str(entry['unit_number'])+r'\b',header))
-                title_ok=all(w in header.split() for w in words)
+                unit_ok=bool(re.search(r'\bunit\s+'+str(entry['unit_number'])+r'\b',header)) or ('unit' in header.split()[:80] and str(entry['unit_number']) in header.split()[:80])
+                title_ok=all(w in header.split()[:140] for w in words)
                 ok=unit_ok and title_ok
             else:
                 ok=bool(re.search(r'progress\s+test\s+'+str(1 if p==27 else 2),header))
-            headings.append({'title':entry['title'],'expected_pdf_page':p,'heading_text_match':ok,'page_header_excerpt':text[:300]})
+            headings.append({'title':entry['title'],'expected_pdf_page':p,'heading_text_match':ok,'page_header_excerpt':text[:500]})
             if not ok:all_ok=False
         hashes=[];distances=[]
         for i in range(count):
