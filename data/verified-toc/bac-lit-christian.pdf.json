@@ -14,7 +14,11 @@
     ],
     "evidence_file": "data/toc-source-evidence/bac-lit-christian.pdf.json",
     "cross_check": "data/verified-toc/bac-sci-christian.pdf.json",
-    "pdf_pages": 135
+    "pdf_pages": 135,
+    "original_pdf_sha256": "d02d5a73decbe93d69315180951a4f6974594f3128cad3bf7ef8185f3688e2e4",
+    "original_release_digest_matched": true,
+    "source_evidence_file": "data/toc-source-evidence/bac-lit-christian.pdf.json",
+    "byte_identical_counterpart": "bac-sci-christian.pdf"
   },
   "entries": [
     {
@@ -22,18 +26,22 @@
       "printed_page": 6,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
-      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription",
+      "pdf_heading_page_text_checked": 6
     },
     {
       "title": "الكمال الإلهي",
       "printed_page": 11,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
-      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription"
+      "verification": "literary_original_pdf_contents_pages_4_5_cross_checked_with_scientific_textbook_transcription",
+      "pdf_heading_page_text_checked": 11
     },
     {
       "title": "حريتي في المسيح",
@@ -221,5 +229,6 @@
   "pdf_page_mapping_verified": false,
   "visual_review_complete": false,
   "complete": false,
-  "remaining_work": "Independently check each lesson heading and page boundaries in original literary PDF/page images; verify any differences from scientific edition. Printed contents page numbers alone do not establish PDF image ranges."
+  "remaining_work": "Independently check each lesson heading and page boundaries in original literary PDF/page images; verify any differences from scientific edition. Printed contents page numbers alone do not establish PDF image ranges.",
+  "verified_pdf_heading_page_count": 2
 }
