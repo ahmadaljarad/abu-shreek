@@ -5,7 +5,7 @@
   "original_pdf_sha256": "d663d604479b29c34ea633db5bb7058df40f8c5140c5ee69bab2f0a85fd88023",
   "pdf_pages": 64,
   "webp_pages": 64,
-  "heading_checks_passed": 12,
+  "heading_checks_passed": 14,
   "heading_checks_total": 14,
   "headings": [
     {
@@ -47,7 +47,7 @@
     {
       "title": "Progress test 1",
       "expected_pdf_page": 27,
-      "heading_text_match": false,
+      "heading_text_match": true,
       "page_header_excerpt": "                   Progress Test (I)\n     Speaking\n\nLook at the pictures, choose a partner and discuss:\n1. What are the people in each photo doing?\n2. What equipment (tools) do you need to help you practice\n   each sport?\n3. Talk about other strange sports you know.\n\n      Reading\n\nRead the following text, then do the tasks below.\n\n\n                                        Trekking\nToday is the second day of my trek around Mount Annapurna. I am exhausted and my legs\nare shaking; I just hope I am "
     },
     {
@@ -89,7 +89,7 @@
     {
       "title": "Progress Test 2",
       "expected_pdf_page": 61,
-      "heading_text_match": false,
+      "heading_text_match": true,
       "page_header_excerpt": "                  Progress Test (II)\n     Speaking\n\nWith your partner, discuss and answer the\nfollowing questions.\n1. Have you got a friend from another country?\n2. What information do you know about him/her?\n3. How do you usually communicate?\n\n      Reading\n\nRead the following text and do the tasks below.\n\n                                Overseas Pen Friends\nMost people are curious about different countries and their cultures. So, some tend to make\nfriends from all around the world.\nMaking frie"
     }
   ],
@@ -161,7 +161,122 @@
   ],
   "webp_pages_with_distance_le_16": 64,
   "image_page_match_threshold": 16,
-  "all_headings_checked": false,
+  "all_headings_checked": true,
   "all_image_pages_within_threshold": true,
-  "note": "dHash compares original PDF raster to GitHub WebP pages. Similarity is supporting evidence, not proof of exact pixel identity; human review required before full certification."
+  "tape_scripts_heading_page": null,
+  "note": "dHash compares original PDF raster to GitHub WebP pages. Similarity is supporting evidence, not proof of exact pixel identity; human review required before full certification.",
+  "range_candidates": [
+    {
+      "kind": "unit",
+      "title": "Work Together to Make it Better",
+      "start": 3,
+      "end": 6,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Creativity & Initiatives",
+      "start": 7,
+      "end": 10,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "A More Comfortable Life",
+      "start": 11,
+      "end": 13,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Transport and Tourism",
+      "start": 14,
+      "end": 18,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Make Up Your Mind",
+      "start": 19,
+      "end": 22,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Exciting Challenge",
+      "start": 23,
+      "end": 26,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "progress_test",
+      "title": "Progress test 1",
+      "start": 27,
+      "end": 31,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Critical Moments",
+      "start": 32,
+      "end": 36,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "At Risk",
+      "start": 37,
+      "end": 41,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Stay Positive",
+      "start": 42,
+      "end": 46,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Time waits for no one",
+      "start": 47,
+      "end": 50,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Ready to Contact?",
+      "start": 51,
+      "end": 55,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "unit",
+      "title": "Silent, yet Talking!",
+      "start": 56,
+      "end": 60,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": true
+    },
+    {
+      "kind": "progress_test",
+      "title": "Progress Test 2",
+      "start": 61,
+      "end": null,
+      "heading_pdf_page_text_checked": true,
+      "range_derived_from_next_verified_heading": false
+    }
+  ]
 }
