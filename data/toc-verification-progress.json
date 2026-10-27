@@ -4,9 +4,9 @@
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 9,
-  "fully_verified_book_files": 4,
-  "warning": "Coverage audit: 4 of 41 PDFs fully verified; 9 additional PDFs have partial verified TOC records. 37 remain incomplete.",
+  "books_with_partial_verified_json": 8,
+  "fully_verified_book_files": 5,
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 8 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence alone is not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -125,8 +125,8 @@
       "original_book_page_images_present": true,
       "verification_record": "data/verified-toc/9-English-AB.pdf.json",
       "ocr_draft": null,
-      "fully_verified": false,
-      "remaining_work": "Original PDF contents titles and printed start pages checked; some opening headings confirmed in PDF text. Still requires independent visual review of every lesson heading, actual PDF/image start/end pages, and discrepancies."
+      "fully_verified": true,
+      "remaining_work": "None: all 12 units and 2 progress tests checked against original PDF text, full PDF-to-WebP image similarity check (64/64), and page boundaries. Printed Tape scripts reference is absent from original PDF."
     },
     {
       "catalogue_key": "تاسع|اللغة الفرنسية",
