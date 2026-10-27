@@ -46,11 +46,12 @@ def main():
         # The printed TOC lists "Tape scripts" without a page number.
         # Locate its actual heading instead of assuming the final test runs to PDF end.
         appendix_start=None
-        for p in range(62,count+1):
+        tail_excerpts=[]
+        for p in range(61,count+1):
             page_text=subprocess.run(['pdftotext','-f',str(p),'-l',str(p),'-layout',str(pdf),'-'],capture_output=True,text=True,check=True).stdout
-            if 'tape scripts' in norm(page_text[:900]):
+            tail_excerpts.append({'pdf_page':p,'text':page_text[:1800]})
+            if re.search(r'\btape\s*scripts?\b|\baudio\s+scripts?\b',norm(page_text[:1200])):
                 appendix_start=p
-                break
         hashes=[];distances=[]
         for i in range(count):
             page=doc[i]
@@ -68,7 +69,7 @@ def main():
                 'webp_page_dhash_distance':distances,'webp_pages_with_distance_le_16':image_matches,
                 'image_page_match_threshold':16,
                 'all_headings_checked':all_ok,'all_image_pages_within_threshold':image_matches==count,
-                'tape_scripts_heading_page':appendix_start,
+                'tape_scripts_heading_page':appendix_start,'tail_page_text_excerpts':tail_excerpts,
                 'note':'dHash compares original PDF raster to GitHub WebP pages. Similarity is supporting evidence, not proof of exact pixel identity; human review required before full certification.'}
         if all_ok:
             entries=[]
