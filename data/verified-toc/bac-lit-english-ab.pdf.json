@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "book": "bac-lit-english-ab.pdf",
+  "catalogue_key": "بكالوريا أدبي|اللغة الإنكليزية",
+  "index_scope": "first_two_unit_heading_pages_only",
+  "status": "PARTIAL_VERIFIED_HEADING_TEXT",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-english-ab.pdf",
+    "sha256": "96983f76bde2e1614d1c4f9673e16a77bbde643dbb8e61a8c8fbe3a177e78315",
+    "release_digest_matched": true,
+    "evidence_file": "data/toc-source-evidence/bac-lit-english-ab.pdf.json",
+    "pdf_pages": 111
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "title": "Life Choices",
+      "pdf_heading_page": 2,
+      "verified_fields": [
+        "title",
+        "pdf_heading_page_text"
+      ],
+      "verification": "original_release_pdf_extracted_heading_text",
+      "end_page_verified": false
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "title": "Success",
+      "pdf_heading_page": 10,
+      "verified_fields": [
+        "title",
+        "pdf_heading_page_text"
+      ],
+      "verification": "original_release_pdf_extracted_heading_text",
+      "end_page_verified": false
+    }
+  ],
+  "verified_entry_count": 2,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "remaining_work": "Identify remaining unit headings and verify all starts and ends against original PDF/page images; original PDF has no contents page in the sampled opening pages."
+}
