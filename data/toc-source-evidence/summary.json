@@ -2,15 +2,13 @@
   "schema_version": 1,
   "catalogue_book_files": 41,
   "fully_verified_book_files_from_audit": 5,
-  "source_evidence_files_available": 12,
+  "source_evidence_files_available": 16,
   "source_evidence_is_not_verification": true,
   "pending_source_evidence": [
     "9-Algebra.pdf",
-    "9-Arabic.pdf",
     "9-Art.pdf",
     "9-English-SB.pdf",
     "9-French-AB.pdf",
-    "9-French-SB.pdf",
     "9-Geography.pdf",
     "9-Geometry.pdf",
     "9-History.pdf",
@@ -23,9 +21,7 @@
     "bac-lit-geography.pdf",
     "bac-lit-history.pdf",
     "bac-lit-islamic.pdf",
-    "bac-sci-biology.pdf",
     "bac-sci-chemistry.pdf",
-    "bac-sci-english-ab.pdf",
     "bac-sci-french.pdf",
     "bac-sci-islamic.pdf",
     "bac-sci-math-1.pdf",
@@ -33,24 +29,24 @@
   ],
   "this_batch": [
     {
-      "book": "9-Christianity.pdf",
+      "book": "9-Arabic.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 148
+      "pdf_pages": 200
     },
     {
-      "book": "bac-sci-russian.pdf",
+      "book": "bac-sci-biology.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 128
+      "pdf_pages": 287
     },
     {
-      "book": "bac-sci-math-2.pdf",
+      "book": "bac-sci-english-ab.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 196
+      "pdf_pages": 112
     },
     {
-      "book": "bac-lit-russian.pdf",
+      "book": "9-French-SB.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 140
+      "pdf_pages": 92
     }
   ]
 }
