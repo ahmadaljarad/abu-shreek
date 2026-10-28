@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-biology.pdf",
+  "catalogue_key": "بكالوريا علمي|علم الأحياء",
+  "edition": "2025-2026",
+  "status": "PARTIAL_VERIFIED_PRINTED_TOC_RANGES",
+  "fully_verified": false,
+  "index_scope": "28 printed lesson rows from original PDF contents page 4; not individual lesson boundaries",
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-biology.pdf",
+    "original_pdf_sha256": "0282f29e87a232869b922a7a7ef9b32345bf90c08ee44f6ed1dc6955cfdaac84",
+    "original_pdf_toc_page": 4,
+    "original_pdf_text_evidence": "data/toc-source-evidence/bac-sci-biology.pdf.json",
+    "prior_manual_transcription": "verified-toc.js"
+  },
+  "cross_check": {
+    "range_rows_found_in_original_pdf_text": 28,
+    "existing_transcription_rows": 28,
+    "range_mismatches": 0,
+    "checked_on": "2026-10-28",
+    "method": "one-to-one comparison of 28 ordered printed page-range pairs against extracted original release PDF page 4 text; no image inspection"
+  },
+  "page_numbering": "Printed textbook pages, not independently verified PDF page/image indices.",
+  "entries": [
+    {
+      "kind": "lesson_group",
+      "title": "الجهاز العصبي",
+      "printed_start": 9,
+      "printed_end": 19,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 1
+    },
+    {
+      "kind": "lesson_group",
+      "title": "النسيج العصبي",
+      "printed_start": 20,
+      "printed_end": 25,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 2
+    },
+    {
+      "kind": "lesson_group",
+      "title": "الجهاز العصبي المحيطي - خواص الأعصاب",
+      "printed_start": 26,
+      "printed_end": 31,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 3
+    },
+    {
+      "kind": "lesson_group",
+      "title": "الظواهر الكهربائية في الخلايا الحية - النقل في الأعصاب",
+      "printed_start": 34,
+      "printed_end": 40,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 4
+    },
+    {
+      "kind": "lesson_group",
+      "title": "تتمة النقل في الأعصاب - وظائف الجهاز العصبي (1+2)",
+      "printed_start": 47,
+      "printed_end": 52,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 5
+    },
+    {
+      "kind": "lesson_group",
+      "title": "وظائف الجهاز العصبي (3) - الفعل المنعكس",
+      "printed_start": 56,
+      "printed_end": 59,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 6
+    },
+    {
+      "kind": "lesson_group",
+      "title": "بعض أمراض الجهاز العصبي - مفهوم المستقبلات الحسية - مستقبلات الجلد",
+      "printed_start": 63,
+      "printed_end": 70,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 7
+    },
+    {
+      "kind": "lesson_group",
+      "title": "المستقبلات الكيميائية - المستقبلات الصوتية",
+      "printed_start": 73,
+      "printed_end": 77,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 8
+    },
+    {
+      "kind": "lesson_group",
+      "title": "مستقبلات التوازن - المستقبلات الضوئية",
+      "printed_start": 81,
+      "printed_end": 83,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 9
+    },
+    {
+      "kind": "lesson_group",
+      "title": "التنسيق الهرموني - الغدة النخامية - الغدة الدرقية",
+      "printed_start": 95,
+      "printed_end": 102,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 10
+    },
+    {
+      "kind": "lesson_group",
+      "title": "آليات السيطرة على إفراز الغدد الصم - التنسيق الكيميائي في النبات",
+      "printed_start": 109,
+      "printed_end": 112,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 11
+    },
+    {
+      "kind": "lesson_group",
+      "title": "تتمة التنسيق الكيميائي في النبات - أسئلة الوحدة الأولى - المشروع",
+      "printed_start": 120,
+      "printed_end": 124,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 12
+    },
+    {
+      "kind": "lesson_group",
+      "title": "تكاثر الفيروسات - التكاثر عند الأحياء",
+      "printed_start": 127,
+      "printed_end": 133,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 13
+    },
+    {
+      "kind": "lesson_group",
+      "title": "التقانات الحيوية - الخلايا الجذعية - تكاثر الجراثيم والفطريات",
+      "printed_start": 139,
+      "printed_end": 145,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 14
+    },
+    {
+      "kind": "lesson_group",
+      "title": "التكاثر الجنسي لدى عاريات البذور",
+      "printed_start": 149,
+      "printed_end": 157,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 15
+    },
+    {
+      "kind": "lesson_group",
+      "title": "التكاثر الجنسي لدى مغلفات البذور",
+      "printed_start": 158,
+      "printed_end": 169,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 16
+    },
+    {
+      "kind": "lesson_group",
+      "title": "منشأ جهاز التكاثر لدى الإنسان - جهاز التكاثر الذكري",
+      "printed_start": 170,
+      "printed_end": 173,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 17
+    },
+    {
+      "kind": "lesson_group",
+      "title": "تشكل النطاف - الهرمونات الجنسية الذكرية",
+      "printed_start": 178,
+      "printed_end": 181,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 18
+    },
+    {
+      "kind": "lesson_group",
+      "title": "جهاز التكاثر الأنثوي",
+      "printed_start": 184,
+      "printed_end": 188,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 19
+    },
+    {
+      "kind": "lesson_group",
+      "title": "الدورة الجنسية - التنامي الجنيني (الإلقاح)",
+      "printed_start": 189,
+      "printed_end": 196,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 20
+    },
+    {
+      "kind": "lesson_group",
+      "title": "التنامي الجنيني (التعشيش والحمل) - الولادة والإرضاع",
+      "printed_start": 197,
+      "printed_end": 205,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 21
+    },
+    {
+      "kind": "lesson_group",
+      "title": "الصحة الإنجابية - أسئلة الوحدة الثانية",
+      "printed_start": 209,
+      "printed_end": 214,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 22
+    },
+    {
+      "kind": "lesson_group",
+      "title": "مشروع الوحدة الثانية - تجارب مندل في الوراثة",
+      "printed_start": 221,
+      "printed_end": 224,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 23
+    },
+    {
+      "kind": "lesson_group",
+      "title": "التهجين الاختباري - تآثر المورثات وتعديلات النسب المندلية في الهجونة",
+      "printed_start": 228,
+      "printed_end": 235,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 24
+    },
+    {
+      "kind": "lesson_group",
+      "title": "المورثات المتتامة - الحجب الراجح - الارتباط والعبور",
+      "printed_start": 241,
+      "printed_end": 244,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 25
+    },
+    {
+      "kind": "lesson_group",
+      "title": "تحديد الجنس لدى الأحياء - الوراثة والجنس",
+      "printed_start": 250,
+      "printed_end": 252,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 26
+    },
+    {
+      "kind": "lesson_group",
+      "title": "الوراثة عند الإنسان - الطفرات",
+      "printed_start": 254,
+      "printed_end": 263,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 27
+    },
+    {
+      "kind": "lesson_group",
+      "title": "الهندسة الوراثية - أسئلة الوحدة الثالثة - مشروع الوحدة الثالثة",
+      "printed_start": 271,
+      "printed_end": 280,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "printed_start",
+        "printed_end"
+      ],
+      "title_status": "existing_transcription_cross_checked_with_source_text_only_visual_review_pending",
+      "source_row_number": 28
+    }
+  ],
+  "remaining_verification": [
+    "Independently inspect the original PDF page 4 visually for every title and any typographic/reading-order discrepancies.",
+    "Check actual start/end PDF pages against the 28 printed ranges and WebP image mapping.",
+    "Identify whether grouped rows contain multiple lessons needing separate boundaries.",
+    "Resolve original text extraction ambiguity in the word for implantation (التعشيش/التعشيس)."
+  ],
+  "complete": false
+}
