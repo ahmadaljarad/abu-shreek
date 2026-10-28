@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-10-27",
+  "audited_at": "2026-10-28",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 8,
+  "books_with_partial_verified_json": 9,
   "fully_verified_book_files": 5,
-  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 8 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence alone is not full verification.",
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 9 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence alone is not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -233,10 +233,10 @@
       "book": "bac-sci-biology.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-biology.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-sci-biology.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "28 printed TOC page ranges cross-checked one-to-one against original PDF page 4 text, with no numeric discrepancies. Existing title transcription is not visually rechecked; confirm every title against the original page, actual lesson starts/ends and PDF-to-image mapping. Do not treat grouped schedule rows as independently verified lesson ranges."
     },
     {
       "catalogue_key": "بكالوريا علمي|اللغة الإنكليزية",
