@@ -30,7 +30,7 @@ def collect(name,asset):
         parts=raw.split('\f')[:n];parts+=['']*(n-len(parts))
         pages=[]
         for i,t in enumerate(parts,1):
-            p={'pdf_page':i,'pdf_text':t.strip()[:6500]}
+            p={'pdf_page':i,'pdf_text':t.strip()[:24000]}
             if i<=8 and sum(c.isalpha() for c in t)<80:
                 prefix=Path(tmp)/'page'
                 subprocess.run(['pdftoppm','-f',str(i),'-l',str(i),'-scale-to','1600','-png','-singlefile',str(pdf),str(prefix)],check=True,capture_output=True)
@@ -46,7 +46,7 @@ def collect(name,asset):
             tail_parts=tail_raw.split('\f')[:total-tail_start+1]
             tail_parts+=['']*(total-tail_start+1-len(tail_parts))
             for i,t in enumerate(tail_parts,tail_start):
-                p={'pdf_page':i,'pdf_text':t.strip()[:6500]}
+                p={'pdf_page':i,'pdf_text':t.strip()[:24000]}
                 if sum(c.isalpha() for c in t)<80:
                     prefix=Path(tmp)/'tail'
                     subprocess.run(['pdftoppm','-f',str(i),'-l',str(i),'-scale-to','1600','-png','-singlefile',str(pdf),str(prefix)],check=True,capture_output=True)
@@ -58,7 +58,7 @@ def collect(name,asset):
         possible=[p['pdf_page'] for p in pages if re.search('الفهرس|المحتويات|contents|sommaire|содержание',p['pdf_text']+'\n'+p.get('ocr_text_unverified',''),re.I)]
         return {'schema_version':1,'book':name,'status':'SOURCE_EVIDENCE_UNVERIFIED','fully_verified':False,
                 'original_pdf':BASE+name,'original_pdf_sha256':digest,'release_asset_size':asset['size'],
-                'pdf_pages':total,'sampled_pdf_pages':len(pages),'possible_contents_pages_unverified':possible,
+                'pdf_pages':total,'sampled_pdf_pages':len(pages),'pdf_text_character_cap':24000,'possible_contents_pages_unverified':possible,
                 'page_image_mapping_verified':False,'lesson_titles_verified':False,'lesson_page_ranges_verified':False,
                 'note':'Raw original release PDF text/OCR only. Every title and page boundary needs independent verification before a verified lesson index is published.',
                 'pages':pages}
@@ -70,8 +70,16 @@ def main():
     assets={a['name']:a for a in json.loads(get(API,auth=True))['assets']}
     missing=[n for n in names if n not in assets]
     if missing:raise ValueError('Missing release assets: '+', '.join(missing))
-    pending=[n for n in names if n not in verified and not (OUT/(n+'.json')).exists()]
-    pending.sort(key=lambda n:(assets[n]['size'],n))
+    def needs_collection(name):
+        path=OUT/(name+'.json')
+        if not path.exists():return True
+        try:
+            old=json.loads(path.read_text())
+            cap=old.get('pdf_text_character_cap',6500)
+            return cap<24000 and any(len(p.get('pdf_text',''))>=cap for p in old.get('pages',[]))
+        except (ValueError,OSError,TypeError):return True
+    pending=[n for n in names if n not in verified and needs_collection(n)]
+    pending.sort(key=lambda n:(0 if (OUT/(n+'.json')).exists() else 1,assets[n]['size'],n))
     results=[]
     for name in pending[:max(1,min(12,int(os.getenv('TOC_EVIDENCE_BATCH_SIZE','4'))))]:
         try:
