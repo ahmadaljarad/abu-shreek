@@ -2,47 +2,76 @@
   "schema_version": 1,
   "catalogue_book_files": 41,
   "fully_verified_book_files_from_audit": 5,
-  "source_evidence_files_available": 20,
+  "source_evidence_files_available": 31,
   "source_evidence_is_not_verification": true,
   "pending_source_evidence": [
-    "9-Algebra.pdf",
-    "9-French-AB.pdf",
     "9-Geography.pdf",
     "9-History.pdf",
     "9-Islamic.pdf",
-    "9-Music.pdf",
     "9-Physics-Chemistry.pdf",
     "9-Science.pdf",
-    "9-Technology.pdf",
-    "bac-lit-french.pdf",
-    "bac-lit-geography.pdf",
-    "bac-lit-history.pdf",
-    "bac-lit-islamic.pdf",
-    "bac-sci-french.pdf",
-    "bac-sci-islamic.pdf",
-    "bac-sci-math-1.pdf",
-    "bac-sci-physics.pdf"
+    "bac-lit-geography.pdf"
   ],
   "this_batch": [
     {
-      "book": "bac-lit-christian.pdf",
+      "book": "9-English-SB.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 135
+      "pdf_pages": 80
     },
     {
-      "book": "bac-sci-christian.pdf",
+      "book": "bac-lit-french.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 135
+      "pdf_pages": 120
     },
     {
-      "book": "9-Christianity.pdf",
+      "book": "bac-sci-french.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 148
+      "pdf_pages": 120
     },
     {
-      "book": "9-Arabic.pdf",
+      "book": "9-French-AB.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 200
+      "pdf_pages": 56
+    },
+    {
+      "book": "bac-lit-islamic.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 164
+    },
+    {
+      "book": "bac-sci-islamic.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 164
+    },
+    {
+      "book": "9-Algebra.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 116
+    },
+    {
+      "book": "bac-lit-history.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 212
+    },
+    {
+      "book": "9-Technology.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 189
+    },
+    {
+      "book": "9-Music.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 64
+    },
+    {
+      "book": "bac-sci-physics.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 268
+    },
+    {
+      "book": "bac-sci-math-1.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 232
     }
   ]
 }
