@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "book": "9-English-SB.pdf",
+  "catalogue_key": "تاسع|اللغة الإنكليزية",
+  "index_scope": "first_8_units_only_from_original_pdf_page_2; source_text_truncated_after_module_5",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "fully_verified": false,
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-SB.pdf",
+    "sha256": "6ba05055249d321aa3faca677eff8775593b518fc802eb32b4698bc700bda925",
+    "source_release_size": 36775104,
+    "toc_pdf_page": 2,
+    "evidence_file": "data/toc-source-evidence/9-English-SB.pdf.json",
+    "pdf_pages": 80,
+    "book_page_image_count": 80,
+    "release_digest_from_evidence_collection": true
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "module_number": 1,
+      "title": "Work Together to Make it Better",
+      "printed_page": 4,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text",
+        "pdf_heading_page_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence",
+      "pdf_heading_page_text_checked": 4
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "module_number": 1,
+      "title": "Creativity & Initiatives",
+      "printed_page": 9,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text",
+        "pdf_heading_page_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence",
+      "pdf_heading_page_text_checked": 9
+    },
+    {
+      "kind": "unit",
+      "unit_number": 3,
+      "module_number": 2,
+      "title": "A More Comfortable Life",
+      "printed_page": 16,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 4,
+      "module_number": 2,
+      "title": "Transport and Tourism",
+      "printed_page": 21,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 5,
+      "module_number": 3,
+      "title": "Make Up Your Mind",
+      "printed_page": 28,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 6,
+      "module_number": 3,
+      "title": "Exciting Challenge",
+      "printed_page": 32,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 7,
+      "module_number": 4,
+      "title": "Critical Moments",
+      "printed_page": 42,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 8,
+      "module_number": 4,
+      "title": "At Risk",
+      "printed_page": 47,
+      "source_toc_pdf_page": 2,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_scope_and_sequence"
+    }
+  ],
+  "verified_entry_count": 8,
+  "verified_pdf_heading_page_count": 2,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "known_ambiguities": [
+    "Original PDF page 2 extracted text is capped at 6500 characters and stops at Module 5; later units are deliberately not invented or included.",
+    "Original scope-and-sequence printed page numbers are recorded, not inferred PDF page ranges."
+  ],
+  "remaining_work": "Extract full untruncated original PDF page 2 to capture all remaining units, visually verify every unit title and printed page, inspect actual PDF and WebP headings and ends before marking complete.",
+  "checked_on": "2026-10-29"
+}
