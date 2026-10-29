@@ -25,24 +25,24 @@
   ],
   "this_batch": [
     {
-      "book": "9-English-SB.pdf",
+      "book": "bac-lit-christian.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 80
+      "pdf_pages": 135
     },
     {
-      "book": "bac-sci-chemistry.pdf",
+      "book": "bac-sci-christian.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 184
+      "pdf_pages": 135
     },
     {
-      "book": "9-Art.pdf",
+      "book": "9-Christianity.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 82
+      "pdf_pages": 148
     },
     {
-      "book": "9-Geometry.pdf",
+      "book": "9-Arabic.pdf",
       "result": "source_evidence_saved",
-      "pdf_pages": 84
+      "pdf_pages": 200
     }
   ]
 }
