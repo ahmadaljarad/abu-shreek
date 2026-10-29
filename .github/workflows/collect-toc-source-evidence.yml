@@ -30,10 +30,10 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y poppler-utils tesseract-ocr tesseract-ocr-ara tesseract-ocr-eng tesseract-ocr-fra tesseract-ocr-rus
-      - name: Extract source evidence for four unfinished books
+      - name: Extract source evidence for up to twelve unfinished books
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          TOC_EVIDENCE_BATCH_SIZE: '4'
+          TOC_EVIDENCE_BATCH_SIZE: '12'
         run: python3 scripts/collect-toc-source-evidence.py
       - name: Commit source evidence (not verified lesson indexes)
         if: always()
