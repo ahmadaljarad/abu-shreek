@@ -2,76 +2,39 @@
   "schema_version": 1,
   "catalogue_book_files": 41,
   "fully_verified_book_files_from_audit": 5,
-  "source_evidence_files_available": 31,
+  "source_evidence_files_available": 37,
   "source_evidence_is_not_verification": true,
-  "pending_source_evidence": [
-    "9-Geography.pdf",
-    "9-History.pdf",
-    "9-Islamic.pdf",
-    "9-Physics-Chemistry.pdf",
-    "9-Science.pdf",
-    "bac-lit-geography.pdf"
-  ],
+  "pending_source_evidence": [],
   "this_batch": [
     {
-      "book": "9-English-SB.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 80
-    },
-    {
-      "book": "bac-lit-french.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 120
-    },
-    {
-      "book": "bac-sci-french.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 120
-    },
-    {
-      "book": "9-French-AB.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 56
-    },
-    {
-      "book": "bac-lit-islamic.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 164
-    },
-    {
-      "book": "bac-sci-islamic.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 164
-    },
-    {
-      "book": "9-Algebra.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 116
-    },
-    {
-      "book": "bac-lit-history.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 212
-    },
-    {
-      "book": "9-Technology.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 189
-    },
-    {
-      "book": "9-Music.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 64
-    },
-    {
-      "book": "bac-sci-physics.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 268
-    },
-    {
-      "book": "bac-sci-math-1.pdf",
+      "book": "9-Science.pdf",
       "result": "source_evidence_saved",
       "pdf_pages": 232
+    },
+    {
+      "book": "9-Islamic.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 140
+    },
+    {
+      "book": "9-Physics-Chemistry.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 202
+    },
+    {
+      "book": "bac-lit-geography.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 280
+    },
+    {
+      "book": "9-History.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 123
+    },
+    {
+      "book": "9-Geography.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 176
     }
   ]
 }
