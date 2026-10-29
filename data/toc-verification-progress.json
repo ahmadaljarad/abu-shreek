@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-10-28",
+  "audited_at": "2026-10-29",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 9,
+  "books_with_partial_verified_json": 11,
   "fully_verified_book_files": 5,
-  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 9 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence alone is not full verification.",
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 11 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence and printed TOC text alone are not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -103,20 +103,20 @@
       "book": "9-Art.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Art.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/9-Art.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "33 original contents titles and printed start pages transcribed from source PDF pages 4-5; first 3 headings cross-checked with PDF text. Verify all actual heading pages, PDF/WebP mapping and lesson ends; investigate listed page 78 for entry 33 (artist section already visible on PDF page 77) and ambiguous names."
     },
     {
       "catalogue_key": "تاسع|اللغة الإنكليزية",
       "book": "9-English-SB.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-English-SB.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/9-English-SB.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "First 8 units and printed start pages captured from original PDF page 2; first 2 actual headings checked. Original extracted contents text was truncated at 6500 characters; source collector now refreshes truncated evidence. Verify remaining units, all actual headings/end pages and PDF/WebP mapping."
     },
     {
       "catalogue_key": "تاسع|اللغة الإنكليزية",
