@@ -79,7 +79,7 @@ def main():
             return cap<24000 and any(len(p.get('pdf_text',''))>=cap for p in old.get('pages',[]))
         except (ValueError,OSError,TypeError):return True
     pending=[n for n in names if n not in verified and needs_collection(n)]
-    pending.sort(key=lambda n:(0 if (OUT/(n+'.json')).exists() else 1,assets[n]['size'],n))
+    pending.sort(key=lambda n:(0 if n=='9-English-SB.pdf' else (1 if not (OUT/(n+'.json')).exists() else 2),assets[n]['size'],n))
     results=[]
     for name in pending[:max(1,min(12,int(os.getenv('TOC_EVIDENCE_BATCH_SIZE','4'))))]:
         try:
