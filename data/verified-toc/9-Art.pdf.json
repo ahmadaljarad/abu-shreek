@@ -1,0 +1,438 @@
+{
+  "schema_version": 1,
+  "book": "9-Art.pdf",
+  "catalogue_key": "تاسع|الفنون",
+  "index_scope": "all_33_numbered_entries_from_original_pdf_contents_pages_4_5; actual boundaries not all checked",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "fully_verified": false,
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Art.pdf",
+    "sha256": "4f819e4e5b9120ef76567104350cb34df3988cceeb72827567c0184e05f22ff3",
+    "source_release_size": 46063992,
+    "toc_pdf_pages": [
+      4,
+      5
+    ],
+    "evidence_file": "data/toc-source-evidence/9-Art.pdf.json",
+    "pdf_pages": 82,
+    "book_page_image_count": 82,
+    "release_digest_from_evidence_collection": true
+  },
+  "entries": [
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 1,
+      "title": "تكوينات هندسية معمارية",
+      "printed_page": 6,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text",
+        "pdf_heading_page_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text",
+      "pdf_heading_page_text_checked": 6
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 2,
+      "title": "المنظور",
+      "printed_page": 9,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text",
+        "pdf_heading_page_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text",
+      "pdf_heading_page_text_checked": 9
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 3,
+      "title": "الفنان نصر الله دينييه",
+      "printed_page": 12,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text",
+        "pdf_heading_page_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text",
+      "pdf_heading_page_text_checked": 12
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 4,
+      "title": "منظور أستراد",
+      "printed_page": 14,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 5,
+      "title": "رسوم تعبيرية ورمزية",
+      "printed_page": 18,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 6,
+      "title": "التصوير الفوتوغرافي",
+      "printed_page": 19,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 7,
+      "title": "الفنان لؤي كيالي",
+      "printed_page": 22,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 8,
+      "title": "الفنان يوسف الصابوني",
+      "printed_page": 24,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 9,
+      "title": "الفنان يوهانس فيرمير",
+      "printed_page": 26,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 10,
+      "title": "رسوم حرة",
+      "printed_page": 28,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 11,
+      "title": "الفنان جوزيف تيرنر",
+      "printed_page": 30,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 12,
+      "title": "الفنان جورج عشي",
+      "printed_page": 32,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 13,
+      "title": "مساحات لونية وأشكال حرة",
+      "printed_page": 34,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 14,
+      "title": "الفنان أوغست رودان",
+      "printed_page": 36,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 15,
+      "title": "زاوية من مجلة الحائط",
+      "printed_page": 38,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 16,
+      "title": "الفنان علي الصابوني",
+      "printed_page": 40,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 17,
+      "title": "الفنان أحمد معلا",
+      "printed_page": 42,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 18,
+      "title": "لوحة حرة من مواد مختلفة",
+      "printed_page": 44,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 19,
+      "title": "البورتريه في فن الاستشراق",
+      "printed_page": 47,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 20,
+      "title": "أشكال وتكوينات",
+      "printed_page": 50,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 21,
+      "title": "الأقواس في العمارة الشرقية",
+      "printed_page": 51,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 22,
+      "title": "دعاء البسطاطي",
+      "printed_page": 54,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 23,
+      "title": "الفنان محمود جلال العشا",
+      "printed_page": 56,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 24,
+      "title": "الخداع البصري",
+      "printed_page": 58,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 25,
+      "title": "الفن في كل مكان",
+      "printed_page": 62,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 26,
+      "title": "فن البوب",
+      "printed_page": 64,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 27,
+      "title": "إبداعات بصرية",
+      "printed_page": 67,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 28,
+      "title": "العمارة السريالية",
+      "printed_page": 69,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 29,
+      "title": "تكوين من حركة بصرية",
+      "printed_page": 71,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 30,
+      "title": "تشكيلات ورقية",
+      "printed_page": 72,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 31,
+      "title": "إعادة التدوير",
+      "printed_page": 73,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 32,
+      "title": "سوق المهن",
+      "printed_page": 75,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    },
+    {
+      "kind": "lesson_or_section",
+      "lesson_number": 33,
+      "title": "الفنانون السوريون التشكيليون المعاصرون",
+      "printed_page": 78,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "title_from_original_pdf_text",
+        "printed_page_from_original_pdf_text"
+      ],
+      "verification": "manual_transcription_of_extracted_original_release_pdf_toc_text"
+    }
+  ],
+  "verified_entry_count": 33,
+  "verified_pdf_heading_page_count": 3,
+  "lesson_ranges_verified": false,
+  "pdf_page_mapping_verified": false,
+  "visual_review_complete": false,
+  "complete": false,
+  "known_ambiguities": [
+    "Entry 4 (منظور أستراد) and entry 23 (الفنان محمود جلال العشا) retain the source-text reading; confirm visually before final verification.",
+    "Entry 33 lists printed page 78, but source text from PDF page 77 already discusses Syrian artists; verify whether this is a TOC misprint or a continuation from an earlier page.",
+    "No end pages were inferred from next printed start pages."
+  ],
+  "remaining_work": "Visually inspect original PDF contents pages 4-5, confirm each actual heading and PDF/image start page, resolve page-78 inconsistency and ambiguous spellings, and establish each true lesson end page before marking fully verified.",
+  "checked_on": "2026-10-29"
+}
