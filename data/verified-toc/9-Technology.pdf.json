@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "book": "9-Technology.pdf",
+  "catalogue_key": "تاسع|التقانة",
+  "index_scope": "seven unit starts and TOC topic names only; not an independently checked lesson-by-lesson page index",
+  "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
+  "fully_verified": false,
+  "complete": false,
+  "source": {
+    "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Technology.pdf",
+    "original_pdf_sha256": "d96b9376e92bd4f62e3d35151e3fa782f56664315c76acfb859282c71f83c386",
+    "source_evidence_file": "data/toc-source-evidence/9-Technology.pdf.json",
+    "source_toc_pdf_pages": [
+      4,
+      5
+    ],
+    "source_pdf_pages": 189
+  },
+  "entries": [
+    {
+      "kind": "unit",
+      "unit_number": 1,
+      "title": "الوحدة الأولى",
+      "printed_start_page": 6,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "العمليات على نظام العد الثنائي",
+        "الجمع في نظام العد الثنائي",
+        "الطرح في نظام العد الثنائي",
+        "الضرب في نظام العد الثنائي",
+        "القسمة في نظام العد الثنائي",
+        "الدارات المنطقية AND – OR – NOT"
+      ],
+      "topic_start_pages_verified": false,
+      "actual_pdf_unit_heading_page_text_checked": 6,
+      "actual_pdf_first_lesson_heading_page_text_checked": 7,
+      "first_lesson_heading_from_pdf_text": "العمليات الحسابية الأربع في نظام العد الثنائي"
+    },
+    {
+      "kind": "unit",
+      "unit_number": 2,
+      "title": "الوحدة الثانية",
+      "printed_start_page": 20,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "تحرير ومعالجة الصور",
+        "الصور النقطية والشعاعية",
+        "الطبقات",
+        "تحريك الصور"
+      ],
+      "topic_start_pages_verified": false
+    },
+    {
+      "kind": "unit",
+      "unit_number": 3,
+      "title": "الوحدة الثالثة",
+      "printed_start_page": 45,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "المكونات المادية",
+        "وحدة التغذية الكهربائية",
+        "الهاتف النقال"
+      ],
+      "topic_start_pages_verified": false
+    },
+    {
+      "kind": "unit",
+      "unit_number": 4,
+      "title": "الوحدة الرابعة",
+      "printed_start_page": 67,
+      "source_toc_pdf_page": 4,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "الخوارزميات",
+        "مراحل تطور البرنامج",
+        "المتحولات والثوابت",
+        "أنواع البيانات",
+        "بنى التحكم والمعاملات المنطقية",
+        "البرمجة C++",
+        "إدخال البيانات",
+        "إخراج البيانات",
+        "إجراء العمليات الحسابية",
+        "المصفوفات"
+      ],
+      "topic_start_pages_verified": false,
+      "second_part_printed_start_page": 91,
+      "second_part_topic": "البرمجة C++",
+      "second_part_page_boundary_verified": false
+    },
+    {
+      "kind": "unit",
+      "unit_number": 5,
+      "title": "الوحدة الخامسة",
+      "printed_start_page": 124,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "استثمار إمكانات الشابكة",
+        "تقنيات بحث متطورة على الشابكة",
+        "التعليم التقليدي والتعلم الإلكتروني",
+        "الحوسبة السحابية"
+      ],
+      "topic_start_pages_verified": false
+    },
+    {
+      "kind": "unit",
+      "unit_number": 6,
+      "title": "الوحدة السادسة",
+      "printed_start_page": 141,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "البرمجيات مفتوحة المصدر",
+        "المقارنة بين الحزم البرمجية مفتوحة المصدر والحزم المغلقة",
+        "برنامج LibreOffice Calc",
+        "بعض دوال البرنامج",
+        "الجداول ومرشحات تصفية بيانات الجدول"
+      ],
+      "topic_start_pages_verified": false
+    },
+    {
+      "kind": "unit",
+      "unit_number": 7,
+      "title": "الوحدة السابعة",
+      "printed_start_page": 165,
+      "source_toc_pdf_page": 5,
+      "verified_fields": [
+        "unit_label_from_original_pdf_text",
+        "printed_start_page_from_original_pdf_text"
+      ],
+      "topic_titles_transcribed_from_original_pdf_text_visual_check_pending": [
+        "مستجدات تكنولوجية",
+        "نظم مراقبة وتحكم وجمع البيانات",
+        "مهن وتخصصات الحاسوب",
+        "تقنية النانو"
+      ],
+      "topic_start_pages_verified": false
+    }
+  ],
+  "verified_unit_count": 7,
+  "verified_lesson_count": 0,
+  "actual_pdf_unit_heading_page_text_checked_count": 1,
+  "actual_pdf_first_lesson_heading_page_text_checked_count": 1,
+  "lesson_page_ranges_verified": false,
+  "pdf_page_image_mapping_verified": false,
+  "visual_review_complete": false,
+  "known_ambiguities": [
+    "Unit 4 has two separate printed starts (67 for algorithms, 91 for C++); do not collapse these into one verified lesson range.",
+    "The topic names were normalized from extracted original PDF text; original glyphs/diacritics and each individual topic heading still require visual verification.",
+    "No unit or topic end pages have been inferred."
+  ],
+  "remaining_work": "Inspect the original PDF visually at TOC pages 4–5, unit starts 20,45,67,91,124,141,165 and every individual lesson heading; establish real start/end pages and verify WebP page-image mapping.",
+  "checked_on": "2026-10-30"
+}
