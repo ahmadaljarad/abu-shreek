@@ -17,6 +17,25 @@ def get(url,path=None,auth=False):
                 if not chunk:break
                 f.write(chunk)
 def command(*args):return subprocess.run(args,check=True,capture_output=True,text=True).stdout
+def targeted_pages(name, total):
+    """Extract only candidate start-page numbers already recorded from source TOCs.
+    These are *not* verified heading pages until separately checked."""
+    path=R/'data/verified-toc'/(name+'.json')
+    if not path.exists():return []
+    try:
+        doc=json.loads(path.read_text())
+    except (ValueError,OSError):return []
+    keys=('printed_start_page','printed_page','pdf_heading_page',
+          'actual_pdf_unit_heading_page','actual_pdf_first_lesson_heading_page_text_checked',
+          'second_part_printed_start_page','pdf_start_page','start_page','page_start')
+    found=set()
+    for e in doc.get('entries',[]):
+        if not isinstance(e,dict):continue
+        for key in keys:
+            n=e.get(key)
+            if type(n) is int and 1<=n<=total:found.add(n)
+    return sorted(found)[:24]
+
 def collect(name,asset):
     with tempfile.TemporaryDirectory() as tmp:
         pdf=Path(tmp)/name;get(BASE+name,pdf)
@@ -55,10 +74,26 @@ def collect(name,asset):
                     else:p['ocr_error']=o.stderr[-300:]
                     Path(str(prefix)+'.png').unlink(missing_ok=True)
                 pages.append(p)
+        targets=targeted_pages(name,total)
+        already={p['pdf_page'] for p in pages}
+        for i in targets:
+            if i in already:continue
+            t=command('pdftotext','-f',str(i),'-l',str(i),'-layout',str(pdf),'-')
+            p={'pdf_page':i,'pdf_text':t.strip()[:24000],
+               'selection_reason':'candidate_start_page_from_partial_index_not_verified'}
+            if sum(c.isalpha() for c in t)<80:
+                prefix=Path(tmp)/('target-'+str(i))
+                subprocess.run(['pdftoppm','-f',str(i),'-l',str(i),'-scale-to','1600','-png','-singlefile',str(pdf),str(prefix)],check=True,capture_output=True)
+                o=subprocess.run(['tesseract',str(prefix)+'.png','stdout','-l','ara+eng+fra+rus','--psm','3'],capture_output=True,text=True)
+                if o.returncode==0:p['ocr_text_unverified']=o.stdout.strip()[:6500]
+                else:p['ocr_error']=o.stderr[-300:]
+                Path(str(prefix)+'.png').unlink(missing_ok=True)
+            pages.append(p)
+        pages.sort(key=lambda p:p['pdf_page'])
         possible=[p['pdf_page'] for p in pages if re.search('الفهرس|المحتويات|contents|sommaire|содержание',p['pdf_text']+'\n'+p.get('ocr_text_unverified',''),re.I)]
         return {'schema_version':1,'book':name,'status':'SOURCE_EVIDENCE_UNVERIFIED','fully_verified':False,
                 'original_pdf':BASE+name,'original_pdf_sha256':digest,'release_asset_size':asset['size'],
-                'pdf_pages':total,'sampled_pdf_pages':len(pages),'pdf_text_character_cap':24000,'possible_contents_pages_unverified':possible,
+                'pdf_pages':total,'sampled_pdf_pages':len(pages),'pdf_text_character_cap':24000,'targeted_candidate_start_pages_unverified':targets,'possible_contents_pages_unverified':possible,
                 'page_image_mapping_verified':False,'lesson_titles_verified':False,'lesson_page_ranges_verified':False,
                 'note':'Raw original release PDF text/OCR only. Every title and page boundary needs independent verification before a verified lesson index is published.',
                 'pages':pages}
@@ -76,7 +111,9 @@ def main():
         try:
             old=json.loads(path.read_text())
             cap=old.get('pdf_text_character_cap',6500)
-            return cap<24000 and any(len(p.get('pdf_text',''))>=cap for p in old.get('pages',[]))
+            if cap<24000 and any(len(p.get('pdf_text',''))>=cap for p in old.get('pages',[])):return True
+            existing={p.get('pdf_page') for p in old.get('pages',[])}
+            return any(n not in existing for n in targeted_pages(name,10**9))
         except (ValueError,OSError,TypeError):return True
     pending=[n for n in names if n not in verified and needs_collection(n)]
     pending.sort(key=lambda n:(0 if n=='9-English-SB.pdf' else (1 if not (OUT/(n+'.json')).exists() else 2),assets[n]['size'],n))
