@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-10-29",
+  "audited_at": "2026-10-30",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 11,
+  "books_with_partial_verified_json": 12,
   "fully_verified_book_files": 5,
-  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 11 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence and printed TOC text alone are not full verification.",
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 12 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence and printed TOC text alone are not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -163,10 +163,10 @@
       "book": "9-Technology.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Technology.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/9-Technology.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "Seven original PDF TOC unit labels and printed start pages transcribed from PDF pages 4–5; unit 1 actual heading checked on PDF page 6 and first lesson on page 7. Individual lesson headings, page boundaries, all other unit starts, and PDF/WebP mapping still need independent verification; unit 4 also lists C++ at page 91."
     },
     {
       "catalogue_key": "تاسع|الموسيقا",
