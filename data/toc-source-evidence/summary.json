@@ -5,5 +5,56 @@
   "source_evidence_files_available": 37,
   "source_evidence_is_not_verification": true,
   "pending_source_evidence": [],
-  "this_batch": []
+  "this_batch": [
+    {
+      "book": "9-English-SB.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 80
+    },
+    {
+      "book": "bac-lit-christian.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 135
+    },
+    {
+      "book": "bac-sci-christian.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 135
+    },
+    {
+      "book": "bac-lit-english-sb.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 128
+    },
+    {
+      "book": "bac-sci-english-sb.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 128
+    },
+    {
+      "book": "bac-lit-french-annex.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 40
+    },
+    {
+      "book": "9-Christianity.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 148
+    },
+    {
+      "book": "9-Art.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 82
+    },
+    {
+      "book": "bac-sci-french.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 120
+    },
+    {
+      "book": "9-Technology.pdf",
+      "result": "source_evidence_saved",
+      "pdf_pages": 189
+    }
+  ]
 }

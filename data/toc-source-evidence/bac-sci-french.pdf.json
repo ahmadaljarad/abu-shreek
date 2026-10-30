@@ -7,8 +7,16 @@
   "original_pdf_sha256": "bb116a8db8760978edf16bd8c37ef5a7160de5bee1841f105c6ee24b089afcb8",
   "release_asset_size": 48399381,
   "pdf_pages": 120,
-  "sampled_pdf_pages": 18,
+  "sampled_pdf_pages": 23,
   "pdf_text_character_cap": 24000,
+  "targeted_candidate_start_pages_unverified": [
+    5,
+    23,
+    41,
+    59,
+    77,
+    95
+  ],
   "possible_contents_pages_unverified": [],
   "page_image_mapping_verified": false,
   "lesson_titles_verified": false,
@@ -64,6 +72,36 @@
     {
       "pdf_page": 12,
       "pdf_text": "Unité 1                      Compétences linguistiques\n                               L’expression de but\nAnalysez\n      A- Lisez les phrases puis répondez aux questions ci-dessous !\n\n1- Les portes des jardins sont ouvertes pour que les visiteurs fassent des balades.\n2- Le Ministère du Tourisme organise un festival interculturel pour mettre en valeur\n   la diversité culturelle de la France.\n3- La mairie de Paris impose un règlement rigoureux lors de la célébration du Nouvel\n   An de crainte que certaines personnes ne fassent des manifestations.\n4- J’ai pris un taxi de peur d’arriver en retard à la conférence.\n5- Les listes sont établies de façon que des gens de différents milieux socioculturels\n   se rencontrent.\n6- Le festival sera organisé de manière à mettre en valeur la diversité culturelle de\n   la France.\n\n\n1- Pour exprimer le but, quels éléments utilise-t-on dans les phrases ci-dessus ?\n         1- ……………………..            2- ……………………..           3- ……………………..\n         4- ……………………..            5- ……………………..           6- ……………………..\n2- Classifiez ces éléments dans le tableau suivant, puis cochez s’il s’agit du même\n      sujet ou des sujets différents !\n\n                                             Conjonction +       Locutions et prépositions\n       Sujets différents Même sujet\n                                         proposition subjonctive + proposition infinitive\n  1\n\n  2\n\n  3\n\n  4\n\n  5\n\n  6\n\n\n  12"
+    },
+    {
+      "pdf_page": 23,
+      "pdf_text": "Unité\n\n 2\n\n\n        C hacun pour t ous\n\n\n\n\n                             23",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified",
+      "ocr_text_unverified": ""
+    },
+    {
+      "pdf_page": 41,
+      "pdf_text": "L\nUnité\n\n 3\n              e salon,\n        un espace culturel\n\n\n\n\n                             41",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified",
+      "ocr_text_unverified": "7 &\ne salon,\n\nun espace сийиге!\n\nplaisir ‏عه‎\n\nconcert 00 и5ее.\nGiNEMA@stheaticrs\n\n5 exposition!\nlecture\n\n50,"
+    },
+    {
+      "pdf_page": 59,
+      "pdf_text": "Unité\n\n 4\n           La femme\n        dans la littérature\n\n\n\n\n                         59",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified",
+      "ocr_text_unverified": "i\n2 ae femme\n\n” dans la littérature"
+    },
+    {
+      "pdf_page": 77,
+      "pdf_text": "Unité\n\n 5\n\n     L ’intelligence artificielle\n\n\n\n\n                                    77",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified",
+      "ocr_text_unverified": "| L'inteligence artificielle\n\nSA ;\n|"
+    },
+    {
+      "pdf_page": 95,
+      "pdf_text": "Unité\n\n 6\n        La conquête de l’Espace\n\n\n\n\n                                  95",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified",
+      "ocr_text_unverified": "La conquête de l'Espace"
     },
     {
       "pdf_page": 115,

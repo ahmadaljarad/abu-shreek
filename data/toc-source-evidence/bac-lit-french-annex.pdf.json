@@ -7,7 +7,13 @@
   "original_pdf_sha256": "e79161d2f2e020bdd0511c1e9b9e0ce4578449653bfa9dfe4afeab90edb4cd66",
   "release_asset_size": 18398557,
   "pdf_pages": 40,
-  "sampled_pdf_pages": 12,
+  "sampled_pdf_pages": 20,
+  "pdf_text_character_cap": 24000,
+  "targeted_candidate_start_pages_unverified": [
+    6,
+    16,
+    28
+  ],
   "possible_contents_pages_unverified": [],
   "page_image_mapping_verified": false,
   "lesson_titles_verified": false,
@@ -64,6 +70,17 @@
     {
       "pdf_page": 12,
       "pdf_text": "Chapitre I\n\n          D’après la biographie de Molière, remplissez la carte mentale suivante !\n\n\n\n\n                          Molière\n\n\n             Nom\n\n                     Naissance\n             Dates\n                     Mort\n\n  Identité                 Son père (prénom, nom et profession)\n             Sa famille    Sa mère (prénom, nom)\n                           Sa femme (prénom, nom)\n                           Ville et nom du collège où il a étudié\n             Ses études\n                           Les études qu’il a suivi\n\n                            L’illustre Théâtre En quelle année\n             Ses troupes\n                            Troupe du Roi En quelle année\n\n                           Sa première pièce (Titre, Date)\n  Œuvre      Ses pièces    3 autres de ses principales pièces (Titre, Date)\n                           Sa dernière pièce (Titre, Date)\n\n                                                 1653 ou 1655\n             Ses protecteurs et ses mécènes      1658\n                                                 Et enfin\n\n\n\n\n     12"
+    },
+    {
+      "pdf_page": 16,
+      "pdf_text": "C hapitre                               II\n                      Tragédie\n                                La\n\n\n\n        Objectifs\n        I. Acquérir des connaissances concernant :\n            • un genre littéraire (la tragédie)\n            • Les règles du théâtre classique\n            • la différence entre la tragédie classique et la tragédie moderne\n            • la tragi-comique\n        II. Analyser un extrait d’une tragédie classique, moderne et tragi-comique\n\n\n\n\nQu’est-ce que vous savez sur la tragédie ?\nEssayez de deviner la bonne réponse !\n\n     1- Une tragédie ou une pièce de théâtre tragique est une pièce qui\n        finit par ……. .\n        a- le mariage des amoureux\n        b- la mort d’une personne ou de plusieurs personnes\n        c- une leçon morale\n\n\n\n     2- Quels sont les deux sentiments que doit inspirer la tragédie selon\n       Aristote ?\n        a- La peur et l’amitié.\n        b- La terreur et la solidarité.\n        c- La terreur et la pitié.\n\n\n   16",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified"
+    },
+    {
+      "pdf_page": 28,
+      "pdf_text": "C hapitre      III\n     Dramaturges\n                    syriens\n\n\n\n\n        Saadallah Wannous\n\n\n\n28",
+      "selection_reason": "candidate_start_page_from_partial_index_not_verified",
+      "ocr_text_unverified": "Saadallah Wannous"
     },
     {
       "pdf_page": 35,
