@@ -24,6 +24,7 @@ jobs:
             books.json
             data/toc-verification-progress.json
             data/toc-source-evidence
+            data/verified-toc
             scripts/collect-toc-source-evidence.py
           sparse-checkout-cone-mode: false
       - name: Install PDF text and multilingual OCR tools
