@@ -5,36 +5,5 @@
   "source_evidence_files_available": 37,
   "source_evidence_is_not_verification": true,
   "pending_source_evidence": [],
-  "this_batch": [
-    {
-      "book": "9-Science.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 232
-    },
-    {
-      "book": "9-Islamic.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 140
-    },
-    {
-      "book": "9-Physics-Chemistry.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 202
-    },
-    {
-      "book": "bac-lit-geography.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 280
-    },
-    {
-      "book": "9-History.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 123
-    },
-    {
-      "book": "9-Geography.pdf",
-      "result": "source_evidence_saved",
-      "pdf_pages": 176
-    }
-  ]
+  "this_batch": []
 }
