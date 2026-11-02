@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "book": "9-Music.pdf",
+  "status": "PARTIAL_SOURCE_CROSSCHECK",
+  "fully_verified": false,
+  "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Music.pdf",
+  "evidence_file": "data/toc-source-evidence/9-Music.pdf.json",
+  "verification_method": "Cross-check lesson heading in sampled original PDF extracted text with source table of contents OCR; printed page numbers for first entries not independently legible.",
+  "entries": [
+    {
+      "lesson_number": 1,
+      "title": "أغنية وإيقاع",
+      "pdf_start_page": 6,
+      "printed_start_page": 6,
+      "source_heading_pdf_page": 6,
+      "verification": "Original PDF page 6 text contains lesson number 1 and title; TOC page 4 OCR corroborates title. Page-image mapping and lesson end not verified."
+    },
+    {
+      "lesson_number": 2,
+      "title": "لاعب الريشة",
+      "pdf_start_page": 8,
+      "printed_start_page": 8,
+      "source_heading_pdf_page": 8,
+      "verification": "Original PDF page 8 text contains lesson number 2 and title; TOC page 4 OCR corroborates title. Page-image mapping and lesson end not verified."
+    }
+  ],
+  "remaining_work": "Visually verify printed TOC page 4, all remaining lesson titles/start and end pages, and full PDF-to-image mapping. Do not mark complete."
+}
