@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-10-30",
+  "audited_at": "2026-11-02",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 12,
+  "books_with_partial_verified_json": 13,
   "fully_verified_book_files": 5,
-  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 12 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence and printed TOC text alone are not full verification.",
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 13 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence and printed TOC text alone are not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -173,10 +173,10 @@
       "book": "9-Music.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Music.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/9-Music.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "First two lesson headings cross-checked against original PDF text at pages 6 and 8; verify remaining titles, visual TOC, all lesson ends and image mapping."
     },
     {
       "catalogue_key": "بكالوريا علمي|اللغة العربية",
