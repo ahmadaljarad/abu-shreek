@@ -1,0 +1,35 @@
+name: Extract literary Arabic textbook pages
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF extraction
+        run: pip install pymupdf
+      - name: Download original textbook
+        run: curl -fL --retry 3 --output /tmp/bac-lit-arabic.pdf https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-arabic.pdf
+      - name: Extract all pages with source image references
+        run: |
+          python - <<'PY'
+          import fitz,json,pathlib
+          doc=fitz.open('/tmp/bac-lit-arabic.pdf')
+          if len(doc)!=148: raise RuntimeError(f'Expected 148 PDF pages, got {len(doc)}')
+          data={'source':'الصف الثالث الثانوي الأدبي - اللغة العربية (2025-2026)','note':'استخراج آلي من الكتاب الأصلي؛ قد يختلف ترتيب الكلمات والتشكيل. راجع صورة الصفحة الأصلية.','pages':[{'pdf_page':i+1,'image_page':i+1,'image':f'book-pages/bac-lit-arabic/{i+1:03d}.webp','text':page.get_text(sort=True)} for i,page in enumerate(doc)]}
+          if not any(x['text'].strip() for x in data['pages']): raise RuntimeError('No text extracted')
+          out=pathlib.Path('data/bac-lit-extracted/bac-lit-arabic.pdf.json');out.parent.mkdir(parents=True,exist_ok=True)
+          out.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+          print(f'Extracted {len(data["pages"])} pages into {out}')
+          PY
+      - name: Commit generated extraction
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/bac-lit-extracted/bac-lit-arabic.pdf.json
+          if ! git diff --cached --quiet; then git commit -m 'Generate 148-page literary Arabic textbook text'; git push; fi
