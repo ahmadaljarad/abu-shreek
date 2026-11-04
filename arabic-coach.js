@@ -2355,6 +2355,7 @@ function savePageNotes(){const dir=bookDirectory(),page=Number($('arabicBookPage
 let arabicTextCache={};
 async function loadArabicPageText(){
  const target=$('arabicPageExtractedText'),dir=bookDirectory(),n=Number($('arabicBookPageNumber').value);
+ if(dir==='bac-lit-arabic'){target.textContent='';const block=target.closest('details');if(block)block.hidden=true;return}const block=target.closest('details');if(block)block.hidden=false;
  const source=dir==='9-Arabic'?(n<=100?'data/ninth-extracted/9-Arabic.json':'data/ninth-extracted/9-Arabic-pages-101-200.json'):dir==='bac-sci-arabic'?'data/bac-sci-extracted/bac-sci-arabic.pdf.json':dir==='bac-lit-arabic'?'data/bac-lit-extracted/bac-lit-arabic.pdf.json':null;
  if(!source){target.textContent='لا يتوفر استخراج نصي لهذا الكتاب حالياً. اعتمد على صورة الصفحة الأصلية.';return}
  target.textContent='جارٍ تحميل النص المستخرج...';
@@ -2368,6 +2369,7 @@ async function loadArabicPageText(){
 }
 function renderCompletePageIndex(){
  const panel=$('arabicCompletePageIndex');if(!panel)return;
+ if(bookDirectory()==='bac-lit-arabic'){panel.innerHTML='';panel.hidden=true;return}panel.hidden=false;
  const dir=bookDirectory(),total=bookCounts[dir];
  panel.innerHTML='';
  const title=document.createElement('strong');title.textContent='فهرس صفحات '+bookNames[dir]+' — '+total+' صورة';panel.append(title);
@@ -2471,17 +2473,24 @@ function renderBacLitReadingGuide(panel){
  selector.onchange=()=>{current=ranges[Number(selector.value)].page;render()};start.onclick=()=>{current=ranges[Number(selector.value)].page;bookBrowse(current);render()};prev.onclick=()=>{current--;bookBrowse(current);render()};next.onclick=()=>{current++;bookBrowse(current);render()};done.onclick=()=>{const row=ranges[Number(selector.value)];completed[row.page]=true;try{localStorage.setItem(key,JSON.stringify(completed))}catch(e){}render()};render();panel.append(box);
 }
 function renderBacLitLessonIndex(panel){
- const head=document.createElement('strong');head.textContent='فهرس كتاب البكالوريا الأدبي — طبعة 2025–2026';panel.append(head);
- const info=document.createElement('p');info.style.cssText='font-size:13px;color:#64748b';info.textContent='اختر درساً للانتقال إلى صورته في الكتاب. أرقام الصفحات مأخوذة من فهرس PDF، وقد تختلف عن الترقيم المطبوع داخل الصفحة.';panel.append(info);
- for(let i=0;i<bacLitLessonIndex.length;i++){
-  const unit=bacLitLessonIndex[i],section=document.createElement('details');section.style.cssText='margin:8px 0;padding:9px;border:1px solid #cbd5e1;border-radius:10px';
-  const summary=document.createElement('summary');summary.style.cssText='cursor:pointer;font-weight:700';summary.textContent='الوحدة '+(i+1)+' — '+unit[0]+' ('+unit[1].length+' دروس)';section.append(summary);
-  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:10px';
-  for(const [title,page] of unit[1]){const button=document.createElement('button');button.type='button';button.className='btn soft';button.style.cssText='text-align:right;white-space:normal';button.textContent=title+' — صفحة '+page;button.onclick=()=>bookBrowse(page);list.append(button)}
-  section.append(list);panel.append(section);
+ const root=document.createElement('section');root.style.cssText='padding:14px;border:1px solid #cbd5e1;border-radius:12px;margin:12px 0';
+ const heading=document.createElement('h3');heading.textContent='ادرس درساً من البكالوريا الأدبي';root.append(heading);
+ const note=document.createElement('p');note.style.cssText='color:#64748b;font-size:13px';note.textContent='اختر الوحدة والدرس، اقرأ صفحته الأصلية بالأعلى، ثم راجع أسئلته هنا. الشروح التفصيلية غير المكتملة لن تُعرض على أنها موثقة.';root.append(note);
+ const unitSelect=document.createElement('select'),lessonSelect=document.createElement('select');
+ for(const select of [unitSelect,lessonSelect])select.style.cssText='max-width:100%;padding:10px;margin:5px;border:1px solid #cbd5e1;border-radius:9px';
+ bacLitLessonIndex.forEach((u,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent='الوحدة '+(i+1)+' — '+u[0];unitSelect.append(opt)});
+ const controls=document.createElement('div');controls.style.cssText='display:flex;flex-wrap:wrap;gap:6px';controls.append(unitSelect,lessonSelect);root.append(controls);
+ const open=document.createElement('button');open.type='button';open.className='btn soft';open.textContent='اقرأ الدرس في الكتاب';root.append(open);
+ const content=document.createElement('div');content.style.cssText='margin-top:14px';root.append(content);
+ function fillLessons(){lessonSelect.innerHTML='';const unit=bacLitLessonIndex[Number(unitSelect.value)];unit[1].forEach((x,i)=>{const opt=document.createElement('option');opt.value=String(i);opt.textContent=x[0]+' — ص '+x[1];lessonSelect.append(opt)});render()}
+ function render(){content.innerHTML='';const unit=bacLitLessonIndex[Number(unitSelect.value)],lesson=unit[1][Number(lessonSelect.value)||0],title=lesson[0],page=lesson[1];
+ const titleNode=document.createElement('h4');titleNode.textContent=title;content.append(titleNode);
+ const related=[...bacLitTextbookExercises.filter(x=>x.lesson===title).map(x=>({q:x.q,a:x.a,note:x.note,page:x.page,kind:x.kind})),...bacLitVerifiedStudy.filter(x=>x[0]===title).map(x=>({q:x[2],a:x[3],page:x[1],note:'سؤال تدريبي مشتق من مقدمة الدرس وليس سؤالاً وزارياً',kind:'فهم الدرس'}))];
+ const status=document.createElement('p');status.style.cssText='font-size:13px;color:#64748b';status.textContent=related.length?'أسئلة مرتبطة بهذا الدرس: '+related.length+' — الإجابات مقترحة وليست حلولاً وزارية.':'لم تُدقّق أسئلة هذا الدرس بعد. اقرأ النص من الكتاب الأصلي؛ لن نعرض إجابات تخمينية.';content.append(status);
+ for(const item of related){const card=document.createElement('details');card.style.cssText='border:1px solid #e2e8f0;border-radius:9px;padding:10px;margin:8px 0';const summary=document.createElement('summary');summary.style.cursor='pointer';summary.textContent=item.q;card.append(summary);const answer=document.createElement('p');answer.textContent=item.a;card.append(answer);const label=document.createElement('small');label.textContent=item.kind+' — '+(item.note||'');card.append(label);content.append(card)}
+ open.onclick=()=>bookBrowse(page);
  }
- const extras=document.createElement('div');extras.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-top:10px';
- for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitReadingGuide(panel);renderBacLitInteractiveQuiz(panel);renderBacLitTextbookExercises(panel);renderBacLitVerifiedStudy(panel);
+ unitSelect.onchange=fillLessons;lessonSelect.onchange=render;fillLessons();panel.append(root);
 }
 function renderBookQuestionIndex(){
  const panel=$('arabicBookQuestionIndex');if(!panel)return;
