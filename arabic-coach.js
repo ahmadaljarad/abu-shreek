@@ -2408,6 +2408,43 @@ function renderBacLitTextbookExercises(panel){
  }
  panel.append(group);
 }
+function renderBacLitInteractiveQuiz(panel){
+ const questions=[...bacLitTextbookExercises.map(x=>({lesson:x.lesson,page:x.page,q:x.q,a:x.a,note:x.note,source:x.kind})),...bacLitVerifiedStudy.map(x=>({lesson:x[0],page:x[1],q:x[2],a:x[3],note:'سؤال تدريبي مشتق من مدخل الدرس، وليس سؤالاً وزارياً.',source:'فهم الدرس'}))].filter(x=>x.a&&!/لم تُضف إجابة/.test(x.a));
+ const wrapper=document.createElement('details');wrapper.style.cssText='margin:14px 0;padding:12px;border:2px solid #64748b;border-radius:12px';
+ const summary=document.createElement('summary');summary.style.cssText='font-weight:800;cursor:pointer';summary.textContent='اختبر نفسك تفاعلياً — '+questions.length+' سؤالاً';wrapper.append(summary);
+ const description=document.createElement('p');description.style.cssText='font-size:13px;color:#64748b';description.textContent='اكتب إجابتك ثم قارنها بالإجابة المقترحة، وقيّم نفسك. لا يوجد تصحيح آلي أو اعتماد وزاري لهذه الإجابات. تحفظ نتيجة التقييم على جهازك فقط.';wrapper.append(description);
+ const controls=document.createElement('div');controls.style.cssText='display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0';
+ const select=document.createElement('select');select.setAttribute('aria-label','اختيار الدرس');select.style.cssText='max-width:100%;padding:9px;border-radius:8px';
+ const all=document.createElement('option');all.value='';all.textContent='جميع الدروس';select.append(all);
+ for(const lesson of [...new Set(questions.map(x=>x.lesson))]){const opt=document.createElement('option');opt.value=lesson;opt.textContent=lesson;select.append(opt)}controls.append(select);
+ const reset=document.createElement('button');reset.type='button';reset.className='btn soft';reset.textContent='إعادة الاختبار';controls.append(reset);wrapper.append(controls);
+ const progress=document.createElement('p');progress.style.fontWeight='700';wrapper.append(progress);
+ const prompt=document.createElement('p');prompt.style.cssText='font-size:17px;font-weight:700';wrapper.append(prompt);
+ const category=document.createElement('p');category.style.cssText='font-size:12px;color:#64748b';wrapper.append(category);
+ const input=document.createElement('textarea');input.rows=4;input.placeholder='اكتب إجابتك هنا قبل عرض الحل';input.style.cssText='width:100%;box-sizing:border-box;padding:10px;border:1px solid #94a3b8;border-radius:9px';wrapper.append(input);
+ const answer=document.createElement('div');answer.style.cssText='display:none;padding:10px;margin:8px 0;background:rgba(148,163,184,.12);border-radius:9px';wrapper.append(answer);
+ const actions=document.createElement('div');actions.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin:10px 0';
+ const reveal=document.createElement('button');reveal.type='button';reveal.className='btn soft';reveal.textContent='قارن بالإجابة المقترحة';actions.append(reveal);
+ const correct=document.createElement('button');correct.type='button';correct.className='btn soft';correct.textContent='إجابتي صحيحة';actions.append(correct);
+ const incorrect=document.createElement('button');incorrect.type='button';incorrect.className='btn soft';incorrect.textContent='أحتاج مراجعة';actions.append(incorrect);
+ const previous=document.createElement('button');previous.type='button';previous.className='btn soft';previous.textContent='السابق';actions.append(previous);
+ const next=document.createElement('button');next.type='button';next.className='btn soft';next.textContent='التالي';actions.append(next);
+ const source=document.createElement('button');source.type='button';source.className='btn soft';source.textContent='افتح صفحة الكتاب';actions.append(source);wrapper.append(actions);
+ const result=document.createElement('p');result.style.fontWeight='700';wrapper.append(result);
+ let filtered=questions.slice(),index=0,marks={},drafts={};const storageKey='abu:bac-lit:quiz:v1';
+ try{const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');if(saved&&typeof saved==='object'&&!Array.isArray(saved))marks=saved}catch(e){}
+ const id=q=>q.page+'|'+q.q;
+ function save(){try{localStorage.setItem(storageKey,JSON.stringify(marks))}catch(e){}}
+ function stats(){const reviewed=questions.filter(q=>marks[id(q)]==='yes'||marks[id(q)]==='no'),passed=reviewed.filter(q=>marks[id(q)]==='yes').length;result.textContent='تقدّمك: '+reviewed.length+' من '+questions.length+' سؤالاً مقيّماً — '+passed+' صحيحة — '+(reviewed.length-passed)+' بحاجة لمراجعة. النتيجة تقييم ذاتي.'}
+ function render(){if(!filtered.length){prompt.textContent='لا توجد أسئلة في هذا الدرس';return}const q=filtered[index],key=id(q);progress.textContent='السؤال '+(index+1)+' من '+filtered.length+' — '+q.lesson+' (صفحة '+q.page+')';prompt.textContent=q.q;category.textContent=q.source||'';input.value=drafts[key]||'';answer.style.display='none';answer.textContent='';correct.disabled=true;incorrect.disabled=true;previous.disabled=index===0;next.disabled=index===filtered.length-1;stats()}
+ input.addEventListener('input',()=>{if(filtered[index])drafts[id(filtered[index])]=input.value});
+ reveal.onclick=()=>{const q=filtered[index];if(!q)return;answer.textContent='الإجابة المقترحة: '+q.a+' — '+(q.note||'');answer.style.display='block';correct.disabled=false;incorrect.disabled=false};
+ function grade(v){const q=filtered[index];if(!q||answer.style.display==='none')return;marks[id(q)]=v;save();stats();if(index<filtered.length-1){index++;render()}else{progress.textContent+=' — انتهيت من هذا الاختبار'}}
+ correct.onclick=()=>grade('yes');incorrect.onclick=()=>grade('no');previous.onclick=()=>{if(index>0){index--;render()}};next.onclick=()=>{if(index<filtered.length-1){index++;render()}};source.onclick=()=>{if(filtered[index])bookBrowse(filtered[index].page)};
+ select.onchange=()=>{filtered=questions.filter(q=>!select.value||q.lesson===select.value);index=0;render()};
+ reset.onclick=()=>{if(!window.confirm('هل تريد مسح نتائج التقييم الذاتي والبدء من جديد؟'))return;marks={};drafts={};save();index=0;render()};
+ render();panel.append(wrapper);
+}
 function renderBacLitLessonIndex(panel){
  const head=document.createElement('strong');head.textContent='فهرس كتاب البكالوريا الأدبي — طبعة 2025–2026';panel.append(head);
  const info=document.createElement('p');info.style.cssText='font-size:13px;color:#64748b';info.textContent='اختر درساً للانتقال إلى صورته في الكتاب. أرقام الصفحات مأخوذة من فهرس PDF، وقد تختلف عن الترقيم المطبوع داخل الصفحة.';panel.append(info);
@@ -2419,7 +2456,7 @@ function renderBacLitLessonIndex(panel){
   section.append(list);panel.append(section);
  }
  const extras=document.createElement('div');extras.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-top:10px';
- for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitTextbookExercises(panel);renderBacLitVerifiedStudy(panel);
+ for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitInteractiveQuiz(panel);renderBacLitTextbookExercises(panel);renderBacLitVerifiedStudy(panel);
 }
 function renderBookQuestionIndex(){
  const panel=$('arabicBookQuestionIndex');if(!panel)return;
