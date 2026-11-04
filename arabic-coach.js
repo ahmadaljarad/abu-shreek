@@ -2445,6 +2445,26 @@ function renderBacLitInteractiveQuiz(panel){
  reset.onclick=()=>{if(!window.confirm('هل تريد مسح نتائج التقييم الذاتي والبدء من جديد؟'))return;marks={};drafts={};save();index=0;render()};
  render();panel.append(wrapper);
 }
+function renderBacLitReadingGuide(panel){
+ const box=document.createElement('details');box.style.cssText='margin:10px 0;padding:12px;border:1px solid #94a3b8;border-radius:10px';
+ const summary=document.createElement('summary');summary.style.cssText='font-weight:700;cursor:pointer';summary.textContent='اقرأ درساً كاملاً — تحديد الصفحات والانتقال بينها';box.append(summary);
+ const note=document.createElement('p');note.style.cssText='font-size:13px;color:#64748b';note.textContent='نطاق كل درس محسوب من بداية الدرس التالي في فهرس PDF، وليس من استخراج أسئلة أو نصوص مدققة. صفحات الصور هي المرجع الأصلي.';box.append(note);
+ const selector=document.createElement('select');selector.setAttribute('aria-label','اختر الدرس لقراءته');selector.style.cssText='width:100%;padding:10px;margin:8px 0;border-radius:8px';box.append(selector);
+ const lessons=bacLitLessonIndex.flatMap(unit=>unit[1].map(x=>({title:x[0],page:x[1],unit:unit[0]})));
+ const ranges=lessons.map((item,i)=>({...item,end:(i+1<lessons.length?lessons[i+1].page:127)-1}));
+ for(let i=0;i<ranges.length;i++){const row=ranges[i],opt=document.createElement('option');opt.value=String(i);opt.textContent=row.title+' — '+row.page+' إلى '+row.end;selector.append(opt)}
+ const status=document.createElement('p');status.style.fontWeight='700';box.append(status);
+ const buttons=document.createElement('div');buttons.style.cssText='display:flex;gap:8px;flex-wrap:wrap';box.append(buttons);
+ const start=document.createElement('button');start.type='button';start.className='btn soft';start.textContent='ابدأ قراءة الدرس';buttons.append(start);
+ const prev=document.createElement('button');prev.type='button';prev.className='btn soft';prev.textContent='صفحة سابقة';buttons.append(prev);
+ const next=document.createElement('button');next.type='button';next.className='btn soft';next.textContent='صفحة تالية';buttons.append(next);
+ const done=document.createElement('button');done.type='button';done.className='btn soft';done.textContent='أكملت قراءة الدرس';buttons.append(done);
+ const progress=document.createElement('p');progress.style.cssText='font-size:13px;color:#64748b';box.append(progress);
+ const key='abu:bac-lit:read-lessons:v1';let completed={};try{const data=JSON.parse(localStorage.getItem(key)||'{}');if(data&&typeof data==='object'&&!Array.isArray(data))completed=data}catch(e){}
+ let current=ranges[0].page;
+ function render(){const row=ranges[Number(selector.value)||0];current=Math.max(row.page,Math.min(row.end,current));status.textContent=row.unit+' — '+row.title+' — صفحة '+current+' من '+row.page+'–'+row.end;prev.disabled=current<=row.page;next.disabled=current>=row.end;done.textContent=completed[row.page]?'تمت القراءة ✓':'أكملت قراءة الدرس';progress.textContent='الدروس المكتملة: '+ranges.filter(x=>completed[x.page]).length+' من '+ranges.length}
+ selector.onchange=()=>{current=ranges[Number(selector.value)].page;render()};start.onclick=()=>{current=ranges[Number(selector.value)].page;bookBrowse(current);render()};prev.onclick=()=>{current--;bookBrowse(current);render()};next.onclick=()=>{current++;bookBrowse(current);render()};done.onclick=()=>{const row=ranges[Number(selector.value)];completed[row.page]=true;try{localStorage.setItem(key,JSON.stringify(completed))}catch(e){}render()};render();panel.append(box);
+}
 function renderBacLitLessonIndex(panel){
  const head=document.createElement('strong');head.textContent='فهرس كتاب البكالوريا الأدبي — طبعة 2025–2026';panel.append(head);
  const info=document.createElement('p');info.style.cssText='font-size:13px;color:#64748b';info.textContent='اختر درساً للانتقال إلى صورته في الكتاب. أرقام الصفحات مأخوذة من فهرس PDF، وقد تختلف عن الترقيم المطبوع داخل الصفحة.';panel.append(info);
@@ -2456,7 +2476,7 @@ function renderBacLitLessonIndex(panel){
   section.append(list);panel.append(section);
  }
  const extras=document.createElement('div');extras.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-top:10px';
- for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitInteractiveQuiz(panel);renderBacLitTextbookExercises(panel);renderBacLitVerifiedStudy(panel);
+ for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitReadingGuide(panel);renderBacLitInteractiveQuiz(panel);renderBacLitTextbookExercises(panel);renderBacLitVerifiedStudy(panel);
 }
 function renderBookQuestionIndex(){
  const panel=$('arabicBookQuestionIndex');if(!panel)return;
