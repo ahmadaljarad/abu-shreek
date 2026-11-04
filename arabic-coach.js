@@ -2391,6 +2391,23 @@ function renderBacLitVerifiedStudy(panel){
  }
  panel.append(section);
 }
+const bacLitTextbookExercises=[{"lesson":"عرس المجد","page":10,"kind":"الاستيعاب والفهم والتحليل — المستوى الفكري","q":"ما الفكرة العامة التي بُني عليها النص؟","a":"الاحتفاء بجلاء المستعمر عن سورية وتمجيد الحرية والنضال والتضحيات التي قادت إلى الاستقلال.","note":"إجابة نموذجية مقترحة؛ راجع القصيدة كاملة."},{"lesson":"عرس المجد","page":10,"kind":"الاستيعاب والفهم والتحليل — المستوى الفكري","q":"إلام دعا الشاعر في المقطع الأول؟ ولماذا؟","a":"دعا إلى الاحتفال بالحرية والمجد الوطني؛ لأن الاستقلال ثمرة تضحيات الشعب ونضاله.","note":"إجابة تفسيرية مقترحة، وليست حلاً رسمياً."},{"lesson":"عرس المجد","page":10,"kind":"الاستيعاب والفهم والتحليل — المستوى الفكري","q":"انطوى المقطع الثاني على تنديد ضمني بالمستعمر الغربي. وضّح ذلك.","a":"يظهر التنديد من خلال المقابلة بين بطولة السوريين وتضحياتهم وبين اعتداء المستعمر وسلبه الحرية؛ استشهد من أبيات المقطع عند الإجابة.","note":"الإجابة إرشادية وتتطلب شاهداً من النص."},{"lesson":"الجسر","page":16,"kind":"مهارات القراءة — القراءة الصامتة","q":"عدّد شخصيات القصة الشعرية.","a":"الشيخ وابنته والجندي القديم، وتظهر أيضاً قوة الاحتلال بوصفها الطرف المعادي.","note":"إجابة مستندة إلى شخصيات القصيدة."},{"lesson":"الجسر","page":16,"kind":"الاستيعاب والفهم والتحليل — المستوى الفكري","q":"ما مراحل العودة كما عرضها النص؟","a":"تبدأ برحلة العائدين نحو الجسر ثم مواجهتهم الخطر عند المعبر، وتنتهي بمأساة إطلاق النار وإصرار الباقين على مواصلة العودة.","note":"تلخيص نموذجي لمسار الأحداث."},{"lesson":"الجسر","page":16,"kind":"الاستيعاب والفهم والتحليل — المستوى الفكري","q":"اذكر مظاهر الإصرار على العودة برغم المخاطر كما تجلّت في المقطع الأول.","a":"مضيّ الشيخ وابنته والجندي نحو الجسر ليلاً رغم الخوف وخطورة الطريق، وتمسكهم بحق العودة.","note":"إجابة نموذجية مقترحة."},{"lesson":"قواعد اللغة — النداء","page":134,"kind":"تطبيق على قاعدة النداء","q":"متى يكون المنادى منصوباً لفظاً؟","a":"إذا كان نكرة غير مقصودة، أو مضافاً، أو شبيهاً بالمضاف.","note":"مستخرج من شرح القاعدة، وليس سؤالاً منقولاً حرفياً."},{"lesson":"قواعد اللغة — النداء","page":134,"kind":"تطبيق على قاعدة النداء","q":"ما أحرف النداء المذكورة في الكتاب، وما استخدام «وا»؟","a":"الأحرف: أ، أي، يا، وا. وتستعمل «وا» للندبة.","note":"مستخرج من شرح القاعدة، وليس سؤالاً منقولاً حرفياً."},{"lesson":"قواعد اللغة — التعجب","page":134,"kind":"تطبيق على قاعدة التعجب","q":"ما صيغتا التعجب القياسي؟","a":"ما أفعَلَه، وأفعِلْ به.","note":"مستخرج من شرح القاعدة، وليس سؤالاً منقولاً حرفياً."}];
+function renderBacLitTextbookExercises(panel){
+ const group=document.createElement('details');group.style.cssText='margin:12px 0;padding:12px;border:1px solid #94a3b8;border-radius:12px';
+ const sum=document.createElement('summary');sum.style.cssText='font-weight:700;cursor:pointer';sum.textContent='تدريبات الكتاب وقواعده — '+bacLitTextbookExercises.length+' أسئلة';group.append(sum);
+ const hint=document.createElement('p');hint.style.cssText='font-size:13px;color:#64748b';hint.textContent='تمييز المصدر: أسئلة الاستيعاب والقراءة من الكتاب الأصلي؛ أسئلة القواعد تطبيقات مشتقة من الشرح. الإجابات مقترحة وليست حلولاً رسمية صادرة عن الوزارة.';group.append(hint);
+ for(const item of bacLitTextbookExercises){
+ const card=document.createElement('div');card.style.cssText='padding:10px;margin:8px 0;border:1px solid #e2e8f0;border-radius:9px';
+ const title=document.createElement('strong');title.textContent=item.lesson+' — صفحة '+item.page;card.append(title);
+ const category=document.createElement('p');category.style.cssText='font-size:12px;color:#64748b';category.textContent=item.kind;card.append(category);
+ const question=document.createElement('p');question.textContent=item.q;card.append(question);
+ const details=document.createElement('details');const reveal=document.createElement('summary');reveal.textContent='إظهار الإجابة النموذجية المقترحة';reveal.style.cursor='pointer';details.append(reveal);
+ const answer=document.createElement('p');answer.textContent=item.a;details.append(answer);
+ const note=document.createElement('small');note.textContent=item.note;details.append(note);card.append(details);
+ const link=document.createElement('button');link.type='button';link.className='btn soft';link.textContent='راجع صفحة الكتاب';link.onclick=()=>bookBrowse(item.page);card.append(link);group.append(card);
+ }
+ panel.append(group);
+}
 function renderBacLitLessonIndex(panel){
  const head=document.createElement('strong');head.textContent='فهرس كتاب البكالوريا الأدبي — طبعة 2025–2026';panel.append(head);
  const info=document.createElement('p');info.style.cssText='font-size:13px;color:#64748b';info.textContent='اختر درساً للانتقال إلى صورته في الكتاب. أرقام الصفحات مأخوذة من فهرس PDF، وقد تختلف عن الترقيم المطبوع داخل الصفحة.';panel.append(info);
@@ -2402,7 +2419,7 @@ function renderBacLitLessonIndex(panel){
   section.append(list);panel.append(section);
  }
  const extras=document.createElement('div');extras.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-top:10px';
- for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitVerifiedStudy(panel);
+ for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);renderBacLitTextbookExercises(panel);renderBacLitVerifiedStudy(panel);
 }
 function renderBookQuestionIndex(){
  const panel=$('arabicBookQuestionIndex');if(!panel)return;
