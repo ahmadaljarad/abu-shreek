@@ -2350,15 +2350,15 @@ function savePageNotes(){const dir=bookDirectory(),page=Number($('arabicBookPage
 let arabicTextCache={};
 async function loadArabicPageText(){
  const target=$('arabicPageExtractedText'),dir=bookDirectory(),n=Number($('arabicBookPageNumber').value);
- const source=dir==='9-Arabic'?(n<=100?'data/ninth-extracted/9-Arabic.json':'data/ninth-extracted/9-Arabic-pages-101-200.json'):dir==='bac-sci-arabic'?'data/bac-sci-extracted/bac-sci-arabic.pdf.json':null;
- if(!source){target.textContent='لا يوجد استخراج نصي لكتاب الأدبي في ملفات المشروع حالياً. اعتمد على صورة الصفحة الأصلية.';return}
+ const source=dir==='9-Arabic'?(n<=100?'data/ninth-extracted/9-Arabic.json':'data/ninth-extracted/9-Arabic-pages-101-200.json'):dir==='bac-sci-arabic'?'data/bac-sci-extracted/bac-sci-arabic.pdf.json':dir==='bac-lit-arabic'?'data/bac-lit-extracted/bac-lit-arabic.pdf.json':null;
+ if(!source){target.textContent='لا يتوفر استخراج نصي لهذا الكتاب حالياً. اعتمد على صورة الصفحة الأصلية.';return}
  target.textContent='جارٍ تحميل النص المستخرج...';
  try{
   if(!arabicTextCache[source]){const response=await fetch(source);if(!response.ok)throw Error('HTTP '+response.status);arabicTextCache[source]=await response.json()}
   const data=arabicTextCache[source];
   let pages=Array.isArray(data.pages)?data.pages:Array.isArray(data.opening_pages)?data.opening_pages:[];
   const row=pages.find(p=>Number(p.image_page??p.pdf_page)===n);
-  target.textContent=row?.text?.trim()||'لا يتوفر نص مستخرج لهذه الصفحة. استخدم صورة الصفحة الأصلية.';
+  target.textContent=row?.text?.trim()?('نص مستخرج آلياً وقد يتضمن أخطاء في اتجاه الكلمات والتشكيل؛ المرجع المعتمد هو صورة الصفحة.\n\n'+row.text.trim()):'لا يتوفر نص مستخرج لهذه الصفحة. استخدم صورة الصفحة الأصلية.';
  }catch(e){target.textContent='تعذر تحميل النص المستخرج. استخدم صورة الكتاب الأصلية.'}
 }
 function renderCompletePageIndex(){
