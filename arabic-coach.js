@@ -2375,6 +2375,20 @@ function renderCompletePageIndex(){
  for(let i=1;i<=total;i++){const button=document.createElement('button');button.type='button';button.textContent=String(i);button.setAttribute('aria-label','افتح صورة الصفحة '+i);button.style.cssText='border:1px solid #cbd5e1;border-radius:8px;background:white;padding:7px;cursor:pointer';button.onclick=()=>bookBrowse(i);grid.append(button)}
  panel.append(grid);
 }
+const bacLitLessonIndex=[["قضايا وطنية وقومية",[["أدب القضايا الوطنية والقومية",4],["عرس المجد",8],["الجرس",13]]],["مناهج النقد",[["المنهج الاجتماعي في النقد الأدبي",19],["أحزان البنفسج",24],["المنهج النفسي في النقد الأدبي",28],["وجدتها",33],["شعوري",37],["التفكير النقدي",41]]],["الغربة والاغتراب في الأدب المهجري",[["الأدب المهجري",43],["وطني",47],["المهاجر",52],["الغاب",57],["البناء",62],["رسالة الشرق المتجدد",66]]],["فن الرواية",[["فن الرواية",68],["المصابيح الزرق",75],["دمشق يا بسمة الحزن",80],["عوامل تجديد الرواية العربية",83]]],["ظواهر وجدانية",[["الشعر الوجداني",87],["الوطن",90],["لوعة الفراق",95],["الأمير الدمشقي",99],["رقيقة الخلق",104],["مهمة الشعر",108]]],["أدب القضايا الاجتماعية",[["الأدب الاجتماعي",110],["نبض الطفولة وجمالها",114],["قوة العلم",118],["مروءة وسخاء",122],["رسالة حب",125]]]];
+function renderBacLitLessonIndex(panel){
+ const head=document.createElement('strong');head.textContent='فهرس كتاب البكالوريا الأدبي — طبعة 2025–2026';panel.append(head);
+ const info=document.createElement('p');info.style.cssText='font-size:13px;color:#64748b';info.textContent='اختر درساً للانتقال إلى صورته في الكتاب. أرقام الصفحات مأخوذة من فهرس PDF، وقد تختلف عن الترقيم المطبوع داخل الصفحة.';panel.append(info);
+ for(let i=0;i<bacLitLessonIndex.length;i++){
+  const unit=bacLitLessonIndex[i],section=document.createElement('details');section.style.cssText='margin:8px 0;padding:9px;border:1px solid #cbd5e1;border-radius:10px';
+  const summary=document.createElement('summary');summary.style.cssText='cursor:pointer;font-weight:700';summary.textContent='الوحدة '+(i+1)+' — '+unit[0]+' ('+unit[1].length+' دروس)';section.append(summary);
+  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-top:10px';
+  for(const [title,page] of unit[1]){const button=document.createElement('button');button.type='button';button.className='btn soft';button.style.cssText='text-align:right;white-space:normal';button.textContent=title+' — صفحة '+page;button.onclick=()=>bookBrowse(page);list.append(button)}
+  section.append(list);panel.append(section);
+ }
+ const extras=document.createElement('div');extras.style.cssText='display:flex;flex-wrap:wrap;gap:8px;margin-top:10px';
+ for(const [title,page] of [['مشروعات مقترحة',127],['نصوص إثرائية',128],['قواعد اللغة',134]]){const btn=document.createElement('button');btn.type='button';btn.className='btn soft';btn.textContent=title+' — صفحة '+page;btn.onclick=()=>bookBrowse(page);extras.append(btn)}panel.append(extras);
+}
 function renderBookQuestionIndex(){
  const panel=$('arabicBookQuestionIndex');if(!panel)return;
  const dir=bookDirectory();
@@ -2384,6 +2398,7 @@ function renderBookQuestionIndex(){
  return m?{page:Number(m[1]),title:String(q.title||'سؤال من الكتاب')}:null
  }).filter(Boolean);
  panel.innerHTML='';
+ if(dir==='bac-lit-arabic'){renderBacLitLessonIndex(panel);return;}
  const heading=document.createElement('strong');heading.textContent='فهرس تدريبات قيد التدقيق مرتبطة بصفحات هذا الكتاب ('+rows.length+')';panel.append(heading);
  const note=document.createElement('p');note.style.cssText='font-size:13px;color:#64748b';note.textContent=rows.length?'هذه أسئلة مرتبطة بصور صفحات في المنصة، ولم تُراجع نصوصها كلها مقابل الأصل. لا تُعاملها كأسئلة وزارية موثقة قبل التدقيق.':'لم تُفهرس أسئلة هذا الكتاب بعد. يمكنك تصفح الصفحات وتدوين ملاحظاتك دون عرض أسئلة من مرحلة أخرى.';panel.append(note);
  const list=document.createElement('div');list.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;max-height:260px;overflow:auto';
