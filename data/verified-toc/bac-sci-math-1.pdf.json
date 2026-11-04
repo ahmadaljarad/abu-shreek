@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "book": "bac-sci-math-1.pdf",
+  "status": "PARTIAL_SOURCE_CROSSCHECK",
+  "fully_verified": false,
+  "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-math-1.pdf",
+  "evidence_file": "data/toc-source-evidence/bac-sci-math-1.pdf.json",
+  "verification_method": "Cross-check original PDF sampled page heading OCR with original PDF contents page 3 (PDF text for page numbers and OCR for headings). OCR is not visual verification.",
+  "entries": [
+    {
+      "title": "تذكرة بالمتتاليات",
+      "pdf_start_page": 6,
+      "printed_start_page": 6,
+      "source_heading_pdf_page": 6,
+      "verification": "Original PDF page 6 OCR contains heading; contents PDF page 3 gives start page 6. No visual verification or end-page check."
+    },
+    {
+      "title": "عموميات عن المتتاليات",
+      "pdf_start_page": 7,
+      "printed_start_page": 7,
+      "source_heading_pdf_page": 7,
+      "verification": "Original PDF page 7 OCR contains heading; contents PDF page 3 lists this section and page 7. No visual verification or end-page check."
+    }
+  ],
+  "remaining_work": "Visually check headings and printed TOC, confirm all remaining lesson titles, page boundaries and PDF/image mapping. Never treat as complete."
+}
