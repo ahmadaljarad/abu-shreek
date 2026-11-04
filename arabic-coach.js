@@ -2256,18 +2256,36 @@ function allGrammar(){
 function questionLesson(q){
  if(!q.bookPage)return 'أسئلة الدورات';
  const match=(q.title||'').match(/—\s*([^—]+?)\s*—/);
+ if(level()==='بكالوريا أدبي'&&q.title?.startsWith('تدريبات الأدبي — ')){const raw=match?match[1].trim():'';if(raw==='قواعد اللغة')return 'قواعد اللغة';return raw}
  return match?match[1].trim():'أسئلة من الكتاب';
 }
 function allowedGrammar(){
  const all=allGrammar(),select=$('arabicLessonFilter'),filter=select?select.value:'all';
+ if(level()==='بكالوريا أدبي'){const unit=$('arabicPracticeUnitFilter');const idx=unit?.value??'all';if(idx!=='all'){const groups=bacLitLessonIndex.map(x=>x[1].map(y=>y[0]));groups.push(['قواعد اللغة — النداء','قواعد اللغة — التعجب','قواعد اللغة']);const names=groups[Number(idx)]||[];return all.filter(q=>names.includes(questionLesson(q))&&(filter==='all'||questionLesson(q)===filter))}}
  return filter==='all'?all:all.filter(q=>questionLesson(q)===filter);
 }
 function updateLessonFilter(){
  const select=$('arabicLessonFilter');if(!select)return;
  const all=allGrammar(),lessons=[...new Set(all.map(questionLesson))];
- const previous=select.value;
- select.innerHTML='<option value="all">كل الدروس</option>'+lessons.map(v=>'<option value="'+escape(v)+'">'+escape(v)+'</option>').join('');
- select.value=lessons.includes(previous)?previous:'all';
+ const isLit=level()==='بكالوريا أدبي';
+ let unit=$('arabicPracticeUnitFilter');
+ if(!unit){unit=document.createElement('select');unit.id='arabicPracticeUnitFilter';unit.setAttribute('aria-label','اختر الوحدة');unit.style.cssText='padding:8px;margin:4px;max-width:100%;border:1px solid #cbd5e1;border-radius:8px';select.parentNode.insertBefore(unit,select)}
+ unit.hidden=!isLit;
+ if(isLit){
+  const previousUnit=unit.value,previousLesson=select.value;
+  const units=bacLitLessonIndex.map((entry,i)=>({name:'الوحدة '+(i+1)+' — '+entry[0],lessons:entry[1].map(x=>x[0])}));
+  units.push({name:'قواعد اللغة',lessons:['قواعد اللغة — النداء','قواعد اللغة — التعجب','قواعد اللغة']});
+  unit.innerHTML='<option value="all">جميع الوحدات</option>'+units.map((x,i)=>'<option value="'+i+'">'+escape(x.name)+'</option>').join('');
+  unit.value=[...unit.options].some(x=>x.value===previousUnit)?previousUnit:'all';
+  function fill(){const available=unit.value==='all'?units.flatMap(x=>x.lessons):units[Number(unit.value)].lessons;const ordered=[...new Set(available)].filter(x=>lessons.includes(x));const prev=select.value;select.innerHTML='<option value="all">كل دروس الوحدة</option>'+ordered.map(x=>'<option value="'+escape(x)+'">'+escape(x)+'</option>').join('');select.value=ordered.includes(prev)?prev:'all';current=0;renderGrammar()}
+  unit.onchange=fill;
+  select.innerHTML='<option value="all">كل دروس الوحدة</option>';
+  fill();if(lessons.includes(previousLesson)&&[...select.options].some(x=>x.value===previousLesson)){select.value=previousLesson;current=0;renderGrammar()}
+ }else{
+  const previous=select.value;
+  select.innerHTML='<option value="all">كل الدروس</option>'+lessons.map(v=>'<option value="'+escape(v)+'">'+escape(v)+'</option>').join('');
+  select.value=lessons.includes(previous)?previous:'all';
+ }
  $('arabicLessonCount').textContent=all.length+' سؤالاً متاحاً';
 }
 function examType(q){const t=q.title+" "+q.word;if(/التشبيه|صورة بيانية|التشخيص|محسن بديعي/.test(t))return "بلاغة";if(/المفعول المطلق|المفعول لأجله|المفعول فيه|الحال|أعرب|إعراب|ظرف/.test(t))return "إعراب";if(/أحوّل|أحول|أجعل|أضع كلمة|تحويل/.test(t))return "تحويل";if(/أذكر|أوضح|أوضّح|أستنتج|أبين|أبيّن|الفكرة|المقطع|النص الوصفي|الخط العربي|ملحمة ميسلون|اليوم الأغر|الناعورة|روائع الآثار/.test(t))return "فهم النص";if(/إعراب|المنادى|المبتدأ|المضاف إليه|الفعل المجزوم|الفعل الماضي|فاعل|مفعول به|خبر كأن|ظرف المكان|بناء الماضي|صلة الموصول/.test(t))return "إعراب";if(/تحويل|توكيد/.test(t))return "تحويل";if(/تشبيه|صورة بيانية/.test(t))return "بلاغة";if(/أثر العلم|الدعوة إلى المدارس|الارتباط بالوطن|قيمة إنسانية/.test(t))return "فهم النص";return "صرف وإملاء"}
