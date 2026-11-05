@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-11-02",
+  "audited_at": "2026-11-05",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
-  "books_with_partial_verified_json": 13,
+  "books_with_partial_verified_json": 14,
   "fully_verified_book_files": 5,
-  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 13 additional PDFs have partial verified TOC records. 36 PDFs remain incomplete; OCR evidence and printed TOC text alone are not full verification.",
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 14 additional PDFs have partial verification records. 36 PDFs remain incomplete. Source evidence exists for 37 PDFs, but OCR and printed contents alone are not full verification.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -193,10 +193,10 @@
       "book": "bac-sci-math-1.pdf",
       "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-sci-math-1.pdf",
       "original_book_page_images_present": true,
-      "verification_record": null,
+      "verification_record": "data/verified-toc/bac-sci-math-1.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "Confirm every TOC title and start page against original PDF, verify PDF/image-page mapping and end pages; resolve ambiguities."
+      "remaining_work": "Two headings (pages 6 and 7) cross-checked against source PDF OCR and printed contents; visually verify headings, all remaining titles, page boundaries and PDF/image mapping."
     },
     {
       "catalogue_key": "بكالوريا علمي|الرياضيات",
