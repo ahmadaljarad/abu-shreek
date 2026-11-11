@@ -22,7 +22,15 @@
       "printed_start_page": 8,
       "source_heading_pdf_page": 8,
       "verification": "Original PDF page 8 text contains lesson number 2 and title; TOC page 4 OCR corroborates title. Page-image mapping and lesson end not verified."
+    },
+    {
+      "lesson_number": 3,
+      "title": "الحب عطاء",
+      "pdf_start_page": 10,
+      "printed_start_page": 10,
+      "source_heading_pdf_page": 10,
+      "verification": "Original PDF page 10 extracted text shows lesson number 3 and heading الحب عطاء (glyph ordering distorted by PDF extraction); source TOC page 4 OCR independently shows lesson 3 الحبّ عطاء. Printed page numeral in TOC not independently legible; printed_start_page inferred from visible page numbering on source heading. Page-image mapping and lesson end not verified."
     }
   ],
-  "remaining_work": "Visually verify printed TOC page 4, all remaining lesson titles/start and end pages, and full PDF-to-image mapping. Do not mark complete."
+  "remaining_work": "Visually verify printed TOC page 4, remaining lesson titles/start and end pages, and full PDF-to-image mapping. Lesson 4 heading wording differs between TOC OCR and extracted lesson text; resolve visually. Do not mark complete."
 }
