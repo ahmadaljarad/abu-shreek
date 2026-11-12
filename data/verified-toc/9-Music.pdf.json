@@ -5,7 +5,7 @@
   "fully_verified": false,
   "source_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/9-Music.pdf",
   "evidence_file": "data/toc-source-evidence/9-Music.pdf.json",
-  "verification_method": "Cross-check lesson heading in sampled original PDF extracted text with source table of contents OCR; printed page numbers for first entries not independently legible.",
+  "verification_method": "Cross-check lesson headings in sampled original PDF extracted text with source table of contents OCR; lesson 4 heading on source page 12 is longer than OCR TOC title. Page-image mapping and end pages unverified.",
   "entries": [
     {
       "lesson_number": 1,
@@ -30,7 +30,15 @@
       "printed_start_page": 10,
       "source_heading_pdf_page": 10,
       "verification": "Original PDF page 10 extracted text shows lesson number 3 and heading الحب عطاء (glyph ordering distorted by PDF extraction); source TOC page 4 OCR independently shows lesson 3 الحبّ عطاء. Printed page numeral in TOC not independently legible; printed_start_page inferred from visible page numbering on source heading. Page-image mapping and lesson end not verified."
+    },
+    {
+      "lesson_number": 4,
+      "title": "الموسيقا التعبيرية (التصويرية)",
+      "pdf_start_page": 12,
+      "printed_start_page": 12,
+      "source_heading_pdf_page": 12,
+      "verification": "Original source PDF extracted page 12 explicitly displays lesson number 4 and heading الموسيقا التعبيرية (التصويرية), with printed page number 12. TOC OCR on PDF page 4 instead reads الموسيقا التصويرية; preserve source lesson heading, flag TOC discrepancy for visual resolution. Lesson end and image mapping unverified."
     }
   ],
-  "remaining_work": "Visually verify printed TOC page 4, remaining lesson titles/start and end pages, and full PDF-to-image mapping. Lesson 4 heading wording differs between TOC OCR and extracted lesson text; resolve visually. Do not mark complete."
+  "remaining_work": "Visually verify printed TOC page 4 and resolve its shortened lesson 4 title against the actual heading on PDF page 12; verify remaining lesson titles, start/end pages and full PDF-to-image mapping. Do not mark complete."
 }
