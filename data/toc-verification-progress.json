@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-11-05",
+  "audited_at": "2026-11-13",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
   "books_with_partial_verified_json": 14,
   "fully_verified_book_files": 5,
-  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 14 additional PDFs have partial verification records. 36 PDFs remain incomplete. Source evidence exists for 37 PDFs, but OCR and printed contents alone are not full verification.",
+  "warning": "Coverage audit: 5 of 41 catalogue PDFs fully verified; 14 additional PDFs have partial verification records. 36 PDFs remain incomplete. Source evidence exists for 37 PDFs, but OCR and printed contents alone are not full verification. Music partial record now includes four source-crosschecked headings; this does not increase fully verified coverage.",
   "books": [
     {
       "catalogue_key": "تاسع|اللغة العربية",
@@ -176,7 +176,7 @@
       "verification_record": "data/verified-toc/9-Music.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "First two lesson headings cross-checked against original PDF text at pages 6 and 8; verify remaining titles, visual TOC, all lesson ends and image mapping."
+      "remaining_work": "Four lesson headings (pages 6, 8, 10, 12) cross-checked with original PDF extracted text; lesson 4 source heading differs from OCR contents. Visually verify TOC and remaining lesson titles, start/end pages, and PDF-to-image mapping. Do not mark complete."
     },
     {
       "catalogue_key": "بكالوريا علمي|اللغة العربية",
