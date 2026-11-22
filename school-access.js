@@ -4,7 +4,7 @@
 const levels=['تاسع','بكالوريا علمي','بكالوريا أدبي'];
 const config=window.ABU_AUTH_CONFIG;
 if(!config?.url||!config?.anonKey||!window.supabase){console.error('Supabase authentication configuration missing');return;}
-const client=window.supabase.createClient(config.url,config.anonKey,{auth:{storageKey:'abu-shreek-school-session-v2',autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
+const client=window.supabase.createClient(config.url,config.anonKey,{auth:{storageKey:'abu-shreek-school-session-v2',autoRefreshToken:true,persistSession:true,detectSessionInUrl:true,lock:async (_name,_acquireTimeout,fn)=>await fn()}});
 let current=null, profile=null, recovering=false;
 const style=document.createElement('style');style.textContent='#abuGate{position:fixed;inset:0;z-index:999999;background:#f4f8f7;display:flex;justify-content:center;align-items:center;padding:18px;direction:rtl}#abuGate .panel{background:#fff;border:1px solid #dce8e5;border-radius:20px;padding:24px;width:min(440px,100%);max-height:92vh;overflow:auto;box-shadow:0 12px 40px #0002}#abuGate input,#abuGate select{width:100%;padding:12px;margin:7px 0;border:1px solid #cbd5e1;border-radius:10px;font:inherit}#abuGate button{padding:12px;border:0;border-radius:10px;background:#0f766e;color:white;cursor:pointer;margin:5px}#abuGate p{line-height:1.8}#abuAdmin{position:fixed;inset:0;z-index:999998;background:#0009;display:flex;justify-content:center;align-items:center;padding:16px;direction:rtl}#abuAdmin .panel{background:white;border-radius:16px;padding:22px;width:min(680px,100%);max-height:85vh;overflow:auto}#abuAdmin select{padding:7px;margin:4px}#abuAdmin button{padding:8px;margin:4px}';document.head.appendChild(style);
 const gate=document.createElement('div');gate.id='abuGate';gate.innerHTML='<div class="panel"><h2>🎓 أبو شريك</h2><p id="abuStatus">جارٍ التحقق من حسابك...</p><div id="abuAuthContent"></div></div>';document.body.appendChild(gate);
@@ -109,5 +109,5 @@ async function adminPanel(){
  const save=document.createElement('button');save.textContent='تغيير المرحلة';save.onclick=async()=>{save.disabled=true;const {error}=await client.rpc('admin_change_school_level',{target_user:student.user_id,next_level:select.value});alert(error?error.message:'تم تحديث المرحلة');save.disabled=false};row.append(save);panel.append(row)}
  const logout=document.createElement('button');logout.textContent='تسجيل الخروج';logout.onclick=()=>client.auth.signOut().then(()=>location.reload());panel.append(logout);document.body.append(modal);
 }
-client.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){recovering=true;newPasswordView();return}if(!recovering)setTimeout(refresh,0)});refresh();
+refresh().finally(()=>{client.auth.onAuthStateChange((event)=>{if(event==='PASSWORD_RECOVERY'){recovering=true;newPasswordView();return}if(!recovering)setTimeout(refresh,0)})});
 })();
