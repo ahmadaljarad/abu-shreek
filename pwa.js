@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    // school-access.js owns authentication; do not load the conflicting legacy auth overlay.
+    await loadScriptOnce('./auth.js?v=20261122-restore-original-10', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
