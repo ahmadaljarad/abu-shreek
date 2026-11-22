@@ -79,7 +79,8 @@ async function refresh(){
  gate.style.display='flex';
  status('جارٍ التحقق من حسابك...');
  try{
- const authResult=await withTimeout(client.auth.getUser());
+ const sessionResult=await withTimeout(client.auth.getSession());
+ const authResult=sessionResult.error?{data:{user:null},error:sessionResult.error}:sessionResult.data.session?await withTimeout(client.auth.getUser()):{data:{user:null},error:null};
  if(sequence!==refreshSequence)return;
  const {data:{user},error}=authResult;
  if(error||!user){current=null;profile=null;window.ABU_MENTOR?.detach();gate.style.display='flex';if(loginPending){status('لم تستطع الخدمة تأكيد جلسة الدخول: '+(error?.message||'لم يتم العثور على المستخدم')+'. حاول مجدداً.');return}formView(false);return}
