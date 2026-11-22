@@ -8,6 +8,19 @@ const client=window.supabase.createClient(config.url,config.anonKey);
 let current=null, profile=null, recovering=false;
 const style=document.createElement('style');style.textContent='#abuGate{position:fixed;inset:0;z-index:999999;background:#f4f8f7;display:flex;justify-content:center;align-items:center;padding:18px;direction:rtl}#abuGate .panel{background:#fff;border:1px solid #dce8e5;border-radius:20px;padding:24px;width:min(440px,100%);max-height:92vh;overflow:auto;box-shadow:0 12px 40px #0002}#abuGate input,#abuGate select{width:100%;padding:12px;margin:7px 0;border:1px solid #cbd5e1;border-radius:10px;font:inherit}#abuGate button{padding:12px;border:0;border-radius:10px;background:#0f766e;color:white;cursor:pointer;margin:5px}#abuGate p{line-height:1.8}#abuAdmin{position:fixed;inset:0;z-index:999998;background:#0009;display:flex;justify-content:center;align-items:center;padding:16px;direction:rtl}#abuAdmin .panel{background:white;border-radius:16px;padding:22px;width:min(680px,100%);max-height:85vh;overflow:auto}#abuAdmin select{padding:7px;margin:4px}#abuAdmin button{padding:8px;margin:4px}';document.head.appendChild(style);
 const gate=document.createElement('div');gate.id='abuGate';gate.innerHTML='<div class="panel"><h2>🎓 أبو شريك</h2><p id="abuStatus">جارٍ التحقق من حسابك...</p><div id="abuAuthContent"></div></div>';document.body.appendChild(gate);
+// Independent watchdog: remains active even if Supabase initialization stalls.
+const gateWatchdog=setTimeout(()=>{
+ const st=document.getElementById('abuStatus');
+ if(!gate.isConnected||gate.style.display==='none'||!st?.textContent?.includes('جارٍ التحقق'))return;
+ st.textContent='تأخر الاتصال بخدمة تسجيل الدخول.';
+ const body=document.getElementById('abuAuthContent');
+ if(!body||body.children.length)return;
+ const retry=document.createElement('button');
+ retry.textContent='إعادة تحميل صفحة الدخول';
+ retry.type='button';
+ retry.onclick=()=>location.reload();
+ body.append(retry);
+},10000);
 const status=t=>document.getElementById('abuStatus').textContent=t;
 function form(signup){
  const body=document.getElementById('abuAuthContent');body.replaceChildren();
