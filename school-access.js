@@ -38,17 +38,51 @@ function guardNavigation(){
  const original=window.openLevel;
  window.openLevel=function(level){if(!profile)return; if(profile.role!=='admin'&&level!==profile.school_level){alert('هذه المرحلة غير متاحة لحسابك.');return;}return original?.apply(this,arguments)};
 }
+const AUTH_TIMEOUT_MS=12000;
+let refreshSequence=0;
+function withTimeout(promise,ms=AUTH_TIMEOUT_MS){
+ let timeoutId;
+ return Promise.race([
+  Promise.resolve(promise),
+  new Promise((_,reject)=>{timeoutId=setTimeout(()=>reject(new Error('انتهت مهلة الاتصال بخدمة الحسابات.')),ms)})
+ ]).finally(()=>clearTimeout(timeoutId));
+}
+function showConnectionError(err){
+ gate.style.display='flex';
+ status('تعذّر التحقق من الحساب. تأكد من اتصال الإنترنت ثم حاول مجدداً.');
+ const body=document.getElementById('abuAuthContent');
+ body.replaceChildren();
+ const detail=document.createElement('p');
+ detail.textContent=err?.message||'تعذر الاتصال بالخدمة.';
+ const retry=document.createElement('button');
+ retry.type='button';
+ retry.textContent='إعادة المحاولة';
+ retry.onclick=()=>refresh();
+ body.append(detail,retry);
+}
 async function refresh(){
+ const sequence=++refreshSequence;
  if(recovering){newPasswordView();return}
- const {data:{user},error}=await client.auth.getUser();
+ gate.style.display='flex';
+ status('جارٍ التحقق من حسابك...');
+ try{
+ const authResult=await withTimeout(client.auth.getUser());
+ if(sequence!==refreshSequence)return;
+ const {data:{user},error}=authResult;
  if(error||!user){current=null;profile=null;window.ABU_MENTOR?.detach();gate.style.display='flex';formView(false);return}
  current=user;
- const {data,error:pe}=await client.from('student_profiles').select('user_id,display_name,school_level,role').eq('user_id',user.id).single();
+ const {data,error:pe}=await withTimeout(client.from('student_profiles').select('user_id,display_name,school_level,role').eq('user_id',user.id).single());
+ if(sequence!==refreshSequence)return;
  if(pe||!data){profile=null;gate.style.display='flex';status('حسابك موجود، لكن ملف الطالب غير جاهز. يجب تشغيل إعداد قاعدة البيانات في Supabase أولاً.');document.getElementById('abuAuthContent').replaceChildren();const logout=document.createElement('button');logout.textContent='تسجيل الخروج';logout.onclick=()=>client.auth.signOut().then(refresh);document.getElementById('abuAuthContent').append(logout);return}
  profile=data;gate.style.display='none';guardNavigation();onlyLevel(profile.school_level);window.ABU_MENTOR?.attach(user,profile);
  let menu=document.getElementById('abuAccount');if(!menu){menu=document.createElement('button');menu.id='abuAccount';menu.className='btn primary';menu.style.cssText='position:fixed;bottom:16px;left:16px;z-index:9000';document.body.append(menu)}
  menu.textContent=profile.role==='admin'?'⚙️ المدير':'👤 '+(profile.display_name||profile.school_level);
  menu.onclick=()=>profile.role==='admin'?adminPanel():accountPanel();
+ }catch(err){
+  if(sequence!==refreshSequence)return;
+  console.error('Abu Shreek account verification failed:',err);
+  showConnectionError(err);
+ }
 }
 function accountPanel(){const action=confirm('المرحلة: '+profile.school_level+'\nهل تريد تسجيل الخروج؟');if(action)client.auth.signOut().then(()=>{document.getElementById('abuAccount')?.remove();refresh()})}
 async function adminPanel(){
