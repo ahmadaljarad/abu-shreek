@@ -22,6 +22,32 @@ const gateWatchdog=setTimeout(()=>{
  body.append(retry);
 },10000);
 const status=t=>document.getElementById('abuStatus').textContent=t;
+let guestMode=false;
+function enterGuestMode(){
+ guestMode=true;
+ gate.style.display='none';
+ window.ABU_MENTOR?.detach?.();
+ const banner=document.createElement('div');
+ banner.id='abuGuestBanner';
+ banner.dir='rtl';
+ banner.style.cssText='position:fixed;top:8px;left:8px;right:8px;z-index:9999;background:#fff7ed;border:1px solid #f59e0b;padding:9px;border-radius:10px;text-align:center;font:14px Arial';
+ banner.textContent='وضع التصفح المؤقت: دون حساب. لن يتم حفظ تقدمك أو إتاحة بيانات الطلاب.';
+ const back=document.createElement('button');
+ back.textContent='تسجيل الدخول';
+ back.style.cssText='margin-right:12px;padding:5px 10px';
+ back.onclick=()=>{guestMode=false;banner.remove();gate.style.display='flex';formView(false)};
+ banner.append(back);document.body.append(banner);
+}
+function addGuestButton(){
+ const body=document.getElementById('abuAuthContent');
+ if(!body||body.querySelector('[data-guest]'))return;
+ const button=document.createElement('button');
+ button.type='button';button.dataset.guest='1';
+ button.style.background='#475569';
+ button.textContent='تصفح الكتب بدون حساب (مؤقتاً)';
+ button.onclick=enterGuestMode;
+ body.append(button);
+}
 function form(signup){
  const body=document.getElementById('abuAuthContent');body.replaceChildren();
  const form=document.createElement('form');form.innerHTML='<input type="email" required placeholder="البريد الإلكتروني" autocomplete="email"><input type="password" minlength="8" required placeholder="كلمة المرور" autocomplete="'+(signup?'new-password':'current-password')+'">';
@@ -29,7 +55,7 @@ function form(signup){
  const submit=document.createElement('button');submit.type='submit';submit.textContent=signup?'إنشاء حساب':'دخول';form.append(submit);
  form.onsubmit=async e=>{e.preventDefault();submit.disabled=true;loginPending=true;status('جارٍ تسجيل الدخول...');try{const email=form.children[0].value.trim(),password=form.children[1].value;const result=await withTimeout(signup?client.auth.signUp({email,password,options:{data:{display_name:form.children[2].value.trim(),school_level:form.children[3].value}}}):client.auth.signInWithPassword({email,password}));if(result.error)throw result.error;if(signup&&!result.data.session){status('تم إنشاء الحساب. تحقق من رسالة تأكيد البريد الإلكتروني.');return}if(!result.data.session){status('لم يتم إنشاء جلسة دخول. تحقق من تأكيد البريد الإلكتروني.');return}await refresh()}catch(err){status('تعذر إتمام العملية: '+(err?.message||'خطأ غير معروف'))}finally{loginPending=false;submit.disabled=false}};
  if(!signup){const forgot=document.createElement('button');forgot.type='button';forgot.textContent='نسيت كلمة المرور؟';forgot.style.background='#e7f5f2';forgot.style.color='#0f766e';forgot.onclick=resetRequestView;body.append(form,forgot);}
- const switcher=document.createElement('button');switcher.type='button';switcher.textContent=signup?'لدي حساب بالفعل':'إنشاء حساب جديد';switcher.onclick=()=>{status('اختر مرحلتك عند إنشاء الحساب، ولا يمكن تغييرها إلا بواسطة المدير.');formView(!signup)};if(signup)body.append(form);body.append(switcher);
+ const switcher=document.createElement('button');switcher.type='button';switcher.textContent=signup?'لدي حساب بالفعل':'إنشاء حساب جديد';switcher.onclick=()=>{status('اختر مرحلتك عند إنشاء الحساب، ولا يمكن تغييرها إلا بواسطة المدير.');formView(!signup)};if(signup)body.append(form);body.append(switcher);addGuestButton();
 }
 function resetRequestView(){
  status('أدخل بريدك الإلكتروني وسنرسل رابطاً لتعيين كلمة مرور جديدة.');
@@ -49,7 +75,7 @@ function onlyLevel(level){document.querySelectorAll('#home .card').forEach(card=
 function guardNavigation(){
  if(window.__abuNavigationGuard)return;window.__abuNavigationGuard=true;
  const original=window.openLevel;
- window.openLevel=function(level){if(!profile)return; if(profile.role!=='admin'&&level!==profile.school_level){alert('هذه المرحلة غير متاحة لحسابك.');return;}return original?.apply(this,arguments)};
+ window.openLevel=function(level){if(guestMode)return original?.apply(this,arguments);if(!profile)return; if(profile.role!=='admin'&&level!==profile.school_level){alert('هذه المرحلة غير متاحة لحسابك.');return;}return original?.apply(this,arguments)};
 }
 const AUTH_TIMEOUT_MS=12000;
 let refreshSequence=0;
@@ -71,11 +97,12 @@ function showConnectionError(err){
  retry.type='button';
  retry.textContent='إعادة المحاولة';
  retry.onclick=()=>refresh();
- body.append(detail,retry);
+ body.append(detail,retry);addGuestButton();
 }
 async function refresh(){
  const sequence=++refreshSequence;
  if(recovering){newPasswordView();return}
+ if(guestMode)return;
  gate.style.display='flex';
  status('جارٍ التحقق من حسابك...');
  try{
