@@ -43,5 +43,6 @@ document.addEventListener('click',async function(event){
   alert('تعذر فتح إعدادات الحساب: '+String(error?.message||error));
  }
 },true);
+window.ABU_OPEN_ACCOUNT=async function(){try{if(!sb){const c=window.ABU_AUTH_CONFIG||{};if(!window.supabase||!c.url||!c.anonKey)throw new Error('خدمة تسجيل الدخول غير جاهزة');sb=window.supabase.createClient(c.url,c.anonKey)}const {data,error}=await sb.auth.getUser();if(error)throw error;if(!data?.user){const o=document.getElementById('abuAuthOverlay');if(o)o.classList.remove('abu-auth-hidden');else{render();document.getElementById('abuAuthOverlay')?.classList.remove('abu-auth-hidden')}return}const u=data.user;u._abuProfile=await getProfile(u)||{};profile(u)}catch(e){console.error('Account open failed',e);alert('تعذر فتح الحساب: '+(e?.message||e))}};
 window.addEventListener('DOMContentLoaded',setup);if(document.readyState!=='loading')setup();
 })();
