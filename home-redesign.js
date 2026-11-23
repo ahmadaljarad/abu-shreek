@@ -23,6 +23,18 @@ function build(){
   const plan=document.createElement('button');plan.id='abuStudyPlanButton';plan.type='button';plan.textContent='📅 خطتي الدراسية';plan.title='افتح جدولك الدراسي';
   plan.style.cssText='position:fixed;bottom:20px;right:16px;z-index:1000000;border:0;border-radius:24px;background:#236f70;color:#fff;padding:11px 15px;font:700 14px Arial,sans-serif;cursor:pointer;box-shadow:0 4px 12px #0003';
   plan.onclick=()=>window.ABU_MENTOR?.open?.();document.body.append(plan);
+  // Keep the study-plan launcher exclusively on the actual landing page.
+  const syncStudyPlanVisibility=()=>{
+   const landing=document.getElementById('abuLandingView');
+   const homeSection=document.getElementById('home');
+   const onLanding=!!landing&&!!homeSection&&!homeSection.classList.contains('hidden')&&!landing.classList.contains('abu-view-hidden');
+   plan.style.display=onLanding?'':'none';
+  };
+  const planObserver=new MutationObserver(syncStudyPlanVisibility);
+  planObserver.observe(document.getElementById('home'),{attributes:true,attributeFilter:['class']});
+  planObserver.observe(document.querySelector('main'),{attributes:true,attributeFilter:['class'],subtree:true});
+  window.addEventListener('hashchange',syncStudyPlanVisibility);
+  syncStudyPlanVisibility();
  }
  document.body.classList.add('abu-redesign-ready');home.classList.add('abu-home-redesigned');
  const extra=document.createElement('style');extra.textContent=`.abu-fit-box label{display:block;font-weight:800;margin:18px 0 7px}.abu-fit-box select{width:100%;padding:13px;border:1px solid #dce8e5;border-radius:12px;background:#fff;font:inherit}.abu-fit-section{padding:16px 0;border-bottom:1px solid #e6efed}.abu-fit-section:last-child{border-bottom:0}.abu-fit-checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.abu-fit-checks label{margin:0;font-weight:600;border:1px solid #dce8e5;border-radius:12px;padding:10px;background:#fff;cursor:pointer}.abu-fit-checks input{width:auto;margin-left:7px}.abu-fit-result-card{border:1px solid #bfe2dc;border-radius:16px;padding:15px;margin:10px 0;background:#f5fbfa}.abu-fit-result-card h3{margin:0 0 6px}.abu-fit-meter{height:8px;border-radius:99px;background:#e2e8f0;overflow:hidden}.abu-fit-meter i{display:block;height:100%;background:#14b8a6}.abu-inst-tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.abu-inst-tools input,.abu-inst-tools select{width:100%;padding:12px;border:1px solid #dce8e5;border-radius:12px;font:inherit;background:#fff}.abu-inst-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.abu-inst-card{background:#fff;border:1px solid #dce8e5;border-radius:18px;padding:17px}.abu-inst-card h3{margin:0 0 8px;color:#0f766e}.abu-inst-meta{font-size:13px;color:#64748b;margin:4px 0}.abu-inst-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.abu-inst-tag{background:#e7f5f2;color:#0f766e;border-radius:99px;padding:5px 9px;font-size:12px}.abu-source-note{margin-top:18px;padding:14px;border-radius:14px;background:#fff8e7;color:#6b4f00;font-size:13px;line-height:1.7}@media(max-width:760px){.abu-fit-checks,.abu-inst-grid,.abu-inst-tools{grid-template-columns:1fr}}`;
