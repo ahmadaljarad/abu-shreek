@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "audited_at": "2026-11-13",
+  "audited_at": "2026-11-25",
   "catalogue_source": "books.json (mirrors ABU_BOOK_CATALOGUE entries)",
   "total_catalogue_subjects": 33,
   "total_catalogue_book_files": 41,
@@ -386,7 +386,7 @@
       "verification_record": "data/verified-toc/bac-lit-french-annex.pdf.json",
       "ocr_draft": null,
       "fully_verified": false,
-      "remaining_work": "All three chapter titles and printed start pages confirmed from original PDF contents pages 4–5; still verify complete chapter headings, actual image ranges and subtopics."
+      "remaining_work": "All three chapter opening headings checked against extracted original PDF text on pages 6, 16, 28; visual review, full chapter boundaries, subtopics and PDF-to-image mapping remain unverified."
     },
     {
       "catalogue_key": "بكالوريا أدبي|اللغة الروسية",
