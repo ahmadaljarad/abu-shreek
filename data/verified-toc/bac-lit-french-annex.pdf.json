@@ -2,7 +2,7 @@
   "schema_version": 1,
   "book": "bac-lit-french-annex.pdf",
   "catalogue_key": "بكالوريا أدبي|اللغة الفرنسية",
-  "index_scope": "three_chapter_titles_and_printed_start_pages",
+  "index_scope": "three_chapter_titles_printed_start_pages_and_pdf_heading_text",
   "status": "PARTIAL_VERIFIED_CONTENTS_TEXT",
   "source": {
     "original_pdf": "https://github.com/ahmadaljarad/abu-shreek/releases/download/books-v1/bac-lit-french-annex.pdf",
@@ -36,9 +36,11 @@
       "printed_page": 16,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
-      "verification": "original_release_pdf_extracted_contents_pages_4_5"
+      "verification": "original_release_pdf_extracted_contents_and_chapter_heading_text",
+      "pdf_heading_page_text_checked": 16
     },
     {
       "kind": "chapter",
@@ -47,9 +49,11 @@
       "printed_page": 28,
       "verified_fields": [
         "title",
-        "printed_page"
+        "printed_page",
+        "pdf_heading_page_text"
       ],
-      "verification": "original_release_pdf_extracted_contents_pages_4_5"
+      "verification": "original_release_pdf_extracted_contents_and_chapter_heading_text",
+      "pdf_heading_page_text_checked": 28
     }
   ],
   "verified_entry_count": 3,
@@ -57,5 +61,5 @@
   "pdf_page_mapping_verified": false,
   "visual_review_complete": false,
   "complete": false,
-  "remaining_work": "Confirm chapter 2 and 3 headings and full chapter page boundaries against original PDF and page images; subtopics are not indexed."
+  "remaining_work": "All three chapter opening headings checked against extracted original PDF text on pages 6, 16, 28; visual review, full chapter boundaries, subtopics and PDF-to-image mapping remain unverified."
 }
