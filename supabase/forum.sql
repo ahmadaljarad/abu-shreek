@@ -25,6 +25,7 @@ end if;
 select * into target from public.abu_forum_posts where id=p_id and (adm or level=lv);
 if not found then raise exception 'Post unavailable'; end if;
 if p_action='delete' and (adm or target.author=uid) then delete from public.abu_forum_posts where id=p_id;
+elsif p_action='edit' and adm then update public.abu_forum_posts set body=trim(p_body) where id=p_id;
 elsif p_action='reply' and not adm and target.parent is null then
 if exists(select 1 from public.abu_forum_posts where author=uid and created_at>now()-interval '10 seconds') then raise exception 'Please wait before posting'; end if;
 insert into public.abu_forum_posts(author,level,subject,body,parent) values(uid,lv,target.subject,trim(p_body),p_id);
