@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   try {
     if (!window.supabase) await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    if (!document.querySelector('script[src^="auth.js?"]')) await loadScriptOnce('./auth.js?v=20261127-otp-1', 'data-abu-auth');
+    if (!document.querySelector('script[src^="auth.js?"]')) await loadScriptOnce('./auth.js?v=20261127-otp-entry-5', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
