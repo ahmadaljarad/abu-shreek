@@ -57,8 +57,8 @@ window.addEventListener('DOMContentLoaded', async () => {
   await loadScriptOnce('./books-repair.js?v=20261023-pagejump-1', 'data-abu-books-repair').catch(console.error);
 
   try {
-    await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
-    if (!document.querySelector('script[src^="auth.js?"]')) await loadScriptOnce('./auth.js?v=20261123-direct-load-1', 'data-abu-auth');
+    if (!window.supabase) await loadScriptOnce('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'data-abu-supabase');
+    if (!document.querySelector('script[src^="auth.js?"]')) await loadScriptOnce('./auth.js?v=20261127-activity-3', 'data-abu-auth');
   } catch (err) {
     console.error('Could not load Abu Shreek authentication', err);
   }
